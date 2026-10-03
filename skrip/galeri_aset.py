@@ -1,7 +1,9 @@
 """Bangun halaman galeri verifikasi aset dari keluaran cari_aset_sketchfab.py.
 
-Pemakaian: python galeri_aset.py <kandidat.json> <galeri.html> "<judul scene>"
+Pemakaian: python galeri_aset.py <kandidat.json> <galeri.html> "<judul scene>" ["<catatan atas>"]
+Field opsional per kandidat: "sumber" (default "Sketchfab").
 """
+import hashlib
 import html
 import json
 import sys
@@ -64,7 +66,7 @@ label.kartu:has(input:checked) .centang{display:block}
 """
 
 JS = """
-const KUNCI='galeri-aset-pilihan';
+const KUNCI='galeri-aset-__ID__';
 const bagian=[...document.querySelectorAll('section[data-kat]')];
 function ringkas(){
   const potong=bagian.map(s=>{
@@ -114,11 +116,18 @@ def kartu(kat_id, i, m):
 <div class="info"><div class="nama">{e(m['nama'])}</div>
 <div class="meta"><span class="chip">{m['face']:,} face</span><span class="chip">{e(m['lisensi'])}</span>{anim}</div>
 <div class="meta">oleh {e(m['pembuat'])}</div>
-<a href="{e(m['url'])}" target="_blank" rel="noopener">Lihat 3D di Sketchfab ↗</a></div></label>"""
+<a href="{e(m['url'])}" target="_blank" rel="noopener">Lihat 3D di {e(m.get('sumber', 'Sketchfab'))} ↗</a></div></label>"""
 
 
-def main(masuk, keluar, judul):
+PENGANTAR = ("Pilih satu kandidat per kategori, atau tekan \"Tolak semua\" bila tidak ada yang cocok. "
+             "Semua kandidat berlisensi CC0/CC-BY dan bisa diunduh. "
+             "Setelah selesai, salin ringkasan di bawah dan tempel ke chat.")
+
+
+def main(masuk, keluar, judul, catatan_atas=""):
     data = json.load(open(masuk, encoding="utf-8"))
+    pengantar = html.escape((catatan_atas + " " if catatan_atas else "") + PENGANTAR)
+    kunci = hashlib.sha1("".join(m["uid"] for d in data.values() for m in d).encode()).hexdigest()[:10]
     bagian = []
     for n, (kat, daftar) in enumerate(data.items()):
         kat_id = f"kat{n}"
@@ -133,12 +142,12 @@ def main(masuk, keluar, judul):
 <style>{CSS}</style>
 <div class="wrap"><header><span class="eyebrow">Project Animasi Bunaken · verifikasi aset publik</span>
 <h1>Galeri Aset {html.escape(judul)}</h1>
-<p>Pilih satu kandidat per kategori, atau tekan "Tolak semua" bila tidak ada yang cocok. Semua kandidat berlisensi CC0/CC-BY dan bisa diunduh dari Sketchfab. Setelah selesai, salin ringkasan di bawah dan tempel ke chat.</p></header>
+<p>{pengantar}</p></header>
 {''.join(bagian)}</div>
 <div class="bar"><div class="isi"><code id="ringkasan"></code><button type="button" id="salin">Salin pilihan</button></div></div>
-<script>{JS}</script>"""
+<script>{JS.replace("__ID__", kunci)}</script>"""
     open(keluar, "w", encoding="utf-8").write(halaman)
 
 
 if __name__ == "__main__":
-    main(*sys.argv[1:4])
+    main(*sys.argv[1:5])
