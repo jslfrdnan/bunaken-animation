@@ -1,0 +1,10 @@
+# Berkas besar disimpan di OneDrive, bukan git
+*.blend
+*.blend1
+*.blend2
+render/
+audio/
+edit/
+aset/unduhan/
+referensi/*.mp4
+__pycache__/
