@@ -1,10 +1,18 @@
-# Berkas besar disimpan di OneDrive, bukan git
-*.blend
+# Repo ini menyimpan konteks lengkap untuk kolaborasi tim:
+# catatan Obsidian, berkas .blend, aset, dan skrip semuanya ikut.
+# Hanya berkas sampah/otomatis yang dikecualikan.
+
+# Backup otomatis Blender (duplikat dari .blend saat ini)
 *.blend1
 *.blend2
-render/
-audio/
-edit/
-aset/unduhan/
-referensi/*.mp4
+
+# Cache Python
 __pycache__/
+*.pyc
+
+# Berkas sistem
+Thumbs.db
+.DS_Store
+
+# Video referensi besar (disimpan terpisah, bukan di repo)
+referensi/*.mp4
