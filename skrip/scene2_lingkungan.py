@@ -14,10 +14,10 @@ WALL_Y = 0.0
 TOP_Z, DEEP_Z = -1.5, -45.0
 
 PALET = {
-    "batu": (0.10, 0.16, 0.18),
-    "batu_atas": (0.16, 0.28, 0.26),
-    "pasir_dalam": (0.20, 0.30, 0.38),
-    "deep": (0.01, 0.03, 0.08),
+    "batu": (0.26, 0.30, 0.30),       # batu karang gelap (dalam)
+    "batu_atas": (0.40, 0.46, 0.38),  # karang tumbuh (atas, kehijauan)
+    "pasir_dalam": (0.34, 0.44, 0.48),
+    "deep": (0.04, 0.10, 0.16),
 }
 
 
@@ -33,25 +33,6 @@ def _mat_vcol(nama, caustic=False):
     if "Specular IOR Level" in b.inputs: b.inputs["Specular IOR Level"].default_value = 0.1
     vc = nt.nodes.new("ShaderNodeVertexColor"); vc.layer_name = "Col"
     nt.links.new(vc.outputs["Color"], b.inputs["Base Color"])
-    if caustic:
-        # caustics: noise -> emisi biru-hijau lembut, pola bergerak (animasi via mapping offset)
-        tex = nt.nodes.new("ShaderNodeTexNoise")
-        tex.inputs["Scale"].default_value = 6.0
-        tex.inputs["Detail"].default_value = 2.0
-        mapp = nt.nodes.new("ShaderNodeMapping")
-        texc = nt.nodes.new("ShaderNodeTexCoord")
-        ramp = nt.nodes.new("ShaderNodeValToRGB")
-        ramp.color_ramp.elements[0].position = 0.55
-        ramp.color_ramp.elements[0].color = (0, 0, 0, 1)
-        ramp.color_ramp.elements[1].position = 0.75
-        ramp.color_ramp.elements[1].color = (0.25, 0.55, 0.6, 1)
-        nt.links.new(texc.outputs["Object"], mapp.inputs["Vector"])
-        nt.links.new(mapp.outputs["Vector"], tex.inputs["Vector"])
-        nt.links.new(tex.outputs["Fac"], ramp.inputs["Fac"])
-        if "Emission Color" in b.inputs:
-            nt.links.new(ramp.outputs["Color"], b.inputs["Emission Color"])
-            b.inputs["Emission Strength"].default_value = 1.2
-        mapp.name = "CausticMapping"
     return mat
 
 
@@ -78,24 +59,36 @@ def build_wall(coll):
             z = z0 + k*cell
             n = noise.noise(Vector((x*0.03, z*0.05, 0)))
             n2 = noise.noise(Vector((x*0.09, z*0.12, 3)))
-            y = WALL_Y - (3.5 + n*4.0 + n2*1.5)          # tonjolan dinding ke -Y
-            # teras/ledge di beberapa kedalaman
+            y = WALL_Y - (6.0 + n*3.0 + n2*1.5)          # dinding selalu di -Y (depan kamera)
+            # teras/ledge: sedikit MENJOROK ke dalam (lebih negatif), bukan ke kamera
             if -12 < z < -9 or -26 < z < -23:
-                y += 4.0
+                y -= 2.5
+            y = min(y, -1.5)                              # jangan pernah menonjol ke +Y
             V[i][k] = bm.verts.new((x, y, z))
     for i in range(nx-1):
         for k in range(nz-1):
             bm.faces.new((V[i][k], V[i+1][k], V[i+1][k+1], V[i][k+1]))
     bmesh.ops.triangulate(bm, faces=bm.faces[:])
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    # pastikan normal menghadap +Y (ke kamera)
+    for f in bm.faces:
+        if f.normal.y < 0:
+            f.normal_flip()
     col = bm.loops.layers.color.new("Col")
+    coral = (0.55, 0.42, 0.40)   # bercak karang/ warm
     for f in bm.faces:
         for lo in f.loops:
-            c = _warna_dinding(lo.vert.co.z)
+            v = lo.vert.co
+            c = _warna_dinding(v.z)
+            t = noise.noise(Vector((v.x*0.12, v.z*0.12, 11)))
+            if t > 0.35:                                   # bercak karang hangat sesekali
+                m = min((t-0.35)/0.4, 1.0) * 0.6
+                c = tuple(c[i] + (coral[i]-c[i])*m for i in range(3))
             lo[col] = (*c, 1.0)
     me = bpy.data.meshes.new("DindingDropoff")
     bm.to_mesh(me); bm.free()
     o = bpy.data.objects.new("DindingDropoff", me)
-    o.data.materials.append(_mat_vcol("M_Reef", caustic=True))
+    o.data.materials.append(_mat_vcol("M_Reef"))
     for p in o.data.polygons: p.use_smooth = False
     coll.objects.link(o)
     return o
@@ -120,7 +113,7 @@ def build_dasar(coll):
         for lo in f.loops: lo[col]=(*PALET["pasir_dalam"],1.0)
     me=bpy.data.meshes.new("DasarLaut"); bm.to_mesh(me); bm.free()
     o=bpy.data.objects.new("DasarLaut",me)
-    o.data.materials.append(_mat_vcol("M_Dasar", caustic=True))
+    o.data.materials.append(_mat_vcol("M_Dasar"))
     for p in o.data.polygons: p.use_smooth=False
     coll.objects.link(o)
     return o
@@ -168,23 +161,35 @@ def setup_world_underwater():
     for n in list(nt.nodes): nt.nodes.remove(n)
     out=nt.nodes.new("ShaderNodeOutputWorld")
     bg=nt.nodes.new("ShaderNodeBackground")
-    bg.inputs["Color"].default_value=(0.02,0.10,0.20,1.0)
-    bg.inputs["Strength"].default_value=0.5
+    # gradasi kedalaman: aqua terang ke arah permukaan (atas) -> biru gelap ke dalam (bawah)
+    geo=nt.nodes.new("ShaderNodeNewGeometry")
+    sep=nt.nodes.new("ShaderNodeSeparateXYZ")
+    mapr=nt.nodes.new("ShaderNodeMapRange")
+    ramp=nt.nodes.new("ShaderNodeValToRGB")
+    mapr.inputs["From Min"].default_value=-0.6
+    mapr.inputs["From Max"].default_value=0.5
+    ramp.color_ramp.elements[0].position=0.0
+    ramp.color_ramp.elements[0].color=(0.01,0.05,0.11,1.0)   # dalam, gelap
+    ramp.color_ramp.elements[1].position=1.0
+    ramp.color_ramp.elements[1].color=(0.18,0.52,0.64,1.0)   # dekat permukaan, aqua terang
+    nt.links.new(geo.outputs["Incoming"], sep.inputs["Vector"])
+    nt.links.new(sep.outputs["Z"], mapr.inputs["Value"])
+    nt.links.new(mapr.outputs["Result"], ramp.inputs["Fac"])
+    nt.links.new(ramp.outputs["Color"], bg.inputs["Color"])
+    bg.inputs["Strength"].default_value=1.0
     nt.links.new(bg.outputs["Background"], out.inputs["Surface"])
-    # kabut biru: volume scatter di world
-    vol=nt.nodes.new("ShaderNodeVolumeScatter")
-    vol.inputs["Color"].default_value=(0.06,0.22,0.34,1.0)
-    vol.inputs["Density"].default_value=0.018
-    vol.inputs["Anisotropy"].default_value=0.4
-    nt.links.new(vol.outputs["Volume"], out.inputs["Volume"])
+    # catatan: volume scatter dilepas (bikin gelap & sulit disetel); kontras dari sun + gradasi.
 
 
 def setup_sun():
     import math
     d=bpy.data.lights.new("MatahariAtas",type="SUN")
-    d.energy=6.0; d.angle=math.radians(3); d.color=(0.7,0.85,1.0)
+    d.energy=12.0; d.angle=math.radians(2); d.color=(0.95,0.97,1.0)
+    if hasattr(d, "use_shadow"): d.use_shadow = True
     s=bpy.data.objects.new("MatahariAtas",d)
-    s.rotation_euler=(math.radians(18),0,math.radians(15))  # hampir dari atas (god rays tegak)
+    # cahaya datang dari atas-depan (+Y,+Z), menyinari muka dinding (+Y) & permukaan atas
+    arah = Vector((0.1, -1.0, -0.8))   # arah rambat cahaya
+    s.rotation_euler = arah.to_track_quat("-Z", "Y").to_euler()
     bpy.context.scene.collection.objects.link(s)
     return s
 
@@ -214,6 +219,18 @@ def build_gelembung(coll):
     return grp
 
 
+def setup_eevee_volumetric():
+    ee = bpy.context.scene.eevee
+    for attr, val in [("volumetric_start", 0.1), ("volumetric_end", 220.0),
+                      ("volumetric_samples", 64), ("volumetric_tile_size", "4"),
+                      ("use_volumetric_shadows", True), ("use_volumetric_lights", True)]:
+        if hasattr(ee, attr):
+            try:
+                setattr(ee, attr, val)
+            except Exception as e:
+                print("  eevee", attr, e)
+
+
 def build():
     sc=bpy.context.scene
     env=bpy.data.collections.get("Lingkungan2")
@@ -222,6 +239,7 @@ def build():
     build_wall(env); build_dasar(env); build_permukaan(env)
     setup_world_underwater(); setup_sun()
     build_gelembung(env)
+    setup_eevee_volumetric()
     print("Lingkungan bawah air selesai:", [o.name for o in env.objects])
 
 

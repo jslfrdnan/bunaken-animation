@@ -72,19 +72,21 @@ def setup():
         except Exception:
             pass
 
-    # ---------- 3 kamera turun ----------
+    # ---------- 3 kamera turun (melihat dinding dari sudut menyamping) ----------
+    # Dinding memanjang di sumbu X (muka +Y, bibir z=-3, dasar z=-45). Kamera di sisi +Y
+    # melihat menyusur sumbu X supaya dinding membentuk diagonal + ada air terbuka.
     cam1 = _new_cam("Cam2_Shot1_Permukaan", 24)
-    _key_cam(cam1, 1,   (0, 36, -1.5), (0, 12, -14))
-    _key_cam(cam1, 240, (2, 30, -8),   (0, 8, -20))
+    _key_cam(cam1, 1,   (34, 22, -3),  (-8, 2, -16))
+    _key_cam(cam1, 240, (28, 18, -10), (-14, 0, -22))
 
-    cam2 = _new_cam("Cam2_Shot2_Turun", 30)
-    _key_cam(cam2, 241, (6, 28, -11), (-2, 4, -22))
-    _key_cam(cam2, 480, (3, 22, -20), (-2, 2, -30))
+    cam2 = _new_cam("Cam2_Shot2_Turun", 28)
+    _key_cam(cam2, 241, (22, 17, -13), (-16, 1, -26))
+    _key_cam(cam2, 480, (14, 15, -23), (-20, -1, -32))
 
-    cam3 = _new_cam("Cam2_Shot3_Dinding", 34)
-    _key_cam(cam3, 481, (4, 18, -18), (0, -3, -22))
-    _key_cam(cam3, 640, (3, 16, -25), (0, -4, -28))
-    _key_cam(cam3, 768, (2, 15, -31), (0, -4, -33))
+    cam3 = _new_cam("Cam2_Shot3_Dinding", 30)
+    _key_cam(cam3, 481, (10, 15, -22), (-22, -2, -30))
+    _key_cam(cam3, 640, (7, 13, -29),  (-24, -3, -36))
+    _key_cam(cam3, 768, (5, 12, -35),  (-26, -4, -40))
 
     for c in (cam1, cam2, cam3):
         _ease(c)
