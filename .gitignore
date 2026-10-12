@@ -16,3 +16,6 @@ Thumbs.db
 
 # Video referensi besar (disimpan terpisah, bukan di repo)
 referensi/*.mp4
+
+# PNG sequence hasil render (subfolder per klip) — berat; simpan hanya MP4-nya
+render/*/*/
