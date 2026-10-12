@@ -136,7 +136,7 @@ Project/
 - [ ] Undi posisi A–H & isi kolom nama
 - [x] Struktur folder `Project` + repo git ✅ 2026-10-04
 - [ ] Galeri kandidat aset scene 1 → diverifikasi
-- [ ] Scene 1: pulau & Manado Tua, laut, langit, props, perahu + nelayan, kamera 4 shot
+- [x] Scene 1: pulau & Manado Tua, laut, langit, props, perahu + nelayan, kamera 4 shot ✅ 2026-10-12 (`blender/scene1.blend`); render penuh & polish aset menyusul
 - [ ] Naskah narasi lengkap 4 scene (fakta terverifikasi)
 - [ ] Scene 2, 3, 4
 - [ ] Render, narasi, musik, editing, ekspor video final

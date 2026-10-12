@@ -35,12 +35,17 @@ Bagian dari [[Tugas Project Animasi]] · Narasi: [[Narasi & Storyboard#Scene 1]]
 ## Elemen
 
 ### Buatan sendiri
-- [ ] Pulau Bunaken (siluet dari peta, low-poly) + Manado Tua (kerucut) + siluet pesisir Manado
-- [ ] Shader air low-poly bergelombang, transparan, gradasi kedalaman; *reef flat* toska + garis drop-off
-- [ ] Dasar laut dangkal (karang samar terlihat dari atas)
-- [ ] Langit gradasi stilasi + kabut tipis jarak jauh
-- [ ] Animasi perahu (jalur + ayunan ombak), nelayan (rig), burung, kamera 4 shot
-- [ ] Kamera akhir shot 4 disimpan di `aset.blend` untuk awal scene 2
+- [x] Pulau Bunaken (prosedural low-poly) + Manado Tua (kerucut) + siluet pesisir Manado ✅ (`skrip/scene1_lingkungan.py`)
+- [x] Shader air low-poly bergelombang, transparan; *reef flat* toska + garis drop-off ✅
+- [x] Terrain diwarnai per-ketinggian (vertex color): laut dalam → reef → pasir → hijau ✅
+- [x] Langit gradasi pagi (Incoming.z) + matahari hangat ~26° ✅
+- [x] Animasi perahu berangkat + nelayan berdiri di perahu + burung + awan + kamera 4 shot ✅ (`skrip/scene1_kamera.py`)
+- [ ] Kamera akhir shot 4 disimpan ke `aset.blend` untuk awal scene 2 (match-cut)
+
+> [!done] Status build Scene 1 (12 Okt)
+> `blender/scene1.blend` jadi: lingkungan + 56 aset (link dari `aset.blend`) + 4 kamera beranimasi (960 frame @24fps, EEVEE 1080p). Render uji tiap shot di `render/scene1/test2_*.png`.
+>
+> **Belum / polish:** render animasi penuh belum dijalankan; modifikasi aset (cadik perahu, atap seng & tiang rumah, teks papan "TN Bunaken") dan penyeragaman palet belum; shot 4 bisa ditambah karang terlihat di bawah air.
 
 ### Aset publik (diverifikasi via galeri → lihat [[Aset & Teknik#Scene 1]])
 - [x] Pohon kelapa — *Coconut Tree* (sujirour) ✅ diimpor
