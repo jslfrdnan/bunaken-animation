@@ -40,10 +40,10 @@ Galeri verifikasi: https://claude.ai/artifact/82PCzwW8eoJLWehNcxnB46 (dibuat den
 |---|---|---|---|---|
 | Pohon kelapa | [Coconut Tree](https://sketchfab.com/3d-models/d141941578044b0f861ca83b36d4c411) (Sketchfab) | sujirour | CC-BY | ✅ diimpor (`Aset_Kelapa`) |
 | Bakau | [Mangrove Tree 2](https://sketchfab.com/3d-models/4ff47dd59bd7404888545e6780cdce46) (Sketchfab) | nigromancer | CC-BY | ✅ diimpor (`Aset_Bakau`) |
-| Rumah panggung | [Low Poly Fisherman's Hut](https://sketchfab.com/3d-models/0bdd5a0dc02c429b9308d9fe06bca56a) (Sketchfab) | mitia | CC-BY | ✅ diimpor; perlu tiang panggung + atap seng |
+| Rumah panggung | [Low Poly Fisherman's Hut](https://sketchfab.com/3d-models/0bdd5a0dc02c429b9308d9fe06bca56a) (Sketchfab) | mitia | CC-BY | ✅ diimpor + **dipoles**: diangkat 1,6 m + 5 tiang kayu, atap seng, dinding kayu (`skrip/poles_aset.py`) |
 | Dermaga kayu | [Boardwalk](https://poly.pizza/m/8gIutJpPSaS) (Poly Pizza) | Jacob Cherchio | CC-BY | ✅ diimpor (`Aset_Dermaga`, di-join 1 mesh, 8 m); jetty bertiang + pagar + tiang lampu; perlu warnai ulang ke palet |
-| Papan / gapura | [Stylized wood signs](https://sketchfab.com/3d-models/d529ec8478304d45a5048e15cf9cc9db) (Sketchfab) | Pasindu.Anjana | CC-BY | ✅ diimpor; 3 papan, perlu teks TN Bunaken |
-| Perahu (→ katinting) | [Canoe](https://sketchfab.com/3d-models/6486623945f44789ae1949e9add15268) (Sketchfab) | SkyeSladeUT | CC-BY | ✅ diimpor; perlu cadik + mesin |
+| Papan / gapura | [Stylized wood signs](https://sketchfab.com/3d-models/d529ec8478304d45a5048e15cf9cc9db) (Sketchfab) | Pasindu.Anjana | CC-BY | ✅ diimpor + **dipoles**: teks "TAMAN NASIONAL BUNAKEN" |
+| Perahu (→ katinting) | [Canoe](https://sketchfab.com/3d-models/6486623945f44789ae1949e9add15268) (Sketchfab) | SkyeSladeUT | CC-BY | ✅ diimpor + **dipoles** jadi katinting: 2 boom + pelampung cadik, mesin + baling-baling panjang |
 | Nelayan ber-rig | [Farmer](https://poly.pizza/m/7pn3R6hPvE) (Poly Pizza) | Quaternius | CC0 | ✅ diimpor (`Aset_Nelayan`, 1,7 m, bertopi, pose Idle); 24 animasi (Idle/Walk/Run/Wave/Interact dll); pakaian siap diwarnai ulang |
 | Burung | [Low-Poly Seagull Animated](https://sketchfab.com/3d-models/bff3cd3d48e249e8b5afa7416c6c39f8) (Sketchfab) | Jamie McFarlane | CC-BY | ✅ diimpor, ber-rig + animasi `Take 001` |
 | Awan | **Buatan sendiri** (`skrip/awan_lowpoly.py`) | – | – | ✅ dibuat (`Aset_Awan`: Awan_A/B/C, 80–120 face, flat-shaded) |
@@ -58,6 +58,15 @@ Galeri verifikasi: https://claude.ai/artifact/82PCzwW8eoJLWehNcxnB46 (dibuat den
 - "Boardwalk" oleh Jacob Cherchio, CC BY 3.0, via Poly Pizza
 - "Farmer" oleh Quaternius, CC0 1.0, via Poly Pizza (tanpa kewajiban kredit, tetap dicantumkan)
 - Awan: model buatan sendiri (bukan aset pihak ketiga)
+
+## Poles aset (12 Okt) — `skrip/poles_aset.py`
+Dijalankan di `aset.blend`, otomatis ikut ke `scene1.blend` lewat link:
+- **Perahu → katinting**: 2 boom bambu + 2 pelampung (cadik), blok mesin + baling-baling panjang (long-tail).
+- **Rumah → panggung**: diangkat 1,6 m, 5 tiang kayu, atap **seng** (abu), dinding kayu.
+- **Papan**: teks "TAMAN NASIONAL BUNAKEN".
+- **Dermaga**: railing biru-abu di-tint ke kayu.
+- **Flat shading** semua aset.
+> Catatan: banyak aset pakai **tekstur gambar** (base color abu 0.8), jadi penyeragaman warna penuh via base color tidak bisa; nada natural kayu/hijau yang ada sudah menyatu.
 
 ## Teknik buatan sendiri
 - Terrain pulau & Manado Tua (low-poly dari siluet peta)
