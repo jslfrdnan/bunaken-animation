@@ -48,6 +48,20 @@ Galeri verifikasi: https://claude.ai/artifact/82PCzwW8eoJLWehNcxnB46 (dibuat den
 | Burung | [Low-Poly Seagull Animated](https://sketchfab.com/3d-models/bff3cd3d48e249e8b5afa7416c6c39f8) (Sketchfab) | Jamie McFarlane | CC-BY | ✅ diimpor, ber-rig + animasi `Take 001` |
 | Awan | **Buatan sendiri** (`skrip/awan_lowpoly.py`) | – | – | ✅ dibuat (`Aset_Awan`: Awan_A/B/C, 80–120 face, flat-shaded) |
 
+## Scene 2 — Karang & Ikan
+
+Galeri verifikasi: https://claude.ai/artifact/5ScsWSvS7cghXKAbWJgc2x (dibuat dengan `skrip/cari_aset_scene2.py`)
+
+| Aset | Status |
+|---|---|
+| Karang meja | ⏳ pilih di galeri (kandidat: Coral Reef Set, Coral) |
+| Karang otak | ⏳ pilih (Brain Coral — jazz-the-giraffe) |
+| Karang kipas (gorgonian) | ⚠️ kandidat lemah (fan-art nyampur) — mungkin tolak & cari ulang |
+| Anemon laut | ⏳ pilih (Low-Poly Anemone dll) |
+| Spons tabung | ⏳ pilih (Sponge — Poly by Google) |
+| Ikan badut | ⏳ pilih (Clown fish beranimasi) |
+| Ikan ekor kuning/lalosi | ⏳ pilih (Quaternius: Butterfly/Lionfish/Fish, CC0 animasi) |
+
 ## Kredit (untuk end credits)
 - "Coconut Tree" oleh sujirour, CC BY 4.0, via Sketchfab
 - "Mangrove Tree 2" oleh nigromancer, CC BY 4.0, via Sketchfab

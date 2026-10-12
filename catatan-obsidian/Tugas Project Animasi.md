@@ -138,7 +138,9 @@ Project/
 - [ ] Galeri kandidat aset scene 1 → diverifikasi
 - [x] Scene 1: pulau & Manado Tua, laut, langit, props, perahu + nelayan, kamera 4 shot ✅ 2026-10-12 (`blender/scene1.blend`); render penuh & polish aset menyusul
 - [ ] Naskah narasi lengkap 4 scene (fakta terverifikasi)
-- [ ] Scene 2, 3, 4
+- [~] Scene 2 (Menyelam): lingkungan bawah air + kamera jadi (`scene2.blend`); aset karang/ikan menunggu verifikasi galeri
+- [ ] Scene 3, 4
+- [x] Render penuh Scene 1 (960 frame) → `render/scene1/scene1_full.mp4` ✅ 2026-10-13
 - [ ] Render, narasi, musik, editing, ekspor video final
 
 ## Pertanyaan terbuka

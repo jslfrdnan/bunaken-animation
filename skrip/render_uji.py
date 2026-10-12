@@ -14,13 +14,15 @@ f0 = int(argv[0]) if len(argv) > 0 else 529
 f1 = int(argv[1]) if len(argv) > 1 else 768
 persen = int(argv[2]) if len(argv) > 2 else 50
 nama = argv[3] if len(argv) > 3 else "uji_shot3"
+samples = int(argv[4]) if len(argv) > 4 else 12
 
 sc = bpy.context.scene
 sc.render.resolution_percentage = persen
 try:
-    sc.eevee.taa_render_samples = 12
+    sc.eevee.taa_render_samples = samples
 except Exception as e:
     print("samples:", e)
+sc.render.use_motion_blur = False
 
 # Build Blender ini tanpa FFmpeg, jadi render ke PNG sequence; digabung jadi MP4 di luar.
 sc.render.image_settings.file_format = "PNG"
