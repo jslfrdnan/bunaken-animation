@@ -40,9 +40,13 @@ Bagian dari [[Tugas Project Animasi]] · Narasi: [[Narasi & Storyboard#Scene 2]]
 - [ ] Gradasi warna per kedalaman
 - [ ] Kamera 3 shot (turun) + transisi ke Scene 3
 
-### Aset publik (perlu galeri verifikasi — belum ada)
-- [ ] Karang: meja, otak, kipas (gorgonian), anemon, spons tabung
-- [ ] Ikan karang: badut, ekor kuning/lalosi (aksen; kawanan besar di Scene 3/4)
+### Aset publik (✅ dipilih & disebar — `skrip/scene2_aset.py`)
+- [x] Karang meja (Kelli Ray), otak (jazz-the-giraffe), kipas (Valery.Li), anemon (Poly by Google) — 70 instance scatter di dinding
+- [x] Ikan badut (djmixmaster, animasi) dekat anemon + lionfish (Quaternius, animasi) aksen
+- [❌] Spons tabung — ditolak (tak ada kandidat bagus)
+
+> [!done] Status Scene 2 (13 Okt)
+> `scene2.blend`: lingkungan + 87 instance karang/ikan di-link dari `aset.blend`. Dinding drop-off hidup, komposisi wall-dive terbaca. Preview: `render/scene2/aset_f*.png`. Test-render animasi belum; polish opsional (god rays, warna karang kurang biru).
 
 ## Catatan
 - God rays & caustics pakai teknik ringan agar render cepat.

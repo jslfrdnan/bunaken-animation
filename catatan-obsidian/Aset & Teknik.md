@@ -54,13 +54,13 @@ Galeri verifikasi: https://claude.ai/artifact/5ScsWSvS7cghXKAbWJgc2x (dibuat den
 
 | Aset | Status |
 |---|---|
-| Karang meja | ⏳ pilih di galeri (kandidat: Coral Reef Set, Coral) |
-| Karang otak | ⏳ pilih (Brain Coral — jazz-the-giraffe) |
-| Karang kipas (gorgonian) | ⚠️ kandidat lemah (fan-art nyampur) — mungkin tolak & cari ulang |
-| Anemon laut | ⏳ pilih (Low-Poly Anemone dll) |
-| Spons tabung | ⏳ pilih (Sponge — Poly by Google) |
-| Ikan badut | ⏳ pilih (Clown fish beranimasi) |
-| Ikan ekor kuning/lalosi | ⏳ pilih (Quaternius: Butterfly/Lionfish/Fish, CC0 animasi) |
+| Karang meja | [coral](https://poly.pizza/m/7Cs3rTEcpcD) (Poly Pizza) — Kelli Ray, CC-BY | ✅ diimpor (`Aset_KarangMeja`) |
+| Karang otak | [Brain Coral 3.2](https://sketchfab.com/3d-models/1c8599545026474082f0c48173923638) — jazz-the-giraffe, CC-BY | ✅ diimpor (`Aset_KarangOtak`) |
+| Karang kipas (gorgonian) | [Fan Coral Cluster Low](https://sketchfab.com/3d-models/ee315b6063f8472ea4788a75098a2cb5) — Valery.Li, CC-BY | ✅ diimpor (`Aset_KarangKipas`, ungu/jingga) |
+| Anemon laut | [Anemone (Poly by Google)](https://sketchfab.com/3d-models/4a0140ae7a3e4c9da72998de5c94f58e) — IronEqual, CC-BY | ✅ diimpor (`Aset_Anemon`) |
+| Spons tabung | — | ❌ ditolak (tak ada kandidat bagus); bisa dicari ulang bila perlu |
+| Ikan badut | [LowPoly ClownFish](https://sketchfab.com/3d-models/94f0b937a86c40069c7e9f4818a58bf7) — djmixmaster, CC-BY | ✅ diimpor (`Aset_IkanBadut`), animasi berenang |
+| Ikan ekor kuning/lalosi | [Lionfish](https://poly.pizza/m/czsz9Baw86) (Poly Pizza) — Quaternius, CC0 | ✅ diimpor (`Aset_IkanLalosi`), animasi berenang |
 
 ## Kredit (untuk end credits)
 - "Coconut Tree" oleh sujirour, CC BY 4.0, via Sketchfab
@@ -72,6 +72,12 @@ Galeri verifikasi: https://claude.ai/artifact/5ScsWSvS7cghXKAbWJgc2x (dibuat den
 - "Boardwalk" oleh Jacob Cherchio, CC BY 3.0, via Poly Pizza
 - "Farmer" oleh Quaternius, CC0 1.0, via Poly Pizza (tanpa kewajiban kredit, tetap dicantumkan)
 - Awan: model buatan sendiri (bukan aset pihak ketiga)
+- "coral" oleh Kelli Ray, CC BY 3.0, via Poly Pizza
+- "Brain Coral 3.2" oleh jazz-the-giraffe, CC BY 4.0, via Sketchfab
+- "Fan Coral Cluster Low" oleh Valery.Li, CC BY 4.0, via Sketchfab
+- "Anemone from Poly by Google" oleh IronEqual, CC BY 4.0, via Sketchfab
+- "LowPoly ClownFish" oleh djmixmaster, CC BY 4.0, via Sketchfab
+- "Lionfish" oleh Quaternius, CC0 1.0, via Poly Pizza
 
 ## Poles aset (12 Okt) — `skrip/poles_aset.py`
 Dijalankan di `aset.blend`, otomatis ikut ke `scene1.blend` lewat link:
