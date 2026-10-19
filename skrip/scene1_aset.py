@@ -89,23 +89,23 @@ def place_assets(height):
     ICX, ICY, IA, IB = 0.0, -10.0, 90.0, 55.0
     n = 0
     tries = 0
-    while n < 28 and tries < 400:
+    while n < 48 and tries < 900:
         tries += 1
         a = rng.uniform(0, 2 * math.pi)
-        r = rng.uniform(0.45, 0.92)
+        r = rng.uniform(0.40, 0.99)                  # lebih menyebar ke tepi pulau
         x = ICX + math.cos(a) * IA * r
         y = ICY + math.sin(a) * IB * r
         z = z_at(x, y)
-        if not (0.8 < z < 9.0):
+        if not (0.7 < z < 11.0):
             continue
-        if (Vector((x, y, 0)) - DESA).length < 14:   # sisakan ruang desa
+        if (Vector((x, y, 0)) - DESA).length < 13:   # sisakan ruang desa
             continue
         instance(links["Aset_Kelapa"], grp, f"Kelapa_{n}", (x, y, z - 0.2),
-                 rot=(0, 0, rng.uniform(0, 6.28)), scale=rng.uniform(0.7, 1.15))
+                 rot=(0, 0, rng.uniform(0, 6.28)), scale=rng.uniform(0.65, 1.2))
         n += 1
 
-    # --- Bakau: rumpun di pesisir -X pulau (rawa) ---
-    for i in range(7):
+    # --- Bakau: rumpun lebih banyak di pesisir -X & -Y pulau (rawa) ---
+    for i in range(14):
         x = -70 + rng.uniform(-6, 6)
         y = ICY + rng.uniform(-18, 18)
         z = z_at(x, y)

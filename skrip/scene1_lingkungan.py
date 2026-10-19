@@ -92,7 +92,32 @@ def _mat_vertex_color(nama):
         bsdf.inputs["Specular IOR Level"].default_value = 0.1
     attr = nt.nodes.new("ShaderNodeVertexColor")
     attr.layer_name = "Col"
-    nt.links.new(attr.outputs["Color"], bsdf.inputs["Base Color"])
+
+    # --- tekstur rumput prosedural (tanpa objek 3D), hanya di area hijau (G>R) ---
+    texc = nt.nodes.new("ShaderNodeTexCoord")
+    sep = nt.nodes.new("ShaderNodeSeparateColor")
+    nt.links.new(attr.outputs["Color"], sep.inputs["Color"])
+    gt = nt.nodes.new("ShaderNodeMath"); gt.operation = "GREATER_THAN"
+    nt.links.new(sep.outputs["Green"], gt.inputs[0])
+    nt.links.new(sep.outputs["Red"], gt.inputs[1])   # mask=1 bila hijau (G>R)
+    vor = nt.nodes.new("ShaderNodeTexVoronoi"); vor.inputs["Scale"].default_value = 2.2
+    noi = nt.nodes.new("ShaderNodeTexNoise"); noi.inputs["Scale"].default_value = 6.0; noi.inputs["Detail"].default_value = 4.0
+    nt.links.new(texc.outputs["Object"], vor.inputs["Vector"])
+    nt.links.new(texc.outputs["Object"], noi.inputs["Vector"])
+    comb = nt.nodes.new("ShaderNodeMix"); comb.data_type = "FLOAT"; comb.inputs["Factor"].default_value = 0.5
+    nt.links.new(vor.outputs["Distance"], comb.inputs["A"])
+    nt.links.new(noi.outputs["Fac"], comb.inputs["B"])
+    mr = nt.nodes.new("ShaderNodeMapRange")       # detail -> faktor terang rumput
+    mr.inputs["To Min"].default_value = 0.72; mr.inputs["To Max"].default_value = 1.18
+    nt.links.new(comb.outputs["Result"], mr.inputs["Value"])
+    mbright = nt.nodes.new("ShaderNodeMix"); mbright.data_type = "FLOAT"   # pakai faktor hanya di rumput
+    mbright.inputs["A"].default_value = 1.0
+    nt.links.new(mr.outputs["Result"], mbright.inputs["B"])
+    nt.links.new(gt.outputs["Value"], mbright.inputs["Factor"])
+    mul = nt.nodes.new("ShaderNodeMix"); mul.data_type = "RGBA"; mul.blend_type = "MULTIPLY"; mul.inputs["Factor"].default_value = 1.0
+    nt.links.new(attr.outputs["Color"], mul.inputs[6])     # A
+    nt.links.new(mbright.outputs["Result"], mul.inputs[7]) # B (float->abu)
+    nt.links.new(mul.outputs[2], bsdf.inputs["Base Color"])
     return mat
 
 
