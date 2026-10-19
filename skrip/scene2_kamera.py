@@ -57,12 +57,12 @@ def setup():
         if not o.name.startswith("Gelembung_"):
             continue
         z0 = o.location.z
-        rise = rng.uniform(35, 58)
+        rise = rng.uniform(6, 10)   # naik ke permukaan (reef dangkal)
         x0 = o.location.x
         o.location.z = z0
         o.keyframe_insert("location", frame=1)
-        o.location.x = x0 + rng.uniform(-1.5, 1.5)
-        o.location.z = z0 + rise
+        o.location.x = x0 + rng.uniform(-1.0, 1.0)
+        o.location.z = min(z0 + rise, -0.3)
         o.keyframe_insert("location", frame=768)
         # gerak lurus naik (linear)
         try:
@@ -72,21 +72,22 @@ def setup():
         except Exception:
             pass
 
-    # ---------- 3 kamera turun (melihat dinding dari sudut menyamping) ----------
-    # Dinding memanjang di sumbu X (muka +Y, bibir z=-3, dasar z=-45). Kamera di sisi +Y
-    # melihat menyusur sumbu X supaya dinding membentuk diagonal + ada air terbuka.
+    # ---------- 3 kamera: meluncur di atas reef flat menuju tepi drop-off ----------
+    # Reef flat z=-9 (y>-8), tepi drop-off di y=-8 turun ke laut dalam. Kamera di +Y
+    # menghadap -Y/bawah: lihat karang di lantai, lalu tepi jurang & biru dalam.
     cam1 = _new_cam("Cam2_Shot1_Permukaan", 24)
-    _key_cam(cam1, 1,   (34, 22, -3),  (-8, 2, -16))
-    _key_cam(cam1, 240, (28, 18, -10), (-14, 0, -22))
+    _key_cam(cam1, 1,   (8, 36, -2.5), (2, 18, -9))
+    _key_cam(cam1, 240, (5, 27, -5.5), (-2, 8, -9))
 
     cam2 = _new_cam("Cam2_Shot2_Turun", 28)
-    _key_cam(cam2, 241, (22, 17, -13), (-16, 1, -26))
-    _key_cam(cam2, 480, (14, 15, -23), (-20, -1, -32))
+    _key_cam(cam2, 241, (3, 24, -5.5), (-4, 6, -9))
+    _key_cam(cam2, 480, (-1, 13, -6.5), (-6, -4, -11))
 
-    cam3 = _new_cam("Cam2_Shot3_Dinding", 30)
-    _key_cam(cam3, 481, (10, 15, -22), (-22, -2, -30))
-    _key_cam(cam3, 640, (7, 13, -29),  (-24, -3, -36))
-    _key_cam(cam3, 768, (5, 12, -35),  (-26, -4, -40))
+    cam3 = _new_cam("Cam2_Shot3_Dinding", 28)
+    # meluncur rendah di atas reef menuju tepi; karang tetap di frame bawah
+    _key_cam(cam3, 481, (-2, 10, -6), (-8, 1, -8.5))
+    _key_cam(cam3, 640, (-4, 5, -6),  (-10, -4, -9.5))
+    _key_cam(cam3, 768, (-6, 0, -6),  (-12, -9, -11))
 
     for c in (cam1, cam2, cam3):
         _ease(c)

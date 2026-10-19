@@ -13,9 +13,9 @@ from mathutils import Vector
 ASET_BLEND = r"D:\Tugas Semester 5\Grafika Komputer\Project\blender\aset.blend"
 KARANG = ["Aset_KarangMeja", "Aset_KarangOtak", "Aset_KarangKipas", "Aset_Anemon"]
 IKAN = ["Aset_IkanBadut", "Aset_IkanLalosi"]
-# wilayah yang dilalui kamera (x menyusur, z kedalaman)
-X_MIN, X_MAX = -34.0, 38.0
-Z_MIN, Z_MAX = -42.0, -4.0
+# wilayah lantai reef yang terlihat kamera (x, y)
+X_MIN, X_MAX = -40.0, 40.0
+Y_MIN, Y_MAX = -7.0, 40.0
 
 
 def link_collections(names):
@@ -45,37 +45,33 @@ def place_assets():
         for o in list(grp.objects):
             bpy.data.objects.remove(o, do_unlink=True)
 
-    wall = bpy.data.objects["DindingDropoff"]
-    mw = wall.matrix_world
+    floor = bpy.data.objects["ReefFlat"]
+    mw = floor.matrix_world
     rng = random.Random(21)
 
-    # kumpulkan muka dinding dalam wilayah kamera
+    # kumpulkan muka lantai reef dalam wilayah kamera (semua menghadap atas)
     faces = []
-    for p in wall.data.polygons:
+    for p in floor.data.polygons:
         c = mw @ p.center
-        if X_MIN <= c.x <= X_MAX and Z_MIN <= c.z <= Z_MAX:
-            n = (mw.to_3x3() @ p.normal).normalized()
-            faces.append((c, n))
+        if X_MIN <= c.x <= X_MAX and Y_MIN <= c.y <= Y_MAX:
+            faces.append(c)
     rng.shuffle(faces)
 
     anemon_pos = []
     n_karang = 0
-    for c, n in faces:
-        if n_karang >= 70:
+    for c in faces:
+        if n_karang >= 90:
             break
-        if rng.random() > 0.55:            # kerapatan ~45% muka terpilih
-            continue
-        # lebih rapat di bagian atas & teras (z > -30)
-        if c.z < -30 and rng.random() > 0.5:
+        if rng.random() > 0.45:            # kerapatan
             continue
         kat = rng.choices(KARANG, weights=[3, 3, 2, 2])[0]
-        rot = n.to_track_quat("Z", "Y").to_euler()
-        rot.z += rng.uniform(0, 6.28)
+        # karang tumbuh tegak ke atas (+Z), sedikit miring acak
+        rot = (rng.uniform(-0.18, 0.18), rng.uniform(-0.18, 0.18), rng.uniform(0, 6.28))
         scale = rng.uniform(0.5, 1.3)
-        pos = c + n * 0.1
+        pos = c + Vector((0, 0, 0.05))
         instance(links[kat], grp, f"Karang_{n_karang}", pos, rot, scale)
         if kat == "Aset_Anemon":
-            anemon_pos.append(pos + n * 0.3)
+            anemon_pos.append(pos + Vector((0, 0, 0.3)))
         n_karang += 1
 
     # ikan badut dekat anemon (simbiosis)
@@ -87,9 +83,9 @@ def place_assets():
                      (0, 0, rng.uniform(0, 6.28)), rng.uniform(0.8, 1.3))
             nb += 1
 
-    # lionfish aksen: 2 melayang di depan dinding
-    for i, (x, z) in enumerate([(10, -16), (-14, -26)]):
-        instance(links["Aset_IkanLalosi"], grp, f"Lionfish_{i}", (x, rng.uniform(2, 5), z),
+    # lionfish aksen: 2 melayang di atas reef flat
+    for i, (x, y) in enumerate([(6, 14), (-10, 6)]):
+        instance(links["Aset_IkanLalosi"], grp, f"Lionfish_{i}", (x, y, -6.5),
                  (0, 0, rng.uniform(0, 6.28)), rng.uniform(1.0, 1.4))
 
     print(f"Scatter: {n_karang} karang, {nb} badut, 2 lionfish ({len(grp.objects)} instance)")
