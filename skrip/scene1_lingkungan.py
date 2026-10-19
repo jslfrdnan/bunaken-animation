@@ -14,9 +14,9 @@ from mathutils import Vector, noise
 
 # ---------- Palet (linear-ish sRGB, dipakai sebagai base color) ----------
 PALET = {
-    "laut_dalam": (0.03, 0.18, 0.40),     # biru laut dalam (tak terlalu gelap)
-    "pasir_dasar": (0.52, 0.66, 0.60),    # dasar laut berpasir (terbaca turquoise lewat air jernih)
-    "pasir_dangkal": (0.80, 0.82, 0.68),  # pasir dangkal dekat pantai
+    "laut_dalam": (0.02, 0.14, 0.34),     # biru laut dalam
+    "pasir_dasar": (0.62, 0.74, 0.64),    # dasar laut berpasir (terbaca turquoise lewat air jernih)
+    "pasir_dangkal": (0.88, 0.87, 0.72),  # pasir dangkal dekat pantai (terang)
     "pasir": (0.90, 0.85, 0.68),          # pasir pantai kering
     "buih": (0.95, 0.97, 0.95),           # buih tepi pantai
     "reef": (0.22, 0.62, 0.58),           # karang dangkal
@@ -124,6 +124,14 @@ def _grid_mesh(nama, x0, x1, y0, y1, cell, hfn, color_fn, warp=0.0):
                     c = _lerp(c, PALET["hijau_terang"], min((t - 0.08) * 1.6, 0.7))
                 elif t < -0.15:
                     c = _lerp(c, PALET["hijau_tua"], min((-0.15 - t) * 1.3, 0.55))
+            elif -16.0 < v.z < -0.5:   # dasar laut: bercak pasir terang/gelap (tekstur dasar)
+                t = noise.noise(Vector((v.x * 0.13, v.y * 0.13, 30.0)))
+                t2 = noise.noise(Vector((v.x * 0.4, v.y * 0.4, 33.0)))
+                if t > 0.0:
+                    c = _lerp(c, PALET["pasir_dangkal"], min(t * 1.8, 0.75))
+                else:
+                    c = _lerp(c, PALET["reef"], min(-t * 1.5, 0.55))
+                c = _lerp(c, PALET["laut_dalam"], max(0.0, t2 * 0.2))   # bintik gelap (karang/rumput laut)
             loop[col] = (c[0], c[1], c[2], 1.0)
     me = bpy.data.meshes.new(nama)
     bm.to_mesh(me)
@@ -252,7 +260,9 @@ def build_water(coll):
     for i in range(nx):
         for j in range(ny):
             x, y = x0 + i * cell, y0 + j * cell
-            w = 0.18 * math.sin(x * 0.12 + y * 0.09) + 0.12 * noise.noise(Vector((x * 0.05, y * 0.05, 9)))
+            w = (0.45 * math.sin(x * 0.07 + y * 0.05)
+                 + 0.22 * math.sin(x * 0.19 + y * 0.14)
+                 + 0.14 * noise.noise(Vector((x * 0.06, y * 0.06, 9))))
             verts[i][j] = bm.verts.new((x, y, w))
     for i in range(nx - 1):
         for j in range(ny - 1):
@@ -274,24 +284,58 @@ def _mat_air():
         return mat
     mat = bpy.data.materials.new("M_Air")
     mat.use_nodes = True
-    mat.blend_method = "BLEND" if hasattr(mat, "blend_method") else mat.blend_method
     nt = mat.node_tree
     bsdf = next(n for n in nt.nodes if n.type == "BSDF_PRINCIPLED")
-    bsdf.inputs["Base Color"].default_value = (0.08, 0.55, 0.60, 1.0)   # turquoise cerah
+    bsdf.inputs["Base Color"].default_value = (0.06, 0.52, 0.58, 1.0)   # turquoise
     if "Roughness" in bsdf.inputs:
-        bsdf.inputs["Roughness"].default_value = 0.04                   # mengkilap, pantulkan langit
+        bsdf.inputs["Roughness"].default_value = 0.02                   # mengkilap -> kilau matahari
     if "Alpha" in bsdf.inputs:
-        bsdf.inputs["Alpha"].default_value = 0.52                       # jernih: dasar pasir tembus
+        bsdf.inputs["Alpha"].default_value = 0.40                       # lebih jernih: dasar pasir tembus
     if "Transmission Weight" in bsdf.inputs:
         bsdf.inputs["Transmission Weight"].default_value = 0.0
     if "IOR" in bsdf.inputs:
         bsdf.inputs["IOR"].default_value = 1.33
+
+    # --- riak permukaan: dua noise skala beda -> bump normal (gerak & dimensi air) ---
+    texc = nt.nodes.new("ShaderNodeTexCoord")
+    mapp = nt.nodes.new("ShaderNodeMapping"); mapp.name = "RippleMap"
+    n1 = nt.nodes.new("ShaderNodeTexNoise"); n1.inputs["Scale"].default_value = 0.18; n1.inputs["Detail"].default_value = 3.0
+    n2 = nt.nodes.new("ShaderNodeTexNoise"); n2.inputs["Scale"].default_value = 0.6; n2.inputs["Detail"].default_value = 2.0
+    mix = nt.nodes.new("ShaderNodeMix"); mix.data_type = "FLOAT"; mix.inputs["Factor"].default_value = 0.4
+    bump = nt.nodes.new("ShaderNodeBump"); bump.inputs["Strength"].default_value = 0.35; bump.inputs["Distance"].default_value = 0.6
+    nt.links.new(texc.outputs["Object"], mapp.inputs["Vector"])
+    nt.links.new(mapp.outputs["Vector"], n1.inputs["Vector"])
+    nt.links.new(mapp.outputs["Vector"], n2.inputs["Vector"])
+    nt.links.new(n1.outputs["Fac"], mix.inputs["A"])
+    nt.links.new(n2.outputs["Fac"], mix.inputs["B"])
+    nt.links.new(mix.outputs["Result"], bump.inputs["Height"])
+    nt.links.new(bump.outputs["Normal"], bsdf.inputs["Normal"])
+
+    # --- guratan buih/busa di permukaan: warna air bervariasi (turquoise -> toska terang) ---
+    nstreak = nt.nodes.new("ShaderNodeTexNoise")
+    nstreak.inputs["Scale"].default_value = 0.35
+    nstreak.inputs["Detail"].default_value = 4.0
+    smap = nt.nodes.new("ShaderNodeMapping"); smap.inputs["Scale"].default_value = (0.3, 1.0, 1.0)  # diregangkan -> guratan
+    cramp = nt.nodes.new("ShaderNodeValToRGB")
+    cramp.color_ramp.elements[0].position = 0.42
+    cramp.color_ramp.elements[0].color = (0.06, 0.52, 0.58, 1.0)   # turquoise
+    cramp.color_ramp.elements[1].position = 0.72
+    cramp.color_ramp.elements[1].color = (0.42, 0.78, 0.80, 1.0)   # toska terang (busa)
+    nt.links.new(texc.outputs["Object"], smap.inputs["Vector"])
+    nt.links.new(smap.outputs["Vector"], nstreak.inputs["Vector"])
+    nt.links.new(nstreak.outputs["Fac"], cramp.inputs["Fac"])
+    nt.links.new(cramp.outputs["Color"], bsdf.inputs["Base Color"])
+    smap.name = "StreakMap"
+    # animasi riak: geser mapping mengikuti frame
+    drv = mapp.inputs["Location"].driver_add("default_value", 0).driver
+    drv.expression = "frame * 0.02"
+    drv2 = mapp.inputs["Location"].driver_add("default_value", 1).driver
+    drv2.expression = "frame * 0.014"
+
     try:
         mat.blend_method = "BLEND"
     except Exception:
         pass
-    if hasattr(mat, "use_screen_refraction"):
-        mat.use_screen_refraction = True
     if hasattr(mat, "show_transparent_back"):
         mat.show_transparent_back = False
     return mat
