@@ -293,6 +293,14 @@ def build_water(coll):
         for j in range(ny - 1):
             bm.faces.new((verts[i][j], verts[i + 1][j], verts[i + 1][j + 1], verts[i][j + 1]))
     bmesh.ops.triangulate(bm, faces=bm.faces[:])
+    # simpan kedalaman asli (0=dangkal, 1=dalam) sbg vertex color "Depth"
+    dcol = bm.loops.layers.color.new("Depth")
+    for f in bm.faces:
+        for lo in f.loops:
+            v = lo.vert.co
+            d = max(0.0, -height(v.x, v.y))
+            dn = min(d / 28.0, 1.0)
+            lo[dcol] = (dn, dn, dn, 1.0)
     me = bpy.data.meshes.new("Laut")
     bm.to_mesh(me); bm.free()
     o = bpy.data.objects.new("Laut", me)
@@ -311,15 +319,27 @@ def _mat_air():
     mat.use_nodes = True
     nt = mat.node_tree
     bsdf = next(n for n in nt.nodes if n.type == "BSDF_PRINCIPLED")
-    bsdf.inputs["Base Color"].default_value = (0.06, 0.52, 0.58, 1.0)   # turquoise
     if "Roughness" in bsdf.inputs:
-        bsdf.inputs["Roughness"].default_value = 0.02                   # mengkilap -> kilau matahari
-    if "Alpha" in bsdf.inputs:
-        bsdf.inputs["Alpha"].default_value = 0.40                       # lebih jernih: dasar pasir tembus
-    if "Transmission Weight" in bsdf.inputs:
-        bsdf.inputs["Transmission Weight"].default_value = 0.0
+        bsdf.inputs["Roughness"].default_value = 0.03
     if "IOR" in bsdf.inputs:
         bsdf.inputs["IOR"].default_value = 1.33
+    # --- WARNA & ALPHA dari KEDALAMAN asli (vertex color "Depth") ---
+    dep = nt.nodes.new("ShaderNodeVertexColor"); dep.layer_name = "Depth"
+    cr = nt.nodes.new("ShaderNodeValToRGB")
+    cr.color_ramp.elements[0].position = 0.0
+    cr.color_ramp.elements[0].color = (0.75, 0.90, 0.90, 1.0)   # buih tepi (dangkal)
+    cr.color_ramp.elements[1].position = 1.0
+    cr.color_ramp.elements[1].color = (0.02, 0.17, 0.42, 1.0)   # biru dalam
+    e1 = cr.color_ramp.elements.new(0.06); e1.color = (0.10, 0.60, 0.64, 1.0)   # turquoise dangkal
+    e2 = cr.color_ramp.elements.new(0.45); e2.color = (0.04, 0.34, 0.52, 1.0)   # biru sedang
+    nt.links.new(dep.outputs["Color"], cr.inputs["Fac"])
+    nt.links.new(cr.outputs["Color"], bsdf.inputs["Base Color"])
+    amr = nt.nodes.new("ShaderNodeMapRange")       # alpha: dangkal jernih -> dalam pekat
+    amr.inputs["To Min"].default_value = 0.18
+    amr.inputs["To Max"].default_value = 0.86
+    nt.links.new(dep.outputs["Color"], amr.inputs["Value"])
+    if "Alpha" in bsdf.inputs:
+        nt.links.new(amr.outputs["Result"], bsdf.inputs["Alpha"])
 
     # --- riak permukaan: dua noise skala beda -> bump normal (gerak & dimensi air) ---
     texc = nt.nodes.new("ShaderNodeTexCoord")
@@ -336,21 +356,6 @@ def _mat_air():
     nt.links.new(mix.outputs["Result"], bump.inputs["Height"])
     nt.links.new(bump.outputs["Normal"], bsdf.inputs["Normal"])
 
-    # --- guratan buih/busa di permukaan: warna air bervariasi (turquoise -> toska terang) ---
-    nstreak = nt.nodes.new("ShaderNodeTexNoise")
-    nstreak.inputs["Scale"].default_value = 0.35
-    nstreak.inputs["Detail"].default_value = 4.0
-    smap = nt.nodes.new("ShaderNodeMapping"); smap.inputs["Scale"].default_value = (0.3, 1.0, 1.0)  # diregangkan -> guratan
-    cramp = nt.nodes.new("ShaderNodeValToRGB")
-    cramp.color_ramp.elements[0].position = 0.42
-    cramp.color_ramp.elements[0].color = (0.06, 0.52, 0.58, 1.0)   # turquoise
-    cramp.color_ramp.elements[1].position = 0.72
-    cramp.color_ramp.elements[1].color = (0.42, 0.78, 0.80, 1.0)   # toska terang (busa)
-    nt.links.new(texc.outputs["Object"], smap.inputs["Vector"])
-    nt.links.new(smap.outputs["Vector"], nstreak.inputs["Vector"])
-    nt.links.new(nstreak.outputs["Fac"], cramp.inputs["Fac"])
-    nt.links.new(cramp.outputs["Color"], bsdf.inputs["Base Color"])
-    smap.name = "StreakMap"
     # animasi riak: geser mapping mengikuti frame
     drv = mapp.inputs["Location"].driver_add("default_value", 0).driver
     drv.expression = "frame * 0.02"
@@ -399,12 +404,28 @@ def setup_world_sky():
 def setup_sun():
     import math
     data = bpy.data.lights.new("MatahariPagi", type="SUN")
-    data.energy = 5.2
-    data.angle = math.radians(1.5)
-    data.color = (1.0, 0.96, 0.88)   # siang tropis, sedikit hangat
+    data.energy = 5.0
+    data.angle = math.radians(4.0)   # penumbra lebih lebar -> bayangan lembut
+    data.color = (1.0, 0.96, 0.88)   # key: siang tropis, sedikit hangat
     sun = bpy.data.objects.new("MatahariPagi", data)
-    sun.rotation_euler = (math.radians(52), 0.0, math.radians(35))  # matahari ~38° (lebih tinggi)
+    sun.rotation_euler = (math.radians(52), 0.0, math.radians(35))
     bpy.context.scene.collection.objects.link(sun)
+    # fill light lembut dari arah berlawanan (langit), warna dingin -> isi bayangan
+    fdata = bpy.data.lights.new("FillLangit", type="SUN")
+    fdata.energy = 1.4
+    fdata.angle = math.radians(8.0)
+    fdata.color = (0.70, 0.82, 1.0)
+    if hasattr(fdata, "use_shadow"): fdata.use_shadow = False
+    fill = bpy.data.objects.new("FillLangit", fdata)
+    fill.rotation_euler = (math.radians(120), 0.0, math.radians(210))  # dari sisi berlawanan & atas
+    bpy.context.scene.collection.objects.link(fill)
+    # Ambient Occlusion (kedalaman kontak) di EEVEE
+    ee = bpy.context.scene.eevee
+    for attr, val in [("use_gtao", True), ("gtao_distance", 1.2), ("gtao_factor", 1.0),
+                      ("use_ambient_occlusion", True)]:
+        if hasattr(ee, attr):
+            try: setattr(ee, attr, val)
+            except Exception: pass
     return sun
 
 
