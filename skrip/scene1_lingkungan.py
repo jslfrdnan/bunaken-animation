@@ -14,14 +14,17 @@ from mathutils import Vector, noise
 
 # ---------- Palet (linear-ish sRGB, dipakai sebagai base color) ----------
 PALET = {
-    "laut_dalam": (0.02, 0.06, 0.20),
-    "laut_sedang": (0.03, 0.18, 0.38),
-    "reef": (0.10, 0.52, 0.52),
-    "pasir": (0.86, 0.80, 0.62),
-    "hijau": (0.18, 0.42, 0.18),
-    "hijau_tua": (0.10, 0.26, 0.14),
-    "gunung": (0.16, 0.22, 0.18),
-    "gunung_atas": (0.30, 0.34, 0.30),
+    "laut_dalam": (0.03, 0.18, 0.40),     # biru laut dalam (tak terlalu gelap)
+    "pasir_dasar": (0.52, 0.66, 0.60),    # dasar laut berpasir (terbaca turquoise lewat air jernih)
+    "pasir_dangkal": (0.80, 0.82, 0.68),  # pasir dangkal dekat pantai
+    "pasir": (0.90, 0.85, 0.68),          # pasir pantai kering
+    "buih": (0.95, 0.97, 0.95),           # buih tepi pantai
+    "reef": (0.22, 0.62, 0.58),           # karang dangkal
+    "hijau": (0.34, 0.56, 0.26),          # rumput
+    "hijau_terang": (0.50, 0.68, 0.34),   # bercak rumput terang
+    "hijau_tua": (0.18, 0.40, 0.20),      # rumput/semak gelap
+    "gunung": (0.16, 0.24, 0.20),
+    "gunung_atas": (0.34, 0.40, 0.36),
 }
 
 # ---------- Geometri pulau ----------
@@ -33,17 +36,21 @@ LAUT_DALAM_Z = -32.0
 
 
 def _warna_dari_z(z):
-    if z < -22:
+    # dasar laut: dalam (biru) -> dangkal (pasir terang), supaya air jernih tampak turquoise
+    if z < -24:
         return PALET["laut_dalam"]
-    if z < -4:
-        t = (z + 22) / 18.0
-        return _lerp(PALET["laut_dalam"], PALET["laut_sedang"], t)
-    if z < 0.0:
-        return PALET["reef"]
-    if z < 1.6:
-        return PALET["pasir"]
-    if z < 6.0:
-        return PALET["hijau"]
+    if z < -8:
+        return _lerp(PALET["laut_dalam"], PALET["pasir_dasar"], (z + 24) / 16.0)
+    if z < -1.0:
+        return _lerp(PALET["pasir_dasar"], PALET["pasir_dangkal"], (z + 8) / 7.0)
+    if z < 0.25:
+        return PALET["pasir_dangkal"]          # pasir basah tepat di garis air
+    if z < 0.7:
+        return PALET["buih"]                   # buih/pasir basah
+    if z < 2.2:
+        return PALET["pasir"]                  # pantai kering
+    if z < 7.0:
+        return PALET["hijau"]                  # rumput (variasi ditambah di _grid_mesh)
     return PALET["hijau_tua"]
 
 
@@ -109,7 +116,14 @@ def _grid_mesh(nama, x0, x1, y0, y1, cell, hfn, color_fn, warp=0.0):
     col = bm.loops.layers.color.new("Col")
     for f in bm.faces:
         for loop in f.loops:
-            c = color_fn(loop.vert.co.z)
+            v = loop.vert.co
+            c = color_fn(v.z)
+            if v.z > 2.2:   # variasi rumput: bercak terang & gelap
+                t = noise.noise(Vector((v.x * 0.09, v.y * 0.09, 20.0)))
+                if t > 0.08:
+                    c = _lerp(c, PALET["hijau_terang"], min((t - 0.08) * 1.6, 0.7))
+                elif t < -0.15:
+                    c = _lerp(c, PALET["hijau_tua"], min((-0.15 - t) * 1.3, 0.55))
             loop[col] = (c[0], c[1], c[2], 1.0)
     me = bpy.data.meshes.new(nama)
     bm.to_mesh(me)
@@ -125,6 +139,51 @@ def build_terrain(coll):
     obj = _grid_mesh("Terrain_Bunaken", -200, 200, -200, 170, 5.0, height, _warna_dari_z, warp=1.5)
     coll.objects.link(obj)
     return obj
+
+
+def build_rocks(coll):
+    """Batu/boulder low-poly abu tersebar di pulau (seperti referensi)."""
+    import math
+    import random
+    rng = random.Random(33)
+    mat = bpy.data.materials.get("M_Batu")
+    if mat is None:
+        mat = bpy.data.materials.new("M_Batu"); mat.use_nodes = True
+        b = next(n for n in mat.node_tree.nodes if n.type == "BSDF_PRINCIPLED")
+        b.inputs["Base Color"].default_value = (0.56, 0.57, 0.54, 1.0)
+        if "Roughness" in b.inputs: b.inputs["Roughness"].default_value = 1.0
+    grp = bpy.data.collections.new("Batu"); coll.children.link(grp)
+    n = 0
+    tries = 0
+    while n < 22 and tries < 500:
+        tries += 1
+        a = rng.uniform(0, 2 * math.pi)
+        r = rng.uniform(0.15, 0.95)
+        x = ICX + math.cos(a) * IA * r
+        y = ICY + math.sin(a) * IB * r
+        z = height(x, y)
+        if not (1.0 < z < 13.0):
+            continue
+        s = rng.uniform(1.2, 4.5)
+        bm = bmesh.new()
+        bmesh.ops.create_icosphere(bm, subdivisions=1, radius=1.0)
+        for v in bm.verts:            # gepengkan + benjol acak
+            v.co.x *= rng.uniform(0.8, 1.4)
+            v.co.y *= rng.uniform(0.8, 1.4)
+            v.co.z *= rng.uniform(0.5, 0.8)
+            v.co += Vector((rng.uniform(-0.12, 0.12), rng.uniform(-0.12, 0.12), rng.uniform(-0.1, 0.1)))
+        me = bpy.data.meshes.new(f"Batu_{n}")
+        bm.to_mesh(me); bm.free()
+        o = bpy.data.objects.new(f"Batu_{n}", me)
+        o.scale = (s, s, s)
+        o.location = (x, y, z - s * 0.25)   # agak terbenam
+        o.rotation_euler = (0, 0, rng.uniform(0, 6.28))
+        o.data.materials.append(mat)
+        for p in o.data.polygons: p.use_smooth = False
+        grp.objects.link(o)
+        n += 1
+    print("Batu:", n)
+    return grp
 
 
 def build_manado_tua(coll):
@@ -218,17 +277,23 @@ def _mat_air():
     mat.blend_method = "BLEND" if hasattr(mat, "blend_method") else mat.blend_method
     nt = mat.node_tree
     bsdf = next(n for n in nt.nodes if n.type == "BSDF_PRINCIPLED")
-    bsdf.inputs["Base Color"].default_value = (0.05, 0.35, 0.55, 1.0)
+    bsdf.inputs["Base Color"].default_value = (0.08, 0.55, 0.60, 1.0)   # turquoise cerah
     if "Roughness" in bsdf.inputs:
-        bsdf.inputs["Roughness"].default_value = 0.08
+        bsdf.inputs["Roughness"].default_value = 0.04                   # mengkilap, pantulkan langit
     if "Alpha" in bsdf.inputs:
-        bsdf.inputs["Alpha"].default_value = 0.72
+        bsdf.inputs["Alpha"].default_value = 0.52                       # jernih: dasar pasir tembus
     if "Transmission Weight" in bsdf.inputs:
-        bsdf.inputs["Transmission Weight"].default_value = 0.35
+        bsdf.inputs["Transmission Weight"].default_value = 0.0
+    if "IOR" in bsdf.inputs:
+        bsdf.inputs["IOR"].default_value = 1.33
     try:
         mat.blend_method = "BLEND"
     except Exception:
         pass
+    if hasattr(mat, "use_screen_refraction"):
+        mat.use_screen_refraction = True
+    if hasattr(mat, "show_transparent_back"):
+        mat.show_transparent_back = False
     return mat
 
 
@@ -246,30 +311,30 @@ def setup_world_sky():
     mapr = nt.nodes.new("ShaderNodeMapRange")   # petakan Incoming.z (-1..1) -> 0..1
     ramp = nt.nodes.new("ShaderNodeValToRGB")
     mapr.inputs["From Min"].default_value = -0.15
-    mapr.inputs["From Max"].default_value = 0.65
-    # gradasi langit pagi: horizon hangat -> kabut -> biru di atas
+    mapr.inputs["From Max"].default_value = 0.7
+    # langit tropis cerah: horizon putih-cyan -> cyan -> biru cerah di atas
     ramp.color_ramp.elements[0].position = 0.0
-    ramp.color_ramp.elements[0].color = (0.97, 0.80, 0.58, 1.0)   # horizon jingga lembut
-    el = ramp.color_ramp.elements.new(0.12)
-    el.color = (0.82, 0.84, 0.84, 1.0)                            # kabut tipis dekat horizon
-    ramp.color_ramp.elements[-1].position = 0.75
-    ramp.color_ramp.elements[-1].color = (0.30, 0.53, 0.82, 1.0)  # biru langit
+    ramp.color_ramp.elements[0].color = (0.80, 0.93, 0.97, 1.0)   # horizon putih-cyan
+    el = ramp.color_ramp.elements.new(0.3)
+    el.color = (0.52, 0.82, 0.93, 1.0)                            # cyan cerah
+    ramp.color_ramp.elements[-1].position = 0.9
+    ramp.color_ramp.elements[-1].color = (0.22, 0.60, 0.90, 1.0)  # biru langit cerah
     nt.links.new(geo.outputs["Incoming"], sep.inputs["Vector"])
     nt.links.new(sep.outputs["Z"], mapr.inputs["Value"])
     nt.links.new(mapr.outputs["Result"], ramp.inputs["Fac"])
     nt.links.new(ramp.outputs["Color"], bg.inputs["Color"])
-    bg.inputs["Strength"].default_value = 0.65   # redup agar matahari dominan, tak flat
+    bg.inputs["Strength"].default_value = 1.1    # terang (siang tropis)
     nt.links.new(bg.outputs["Background"], out.inputs["Surface"])
 
 
 def setup_sun():
     import math
     data = bpy.data.lights.new("MatahariPagi", type="SUN")
-    data.energy = 4.6
+    data.energy = 5.2
     data.angle = math.radians(1.5)
-    data.color = (1.0, 0.86, 0.68)   # hangat pagi
+    data.color = (1.0, 0.96, 0.88)   # siang tropis, sedikit hangat
     sun = bpy.data.objects.new("MatahariPagi", data)
-    sun.rotation_euler = (math.radians(64), 0.0, math.radians(40))  # matahari ~26° di atas horizon
+    sun.rotation_euler = (math.radians(52), 0.0, math.radians(35))  # matahari ~38° (lebih tinggi)
     bpy.context.scene.collection.objects.link(sun)
     return sun
 
@@ -282,6 +347,7 @@ def build():
         env = bpy.data.collections.new("Lingkungan")
         sc.collection.children.link(env)
     build_terrain(env)
+    build_rocks(env)
     build_manado_tua(env)
     build_pesisir_jauh(env)
     build_water(env)
