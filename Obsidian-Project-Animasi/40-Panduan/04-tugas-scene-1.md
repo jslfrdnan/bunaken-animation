@@ -25,8 +25,8 @@ Peta lengkapnya di [[06-urutan-kerja]].
 | 10 sketsa frame Scene 1 (Gemini) | Excel Katuuk | 1 Nov | `storyboard/frames/scene-1/` | pakai `docs/prompts-imagegen.md` |
 | 🔒 Blockout terumbu (shot 030–060) | Anggota 3 | 1 Nov | `assets/env/reef.blend` | primitif dulu |
 | 🔒 Blockout permukaan + dermaga | Anggota 4 | 1 Nov | `assets/env/surface.blend` | dermaga merah-putih |
-| 🔒 Blockout Nara | Yehezkiel | 1 Nov | `assets/char/nara.blend` | belum perlu detail wajah |
-| 🔒 Blockout Pak Daniel | Yehezkiel | 1 Nov | `assets/char/daniel.blend` | shot 080; penonton harus ingat wajahnya |
+| 🔒 Blockout Nara | Yehezkiel | 1 Nov | `assets/char/nara.blend` | ✅ file sudah di repo (`2b7f4a5`), tinggal review lead |
+| 🔒 Blockout Pak Daniel | Yehezkiel | 1 Nov | `assets/char/daniel.blend` | ✅ file sudah di repo (`07cd7ce`), shot 080; tinggal review lead |
 | 🔒 Rig dasar Nara + 2 pose uji | Anggota 6 | 2 Nov | `assets/char/nara_rig.blend` | tunggu blockout anggota 5 |
 | Look dev Scene 1 (warna air, HDRI) | Anggota 7 | 2 Nov | `assets/look/scene-1-look.blend` | palette di `03-gaya-visual.md` |
 | Narasi sementara 35 detik | Anggota 8 | 2 Nov | `assets/audio/scene-1/narasi-temp.wav` | rekam pakai HP boleh |

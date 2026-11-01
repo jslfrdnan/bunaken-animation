@@ -23,9 +23,9 @@ Status: ⬜ belum · 🟨 proses · ✅ selesai · 🚫 dibatalkan
 
 | Aset | File | Pemilik | Scene | Status |
 |---|---|---|---|---|
-| Nara (model) | `assets/char/nara.blend` | Yehezkiel Montolalu | **1**, 2, 3, 4 | ⬜ |
+| Nara (model) | `assets/char/nara.blend` | Yehezkiel Montolalu | **1**, 2, 3, 4 | 🟨 |
 | Nara (rig) | `assets/char/nara_rig.blend` | Anggota 6 | **1**, 2, 3, 4 | ⬜ |
-| Pak Daniel | `assets/char/daniel.blend` | Yehezkiel Montolalu | **1**, 2, 3, 4 | ⬜ |
+| Pak Daniel | `assets/char/daniel.blend` | Yehezkiel Montolalu | **1**, 2, 3, 4 | 🟨 |
 | Pak Haris | `assets/char/haris.blend` | Yehezkiel Montolalu | 2, 3, 4 | ⬜ |
 | Warga & anak-anak (low detail) | `assets/char/crowd.blend` | Yehezkiel Montolalu | 2, 3, 4 | ⬜ |
 | Peralatan selam (masker, tabung, fin) | `assets/props/divegear.blend` | Yehezkiel Montolalu | **1**, 3 | ⬜ |
@@ -33,6 +33,10 @@ Status: ⬜ belum · 🟨 proses · ✅ selesai · 🚫 dibatalkan
 > **Scene 1 hanya butuh aset bertanda tebal:** `nara.blend`, `nara_rig.blend`,
 > `daniel.blend`, dan `divegear.blend`. Pak Daniel wajib muncul di shot 080.
 > Sisa aset karakter baru dipakai Scene 2–4 — jangan dikerjakan lebih dulu.
+>
+> `nara.blend` dan `daniel.blend` sudah masuk repo (commit `2b7f4a5` dan
+> `07cd7ce`, 1 Nov). Statusnya 🟨 karena belum direview lead, bukan karena
+> belum dibuat.
 
 ## Look & lighting
 
