@@ -15,7 +15,7 @@ Judul Inggris (opsional untuk credit): *Bunaken: The Inherited Reef*
 > *The sea we protect is an inheritance, not a mine.*
 
 Dipakai di:
-- Kartu judul pembuka (3 detik sebelum shot 010) — **opsional**, uji di animatic
+- Overlay 3 detik pertama shot 010 (di atas aerial) — **sudah diputuskan** 1 Nov 2026
 - 3 detik terakhir Scene 4, teks di atas hitam
 - Credit film
 - Poster/key art

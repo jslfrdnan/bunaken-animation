@@ -38,8 +38,21 @@ merusaknya.
 
 Lihat [[01-daftar-aset]] — semua aset Scene 1 harus ada sebelum 2 November.
 
-## Yang belum diputuskan
+## Keputusan yang sudah diambil (1 Nov 2026)
 
-- [ ] Apakah shot 010 memakai judul film di atas gambar? (uji di animatic)
-- [ ] Apakah narasi mulai di shot 010 atau 020?
-- [ ] Musik tema: instrumen apa? (kolintang? strings? hybrid?)
+- [x] **Judul film di shot 010** — ya. Teks "Warisan Bunaken" tampil sebagai
+  overlay di 3 detik pertama aerial, durasi shot tetap 4 detik. Jangan bikin
+  kartu judul terpisah yang menambah total durasi.
+- [x] **Narasi mulai di shot 010** — ya, masuk setelah 1 detik musik tema.
+  Shot 020 hanya melanjutkan narasi, tidak memulai.
+- [x] **Musik tema** — hybrid: **kolintang** (identitas Sulawesi Utara) sebagai
+  melodi utama + strings hangat untuk bawah laut. Hindari perkusi elektronik.
+- [ ] Link animatic di `docs/renders.md` — diisi setelah render pertama jadi.
+
+## Catatan turunan dari keputusan di atas
+
+- Karena judul menimpa shot 010, **jangan** menaruh teks lain di shot 010–020.
+- Narasi 35 detik harus ditulis untuk mulai di detik 1, bukan detik 4 — kurangi
+  bagian pembuka, bukan bagian akhir.
+- Kolintang hanya muncul di Scene 1 dan Scene 4; Scene 2–3 pakai strings dan
+  ambient tanpa melodi agar terasa dingin.
