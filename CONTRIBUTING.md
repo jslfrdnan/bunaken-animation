@@ -32,7 +32,8 @@ Aturan pendukung:
 File biner tidak bisa di-merge. Dua orang menyimpan file `.blend` yang sama berarti
 pekerjaan salah satu orang **hilang**. Karena itu:
 
-- Setiap file `.blend` punya **satu pemilik** yang tercatat di `04-tugas-scene-1.md`.
+- Setiap file `.blend` punya **satu pemilik** yang tercatat di tabel peran &
+  aset `PROJECT.md` §5 dan §9.
 - `scenes/scene-1.blend` adalah **master** milik lead. Isinya hanya *link/append*
   dari file departemen, bukan aset yang digambar langsung di sana.
 - File departemen: `assets/env/reef.blend`, `assets/env/surface.blend`,
@@ -50,7 +51,7 @@ Tanpa Git LFS, batas keras GitHub adalah **file >100 MB ditolak**. Maka:
 
 ## 4. Konvensi penamaan
 
-Lihat `Obsidian-Project-Animasi/40-Panduan/02-konvensi-penamaan.md`.
+Lihat `PROJECT.md` §6 (Struktur repo & penamaan).
 
 Ringkas: `scene-1_shot-010_nara-dive_v001.blend`
 
@@ -79,10 +80,10 @@ Scope: `scene-1`…`scene-4`, `char`, `env`, `props`, `audio`, `docs`, `repo`,
 - Setiap tugas di board punya **pemilik + tenggat**.
 - **Lewat 2 tenggat tanpa kabar** → tugas otomatis dipindah ke lead.
 - Kredit tiga tingkat: **Core**, **Contributor**, **Support**. Rincian di
-  `30-Aset/02-kredit.md`.
+  `docs/credits.md`.
 
 ## 7. Aset pihak ketiga
 
 Semua aset eksternal (Poly Haven, Sketchfab, Poly Pizza, tekstur, musik) wajib
-dicatat di `30-Aset/02-kredit.md`: sumber, lisensi, tautan, dan nama pembuat.
+dicatat di `docs/credits.md`: sumber, lisensi, tautan, dan nama pembuat.
 Aset CC-BY wajib dikreditkan di credit film.

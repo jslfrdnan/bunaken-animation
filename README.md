@@ -20,33 +20,36 @@ sering kali juga korbannya.
 
 ```
 README.md                 kamu di sini
+PROJECT.md                panduan proyek lengkap — BACA INI DULU
 AGENTS.md                 aturan kerja AI (dibaca otomatis setiap sesi)
 CONTRIBUTING.md           aturan kerja tim (WAJIB dibaca sebelum commit)
 docs/                     dokumen teknis lintas tim
   renders.md              catatan link render & animatic
+  credits.md              kredit, lisensi, dan sumber data
   prompts-imagegen.md     16 prompt Gemini (00 lembar + 01–15) untuk storyboard
-scripts/                  skrip bantu (baca-vault.ps1)
+scripts/                  skrip bantu (baca-catatan.ps1)
 assets/                   aset sumber per departemen
   env/ char/ audio/ props/ textures/
 scenes/                   file .blend master per scene
 renders/                  hasil render (TIDAK di-commit, lihat docs/renders.md)
 storyboard/               gambar frame storyboard
-Obsidian-Project-Animasi/ catatan proyek (buka sebagai vault Obsidian)
 ```
 
 ## Mulai dalam 3 langkah
 
 1. `git clone https://github.com/jslfrdnan/bunaken-animation.git`
-2. Baca `CONTRIBUTING.md`, lalu `Obsidian-Project-Animasi/40-Panduan/01-alur-git.md`
-3. Buka `Obsidian-Project-Animasi/` sebagai vault di Obsidian → mulai dari `00-Proyek/01-ringkasan.md`
+2. Baca `PROJECT.md` — cerita, gaya visual, spesifikasi teknis, aset, peran,
+   jadwal, dan aturan git semuanya ada di sana.
+3. Baca `CONTRIBUTING.md`, lalu ambil bagianmu di tabel peran `PROJECT.md` §9.
 
 ## Aturan yang tidak boleh dilanggar
 
 - Kerja lewat **Pull Request**. Jangan push langsung ke `main`. **`git pull` sebelum mulai kerja.**
 - **Satu file `.blend` = satu pemilik.** Jangan buka `.blend` milik orang lain untuk diedit.
 - Render, video, dan file >50 MB **tidak masuk git**.
-- Setiap aset yang bukan buatan sendiri dicatat di `30-Aset/02-kredit.md`.
+- Setiap aset yang bukan buatan sendiri dicatat di `docs/credits.md`.
 
 ## Status
 
-Scene 1 — animatic. Lihat `40-Panduan/04-tugas-scene-1.md`.
+Scene 1 — animatic kasar (target 2 November 2026). Rincian tugas dan tenggat
+ada di `PROJECT.md` §9–§10.

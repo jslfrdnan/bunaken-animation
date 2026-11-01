@@ -14,10 +14,10 @@ menyusun alur storyboard) + **15 prompt satuan** untuk frame dan aset.
 |---|---|---|
 | **00** (lembar 8 panel, 2 shot per scene) | **Sketsa hitam-putih** | Menyusun **alur storyboard 4 scene sekali jadi**. Ringkas, untuk rapat dan pengecekan alur — bukan acuan produksi per shot. |
 | **01–09** (key art, character sheet, environment) | **Berwarna** — stylized semi-realistis | Acuan **konsep akhir**: bentuk, proporsi, warna, material. Dipakai Anggota 5 (Karakter) & 7 (Lighting). |
-| **10–15** (frame storyboard) | **Sketsa hitam-putih** | Acuan **framing & komposisi** per shot. Sketsa hanya bahasa penyajian storyboard — **film final tetap berwarna** sesuai `03-gaya-visual.md`. |
+| **10–15** (frame storyboard) | **Sketsa hitam-putih** | Acuan **framing & komposisi** per shot. Sketsa hanya bahasa penyajian storyboard — **film final tetap berwarna** sesuai palette di `PROJECT.md` §2. |
 
 > Jangan tertukar: sketsa hitam-putih **bukan** look film. Palette dan look
-> akhir tetap yang berwarna, terkunci di `20-Produksi/03-gaya-visual.md`.
+> akhir tetap yang berwarna, terkunci di `PROJECT.md` §2 (Gaya visual).
 
 ## Cara pakai (penting)
 
@@ -75,7 +75,7 @@ limbs, deformed hands, duplicate faces
 
 ## 00 — Lembar 2 shot per scene (8 panel, sekali jadi)
 
-Dipakai untuk **menyusun storyline storyboard** dari `10-Cerita/02-sinopsis.md`:
+Dipakai untuk **menyusun storyline storyboard** dari sinopsis di `PROJECT.md` §1.2:
 satu baris = satu scene, panel kiri = shot pembuka scene, panel kanan = shot
 titik belok scene. Satu kali generate, satu gambar.
 
@@ -418,4 +418,4 @@ seed: 20261104 · refs: 3 (nara + haris + bunaken) · output: `storyboard/frames
 
 - Jangan campur dua gaya dalam satu set gambar: 01–09 berwarna, 10–15 sketsa.
 - Sketsa **tidak** mengubah look film. Warna final tetap dari
-  `20-Produksi/03-gaya-visual.md`.
+  `PROJECT.md` §2.

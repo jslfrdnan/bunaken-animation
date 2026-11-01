@@ -5,28 +5,33 @@ Dokumen ini mengikat **setiap sesi AI** (OpenCode, Claude, atau agent lain) yang
 
 ---
 
-## 1. Langkah pertama setiap sesi: baca seluruh catatan Obsidian
+## 1. Langkah pertama setiap sesi: baca dokumen proyek
 
 **Wajib, tanpa pengecualian.** Sebelum menjawab, sebelum menulis kode, sebelum
 membuka Blender:
 
-1. Baca `Obsidian-Project-Animasi/Welcome.md` sebagai peta isi vault.
-2. Baca **seluruh** file `.md` di dalam vault, urutan:
-   `00-Proyek/` → `10-Cerita/` → `20-Produksi/` → `30-Aset/` → `40-Panduan/` → `50-Rapat/`
-3. Baca `CONTRIBUTING.md` dan `docs/renders.md`.
-4. Baru setelah itu kerjakan permintaan pengguna.
+1. Baca `PROJECT.md` sampai habis — itu satu-satunya sumber kebenaran proyek:
+   cerita, tokoh, palette, spesifikasi teknis, shot list, daftar aset, peran,
+   tenggat, kredit, dan alur git semuanya ada di sana.
+2. Baca `CONTRIBUTING.md` dan `docs/renders.md`.
+3. Baru setelah itu kerjakan permintaan pengguna.
 
 Alasan: keputusan cerita, palette, nama tokoh, jadwal, dan aturan file sudah
-dikunci di vault. Bekerja tanpa membacanya berisiko menghasilkan aset yang
+dikunci di `PROJECT.md`. Bekerja tanpa membacanya berisiko menghasilkan aset yang
 bertentangan dengan yang sudah disepakati tim.
 
-Kalau vault sangat besar, gunakan `grep`/pencarian, tapi **jangan lewati**
-`00-Proyek/01-ringkasan.md`, `20-Produksi/03-gaya-visual.md`,
-`20-Produksi/04-spesifikasi-teknis.md`, dan `40-Panduan/03-pipeline-blender.md`.
+`PROJECT.md` cukup panjang. Kalau perlu, gunakan `grep`/pencarian, tapi **jangan
+lewati** §1 (Cerita), §2 (Gaya visual), §3 (Spesifikasi teknis), dan §8
+(Pipeline Blender).
 
-Jika ada pertentangan antara vault dan permintaan terbaru pengguna:
+Catatan: lead masih menyimpan vault Obsidian pribadi di `Obsidian-Project-Animasi/`
+di laptopnya. Folder itu **tidak ada di repo** dan bukan acuan kerja tim. Kalau
+folder itu kebetulan ada di mesinmu, jangan jadikan sumber keputusan — pakai
+`PROJECT.md`.
+
+Jika ada pertentangan antara `PROJECT.md` dan permintaan terbaru pengguna:
 **permintaan pengguna menang**, tapi AI wajib (a) menyebut pertentangannya,
-(b) memperbarui catatan vault yang terkait setelah disetujui.
+(b) memperbarui `PROJECT.md` yang terkait setelah disetujui.
 
 ---
 
@@ -45,7 +50,7 @@ AI **tidak boleh** langsung memodelkan dari deskripsi teks. Langkah wajib:
    - **acuan warna & material** (shading, tekstur, roughness) → shading
 3. Jika pengguna mengirim lebih dari satu gambar, tanyakan mana acuan **bentuk**
    dan mana acuan **warna/material**.
-4. Sebutkan sumber & lisensi gambar di `30-Aset/02-kredit.md` sebelum aset dipakai
+4. Sebutkan sumber & lisensi gambar di `docs/credits.md` sebelum aset dipakai
    di film.
 
 ### 2.2 Kalau gambar tidak jelas atau kurang bagus
@@ -90,7 +95,7 @@ Contoh gambar yang ideal: <deskripsi singkat / daftar shot>
 ### 2.4 Setelah aset jadi
 
 - Simpan di folder departemen yang benar (`assets/env/`, `assets/char/`, …).
-- Ikuti konvensi nama di `40-Panduan/02-konvensi-penamaan.md`.
+- Ikuti konvensi nama di `PROJECT.md` §6.
 - Jangan pack tekstur ke `.blend`.
 - Render preview dan laporkan hasilnya ke pengguna.
 
@@ -152,7 +157,7 @@ fallback 13 november tanpa perlu rapat darurat.
 ```
 asset(env): tambah tekstur pasir 2k dari poly haven
 
-Lisensi CC0, dicatat di 30-Aset/02-kredit.md.
+Lisensi CC0, dicatat di docs/credits.md.
 ```
 
 ### Contoh salah (jangan)
@@ -180,7 +185,7 @@ Sebelum commit, AI **wajib**:
 - **Satu file `.blend` = satu pemilik**; master hanya *link/append*.
 - **Jangan pack tekstur**; tekstur di `assets/textures/` dengan path relatif.
 - **Render/video tidak masuk git** → `docs/renders.md`.
-- Palette & aturan warna: `20-Produksi/03-gaya-visual.md`.
+- Palette & aturan warna: `PROJECT.md` §2.
 - Nama file: `scene-1_shot-010_nara-dive_v001.blend`.
 
 ## 5. Batas kemampuan AI
