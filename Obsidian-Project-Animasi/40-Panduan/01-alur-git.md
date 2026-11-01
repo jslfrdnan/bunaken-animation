@@ -2,7 +2,10 @@
 tags: [panduan, git]
 ---
 
-# Alur Git (main-only, tanpa LFS)
+# Alur Git (Pull Request, tanpa LFS)
+
+`main` adalah cabang produksi. **Tidak ada yang push langsung ke `main`.**
+Setiap perubahan masuk lewat **Pull Request** dan di-merge oleh lead.
 
 ## Untuk yang baru pertama kali memakai git
 
@@ -21,24 +24,50 @@ git config user.email "email-kamu@contoh.com"
 ### Setiap kali mau kerja
 
 ```bash
+git switch main
 git pull
+git switch -c kerjaku
 ```
 
-Ini mengambil perubahan terbaru. **Jangan pernah mulai kerja tanpa ini.**
+Branch bisa dinamai bebas: `blockout-terumbu`, `model-nara`, `narasi-scene-1`.
+Satu branch = satu pekerjaan.
 
 ### Setelah selesai kerja
 
 ```bash
 git add .
 git commit -m "feat(scene-1): blockout terumbu"
-git pull --rebase
+git push -u origin kerjaku
+```
+
+Lalu di GitHub:
+
+1. Buka repo → akan muncul tombol **Compare & pull request**.
+2. Pastikan `base: main` ← `compare: kerjaku`.
+3. Tulis judul singkat + apa yang berubah.
+4. **Create pull request** → tunggu lead review.
+5. Setelah di-merge, klik **Delete branch**, lalu:
+
+```bash
+git switch main
+git pull
+git branch -d kerjaku
+```
+
+## Kalau PR-mu ketinggalan dari `main`
+
+GitHub akan bilang "This branch is out-of-date". Perbaiki dengan:
+
+```bash
+git switch main
+git pull
+git switch kerjaku
+git merge main
+# selesaikan konflik kalau ada
 git push
 ```
 
-Kalau `git pull --rebase` memunculkan konflik:
-1. Buka file yang konflik, cari tanda `<<<<<<<`.
-2. Pilih versi yang benar, hapus tanda-tandanya.
-3. `git add .` lalu `git rebase --continue`.
+PR otomatis ter-update. Jangan push ulang ke `main`.
 
 ## Tiga aturan yang mencegah bencana
 
@@ -68,17 +97,21 @@ git restore nama-file   # batalkan perubahan satu file
 git log --oneline -5    # lihat commit terakhir
 ```
 
-Jangan pernah `git reset --hard` tanpa bertanya ke lead.
+Jangan pernah `git reset --hard` atau `git push --force` tanpa bertanya ke lead.
+Kalau branch-mu kacau, lebih aman buat branch baru daripada memperbaiki history.
 
-## Branch (hanya kalau perlu)
+## Branch
+
+Branch **wajib** untuk setiap pekerjaan yang akan di-PR. Branch eksperimen yang
+tidak jadi dipakai cukup dihapus, tidak perlu di-merge.
 
 ```bash
 git switch -c eksperimen-air
 # kerja...
+# kalau gagal:
 git switch main
+git branch -D eksperimen-air
 ```
-
-Branch untuk hal yang **boleh gagal**. Pekerjaan utama tetap di `main`.
 
 ## Commit message
 

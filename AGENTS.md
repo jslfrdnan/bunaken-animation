@@ -176,7 +176,7 @@ Sebelum commit, AI **wajib**:
 ## 4. Aturan teknis proyek (ringkas)
 
 - Blender **5.2 LTS**, **EEVEE Next**, 1920×1080, **24 fps**.
-- Git **`main`-only**, **tanpa Git LFS**.
+- Git: kerja lewat **Pull Request** ke `main`, **tanpa Git LFS**.
 - **Satu file `.blend` = satu pemilik**; master hanya *link/append*.
 - **Jangan pack tekstur**; tekstur di `assets/textures/` dengan path relatif.
 - **Render/video tidak masuk git** → `docs/renders.md`.

@@ -2,24 +2,29 @@
 
 Dokumen ini mengikat. Kalau ragu, tanya lead sebelum commit.
 
-## 1. Alur git: `main`-only
+## 1. Alur git: kerja lewat Pull Request
 
-Tim ini bekerja **langsung di `main`**. Branch hanya dipakai untuk eksperimen yang
-boleh gagal.
+Tim **tidak push langsung ke `main`**. `main` dilindungi: setiap perubahan masuk
+lewat **Pull Request (PR)** dan di-merge oleh lead.
 
 ```bash
-git pull                 # WAJIB sebelum mulai kerja
+git switch main
+git pull                        # WAJIB sebelum mulai kerja
+git switch -c kerjaku           # branch baru per perubahan
 # ...kerja...
 git add .
-git commit -m "scene-1: blockout terumbu"
-git pull --rebase        # ambil perubahan terbaru
-git push
+git commit -m "feat(scene-1): blockout terumbu"
+git push -u origin kerjaku      # push branch, bukan main
 ```
+
+Lalu buka PR di GitHub → `base: main`, `compare: kerjaku` → tunggu review lead.
+Setelah di-merge, hapus branch dan kembali ke `main`.
 
 Aturan pendukung:
 
-- **`git pull` sebelum kerja, `git pull --rebase` sebelum push.** Ini yang mencegah konflik.
-- Commit kecil dan sering. Satu commit = satu perubahan yang bisa dijelaskan.
+- **Satu PR = satu perubahan yang bisa dijelaskan.** Jangan gabung 5 topik.
+- Branch hanya hidup selama PR-nya belum di-merge. Setelah merge, hapus.
+- Jangan pernah `git push --force` ke branch yang sudah ada PR-nya.
 - Jangan commit file kerja sementara (`.blend1`, cache, `__pycache__`).
 
 ## 2. Satu file `.blend` = satu pemilik

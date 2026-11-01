@@ -1,6 +1,6 @@
 # Warisan Bunaken
 
-Animasi 3D pendek tentang seorang pemuda Bunaken yang berhadapan dengan nelayan
+Animasi 3D pendek tentang seorang pemudi Bunaken yang berhadapan dengan nelayan
 yang memakai bom dan jaring dasar — dan menemukan bahwa orang yang merusak laut
 sering kali juga korbannya.
 
@@ -42,7 +42,7 @@ Obsidian-Project-Animasi/ catatan proyek (buka sebagai vault Obsidian)
 
 ## Aturan yang tidak boleh dilanggar
 
-- Kerja langsung di `main`. **`git pull` sebelum mulai kerja.**
+- Kerja lewat **Pull Request**. Jangan push langsung ke `main`. **`git pull` sebelum mulai kerja.**
 - **Satu file `.blend` = satu pemilik.** Jangan buka `.blend` milik orang lain untuk diedit.
 - Render, video, dan file >50 MB **tidak masuk git**.
 - Setiap aset yang bukan buatan sendiri dicatat di `30-Aset/02-kredit.md`.
