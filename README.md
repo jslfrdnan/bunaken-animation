@@ -29,7 +29,7 @@ docs/                     dokumen teknis lintas tim
   prompts-imagegen.md     16 prompt Gemini (00 lembar + 01–15) untuk storyboard
 scripts/                  skrip bantu (baca-catatan.ps1)
 assets/                   aset sumber per departemen
-  env/ char/ audio/ props/ textures/
+  env/ char/ props/ textures/ audio/ look/
 scenes/                   file .blend master per scene
 renders/                  hasil render (TIDAK di-commit, lihat docs/renders.md)
 storyboard/               gambar frame storyboard
