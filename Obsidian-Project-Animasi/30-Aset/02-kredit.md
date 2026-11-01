@@ -28,7 +28,7 @@ Sebuah animasi oleh [Nama Kelompok]
 SUTRADARA            Jasiel Wowiling
 STORYBOARD           Anggota 2
 ENVIRONMENT          Anggota 3, Anggota 4
-KARAKTER             Anggota 5
+KARAKTER             Yehezkiel Montolalu
 RIGGING & ANIMASI    Anggota 6
 LIGHTING & SHADING   Anggota 7
 AUDIO, EDIT & DOKUM. Anggota 8, Jasiel Wowiling

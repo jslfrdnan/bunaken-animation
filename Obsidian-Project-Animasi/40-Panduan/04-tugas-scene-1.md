@@ -25,7 +25,7 @@ Peta lengkapnya di [[06-urutan-kerja]].
 | 10 sketsa frame Scene 1 (Gemini) | Anggota 2 | 1 Nov | `storyboard/frames/scene-1/` | pakai `docs/prompts-imagegen.md` |
 | 🔒 Blockout terumbu (shot 030–060) | Anggota 3 | 1 Nov | `assets/env/reef.blend` | primitif dulu |
 | 🔒 Blockout permukaan + dermaga | Anggota 4 | 1 Nov | `assets/env/surface.blend` | dermaga merah-putih |
-| 🔒 Blockout Nara | Anggota 5 | 1 Nov | `assets/char/nara.blend` | belum perlu detail wajah |
+| 🔒 Blockout Nara | Yehezkiel | 1 Nov | `assets/char/nara.blend` | belum perlu detail wajah |
 | 🔒 Rig dasar Nara + 2 pose uji | Anggota 6 | 2 Nov | `assets/char/nara_rig.blend` | tunggu blockout anggota 5 |
 | Look dev Scene 1 (warna air, HDRI) | Anggota 7 | 2 Nov | `assets/look/scene-1-look.blend` | palette di `03-gaya-visual.md` |
 | Narasi sementara 35 detik | Anggota 8 | 2 Nov | `assets/audio/scene-1/narasi-temp.wav` | rekam pakai HP boleh |
@@ -45,7 +45,7 @@ Peta lengkapnya di [[06-urutan-kerja]].
 
 | Tugas | Pemilik | Tenggat | Catatan |
 |---|---|---|---|
-| 🔒 Model Nara v001 (bukan blockout) | Anggota 5 | 4 Nov | uji di 3 angle |
+| 🔒 Model Nara v001 (bukan blockout) | Yehezkiel | 4 Nov | uji di 3 angle |
 | Karang detail + 3 jenis ikan + penyu | Anggota 3 | 4 Nov | |
 | Dermaga + perahu + dive shop detail | Anggota 4 | 4 Nov | |
 | 🔒 Animasi 10 shot (passing pertama) | Anggota 6 | 5 Nov | 24 fps |

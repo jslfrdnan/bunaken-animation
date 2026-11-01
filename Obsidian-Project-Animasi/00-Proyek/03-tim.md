@@ -17,7 +17,7 @@ status: sebagian-terisi
 | 2 | **Storyboard & Concept** | 10 shot Scene 1 + prompt image-gen | `20-Produksi/02-shotlist-scene-1.md` | storyboard/frames | Excel Katuuk |
 | 3 | **Env Artist — Underwater** | Terumbu, karang, penyu, ikan, god rays | `assets/env/reef.blend` | reef.blend | Anggota 3 |
 | 4 | **Env Artist — Surface** | Pulau, kampung, dive shop, perahu | `assets/env/surface.blend` | surface.blend | Anggota 4 |
-| 5 | **Character Artist** | Nara + Pak Daniel (blockout → model) | `assets/char/nara.blend` | nara.blend | Anggota 5 |
+| 5 | **Character Artist** | Nara + Pak Daniel (blockout → model) | `assets/char/nara.blend` | nara.blend | **Yehezkiel Montolalu** |
 | 6 | **Rigger & Animator** | Rig Nara, 1 shot menyelam, 1 shot berdiri | `assets/char/nara_rig.blend` | nara_rig.blend | Anggota 6 |
 | 7 | **Lighting & Shading** | Look dev Scene 1, world, warna air | `assets/look/scene-1-look.blend` | scene-1-look.blend | Anggota 7 |
 | 8 | **Post-Production (Audio + Edit)** | Narasi, ambient, musik, **potong animatic** | `assets/audio/scene-1/` + `renders/animatic/` | audio folder + animatic | Anggota 8 |
@@ -49,4 +49,5 @@ Lihat [[02-kredit]] untuk definisi **Core / Contributor / Support**.
 | Nama | Peran | Kontak |
 |---|---|---|
 | **Jasiel Wowiling** | Lead / Director | `wowilingjasiel7@gmail.com` |
-| Anggota 2 | Storyboard | — |
+| Excel Katuuk | Storyboard | — |
+| **Yehezkiel Montolalu** | Character Artist | `kielzzzz0802@users.noreply.github.com` |
