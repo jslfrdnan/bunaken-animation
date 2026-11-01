@@ -26,7 +26,7 @@ Sebuah animasi oleh [Nama Kelompok]
 [Program Studi / Mata Kuliah] — [Universitas] — 2026
 
 SUTRADARA            Jasiel Wowiling
-STORYBOARD           Anggota 2
+STORYBOARD           Excel Katuuk
 ENVIRONMENT          Anggota 3, Anggota 4
 KARAKTER             Yehezkiel Montolalu
 RIGGING & ANIMASI    Anggota 6

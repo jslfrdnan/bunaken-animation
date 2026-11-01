@@ -24,7 +24,7 @@ AGENTS.md                 aturan kerja AI (dibaca otomatis setiap sesi)
 CONTRIBUTING.md           aturan kerja tim (WAJIB dibaca sebelum commit)
 docs/                     dokumen teknis lintas tim
   renders.md              catatan link render & animatic
-  prompts-imagegen.md     15 prompt Gemini untuk frame storyboard
+  prompts-imagegen.md     16 prompt Gemini (00 lembar + 01–15) untuk storyboard
 scripts/                  skrip bantu (baca-vault.ps1)
 assets/                   aset sumber per departemen
   env/ char/ audio/ props/ textures/

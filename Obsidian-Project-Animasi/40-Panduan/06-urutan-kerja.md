@@ -92,6 +92,7 @@ Kalau salah satu dari dua ini sakit atau hilang, jadwal 6 November gugur.
 |---|---|---|
 | 🔒 Shot list Scene 1 | 1 + 2 | semua |
 | 🔒 Blockout Nara | 5 | 6 |
+| 🔒 Blockout Pak Daniel | 5 | lighting final, animatic shot 080 |
 | 🔒 Blockout terumbu | 3 | 7 |
 | 🔒 Blockout permukaan + dermaga | 4 | 7 |
 | 🔒 Rig dasar Nara | 6 | animasi, lighting final |

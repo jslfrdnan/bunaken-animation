@@ -4,8 +4,8 @@ tags: [aset, prompt, imagegen]
 
 # Prompt Image-Generation
 
-Prompt lengkap (**1 lembar gabungan + 15 prompt Gemini 2.5 Flash Image**) ada
-di file repo:
+Prompt lengkap (**16 prompt: 00 lembar gabungan + 01–15 satuan, Gemini 2.5 Flash
+Image**) ada di file repo:
 
 → [`docs/prompts-imagegen.md`](../../docs/prompts-imagegen.md)
 
