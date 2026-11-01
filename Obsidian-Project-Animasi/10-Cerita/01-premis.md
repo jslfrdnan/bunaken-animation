@@ -4,7 +4,7 @@ tags: [cerita, premis]
 
 # Premis
 
-Di **Kampung Bunaken**, seorang pemuda 19 tahun bernama **Nara** bekerja sebagai
+Di **Kampung Bunaken**, seorang pemudi 19 tahun bernama **Nara** bekerja sebagai
 dive guide magang di dive shop kecil milik keluarganya. Laut adalah segalanya
 bagi kampung itu: sumber penghidupan, kebanggaan, dan masa depan.
 
@@ -42,5 +42,5 @@ di Scene 4. **Bukan** film kampanye yang menuduh penonton.
 
 ## Satu kalimat untuk pitch
 
-Seorang pemuda Bunaken harus menyelamatkan terumbu karang dari bom ikan — dan
+Seorang pemudi Bunaken harus menyelamatkan terumbu karang dari bom ikan - dan
 menemukan bahwa orang yang merusaknya adalah tetangga dan ayahnya sendiri.

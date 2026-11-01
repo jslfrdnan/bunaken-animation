@@ -9,6 +9,7 @@ tags: [cerita, tokoh]
 | | |
 |---|---|
 | Usia | 19 |
+| Gender | **Perempuan** |
 | Peran | Dive guide magang, anak nelayan |
 | Ingin | Sekolah kelautan di Manado |
 | Butuh | Mengakui bahwa kampungnya butuh dia sekarang |

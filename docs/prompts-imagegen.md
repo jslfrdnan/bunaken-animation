@@ -95,9 +95,9 @@ only, no other text anywhere. Same characters, same drawing style, and
 consistent grey values in every panel.
 
 Recurring characters, keep identical across panels:
-Nara — 19-year-old Indonesian dive guide, short black hair, lean build,
+Nara — 19-year-old Indonesian woman dive guide, short black hair, lean build,
 faded rash guard, simple dive watch on the left wrist, dive mask when
-underwater.
+underwater. Clearly female, never androgynous.
 Pak Daniel — 52-year-old fisherman, father of Nara, weathered face, short
 greying hair, sturdy build, woven sun hat.
 Pak Haris — 45-year-old migrant fisherman, thin moustache, tired eyes, wiry
@@ -112,7 +112,7 @@ white speedboat, dense green vegetation to the shoreline, Mount Manado Tua
 volcano on the left horizon.
 
 1B — underwater medium shot of Nara gliding past a healthy coral head, small
-bubbles rising, a green sea turtle swimming just behind him in soft focus,
+bubbles rising, a green sea turtle swimming just behind her in soft focus,
 shafts of sunlight from the surface.
 
 2A — dawn, cold and quiet: a small fishing boat far out on flat water, seen
@@ -120,13 +120,13 @@ from a distance, a splash and a cluster of rising bubbles where something was
 dropped, the Bunaken shoreline a dark shape on the horizon, one small figure
 at the stern with his back to camera.
 
-2B — the emotional blow: from behind Nara on the pier, he watches Pak Daniel
+2B — the emotional blow: from behind Nara on the pier, she watches Pak Daniel
 step onto Pak Haris's boat, Haris at the tiller. Nara small in the foreground,
 the two men readable but not detailed, morning haze.
 
 3A — Nara underwater holding a small underwater camera, filming a damaged
 patch of reef: shattered coral rubble, a snagged bottom net, silt in the
-water, heavy dark shading, his mask lit by the camera.
+water, heavy dark shading, her mask lit by the camera.
 
 3B — confrontation on the pier: Nara facing Pak Haris, holding an open
 ledger book; Haris silent with his eyes down, Pak Daniel standing apart with
@@ -189,24 +189,26 @@ seed: 20261102 · refs: 1 (bunaken) · output: `storyboard/frames/scene-1/scene-
 ## 02 — Character sheet: Nara
 
 ```
-Character sheet of Nara, a 19-year-old Indonesian dive guide from Bunaken,
-North Sulawesi. Short black hair, warm brown skin, lean build, friendly and
-determined expression. Wearing a faded teal rash guard over dark board
-shorts, simple dive watch on left wrist. Neutral A-pose, front view, three
-quarter view, and side view side by side on a plain warm sand background.
-Stylized semi-realistic 3D animation character design, tropical palette,
-even studio lighting, 16:9 widescreen.
+Character sheet of Nara, a 19-year-old Indonesian woman dive guide from
+Bunaken, North Sulawesi. Young woman with short black hair, warm brown skin,
+lean athletic build, friendly and determined expression. Wearing a faded teal
+rash guard over dark board shorts, simple dive watch on left wrist. Neutral
+A-pose, front view, three quarter view, and side view side by side on a plain
+warm sand background. Stylized semi-realistic 3D animation character design,
+tropical palette, even studio lighting, 16:9 widescreen.
 ```
 seed: 20261102 · refs: 0–1 · output: `assets/char/ref-char-nara-sheet.png`
-> Simpan hasil ini — dipakai sebagai referensi di semua prompt berikutnya.
+> **Nara adalah perempuan** (keputusan lead, 1 Nov 2026). Jangan menghasilkan
+> karakter laki-laki. Simpan hasil ini — dipakai sebagai referensi di semua
+> prompt berikutnya.
 
 ---
 
 ## 03 — Ekspresi Nara
 
 ```
-Expression sheet of the same character Nara (Indonesian teenage dive guide,
-teal rash guard, short black hair): six head-and-shoulders expressions in a
+Expression sheet of the same character Nara (Indonesian teenage girl dive
+guide, teal rash guard, short black hair): six head-and-shoulders expressions in a
 grid — calm, curious, worried, angry, heartbroken, hopeful smile. Consistent
 facial structure and hair across all six. Stylized semi-realistic 3D
 animation, tropical palette, neutral background, 16:9 widescreen.
@@ -318,8 +320,8 @@ seed: 20261102 · refs: 1 (bunaken) · output: `storyboard/frames/scene-1/scene-
 
 ```
 Storyboard frame, scene 1 shot 050: medium underwater shot of Nara (19-year-
-old Indonesian dive guide, teal rash guard, dive mask) gliding past a coral
-head, small bubbles rising, a green sea turtle in soft focus behind him.
+old Indonesian woman dive guide, teal rash guard, dive mask) gliding past a coral
+head, small bubbles rising, a green sea turtle in soft focus behind her.
 Use the attached Nara character sheet for facial structure and outfit, and
 the attached Bunaken aerial photo for water layout reference.
 Black-and-white pencil storyboard sketch, god rays as light grey hatching,
@@ -336,7 +338,7 @@ seed: 20261102 · refs: 2 (nara + bunaken) · output: `storyboard/frames/scene-1
 
 ```
 Storyboard frame, scene 1 shot 070: low angle from water level as Nara
-climbs onto a wooden boat and pulls off his dive mask, wet hair, relieved
+climbs onto a wooden boat and pulls off her dive mask, wet hair, relieved
 smile, the red-and-white pier out of focus behind. Use the attached Nara
 character sheet for likeness. Black-and-white pencil storyboard sketch, grey
 shading for wet hair and boat shadow, background simplified with light

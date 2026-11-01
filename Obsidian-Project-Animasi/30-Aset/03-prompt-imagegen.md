@@ -20,6 +20,10 @@ Image**) ada di file repo:
 > sketsa hanya bahasa penyajian storyboard, bukan look film. Look film tetap
 > sesuai [[03-gaya-visual]].
 
+> **Nara adalah perempuan.** Prompt 02 meminta *young woman* secara eksplisit.
+> Kalau hasilnya laki-laki, ulangi dengan "female, young woman, long hair tied
+> back or short".
+
 ## Ringkasan cara pakai
 
 1. Model: **Gemini 2.5 Flash Image**

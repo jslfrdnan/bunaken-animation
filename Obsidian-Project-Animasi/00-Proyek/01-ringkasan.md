@@ -8,7 +8,7 @@ scene-fokus: 1
 
 ## Satu paragraf
 
-Seorang pemuda Bunaken bernama **Nara** bekerja sebagai dive guide magang di
+Seorang pemudi Bunaken bernama **Nara** bekerja sebagai dive guide magang di
 dive shop keluarganya. Ketika nelayan pendatang, **Pak Haris**, mulai memakai bom
 dan jaring dasar untuk menutupi hasil tangkapan yang menurun, terumbu karang
 tempat Nara bekerja rusak. Konfliknya bertambah rumit karena ayahnya sendiri,

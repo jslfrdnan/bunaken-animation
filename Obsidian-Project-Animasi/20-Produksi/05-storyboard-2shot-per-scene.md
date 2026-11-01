@@ -29,7 +29,7 @@ per shot — untuk Scene 1 yang detail tetap pakai
 | Panel | Scene | Isi gambar | Status |
 |---|---|---|---|
 | **1A** | 1 Permata | Aerial pulau, dermaga panjang, perahu, gunung di kiri | 🟨 gunung kurang menjulang |
-| **1B** | 1 Permata | Penyelam di terumbu, penyu di kanan, god rays | 🟨 sosok penyelam belum Nara |
+| **1B** | 1 Permata | Penyelam di terumbu, penyu di kanan, god rays | ✅ sesuai setelah Nara ditetapkan perempuan |
 | **2A** | 2 Retak | Perahu nelayan di air tenang, matahari terbit | 🟥 tidak ada percikan/gelembung bom |
 | **2B** | 2 Retak | Nara di dermaga melihat lelaki bertopi naik perahu | 🟨 Haris tidak terbedakan |
 | **3A** | 3 Titik Balik | Penyelam memotret karang rusak di bawah air | 🟨 jaring tidak terbaca |
@@ -48,20 +48,22 @@ Urutan baca: kiri–kanan, baris atas (Scene 1) sampai baris bawah (Scene 4).
 
 ## Yang menyimpang dari sinopsis / tokoh
 
-### 1. Nara digambar sebagai perempuan (paling penting)
+### 1. Nara perempuan — **sudah diputuskan (opsi B)**
 
-Di panel 1B, 2B, 3A, dan 3B, tokohnya perempuan dengan **sanggul**, sedangkan
-[[03-tokoh]] menetapkan Nara **laki-laki 19 tahun, rambut pendek hitam**.
-Secara antar-panel ia konsisten, jadi ini pilihan model, bukan noise.
+Lead memutuskan **Nara adalah perempuan** pada 1 November 2026. Lembar ini
+menggambar Nara sebagai perempuan bersanggul, dan itu sekarang **sesuai** dengan
+[[03-tokoh]]. Tidak perlu generate ulang karena gender.
 
-Dua jalan keluar, harus dipilih lead:
+Konsekuensi yang sudah dijalankan:
+- [[01-premis]], [[01-ringkasan]], [[02-sinopsis]], [[03-tokoh]] memakai "pemudi".
+- [[02-kredit]] dan pengumuman WA ikut disesuaikan.
+- Prompt 02 di `docs/prompts-imagegen.md` sekarang meminta *young woman* secara
+  eksplisit, supaya frame berikutnya konsisten.
 
-- **A. Generate ulang** panel 1B, 2B, 3A, 3B dengan character sheet Nara
-  (prompt 02) + "match the attached character sheet exactly, male, short black
-  hair". Aman untuk vault, tapi butuh 1–2 kali percobaan lagi.
-- **B. Ubah tokoh jadi perempuan.** Berarti memperbarui [[03-tokoh]],
-  [[01-premis]], [[02-sinopsis]] (kata "pemuda" → "pemudi"), dan nama/credit.
-  Tidak boleh setengah jalan: kalau layar sudah perempuan, vault wajib ikut.
+**Yang masih perlu dirapikan:** gaya rambut. Di lembar ini Nara bersanggul,
+sedangkan [[03-tokoh]] menulis "rambut pendek hitam". Pilih salah satu —
+ubah catatan tokoh jadi "rambut pendek atau diikat", atau minta frame baru
+dengan rambut pendek. Tidak mendesak, tapi harus konsisten sebelum Scene 2.
 
 ### 2. Scene 2 kehilangan bukti bom
 
@@ -87,11 +89,12 @@ tidak akan mengingatnya sebagai orang yang sama di Scene 3–4.
 
 ## Keputusan yang menunggu
 
-- [ ] Nara: generate ulang (A) atau ubah tokoh jadi perempuan (B) — **lead**
+- [x] Nara: **opsi B — tokoh perempuan** (diputuskan 1 Nov 2026)
+- [ ] Rambut Nara: sanggul (sesuai frame) atau pendek (sesuai `03-tokoh`)
 - [ ] 2A: tambahkan percikan + gelembung bom, perahu jauh & membelakangi
 - [ ] 2B/3B: beri ciri Haris yang khas agar konsisten antar scene
 - [ ] 4A: tambahkan kerangka transplantasi karang
-- [ ] Simpan PNG final ke path di atas, lalu Update status di tabel panel
+- [ ] Simpan PNG final ke path di atas, lalu update status di tabel panel
 
 ## Hubungan dengan dokumen lain
 

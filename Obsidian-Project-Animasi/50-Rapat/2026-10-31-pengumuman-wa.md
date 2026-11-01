@@ -12,7 +12,7 @@ Halo semua! Project kita sudah resmi mulai hari ini, Sabtu 31 Oktober 2026.
 **Tagline:** *"Laut yang dijaga adalah warisan, bukan tambang."*
 
 **Ceritanya singkat:**
-Nara, pemuda 19 tahun di Bunaken, kerja sebagai dive guide magang. Terumbu karang tempat dia bekerja mulai rusak karena nelayan pendatang, Pak Haris, pakai bom ikan dan jaring dasar. Masalahnya, ayah Nara sendiri mulai ikut cara Haris karena terdesak ekonomi. Jadi Nara harus selamatkan laut tanpa kehilangan ayahnya.
+Nara, pemudi 19 tahun di Bunaken, kerja sebagai dive guide magang. Terumbu karang tempat dia bekerja mulai rusak karena nelayan pendatang, Pak Haris, pakai bom ikan dan jaring dasar. Masalahnya, ayah Nara sendiri mulai ikut cara Haris karena terdesak ekonomi. Jadi Nara harus selamatkan laut tanpa kehilangan ayahnya.
 
 4 scene, total 2 menit 25 detik. Tema perikanan, lokasi Bunaken, dan ada pesan moral.
 
@@ -44,7 +44,7 @@ Semangat! 🌊🐠
 ```
 🎬 WARISAN BUNAKEN — mulai hari ini
 
-Cerita: Nara, pemuda Bunaken, melawan nelayan yang pakai bom ikan & jaring dasar. Tapi ayahnya sendiri ikut cara itu. 4 scene, 2:25, pesan moral: "Laut yang dijaga adalah warisan, bukan tambang."
+Cerita: Nara, pemudi Bunaken, melawan nelayan yang pakai bom ikan & jaring dasar. Tapi ayahnya sendiri ikut cara itu. 4 scene, 2:25, pesan moral: "Laut yang dijaga adalah warisan, bukan tambang."
 
 Yang harus dilakukan sekarang:
 1. git clone https://github.com/jslfrdnan/bunaken-animation.git
