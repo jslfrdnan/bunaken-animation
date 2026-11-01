@@ -8,6 +8,12 @@ Prompt lengkap (**15 prompt Gemini 2.5 Flash Image**) ada di file repo:
 
 → [`docs/prompts-imagegen.md`](../../docs/prompts-imagegen.md)
 
+> **Dua gaya.** Prompt **01–09** (key art, character sheet, environment)
+> tetap **berwarna** — itu acuan konsep akhir untuk Anggota 5 & 7. Prompt
+> **10–15** (frame storyboard) memakai **sketsa hitam-putih** karena sketsa
+> hanya bahasa penyajian storyboard, bukan look film. Look film tetap sesuai
+> [[03-gaya-visual]].
+
 ## Ringkasan cara pakai
 
 1. Model: **Gemini 2.5 Flash Image**
@@ -17,7 +23,8 @@ Prompt lengkap (**15 prompt Gemini 2.5 Flash Image**) ada di file repo:
    - `ref-char-nara-sheet.png` — character sheet Nara
    - `ref-char-haris-sheet.png` — character sheet Pak Haris
 4. Seed tetap per scene: `20261102` (Scene 1), `20261103` (Scene 2), dst.
-5. Selalu tempel **STYLE BLOCK** dan **NEGATIVE** yang ada di file repo.
+5. Tempel blok gaya yang sesuai: **STYLE BLOCK** (warna) untuk 01–09,
+   **SKETCH STYLE BLOCK** (hitam-putih) untuk 10–15.
 
 ## Urutan pengerjaan
 
@@ -39,10 +46,19 @@ assets/env/ref-env-aerial.png
 
 ## Kalau hasil melenceng
 
+Prompt berwarna (01–09):
 - Wajah beda → ulangi dengan hanya 1 character sheet + "match the attached
   character sheet exactly".
 - Air neon → tambahkan "muted turquoise, natural water color".
 - Terlalu fotorealistis → tambahkan "clearly stylized, simplified forms,
   animation look".
+
+Prompt sketsa (10–15):
+- Masih ada warna → tambahkan "pure black-and-white graphite sketch, no color
+  at all, white paper".
+- Terlihat seperti render 3D / foto → tambahkan "hand-drawn pencil sketch,
+  visible construction lines, clearly drawn by hand, not a render".
+- Terlalu gelap → tambahkan "light grey shading, open linework, keep most of
+  the paper white".
 
 Detail lengkap ada di `docs/prompts-imagegen.md`.

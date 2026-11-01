@@ -5,6 +5,16 @@
 **Rasio:** 16:9 (`--ar 16:9` untuk tool lain; di Gemini tulis "16:9 widescreen" di akhir prompt)
 **Referensi:** maksimal **3 gambar per prompt**
 
+## Dua gaya, dua keperluan
+
+| Prompt | Gaya | Untuk apa |
+|---|---|---|
+| **01–09** (key art, character sheet, environment) | **Berwarna** — stylized semi-realistis | Acuan **konsep akhir**: bentuk, proporsi, warna, material. Dipakai Anggota 5 (Karakter) & 7 (Lighting). |
+| **10–15** (frame storyboard) | **Sketsa hitam-putih** | Acuan **framing & komposisi** per shot. Sketsa hanya bahasa penyajian storyboard — **film final tetap berwarna** sesuai `03-gaya-visual.md`. |
+
+> Jangan tertukar: sketsa hitam-putih **bukan** look film. Palette dan look
+> akhir tetap yang berwarna, terkunci di `20-Produksi/03-gaya-visual.md`.
+
 ## Cara pakai (penting)
 
 1. **Selalu unggah 1–3 referensi**:
@@ -17,11 +27,13 @@
    `scene-1_shot-010_v001.png`.
 4. Kalau karakter melenceng, ulangi dengan **hanya** character sheet (tanpa
    environment reference) lalu komposit manual.
+5. Pakai blok gaya yang sesuai barisnya: **STYLE BLOCK** (warna) untuk 01–09,
+   **SKETCH STYLE BLOCK** (hitam-putih) untuk 10–15.
 
 > ⚠️ Foto referensi Bunaken hanya dipakai sebagai **acuan visual untuk prompt**.
 > Jangan dimasukkan ke film atau repo kalau bukan milik sendiri.
 
-## Blok gaya (tempel di semua prompt)
+## Blok gaya A — BERWARNA (untuk prompt 01–09)
 
 ```
 STYLE BLOCK: stylized semi-realistic 3D animation still, Pixar-adjacent but
@@ -31,12 +43,28 @@ subtle subsurface scattering on skin, clean composition, no text, 16:9
 widescreen.
 ```
 
-## Blok negatif (tempel di semua prompt)
-
 ```
 NEGATIVE: photorealistic skin pores, gritty darkness, horror tones, extra
 limbs, deformed hands, duplicate faces, watermark, signature, text, logo,
 oversaturated neon, plastic-looking water, western facial features
+```
+
+## Blok gaya B — SKETSA HITAM-PUTIH (untuk prompt 10–15)
+
+```
+SKETCH STYLE BLOCK: black-and-white storyboard sketch, graphite pencil
+drawing on white paper, loose confident linework with visible construction
+lines, grey marker shading for values, cross-hatching in shadow areas,
+simplified forms, clear silhouette, readable composition, no color,
+16:9 widescreen.
+```
+
+```
+NEGATIVE: color, colored pencil, watercolor, paint wash, tinted paper, 3D
+render, CGI, glossy surfaces, photorealistic skin pores, photographic
+texture, neon glow, solid black ink flood fill, blurry linework, random
+scribbles, messy scratchy noise, watermark, signature, text, logo, extra
+limbs, deformed hands, duplicate faces
 ```
 
 ---
@@ -171,82 +199,89 @@ seed: 20261102 · refs: 1 (bunaken) · output: `assets/env/ref-env-pier.png`
 
 ---
 
-## 10 — Frame storyboard: shot 010 (aerial)
+## 10 — Frame storyboard: shot 010 (aerial) — sketsa
 
 ```
 Storyboard frame, scene 1 shot 010: wide aerial push-in over Bunaken island
 towards the long red-and-white pier, Mount Manado Tua on the left horizon,
 boats trailing thin wakes, morning light. Use the attached Bunaken aerial
-photo as environment reference for island shape and pier layout. Stylized
-semi-realistic 3D animation still, tropical palette, 16:9 widescreen.
+photo as environment reference for island shape and pier layout.
+Black-and-white pencil storyboard sketch, loose hatching for vegetation and
+water, clear silhouette, 16:9 widescreen.
 ```
 seed: 20261102 · refs: 1 (bunaken) · output: `storyboard/frames/scene-1/scene-1_shot-010_v001.png`
 
 ---
 
-## 11 — Frame storyboard: shot 050 (Nara menyelam)
+## 11 — Frame storyboard: shot 050 (Nara menyelam) — sketsa
 
 ```
 Storyboard frame, scene 1 shot 050: medium underwater shot of Nara (19-year-
 old Indonesian dive guide, teal rash guard, dive mask) gliding past a coral
 head, small bubbles rising, a green sea turtle in soft focus behind him.
 Use the attached Nara character sheet for facial structure and outfit, and
-the attached Bunaken aerial photo for water color reference. Stylized
-semi-realistic 3D animation still, god rays, tropical palette, 16:9 widescreen.
+the attached Bunaken aerial photo for water layout reference.
+Black-and-white pencil storyboard sketch, god rays as light grey hatching,
+darker grey shading toward the bottom of frame, 16:9 widescreen.
 ```
 seed: 20261102 · refs: 2 (nara + bunaken) · output: `storyboard/frames/scene-1/scene-1_shot-050_v001.png`
 
 ---
 
-## 12 — Frame storyboard: shot 080 (permukaan)
+## 12 — Frame storyboard: shot 070 (Nara naik ke perahu) — sketsa
+
+> Nomor shot dikoreksi dari `080` → `070`; isi prompt ini memang shot 070 di
+> `02-shotlist-scene-1.md`. Shot 080 adalah dive shop + Pak Daniel.
 
 ```
-Storyboard frame, scene 1 shot 080: low angle from water level as Nara
+Storyboard frame, scene 1 shot 070: low angle from water level as Nara
 climbs onto a wooden boat and pulls off his dive mask, wet hair, relieved
 smile, the red-and-white pier out of focus behind. Use the attached Nara
-character sheet for likeness. Stylized semi-realistic 3D animation still,
-warm afternoon light, tropical palette, 16:9 widescreen.
+character sheet for likeness. Black-and-white pencil storyboard sketch, grey
+shading for wet hair and boat shadow, background simplified with light
+hatching, 16:9 widescreen.
 ```
-seed: 20261102 · refs: 1 (nara) · output: `storyboard/frames/scene-1/scene-1_shot-080_v001.png`
+seed: 20261102 · refs: 1 (nara) · output: `storyboard/frames/scene-1/scene-1_shot-070_v001.png`
 
 ---
 
-## 13 — Scene 2: terumbu setelah bom
+## 13 — Scene 2: terumbu setelah bom — sketsa
 
 ```
 Storyboard frame, scene 2: a damaged patch of reef after an illegal blast
-fishing incident — shattered coral rubble, pale dead coral heads, a few
-dead fish floating, silt in the water, cold desaturated teal light. No
-people. Stylized semi-realistic 3D animation still, somber mood, 16:9
-widescreen.
+fishing incident — shattered coral rubble, pale dead coral heads, a few dead
+fish floating, silt in the water, somber light. No people. Black-and-white
+pencil storyboard sketch, heavy hatching and dark grey wash to show silt and
+damage, flat heavy values, 16:9 widescreen.
 ```
 seed: 20261103 · refs: 1 (bunaken) · output: `storyboard/frames/scene-2/scene-2_shot-030_v001.png`
 
 ---
 
-## 14 — Scene 2: perahu nelayan mengebom
+## 14 — Scene 2: perahu nelayan mengebom — sketsa
 
 ```
-Storyboard frame, scene 2: distant silhouetted small fishing boat at dawn
-on calm water, a splash and rising bubbles where an explosive was dropped,
-the Bunaken shoreline dark against the horizon. Haris visible only as a
-small figure at the stern, back to camera. Stylized semi-realistic 3D
-animation still, tense mood, muted palette with one coral-orange accent,
+Storyboard frame, scene 2: distant silhouetted small fishing boat at dawn on
+calm water, a splash and rising bubbles where an explosive was dropped, the
+Bunaken shoreline dark against the horizon. Haris visible only as a small
+figure at the stern, back to camera. Black-and-white pencil storyboard
+sketch, near-silhouette boat against a light grey sky, strong value contrast,
 16:9 widescreen.
 ```
 seed: 20261103 · refs: 1 (haris sheet) · output: `storyboard/frames/scene-2/scene-2_shot-050_v001.png`
 
 ---
 
-## 15 — Scene 4: restorasi & key art penutup
+## 15 — Scene 4: restorasi & key art penutup — sketsa
 
 ```
-Storyboard frame, scene 4: underwater shot of a coral restoration frame
-with young coral fragments growing, Nara and Pak Haris planting a fragment
+Storyboard frame, scene 4: underwater shot of a coral restoration frame with
+young coral fragments growing, Nara and Pak Haris planting a fragment
 together, shafts of sunlight, schools of small fish returning. Use the
-attached Nara and Haris character sheets for likeness, and the Bunaken
-aerial photo for water color reference. Hopeful mood. Stylized
-semi-realistic 3D animation still, tropical palette, 16:9 widescreen.
+attached Nara and Haris character sheets for likeness, and the Bunaken aerial
+photo for water layout reference. Hopeful mood. Black-and-white pencil
+storyboard sketch, bright light greys with open white space for god rays,
+16:9 widescreen.
 ```
 seed: 20261104 · refs: 3 (nara + haris + bunaken) · output: `storyboard/frames/scene-4/scene-4_shot-120_v001.png`
 
@@ -254,11 +289,30 @@ seed: 20261104 · refs: 3 (nara + haris + bunaken) · output: `storyboard/frames
 
 ## Catatan konsistensi
 
+### Untuk prompt berwarna (01–09)
+
 - **Wajah melenceng** → ulangi dengan hanya 1 character sheet, tambahkan
   "match the attached character sheet exactly, same face, same hair".
 - **Warna air terlalu neon** → tambahkan "muted turquoise, natural water
   color, slight green tint".
 - **Terlihat seperti foto** → tambahkan "clearly stylized, simplified forms,
   animation look, not photorealistic".
-- Jangan pernah mencampur dua gaya dalam satu scene; selalu pakai `STYLE BLOCK`
-  yang sama.
+- **Warna keluar dari palette** → tambahkan hex yang benar, mis.
+  "teal #1FA3A3 for the water, no other blue".
+
+### Untuk prompt sketsa (10–15)
+
+- **Masih ada warna / ada tint** → tambahkan "pure black-and-white graphite
+  sketch, no color at all, white paper".
+- **Terlihat seperti render 3D atau foto** → tambahkan "hand-drawn pencil
+  sketch, visible construction lines, clearly drawn by hand, not a render".
+- **Terlalu gelap / blok hitam pekat** → tambahkan "light grey shading, open
+  linework, keep most of the paper white".
+- **Garis terlalu rapi seperti vektor** → tambahkan "sketchy hand-drawn
+  linework, slightly uneven strokes".
+
+### Berlaku untuk keduanya
+
+- Jangan campur dua gaya dalam satu set gambar: 01–09 berwarna, 10–15 sketsa.
+- Sketsa **tidak** mengubah look film. Warna final tetap dari
+  `20-Produksi/03-gaya-visual.md`.
