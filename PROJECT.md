@@ -121,18 +121,27 @@ No. 2002, dan laporan Turak & DeVantier.
 | Status UNESCO | daftar tentatif sejak 2005, **belum** terdaftar |
 
 **Penyederhanaan produksi — penting.** Film hanya membuat **3 model karang**
-(meja, bercabang, otak) dan **3 model ikan** (yellowstripe snapper, emperor
-angelfish, two-lined monocle bream), plus penyu hijau. Itu keputusan produksi,
-bukan klaim biologis. Jangan pernah menarasikan bahwa Bunaken hanya punya 3 jenis.
+(meja, bercabang, massif) dan **4 model ikan** (cakalang, hiu, goropa merah,
+kakatua), plus penyu hijau. Itu keputusan produksi, bukan klaim biologis. Jangan
+pernah menarasikan bahwa Bunaken hanya punya segitu jenisnya.
+
+**Acuan bentuk & warna** diambil dari dua foto di `storyboard/refs/`: aerial
+Bunaken (dermaga berpagar merah-putih, bangunan dua lantai beratap merah, Gunung
+Manado Tua) dan foto bawah laut (karang bercabang mendominasi air dangkal,
+karang massif di belakangnya, air biru pekat). Keduanya **hanya referensi
+internal** — tidak masuk film, tidak boleh dipakai untuk publikasi.
+
+**Proporsi terumbu yang dipakai:** 60% karang bercabang, 30% massif, 10% meja.
+Susunan ini mengikuti foto acuan, bukan angka resmi.
 
 **Luas kawasan tidak memengaruhi world building.** Yang dibangun hanya satu
 potong kecil: dermaga ±100 m, dive shop, beberapa rumah, satu titik selam 5–15 m,
 dan satu garis pantai untuk aerial. Angka luas tidak perlu masuk narasi.
 
 **Elemen visual yang wajib muncul:** dermaga berpagar merah-putih, Gunung Manado
-Tua di horizon, air tosca dangkal, perahu kecil dan speedboat putih, vegetasi
-rapat sampai pantai, terumbu karang dan penyu hijau, mooring buoy oranye di
-Scene 4.
+Tua di horizon, air tosca dangkal, perahu motor kecil dan satu speedboat putih,
+vegetasi rapat sampai pantai, terumbu karang dan penyu hijau, mooring buoy oranye
+di Scene 4.
 
 **Praktik yang digambarkan:** bom ikan (bahan peledak di terumbu; karang hancur
 total) dan jaring dasar (menyapu karang, menangkap semua ukuran). Keduanya nyata
@@ -200,9 +209,9 @@ di semua shot · lens flare setiap ada matahari · kamera goyang di bawah laut
 
 ### Detail yang membuat terasa Bunaken
 
-Dermaga berpagar merah-putih (bukan kayu polos) · perahu bercadik, bukan hanya
-speedboat · vegetasi rapat sampai garis pantai · Gunung Manado Tua berbentuk
-kerucut di horizon · mooring buoy oranye di Scene 4.
+Dermaga berpagar merah-putih (bukan kayu polos) · perahu motor fiberglass kecil
+putih/biru sesuai foto acuan · vegetasi rapat sampai garis pantai · Gunung Manado
+Tua berbentuk kerucut di horizon · mooring buoy oranye di Scene 4.
 
 ### Konsistensi antar-artist
 
@@ -308,20 +317,38 @@ Nomor shot kelipatan 10 supaya bisa disisipi shot baru tanpa menomori ulang.
 
 ## 5. Aset & kepemilikan
 
-Status: ⬜ belum · 🟨 proses · ✅ selesai
+Status: ⬜ belum · 🟨 blockout · ✅ selesai
+
+Blockout = bentuk, skala, dan warna palette benar; belum ada tekstur, detail
+halus, atau animasi.
 
 ### Environment
 
-| Aset | File | Pemilik | Scene |
-|---|---|---|---|
-| Terumbu karang + karang rusak (3 jenis) | `assets/env/reef.blend` | Env Artist Underwater | 1, 2, 4 |
-| Ikan 3 jenis + penyu hijau | `assets/env/reef.blend` | Env Artist Underwater | 1, 4 |
-| Permukaan: pulau, dermaga, kampung | `assets/env/surface.blend` | Env Artist Surface | 1, 4 |
-| Dive shop | `assets/env/surface.blend` | Env Artist Surface | 1 |
-| Perahu kecil + speedboat | `assets/props/boats.blend` | Env Artist Surface | 1, 2 |
-| Mooring buoy | `assets/props/` | Env Artist Surface | 4 |
-| Kerangka transplantasi karang | `assets/props/` | Env Artist Underwater | 4 |
-| Jaring & alat tangkap | `assets/props/` | Env Artist Surface | 1, 2 |
+| Aset | File | Pemilik | Scene | Status |
+|---|---|---|---|---|
+| Karang bercabang, massif, meja | `assets/env/reef.blend` | Jasiel Wowiling | 1, 2, 4 | 🟨 |
+| Ikan 4 jenis + penyu hijau | `assets/env/reef.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
+| Pulau + garis pantai berpasir | `assets/env/surface.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
+| Dermaga 104 m berpagar merah-putih | `assets/env/surface.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
+| Dive shop (bangunan 2 lantai atap merah) | `assets/env/surface.blend` | Jasiel Wowiling | 1 | 🟨 |
+| Rumah kampung + vegetasi | `assets/env/surface.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
+| Gunung Manado Tua | `assets/env/surface.blend` | Jasiel Wowiling | 1 | 🟨 |
+| Perahu motor kecil + speedboat | `assets/props/boats.blend` | Jasiel Wowiling | 1, 2 | 🟨 |
+| Karang rusak (akibat bom & jaring) | `assets/env/reef.blend` | Jasiel Wowiling | 2, 4 | ⬜ |
+| Kerangka transplantasi karang | `assets/props/` | Jasiel Wowiling | 4 | ⬜ |
+| Mooring buoy | `assets/props/` | Jasiel Wowiling | 4 | ⬜ |
+| Jaring & alat tangkap | `assets/props/` | Jasiel Wowiling | 1, 2 | ⬜ |
+
+**Isi `reef.blend` saat ini:** `ENV_reef_branching-coral` (+`_b`), `ENV_reef_boulder-coral`,
+`ENV_reef_table-coral`, `ENV_reef_fish_cakalang`, `_hiu`, `_goropa-merah`,
+`_kakatua`, `ENV_reef_turtle`, masing-masing dengan sirip sebagai objek anak.
+
+**Isi `surface.blend` saat ini:** `ENV_surface_island`, `_pier-deck`, `_pier-posts`,
+`_pier-railing`, `_dive-shop`, `_white-roof-annex`, `_village-houses`,
+`_manado-tua`, `_water-placeholder`, 26 objek vegetasi.
+
+`ENV_surface_water-placeholder` adalah **bidang air datar sementara** — shader air
+sebenarnya milik peran 7 di `assets/look/scene-1-look.blend`. Jangan dianggap final.
 
 ### Karakter
 
@@ -369,6 +396,8 @@ assets/                   env/ char/ props/ textures/ audio/ look/
 scenes/                   master .blend per scene
 renders/                  hasil render (TIDAK di-commit)
 storyboard/               gambar frame storyboard
+  frames/                 frame per scene
+  refs/                   foto acuan (aerial Bunaken, terumbu) — referensi internal
 scripts/                  skrip bantu
 ```
 
@@ -400,6 +429,7 @@ Contoh: `ENV_reef_table-coral`, `CHR_nara_body`, `PRP_boat_small`.
 | `scenes/` | master `.blend` per scene |
 | `renders/` | hasil render (tidak di-commit) |
 | `storyboard/frames/` | frame storyboard per scene |
+| `storyboard/refs/` | foto acuan bentuk & warna (referensi internal, tidak masuk film) |
 
 ---
 
@@ -499,8 +529,8 @@ animasi 24 fps → lighting & shading → render MP4 ke Releases.
 |---|---|---|---|---|
 | 1 | **Lead / Director** | Jasiel Wowiling | Style guide, review shot, merge master, dokumentasi & kredit | `scenes/scene-1.blend` |
 | 2 | **Storyboard & Concept** | Excel Katuuk | Shot list + prompt image-gen + sketsa frame | shot list §4, `storyboard/frames/` |
-| 3 | **Env Artist — Underwater** | *belum diisi* | Terumbu, karang, penyu, ikan, god rays | `assets/env/reef.blend` |
-| 4 | **Env Artist — Surface** | *belum diisi* | Pulau, kampung, dive shop, perahu, jaring | `assets/env/surface.blend` |
+| 3 | **Env Artist — Underwater** | Jasiel Wowiling | Terumbu, karang, penyu, ikan, god rays | `assets/env/reef.blend` |
+| 4 | **Env Artist — Surface** | Jasiel Wowiling | Pulau, kampung, dive shop, perahu, jaring | `assets/env/surface.blend` |
 | 5 | **Character Artist** | Yehezkiel Montolalu | Nara + Pak Daniel (Scene 1), lalu Haris & crowd | `assets/char/*.blend` kecuali `nara_rig.blend` |
 | 6 | **Rigger & Animator** | *belum diisi* | Rig Nara, 10 shot animasi Scene 1 | `assets/char/nara_rig.blend` |
 | 7 | **Lighting & Shading** | *belum diisi* | Look dev, world, warna air | `assets/look/scene-1-look.blend` |
@@ -576,7 +606,7 @@ Sebuah animasi oleh [Nama Kelompok]
 
 SUTRADARA            Jasiel Wowiling
 STORYBOARD           Excel Katuuk
-ENVIRONMENT          [nama], [nama]
+ENVIRONMENT          Jasiel Wowiling
 KARAKTER             Yehezkiel Montolalu
 RIGGING & ANIMASI    [nama]
 LIGHTING & SHADING   [nama]

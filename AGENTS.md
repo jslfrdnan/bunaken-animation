@@ -52,6 +52,19 @@ AI **tidak boleh** langsung memodelkan dari deskripsi teks. Langkah wajib:
    dan mana acuan **warna/material**.
 4. Sebutkan sumber & lisensi gambar di `docs/credits.md` sebelum aset dipakai
    di film.
+5. Gambar yang sudah disetujui disimpan di `storyboard/refs/` dengan pola nama
+   `ref-<objek>_v001.jpg`, supaya setiap sesi AI berikutnya memakai acuan yang
+   sama. Acuan yang sudah ada: `ref-bunaken-aerial_v001.jpg` (bentuk dermaga,
+   bangunan, siluet Manado Tua, warna air) dan `ref-reef-underwater_v001.jpg`
+   (bentuk karang bercabang & massif, warna ikan, warna air).
+
+**Pengecualian yang diizinkan lead (1 Nov 2026):** aset environment prosedural
+(karang, pulau, dermaga, perahu) boleh dibuat dari acuan gabungan — foto di
+`storyboard/refs/` + storyboard + palette `PROJECT.md` §2 — meskipun fotonya
+tidak berlisensi jelas. Syaratnya: foto itu **tidak pernah** dipakai sebagai
+tekstur, latar, atau bagian dari film, dan sumbernya tercatat di
+`docs/credits.md`. Pengecualian ini berlaku untuk environment saja, **bukan**
+untuk karakter.
 
 ### 2.2 Kalau gambar tidak jelas atau kurang bagus
 

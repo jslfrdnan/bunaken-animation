@@ -30,7 +30,7 @@ Sebuah animasi oleh [Nama Kelompok]
 
 SUTRADARA            Jasiel Wowiling
 STORYBOARD           Excel Katuuk
-ENVIRONMENT          [nama], [nama]
+ENVIRONMENT          Jasiel Wowiling
 KARAKTER             Yehezkiel Montolalu
 RIGGING & ANIMASI    [nama]
 LIGHTING & SHADING   [nama]
@@ -58,6 +58,27 @@ Setiap file dari luar (model, tekstur, HDRI, musik, SFX) masuk tabel ini
 | Aset | Pembuat | Lisensi | Tautan | Dipakai di |
 |---|---|---|---|---|
 | _contoh: HDRI tropis_ | _Poly Haven_ | _CC0_ | _url_ | _Scene 1_ |
+
+### Foto acuan (referensi internal, bukan aset film)
+
+| File | Sumber | Lisensi | Status |
+|---|---|---|---|
+| `storyboard/refs/ref-bunaken-aerial_v001.jpg` | internet, sumber tidak tercatat | **tidak diketahui** | acuan bentuk saja — **tidak masuk film** |
+| `storyboard/refs/ref-reef-underwater_v001.jpg` | internet, sumber tidak tercatat | **tidak diketahui** | acuan bentuk & warna — **tidak masuk film** |
+
+> ⚠️ Kedua foto ini **melanggar aturan lisensi di tabel bawah** (tidak ada
+> lisensi jelas). Lead memutuskan tetap menyimpannya karena dibutuhkan seluruh
+> tim sebagai acuan bentuk dan warna. Batasnya: **hanya untuk melihat, tidak
+> pernah dipakai sebagai tekstur, latar, atau bagian dari film**, dan tidak
+> dipublikasikan di luar repo. Kalau nanti perlu dipamerkan ke publik, ganti
+> dengan foto milik sendiri atau berlisensi CC0.
+
+### Aset 3D yang dibuat sendiri
+
+Semua model di `assets/env/reef.blend`, `assets/env/surface.blend`, dan
+`assets/props/boats.blend` adalah **geometri prosedural yang dibuat di Blender
+untuk proyek ini**, atas arahan Jasiel Wowiling. Tidak ada model pihak ketiga di
+dalamnya. Tidak perlu kredit eksternal.
 
 ### Aturan lisensi
 
@@ -100,14 +121,15 @@ Tautan:
 - UNESCO — <https://whc.unesco.org/en/tentativelists/2002/>
 - Laporan karang Turak & DeVantier — <http://www.bunaken.org/download/Turak%20DeVantier%20IOI%20Bunaken%20Coral%20Report.pdf>
 
-> **Catatan produksi:** film hanya memodelkan **3 jenis karang** dan **3 jenis
-> ikan**, bukan 390 dan 91. Itu penyederhanaan produksi, bukan klaim bahwa
-> Bunaken hanya punya 3 jenis. Jangan pernah menarasikan angka 3.
+> **Catatan produksi:** film hanya memodelkan **3 jenis karang** (meja,
+> bercabang, massif) dan **4 jenis ikan** (cakalang, hiu, goropa merah, kakatua),
+> bukan 390 dan 91. Itu penyederhanaan produksi, bukan klaim bahwa Bunaken hanya
+> punya 3 jenis karang. Jangan pernah menarasikan angka 3 atau 4.
 
 ## 6. Yang masih kosong
 
 - [ ] Nama kelompok
 - [ ] Program studi / universitas
-- [ ] Nama peran 3, 4, 6, 7, 8
+- [ ] Nama peran 6, 7, 8
 - [ ] Nama pengisi suara narasi
 - [ ] Daftar aset pihak ketiga (§3) — diisi saat aset mulai diambil
