@@ -32,18 +32,58 @@ Elemen visual yang **wajib** muncul agar penonton mengenali Bunaken:
 Keduanya **nyata** dan masih terjadi di berbagai wilayah Sulawesi. Animasi ini
 tidak menuduh satu desa tertentu.
 
-## Fakta yang perlu diverifikasi sebelum tayang
+## Fakta yang sudah diverifikasi
 
-> Jangan mencantumkan angka di narasi sebelum dicek ke sumber primer.
+Sumber utama: arsip Departemen Kehutanan (dephut.go.id, diarsipkan Wayback
+Machine), daftar tentatif UNESCO nomor 2002, dan laporan Turak & DeVantier.
+Rincian tautan ada di [[02-kredit]].
 
-- [ ] Jumlah spesies karang di Bunaken
-- [ ] Jumlah spesies ikan
-- [ ] Luas kawasan taman nasional (ha)
-- [ ] Tahun & nomor keputusan penetapan
-- [ ] Aturan resmi penggunaan mooring buoy
+| Fakta | Nilai | Catatan |
+|---|---|---|
+| Nama resmi | Taman Nasional Bunaken | Taman laut, IUCN kategori II |
+| Ditetapkan | **1991**, SK Menteri Kehutanan **No. 730/Kpts-II/91** | Salah satu taman laut pertama di Indonesia |
+| Luas | **89.065 ha** | 97% laut, 3% darat |
+| Jumlah pulau | **5** — Bunaken, Manado Tua, Mantehage, Nain, Siladen | |
+| Spesies karang | **390 spesies** | Laporan Turak & DeVantier |
+| Spesies ikan | **91 spesies** tercatat | Sumber lain menyebut hingga ~2.000; **pakai 91** |
+| Kedalaman laut | 200–1.840 m | Tanpa paparan benua, langsung jatuh ke slope |
+| Tinggi Manado Tua | >600 m di atas laut | Kerucut vulkanik tidak aktif |
+| Penduduk | ±35.000 jiwa di 22 desa | Sebagian nelayan, pemandu, petani rumput laut |
+| Status UNESCO | Daftar **tentatif** sejak 2005, belum terdaftar | Jangan sebut "situs warisan dunia" |
 
-Cek ke: Balai Taman Nasional Bunaken, Kementerian Lingkungan Hidup dan Kehutanan,
-atau publikasi ilmiah. Catat sumbernya di [[02-kredit]].
+## Yang dipakai di film (disederhanakan untuk produksi)
+
+Angka di atas adalah fakta kawasan. **Film hanya memodelkan sebagian kecil**,
+dan itu keputusan produksi, bukan klaim biologis:
+
+| Kebutuhan | Jumlah model | Spesies yang dipakai |
+|---|---|---|
+| Karang | **3 jenis** | Karang meja, karang bercabang, karang otak |
+| Ikan | **3 jenis** | Yellowstripe snapper, emperor angelfish, two-lined monocle bream |
+| Penyu | 1 | Penyu hijau (*Chelonia mydas*) |
+
+> **Jangan pernah** menulis atau menarasikan "Bunaken hanya punya 3 jenis
+> karang". Yang benar: *film ini hanya membuat 3 model karang*. Kalau ada yang
+> bertanya, jawab dengan kalimat itu.
+
+## Apakah luas kawasan memengaruhi world building?
+
+**Tidak.** 89.065 ha terlalu besar untuk dimodelkan dan tidak akan pernah
+terlihat utuh dalam satu frame. Yang dibangun hanya satu potong kecil:
+
+- satu dermaga (±100 m) + dive shop + beberapa rumah,
+- satu titik selam dengan terumbu dangkal 5–15 m,
+- satu garis pantai untuk shot aerial.
+
+Angka luas **tidak perlu muncul di narasi**. Kalau tetap ingin disebut, satu
+kalimat cukup ("taman laut seluas hampir 90 ribu hektar") dan sudah terverifikasi.
+
+## Fakta yang masih perlu dicek
+
+- [ ] Aturan resmi penggunaan mooring buoy — belum ditemukan dokumen
+  peraturannya. Yang dipakai di film hanya **visual**: pelampung tambat oranye
+  disediakan pengelola, kapal tidak membuang jangkar di terumbu. Jangan
+  mengutip nomor pasal apa pun.
 
 ## Yang sengaja difiksikan
 

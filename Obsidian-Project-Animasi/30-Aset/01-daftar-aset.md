@@ -10,13 +10,13 @@ Status: ⬜ belum · 🟨 proses · ✅ selesai · 🚫 dibatalkan
 
 | Aset | File | Pemilik | Scene | Status |
 |---|---|---|---|---|
-| Terumbu karang + karang rusak | `assets/env/reef.blend` | Anggota 3 | 1, 2, 4 | ⬜ |
+| Terumbu karang + karang rusak (3 jenis: meja, bercabang, otak) | `assets/env/reef.blend` | Anggota 3 | 1, 2, 4 | ⬜ |
 | Permukaan: pulau, dermaga, kampung | `assets/env/surface.blend` | Anggota 4 | 1, 4 | ⬜ |
 | Dive shop | `assets/env/surface.blend` | Anggota 4 | 1 | ⬜ |
 | Perahu kecil + speedboat | `assets/props/boats.blend` | Anggota 4 | 1, 2 | ⬜ |
 | Mooring buoy | `assets/props/` | Anggota 4 | 4 | ⬜ |
 | Kerangka transplantasi karang | `assets/props/` | Anggota 3 | 4 | ⬜ |
-| Ikan (3 jenis) + penyu | `assets/env/reef.blend` | Anggota 3 | 1, 4 | ⬜ |
+| Ikan 3 jenis (yellowstripe snapper, emperor angelfish, two-lined monocle bream) + penyu hijau | `assets/env/reef.blend` | Anggota 3 | 1, 4 | ⬜ |
 | Jaring & alat tangkap | `assets/props/` | Anggota 4 | 1, 2 | ⬜ |
 
 ## Karakter

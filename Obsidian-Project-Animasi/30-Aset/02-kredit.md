@@ -67,8 +67,25 @@ catat di tabel di atas sebagai referensi internal.
 
 ## Data & fakta
 
-Setiap angka atau klaim faktual di narasi harus punya sumber di sini:
+Setiap angka atau klaim faktual di narasi harus punya sumber di sini.
 
 | Klaim | Sumber | Tanggal cek |
 |---|---|---|
-| Penetapan Taman Nasional Bunaken 1991 | _belum dicek_ | — |
+| Ditetapkan 1991, SK Menhut No. 730/Kpts-II/91 | Arsip Dephut, "Bunaken National Park" (Wayback Machine, capture 10 Feb 2010) | 1 Nov 2026 |
+| Luas 89.065 ha (97% laut, 3% darat) | Arsip Dephut, halaman yang sama | 1 Nov 2026 |
+| Lima pulau: Bunaken, Manado Tua, Mantehage, Nain, Siladen | Arsip Dephut + UNESCO Tentative List No. 2002 | 1 Nov 2026 |
+| 390 spesies karang | E. Turak & L. DeVantier, *Reef-building corals of Bunaken National Park* | 1 Nov 2026 |
+| 91 spesies ikan | Arsip Dephut, halaman yang sama | 1 Nov 2026 |
+| Kedalaman laut 200–1.840 m; Manado Tua >600 m | UNESCO Tentative List No. 2002 | 1 Nov 2026 |
+| ±35.000 penduduk di 22 desa | Arsip Dephut + WWF Bunaken fact sheet | 1 Nov 2026 |
+| Daftar tentatif UNESCO sejak 2005, belum terdaftar | UNESCO Tentative List No. 2002 | 1 Nov 2026 |
+
+Tautan:
+
+- Arsip Dephut — <https://web.archive.org/web/20100210172459/http://www.dephut.go.id/INFORMASI/TN%20INDO-ENGLISH/bunaken_NP.htm>
+- UNESCO — <https://whc.unesco.org/en/tentativelists/2002/>
+- Laporan karang Turak & DeVantier — <http://www.bunaken.org/download/Turak%20DeVantier%20IOI%20Bunaken%20Coral%20Report.pdf>
+
+> **Catatan produksi:** film hanya memodelkan **3 jenis karang** dan
+> **3 jenis ikan**, bukan 390 dan 91. Itu penyederhanaan produksi, bukan klaim
+> bahwa Bunaken hanya punya 3 jenis. Jangan pernah menarasikan angka 3.
