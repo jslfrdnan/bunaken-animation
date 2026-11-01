@@ -23,12 +23,12 @@ Status: ⬜ belum · 🟨 proses · ✅ selesai · 🚫 dibatalkan
 
 | Aset | File | Pemilik | Status |
 |---|---|---|---|
-| Nara (model) | `assets/char/nara.blend` | Anggota 5 | ⬜ |
+| Nara (model) | `assets/char/nara.blend` | Yehezkiel Montolalu | ⬜ |
 | Nara (rig) | `assets/char/nara_rig.blend` | Anggota 6 | ⬜ |
-| Pak Daniel | `assets/char/daniel.blend` | Anggota 5 | ⬜ |
-| Pak Haris | `assets/char/haris.blend` | Anggota 5 | ⬜ |
-| Warga & anak-anak (low detail) | `assets/char/crowd.blend` | Anggota 5 | ⬜ |
-| Peralatan selam (masker, tabung, fin) | `assets/props/divegear.blend` | Anggota 5 | ⬜ |
+| Pak Daniel | `assets/char/daniel.blend` | Yehezkiel Montolalu | ⬜ |
+| Pak Haris | `assets/char/haris.blend` | Yehezkiel Montolalu | ⬜ |
+| Warga & anak-anak (low detail) | `assets/char/crowd.blend` | Yehezkiel Montolalu | ⬜ |
+| Peralatan selam (masker, tabung, fin) | `assets/props/divegear.blend` | Yehezkiel Montolalu | ⬜ |
 
 ## Look & lighting
 
