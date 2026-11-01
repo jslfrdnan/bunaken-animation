@@ -1,4 +1,7 @@
-# 15 Prompt Gemini — Frame Storyboard & Concept Art
+# Prompt Gemini — Frame Storyboard & Concept Art
+
+Isi file: **1 prompt lembar gabungan** (2 shot per scene, sekali jadi untuk
+menyusun alur storyboard) + **15 prompt satuan** untuk frame dan aset.
 
 **Model:** Gemini 2.5 Flash Image
 **Bahasa:** Inggris (hasil paling stabil)
@@ -9,6 +12,7 @@
 
 | Prompt | Gaya | Untuk apa |
 |---|---|---|
+| **00** (lembar 8 panel, 2 shot per scene) | **Sketsa hitam-putih** | Menyusun **alur storyboard 4 scene sekali jadi**. Ringkas, untuk rapat dan pengecekan alur — bukan acuan produksi per shot. |
 | **01–09** (key art, character sheet, environment) | **Berwarna** — stylized semi-realistis | Acuan **konsep akhir**: bentuk, proporsi, warna, material. Dipakai Anggota 5 (Karakter) & 7 (Lighting). |
 | **10–15** (frame storyboard) | **Sketsa hitam-putih** | Acuan **framing & komposisi** per shot. Sketsa hanya bahasa penyajian storyboard — **film final tetap berwarna** sesuai `03-gaya-visual.md`. |
 
@@ -28,7 +32,7 @@
 4. Kalau karakter melenceng, ulangi dengan **hanya** character sheet (tanpa
    environment reference) lalu komposit manual.
 5. Pakai blok gaya yang sesuai barisnya: **STYLE BLOCK** (warna) untuk 01–09,
-   **SKETCH STYLE BLOCK** (hitam-putih) untuk 10–15.
+   **SKETCH STYLE BLOCK** (hitam-putih) untuk 00 dan 10–15.
 
 > ⚠️ Foto referensi Bunaken hanya dipakai sebagai **acuan visual untuk prompt**.
 > Jangan dimasukkan ke film atau repo kalau bukan milik sendiri.
@@ -66,6 +70,103 @@ texture, neon glow, solid black ink flood fill, blurry linework, random
 scribbles, messy scratchy noise, watermark, signature, text, logo, extra
 limbs, deformed hands, duplicate faces
 ```
+
+---
+
+## 00 — Lembar 2 shot per scene (8 panel, sekali jadi)
+
+Dipakai untuk **menyusun storyline storyboard** dari `10-Cerita/02-sinopsis.md`:
+satu baris = satu scene, panel kiri = shot pembuka scene, panel kanan = shot
+titik belok scene. Satu kali generate, satu gambar.
+
+Output: `storyboard/frames/storyboard-2shot-per-scene_v001.jpg`
+(hasil Gemini keluar sebagai JPEG; simpan apa adanya, jangan di-rename ke
+`.png`)
+
+```
+A single storyboard sheet for a 4-scene short animated film set in Bunaken
+National Park, Indonesia. ONE image containing EXACTLY EIGHT panels, arranged
+in a grid of 2 columns and 4 rows. Each row is one scene; the left panel is
+the opening shot of that scene, the right panel is the turning-point shot of
+the same scene. Read left to right, top row (scene 1) down to bottom row
+(scene 4). Thin hand-drawn panel borders. Under each panel write a small
+handwritten label: 1A, 1B, 2A, 2B, 3A, 3B, 4A, 4B — letters and numerals
+only, no other text anywhere. Same characters, same drawing style, and
+consistent grey values in every panel.
+
+Recurring characters, keep identical across panels:
+Nara — 19-year-old Indonesian dive guide, short black hair, lean build,
+faded rash guard, simple dive watch on the left wrist, dive mask when
+underwater.
+Pak Daniel — 52-year-old fisherman, father of Nara, weathered face, short
+greying hair, sturdy build, woven sun hat.
+Pak Haris — 45-year-old migrant fisherman, thin moustache, tired eyes, wiry
+build, faded cap, worn shirt, small scar on the right forearm. He must look
+under pressure, never villainous.
+
+Panel contents in order:
+
+1A — wide aerial view of Bunaken island in late morning: long wooden pier
+with red-and-white railings over clear shallows, small fishing boats and one
+white speedboat, dense green vegetation to the shoreline, Mount Manado Tua
+volcano on the left horizon.
+
+1B — underwater medium shot of Nara gliding past a healthy coral head, small
+bubbles rising, a green sea turtle swimming just behind him in soft focus,
+shafts of sunlight from the surface.
+
+2A — dawn, cold and quiet: a small fishing boat far out on flat water, seen
+from a distance, a splash and a cluster of rising bubbles where something was
+dropped, the Bunaken shoreline a dark shape on the horizon, one small figure
+at the stern with his back to camera.
+
+2B — the emotional blow: from behind Nara on the pier, he watches Pak Daniel
+step onto Pak Haris's boat, Haris at the tiller. Nara small in the foreground,
+the two men readable but not detailed, morning haze.
+
+3A — Nara underwater holding a small underwater camera, filming a damaged
+patch of reef: shattered coral rubble, a snagged bottom net, silt in the
+water, heavy dark shading, his mask lit by the camera.
+
+3B — confrontation on the pier: Nara facing Pak Haris, holding an open
+ledger book; Haris silent with his eyes down, Pak Daniel standing apart with
+his head lowered, a few villagers watching from a distance, long late
+afternoon shadows.
+
+4A — restoration work in daylight: villagers and Nara lowering an orange
+mooring buoy from a boat, a coral transplant frame with small fragments
+already placed on the seabed below, Pak Haris helping with a rope, hopeful
+open composition.
+
+4B — closing image: Nara standing at the end of the red-and-white pier, seen
+from behind, looking out at the sea, a green sea turtle visible as a small
+shape in the clear water below, calm morning light, wide open sky.
+
+SKETCH STYLE BLOCK: black-and-white storyboard sketch, graphite pencil
+drawing on white paper, loose confident linework with visible construction
+lines, grey marker shading for values, cross-hatching in shadow areas,
+simplified forms, clear silhouette, readable composition, no color,
+16:9 widescreen.
+
+NEGATIVE: color, colored pencil, watercolor, paint wash, tinted paper, 3D
+render, CGI, glossy surfaces, photorealistic skin pores, photographic
+texture, neon glow, solid black ink flood fill, blurry linework, random
+scribbles, messy scratchy noise, watermark, signature, extra text or
+captions beyond the panel labels, tagline text, extra limbs, deformed hands,
+duplicate faces
+```
+
+Catatan:
+
+- Referensi: 1 foto aerial Bunaken. Seed `20261102`.
+- Grid 2×4 dipilih supaya tiap baris terbaca sebagai satu scene saat rapat.
+- Lembar ini **ringkasan alur**, bukan pengganti frame per shot. Scene 1 yang
+  detail tetap pakai prompt 10–12.
+- Kalau panel keluar kurang dari 8, ulangi dengan menambahkan
+  "EXACTLY EIGHT panels, count them" di awal prompt.
+- Wajah Nara paling rawan berubah di panel 1B, 3A, 4A. Kalau melenceng,
+  generate ulang panel itu saja dengan "match the attached character sheet
+  exactly".
 
 ---
 

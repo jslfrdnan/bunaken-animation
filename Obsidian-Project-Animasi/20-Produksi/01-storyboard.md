@@ -15,6 +15,9 @@ Rincian per shot ada di file terpisah per scene. Scene 1 sudah lengkap:
 | 4. Warisan | 35 s | ~9 | ⬜ belum | — |
 | **Total** | **2:25** | **~38** | | |
 
+Lembar ringkas 2 shot per scene (8 panel, satu gambar) untuk membaca alur:
+[[05-storyboard-2shot-per-scene]].
+
 ## Cara membaca shot list
 
 - **Shot** — nomor kelipatan 10 (`010`, `020`, …) agar bisa disisipkan shot baru
