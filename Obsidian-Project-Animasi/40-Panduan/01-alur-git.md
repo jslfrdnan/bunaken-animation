@@ -30,7 +30,7 @@ Ini mengambil perubahan terbaru. **Jangan pernah mulai kerja tanpa ini.**
 
 ```bash
 git add .
-git commit -m "scene-1: blockout terumbu"
+git commit -m "feat(scene-1): blockout terumbu"
 git pull --rebase
 git push
 ```
@@ -82,12 +82,18 @@ Branch untuk hal yang **boleh gagal**. Pekerjaan utama tetap di `main`.
 
 ## Commit message
 
+Pakai **Conventional Commits** (`AGENTS.md` bagian 3):
+
 ```
-scene-1: blockout terumbu dan karang
-char: model nara v001
-docs: jadwal minggu 1
-audio: narasi sementara
-fix: perbaiki path tekstur
+<type>(<scope>): <subject>
+
+feat(char): tambah model nara v001 dari character sheet
+scene(scene-1): blockout terumbu dan karang
+docs(vault): jadwal minggu 1
+asset(audio): narasi sementara 35 detik
+fix(env): perbaiki path tekstur
 ```
 
-Format: `<area>: <perubahan singkat>`. Bahasa Indonesia boleh.
+Type: `feat`, `fix`, `docs`, `asset`, `scene`, `refactor`, `chore`, `build`.
+Scope: `scene-1`…`scene-4`, `char`, `env`, `props`, `audio`, `docs`, `repo`,
+`storyboard`. Subject huruf kecil, imperatif, tanpa titik di akhir.

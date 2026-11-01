@@ -7,14 +7,14 @@ Mulai dari sini:
 ## Proyek
 - [[01-ringkasan]] — apa proyek ini, ketentuan tugas, disclaimer
 - [[02-tagline]] — judul & tagline
-- [[03-tim]] — 9 peran + aturan akuntabilitas
+- [[03-tim]] — 8 peran + aturan akuntabilitas
 - [[04-jadwal]] — milestone & tenggat
 
 ## Cerita
 - [[01-premis]] · [[02-sinopsis]] · [[03-tokoh]] · [[04-dunia-bunaken]] · [[05-pesan-moral]]
 
 ## Produksi
-- [[01-storyboard]] · [[02-shotlist-scene-1]] · [[03-gaya-visual]] · [[04-spesifikasi-teknis]]
+- [[01-storyboard]] · [[02-shotlist-scene-1]] · [[03-gaya-visual]] · [[04-spesifikasi-teknis]] · [[05-storyboard-2shot-per-scene]]
 
 ## Aset
 - [[01-daftar-aset]] · [[02-kredit]] · [[03-prompt-imagegen]]

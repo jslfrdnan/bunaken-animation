@@ -11,6 +11,7 @@ scenes/scene-1.blend          <- MASTER, hanya link/append, milik lead
 assets/env/reef.blend         <- milik Env Artist Underwater
 assets/env/surface.blend      <- milik Env Artist Surface
 assets/char/nara.blend        <- milik Character Artist
+assets/char/daniel.blend      <- milik Character Artist (Scene 1, shot 080)
 assets/char/nara_rig.blend    <- milik Rigger
 assets/look/scene-1-look.blend <- milik Lighting
 ```

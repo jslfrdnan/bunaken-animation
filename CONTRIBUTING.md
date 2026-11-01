@@ -51,15 +51,23 @@ Ringkas: `scene-1_shot-010_nara-dive_v001.blend`
 
 ## 5. Pesan commit
 
-```
-<area>: <apa yang berubah>
+Format **Conventional Commits** (lengkap di `AGENTS.md` bagian 3):
 
-contoh:
-scene-1: blockout terumbu dan karang
-char: rig dasar nara
-docs: jadwal minggu 1
-audio: narasi sementara 35 detik
 ```
+<type>(<scope>): <subject>
+
+<body — jelaskan MENGAPA, bukan sekadar apa>
+```
+
+```
+feat(char): tambah model nara v001 dari character sheet
+asset(env): tambah tekstur pasir 2k dari poly haven
+docs(vault): kunci jadwal animatic kasar ke 2 november
+```
+
+Type: `feat`, `fix`, `docs`, `asset`, `scene`, `refactor`, `chore`, `build`.
+Scope: `scene-1`…`scene-4`, `char`, `env`, `props`, `audio`, `docs`, `repo`,
+`storyboard`.
 
 ## 6. Tenggat dan kredit
 

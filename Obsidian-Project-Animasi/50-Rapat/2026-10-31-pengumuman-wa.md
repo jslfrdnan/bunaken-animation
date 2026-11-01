@@ -22,7 +22,7 @@ Nara, pemuda 19 tahun di Bunaken, kerja sebagai dive guide magang. Terumbu karan
 `git clone https://github.com/jslfrdnan/bunaken-animation.git`
 2. Baca `CONTRIBUTING.md` — aturan mainnya ada di situ.
 3. Buka folder `Obsidian-Project-Animasi/` sebagai vault di Obsidian, mulai dari `Welcome.md`.
-4. Cek `00-Proyek/03-tim.md` — peran kalian ada di situ (masih placeholder, nanti aku isi nama asli).
+4. Cek `00-Proyek/03-tim.md` — peran kalian ada di situ (peran 1, 2, 5 sudah pakai nama asli, sisanya menyusul).
 
 **Target terdekat:**
 📌 **Senin, 2 Nov** — animatic kasar Scene 1, 35 detik, sudah bergerak.

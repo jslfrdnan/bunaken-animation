@@ -25,7 +25,7 @@ Dimulai **Sabtu, 31 Oktober 2026**. Check-in setiap **Jumat**.
 | Hari | Pekerjaan |
 |---|---|
 | Sab 31 | Kickoff, bagi peran, board terisi, style guide |
-| Min 1 | Shot list final, 10 sketsa, blockout Nara + terumbu + permukaan |
+| Min 1 | Shot list final, 10 sketsa, blockout Nara + Pak Daniel + terumbu + permukaan |
 | Sen 2 | **Animatic kasar 35 detik** + narasi sementara |
 
 ## ⚠️ Risiko jadwal

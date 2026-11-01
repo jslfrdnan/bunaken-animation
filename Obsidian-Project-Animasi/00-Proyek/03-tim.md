@@ -5,8 +5,9 @@ status: sebagian-terisi
 
 # Tim & Peran
 
-> **TODO: ganti semua `Anggota N` (2–8) dengan nama asli.**
-> Lead sudah terisi: **Jasiel Wowiling**. Jangan biarkan placeholder ini masuk
+> **TODO: lengkapi nama `Anggota 3, 4, 6, 7, 8` dengan nama asli.**
+> Sudah terisi: **Jasiel Wowiling** (1), **Excel Katuuk** (2),
+> **Yehezkiel Montolalu** (5). Jangan biarkan placeholder ini masuk
 > ke credit film.
 
 ## Struktur: 8 orang, fokus Scene 1
