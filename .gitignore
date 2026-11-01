@@ -16,10 +16,9 @@ __pycache__/
 Thumbs.db
 /tmp/
 
-# Obsidian: jangan commit state pribadi
-Obsidian-Project-Animasi/.obsidian/workspace.json
-Obsidian-Project-Animasi/.obsidian/workspace-mobile.json
-Obsidian-Project-Animasi/.obsidian/cache
+# Obsidian: vault catatan pribadi lead — ada di lokal, TIDAK di repo.
+# Panduan proyek untuk tim ada di PROJECT.md.
+Obsidian-Project-Animasi/
 
 # Render, video, gambar hasil render TIDAK masuk git.
 # Simpan di Google Drive / GitHub Releases, catat link di docs/renders.md
