@@ -44,6 +44,19 @@ Material di file ini ber-fake-user, jadi aman di-*append* ke file departemen:
 World: `WLD_scene-1_underwater` (shot 030–060) dan `WLD_scene-1_surface`
 (shot 010, 020, 070–100).
 
+## Rujukan
+
+Semua acuan kerja tim sekarang ada di `PROJECT.md`, bukan lagi di vault Obsidian
+(vault sudah dikeluarkan dari repo):
+
+| Butuh | Lihat |
+|---|---|
+| Palette, aturan cahaya per scene, larangan gaya | `PROJECT.md` §2 |
+| Resolusi, fps, engine, Color Management | `PROJECT.md` §3 |
+| Daftar aset look & pemiliknya | `PROJECT.md` §5 |
+| Aturan link/append, pack tekstur | `PROJECT.md` §8 |
+| Peran 7 & jalur kritis | `PROJECT.md` §9 |
+
 ## Yang perlu diketahui sebelum mengutak-atik
 
 1. **Panggung uji bukan aset.** Objek `ENV_*`, `FX_*`, `LGT_*`, `CAM_*` di file
