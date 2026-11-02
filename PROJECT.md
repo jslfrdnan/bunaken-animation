@@ -534,7 +534,7 @@ animasi 24 fps → lighting & shading → render MP4 ke Releases.
 | 5 | **Character Artist** | Yehezkiel Montolalu | Nara + Pak Daniel (Scene 1), lalu Haris & crowd | `assets/char/*.blend` kecuali `nara_rig.blend` |
 | 6 | **Rigger & Animator** | Ciputra Lumi | Rig Nara, 10 shot animasi Scene 1 | `assets/char/nara_rig.blend` |
 | 7 | **Lighting & Shading** | Vaughn Toy | Look dev, world, warna air | `assets/look/scene-1-look.blend` |
-| 8 | **Post-Production (Audio + Edit)** | *belum diisi* | Narasi, musik, SFX, potong animatic | `assets/audio/scene-1/` + `renders/animatic/` |
+| 8 | **Post-Production (Audio + Edit)** | Gian Keintjem | Narasi, musik, SFX, potong animatic | `assets/audio/scene-1/` + `renders/animatic/` |
 
 ### Siapa menunggu siapa
 
