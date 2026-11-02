@@ -368,8 +368,8 @@ sebenarnya milik peran 7 di `assets/look/scene-1-look.blend`. Jangan dianggap fi
 
 | Aset | File | Pemilik |
 |---|---|---|
-| World HDRI + warna air | `assets/look/scene-1-look.blend` | Lighting & Shading |
-| Shader karang, pasir, air | `assets/look/` | Lighting & Shading |
+| World + warna air (gradient, tanpa HDRI) | `assets/look/scene-1-look.blend` | Vaughn Toy |
+| Shader karang, pasir, air | `assets/look/` | Vaughn Toy |
 | Narasi & SFX & musik Scene 1 | `assets/audio/scene-1/` | Post-Production (Audio + Edit) |
 
 ### Aset pihak ketiga
@@ -533,7 +533,7 @@ animasi 24 fps → lighting & shading → render MP4 ke Releases.
 | 4 | **Env Artist — Surface** | Jasiel Wowiling | Pulau, kampung, dive shop, perahu, jaring | `assets/env/surface.blend` |
 | 5 | **Character Artist** | Yehezkiel Montolalu | Nara + Pak Daniel (Scene 1), lalu Haris & crowd | `assets/char/*.blend` kecuali `nara_rig.blend` |
 | 6 | **Rigger & Animator** | *belum diisi* | Rig Nara, 10 shot animasi Scene 1 | `assets/char/nara_rig.blend` |
-| 7 | **Lighting & Shading** | *belum diisi* | Look dev, world, warna air | `assets/look/scene-1-look.blend` |
+| 7 | **Lighting & Shading** | Vaughn Toy | Look dev, world, warna air | `assets/look/scene-1-look.blend` |
 | 8 | **Post-Production (Audio + Edit)** | *belum diisi* | Narasi, musik, SFX, potong animatic | `assets/audio/scene-1/` + `renders/animatic/` |
 
 ### Siapa menunggu siapa
@@ -609,7 +609,7 @@ STORYBOARD           Excel Katuuk
 ENVIRONMENT          Jasiel Wowiling
 KARAKTER             Yehezkiel Montolalu
 RIGGING & ANIMASI    [nama]
-LIGHTING & SHADING   [nama]
+LIGHTING & SHADING   Vaughn Toy
 AUDIO, EDIT & DOKUM. [nama], Jasiel Wowiling
 
 NARASI               [nama pengisi suara]
