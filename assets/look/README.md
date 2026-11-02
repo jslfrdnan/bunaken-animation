@@ -90,6 +90,12 @@ Semua acuan kerja tim sekarang ada di `PROJECT.md`, bukan lagi di vault Obsidian
 8. **Jangan timpa `ob.scale` objek hasil append.** Simpan skala aslinya; objek
    blockout punya skala non-seragam (penyu = 0,48 / 0,40 / 0,15). Menggantinya
    dengan 1,1 membuat penyu jadi bola 2,2 m.
+9. **Memindahkan objek yang punya anak akan menggeser anaknya dua kali.**
+   `matrix_parent_inverse` menyimpan posisi induk saat di-parent. Kalau induk
+   digeser 5,54 m lalu anaknya juga ikut digeser manual, sirip ekor ikan turun
+   11 m dan hilang dari frame (pernah terjadi: semua ikan tampak tanpa ekor).
+   Setelah memindahkan induk, cukup `anak.matrix_parent_inverse.identity()`
+   dan `anak.location = (0,0,0)` — jangan ikut menggeser anak.
 
 ## Plate shot 030 (v002)
 
@@ -116,9 +122,11 @@ Catatan untuk Anggota 3 (`reef.blend`): warna material ikan sudah saya ukur —
 `MAT_fish_kakatua` `#3E8E6E` (persis hijau terumbu, aman), `MAT_fish_cakalang`
 `#4A6E96`, `MAT_fish_hiu` `#6E7B80`, tetapi `MAT_fish_goropa-merah` `#C0392B`
 merah menyala, bukan oranye karang `#E4713C`. Merah jenuh juga yang pertama
-hilang di bawah air, jadi secara fisik kurang masuk akal. Selain itu geometri
-ikan masih kotak gepeng sehingga terbaca seperti balon dari samping. Keduanya
-bukan wewenang saya untuk ubah di file itu.
+hilang di bawah air, jadi secara fisik kurang masuk akal.
+
+Model ikannya sendiri **lengkap** — badan, ekor, dan sirip punggung sebagai
+objek terpisah yang di-parent ke badan. Sempat terlihat "tanpa ekor" di plate
+karena kesalahan saya, bukan karena modelnya (lihat poin 9 di atas).
 
 ## Pratinjau
 
