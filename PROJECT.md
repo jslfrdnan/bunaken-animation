@@ -357,8 +357,8 @@ halus, atau animasi.
 `ENV_surface_water-placeholder` adalah **bidang air datar sementara** — shader air
 sebenarnya milik peran 7 di `assets/look/scene-1-look.blend`. Jangan dianggap final.
 
-**Isi `boats.blend` (v003, 2 Nov 2026):** satu scene `boats`, satu koleksi
-`PRP_boats`, **75 objek, satu perahu saja** (perahu bercadik). Titik nol objek
+**Isi `boats.blend` (v004, 3 Nov 2026):** satu scene `boats`, satu koleksi
+`PRP_boats`, **85 objek, satu perahu saja** (perahu bercadik). Titik nol objek
 ada di **garis air (z 0)**, jadi tinggal ditaruh di permukaan air scene tanpa
 digeser.
 
@@ -367,15 +367,17 @@ lambung 0,99 m, tinggi haluan 1,11 m, sarat 0,27 m, jarak cadik 2,68 m):
 
 | Bagian | Objek | Catatan |
 |---|---|---|
-| Lambung | `PRP_boat_cadik_hull` | loft 80 × 20 penampang, penampang V dengan lunas datar 44 mm; linggi haluan miring ke depan (rake 0,24 m) dan linggi buritan miring ke belakang. Solidify 3 slot: luar putih, dalam biru, bibir kayu gelap |
+| Lambung luar | `PRP_boat_cadik_hull` | loft 80 × 20 penampang, penampang V dengan lunas datar 44 mm; linggi haluan miring ke depan (rake 0,24 m) dan linggi buritan miring ke belakang. Putih, normal menghadap keluar |
+| Lambung dalam | `..._hull-inner` | permukaan kedua 34 mm di dalam, biru, normal menghadap ke ruang dalam. **Tanpa Solidify** — dua cangkang dibangun eksplisit supaya warna tidak tertukar di ujung lancip |
 | Garis papan | `..._plank-0.34-port/starboard`, `..._plank-0.63-*` | 4 pita tipis krem mengikuti permukaan lambung, memecah bidang putih |
-| Bibir | `..._gunwale-port`, `..._-starboard` | pita kayu gelap di atas sheer, dua sisi terpisah |
+| Bibir | `..._gunwale-port`, `..._-starboard` | pita kayu gelap di atas sheer, dua sisi terpisah, lebarnya dijepit supaya tidak menyilang di haluan |
 | Linggi | `..._stem`, `..._sternpost` | kayu gelap, menutup pertemuan sisi di haluan/buritan |
-| Dek | `..._deck`, `..._seam--4`…`_seam-4` | dek kayu setinggi z 0,30 m, mengikuti lebar lambung, 8 garis sambung papan |
+| Dek | `..._deck`, `..._seam--4`…`_seam-4` | dek kayu setinggi z 0,30 m, mengikuti lebar lambung dalam, 8 garis sambung papan |
+| Geladak ujung | `..._foredeck`, `..._afterdeck`, `..._deckbulk-fore/aft` | geladak kecil di haluan & buritan pada 5 cm di bawah bibir, menutup rongga ujung |
 | Bangku | `..._thwart-stern`, `..._thwart-mid` + 4 kaki | papan melintang di atas dek |
-| Kabin | `..._cabin`, `..._cabin-roof`, `..._cabin-rail--1/1` | kotak kayu 1,00 × 0,54 × 0,31 m di tengah perahu |
+| Kabin | `..._cabin`, `..._cabin-roof`, `..._cabin-bench`, `..._cabin-rail--1/1` | kotak kayu 1,00 × 0,54 × 0,31 m + papan duduk di atasnya |
 | Cadik | `..._float-port`, `..._-starboard` | bambu 5,05 m, ujung melengkung ke atas dan dicat merah |
-| Balok cadik | `..._boom-aft/fore-port/starboard`, `..._lashing-*` | 4 lengan teal melengkung 0,36 m di atas bibir + ikatan krem di pelampung |
+| Balok cadik | `..._boom-aft/fore-port/starboard`, `..._boom-pad-*`, `..._lashing-*` | 4 lengan teal melengkung 0,36 m di atas bibir, bantalan kayu di titik tumpu, ikatan krem di pelampung |
 | Kanopi | `..._canopy`, `..._canopy-trim`, `..._beam-a/f`, 4 × `..._post-*`, 4 × `..._canopy-stay-*` | kain 2,24 × 1,20 m, trim krem, balok bambu melintang, tiang belang krem/merah/kuning |
 | Tiang bendera | `..._mast`, `..._flag`, `..._mast2`, `..._pennant` | tiang haluan 2,30 m + bendera merah; tiang buritan 2,05 m + panji merah |
 | Rumbai | `..._tassel-head`, `..._tassel-ring`, `..._tassel-00`…`-12` | kepala biru tua + rumbai oranye 0,57 m di linggi haluan |
