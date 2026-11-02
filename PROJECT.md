@@ -532,7 +532,7 @@ animasi 24 fps → lighting & shading → render MP4 ke Releases.
 | 3 | **Env Artist — Underwater** | Jasiel Wowiling | Terumbu, karang, penyu, ikan, god rays | `assets/env/reef.blend` |
 | 4 | **Env Artist — Surface** | Jasiel Wowiling | Pulau, kampung, dive shop, perahu, jaring | `assets/env/surface.blend` |
 | 5 | **Character Artist** | Yehezkiel Montolalu | Nara + Pak Daniel (Scene 1), lalu Haris & crowd | `assets/char/*.blend` kecuali `nara_rig.blend` |
-| 6 | **Rigger & Animator** | *belum diisi* | Rig Nara, 10 shot animasi Scene 1 | `assets/char/nara_rig.blend` |
+| 6 | **Rigger & Animator** | Ciputra Lumi | Rig Nara, 10 shot animasi Scene 1 | `assets/char/nara_rig.blend` |
 | 7 | **Lighting & Shading** | Vaughn Toy | Look dev, world, warna air | `assets/look/scene-1-look.blend` |
 | 8 | **Post-Production (Audio + Edit)** | *belum diisi* | Narasi, musik, SFX, potong animatic | `assets/audio/scene-1/` + `renders/animatic/` |
 
