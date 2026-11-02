@@ -20,8 +20,10 @@ Simpan file di tempat berikut, lalu catat tautannya di tabel ini.
 
 | Tanggal | Item | Versi | Tautan | Catatan |
 |---|---|---|---|---|
-| — | Animatic Scene 1 (kasar) | v001 | _belum ada_ | target Senin, 2 Nov 2026 |
-| — | Animatic Scene 1 (audio penuh) | v002 | _belum ada_ | target Jumat, 6 Nov 2026 |
+| 2 Nov 2026 | Render cek look dev shot 030 (stills) | v002 | tidak di-commit | hasil Vaughn Toy, plate di `assets/look/scene-1-look.blend` |
+| 2 Nov 2026 | Render cek aset environment (terumbu, pulau, perahu) | v001 | tidak di-commit | QA internal lead — bukan untuk ditayangkan |
+| — | Animatic Scene 1 (kasar) | v001 | _belum ada_ | tenggat 2 Nov terlewat; digabung ke v002 |
+| — | Animatic Scene 1 (audio penuh) | v002 | _belum ada_ | target Jumat, 6 Nov 2026; fallback 13 Nov |
 
 ## Aturan penamaan file render
 

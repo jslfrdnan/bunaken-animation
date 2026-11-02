@@ -51,5 +51,7 @@ storyboard/               gambar frame storyboard
 
 ## Status
 
-Scene 1 — animatic kasar (target 2 November 2026). Rincian tugas dan tenggat
-ada di `PROJECT.md` §9–§10.
+Scene 1 — blockout aset selesai (terumbu, pulau, dermaga, dive shop, perahu) dan
+look dev v002 sudah ada. Yang belum: master `scenes/scene-1.blend`, rig Nara,
+animasi, dan audio. Animatic 2 November terlewat; tanggal baru belum ditetapkan.
+Rincian tugas dan tenggat ada di `PROJECT.md` §9–§10.

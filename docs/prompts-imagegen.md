@@ -12,7 +12,7 @@ menyusun alur storyboard) + **15 prompt satuan** untuk frame dan aset.
 
 | Prompt | Gaya | Untuk apa |
 |---|---|---|
-| **00** (lembar 8 panel, 2 shot per scene) | **Sketsa hitam-putih** | Menyusun **alur storyboard 4 scene sekali jadi**. Ringkas, untuk rapat dan pengecekan alur — bukan acuan produksi per shot. |
+| **00** (lembar 8 panel v001, lalu 9 panel v002) | **Sketsa hitam-putih** | Menyusun **alur storyboard 4 scene sekali jadi**. Ringkas, untuk rapat dan pengecekan alur — bukan acuan produksi per shot. |
 | **01–09** (key art, character sheet, environment) | **Berwarna** — stylized semi-realistis | Acuan **konsep akhir**: bentuk, proporsi, warna, material. Dipakai Anggota 5 (Karakter) & 7 (Lighting). |
 | **10–15** (frame storyboard) | **Sketsa hitam-putih** | Acuan **framing & komposisi** per shot. Sketsa hanya bahasa penyajian storyboard — **film final tetap berwarna** sesuai palette di `PROJECT.md` §2. |
 
@@ -73,15 +73,30 @@ limbs, deformed hands, duplicate faces
 
 ---
 
-## 00 — Lembar 2 shot per scene (8 panel, sekali jadi)
+## 00 — Lembar ringkas per scene (v001 8 panel → v002 9 panel)
 
-Dipakai untuk **menyusun storyline storyboard** dari sinopsis di `PROJECT.md` §1.2:
-satu baris = satu scene, panel kiri = shot pembuka scene, panel kanan = shot
-titik belok scene. Satu kali generate, satu gambar.
+Dipakai untuk **menyusun storyline storyboard** dari sinopsis di `PROJECT.md` §1.2.
+Versi pertama (v001) memakai 8 panel, 2 shot per scene. Revisi **v002** menambah
+satu panel di Scene 1 supaya bukaannya tidak terlalu melompat, jadi totalnya
+**9 panel** dalam grid 3 kolom × 3 baris:
 
-Output: `storyboard/frames/storyboard-2shot-per-scene_v001.jpg`
+| Baris | Panel kiri | Panel tengah | Panel kanan |
+|---|---|---|---|
+| atas | 1A — aerial dermaga & Manado Tua | 1B — Nara menyelam + penyu | 1C — Pak Daniel menjaring di dive shop |
+| tengah | 2A — perahu Haris di subuh | 2B — Nara melihat Daniel naik perahu Haris | 3A — Nara memotret karang rusak |
+| bawah | 3B — Nara berdebat dengan Daniel | 4A — warga memasang mooring buoy | 4B — penyu kembali, Nara di dermaga |
+
+**v002 adalah acuan yang dipakai sekarang.** v001 disimpan hanya sebagai riwayat.
+
+Output: `storyboard/frames/storyboard-2shot-per-scene_v002.jpg`
+(v001: `storyboard-2shot-per-scene_v001.jpg`)
 (hasil Gemini keluar sebagai JPEG; simpan apa adanya, jangan di-rename ke
 `.png`)
+
+Untuk v002, tambahkan instruksi ini ke prompt 00 di bawah: *"arranged in a grid
+of 3 columns and 3 rows, labels 1A, 1B, 1C, 2A, 2B, 3A, 3B, 4A, 4B"* — dan
+ganti isi panel 1C, 3B, 4A sesuai tabel di atas. Prompt 00 di bawah adalah teks
+asli untuk lembar v001.
 
 ```
 A single storyboard sheet for a 4-scene short animated film set in Bunaken

@@ -55,8 +55,10 @@ AI **tidak boleh** langsung memodelkan dari deskripsi teks. Langkah wajib:
 5. Gambar yang sudah disetujui disimpan di `storyboard/refs/` dengan pola nama
    `ref-<objek>_v001.jpg`, supaya setiap sesi AI berikutnya memakai acuan yang
    sama. Acuan yang sudah ada: `ref-bunaken-aerial_v001.jpg` (bentuk dermaga,
-   bangunan, siluet Manado Tua, warna air) dan `ref-reef-underwater_v001.jpg`
-   (bentuk karang bercabang & massif, warna ikan, warna air).
+   bangunan, siluet Manado Tua, warna air), `ref-reef-underwater_v001.jpg`
+   (bentuk karang bercabang & massif, warna ikan, warna air), dan
+   `ref-perahu-bercadik_v001.jpg` (proporsi lambung, cadik, balok bambu, kanopi,
+   tiang bendera, warna cat perahu).
 
 **Pengecualian yang diizinkan lead (1 Nov 2026):** aset environment prosedural
 (karang, pulau, dermaga, perahu) boleh dibuat dari acuan gabungan — foto di

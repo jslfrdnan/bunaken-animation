@@ -32,7 +32,7 @@ SUTRADARA            Jasiel Wowiling
 STORYBOARD           Excel Katuuk
 ENVIRONMENT          Jasiel Wowiling
 KARAKTER             Yehezkiel Montolalu
-RIGGING & ANIMASI    [nama]
+RIGGING & ANIMASI    Ciputra Lumi
 LIGHTING & SHADING   Vaughn Toy
 AUDIO, EDIT & DOKUM. [nama], Jasiel Wowiling
 
@@ -65,13 +65,19 @@ Setiap file dari luar (model, tekstur, HDRI, musik, SFX) masuk tabel ini
 |---|---|---|---|
 | `storyboard/refs/ref-bunaken-aerial_v001.jpg` | internet, sumber tidak tercatat | **tidak diketahui** | acuan bentuk saja — **tidak masuk film** |
 | `storyboard/refs/ref-reef-underwater_v001.jpg` | internet, sumber tidak tercatat | **tidak diketahui** | acuan bentuk & warna — **tidak masuk film** |
+| `storyboard/refs/ref-perahu-bercadik_v001.jpg` | internet, sumber tidak tercatat | **tidak diketahui** | acuan bentuk & warna perahu — **tidak masuk film** |
 
-> ⚠️ Kedua foto ini **melanggar aturan lisensi di tabel bawah** (tidak ada
+> ⚠️ Ketiga foto ini **melanggar aturan lisensi di tabel bawah** (tidak ada
 > lisensi jelas). Lead memutuskan tetap menyimpannya karena dibutuhkan seluruh
 > tim sebagai acuan bentuk dan warna. Batasnya: **hanya untuk melihat, tidak
 > pernah dipakai sebagai tekstur, latar, atau bagian dari film**, dan tidak
 > dipublikasikan di luar repo. Kalau nanti perlu dipamerkan ke publik, ganti
 > dengan foto milik sendiri atau berlisensi CC0.
+
+Batas praktisnya: foto perahu dipakai **hanya** untuk membaca proporsi lambung,
+bentuk cadik, susunan kanopi, dan warna cat. Semua geometri dibangun ulang dari
+nol di Blender sebagai mesh baru — tidak ada bagian foto yang di-*project*,
+di-*texture*, atau dijadikan *image plane* di scene mana pun.
 
 ### Aset 3D yang dibuat sendiri
 
@@ -130,6 +136,6 @@ Tautan:
 
 - [ ] Nama kelompok
 - [ ] Program studi / universitas
-- [ ] Nama peran 6, 8
+- [ ] Nama peran 8
 - [ ] Nama pengisi suara narasi
 - [ ] Daftar aset pihak ketiga (§3) — diisi saat aset mulai diambil
