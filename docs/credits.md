@@ -33,7 +33,7 @@ STORYBOARD           Excel Katuuk
 ENVIRONMENT          Jasiel Wowiling
 KARAKTER             Yehezkiel Montolalu
 RIGGING & ANIMASI    [nama]
-LIGHTING & SHADING   [nama]
+LIGHTING & SHADING   Vaughn Toy
 AUDIO, EDIT & DOKUM. [nama], Jasiel Wowiling
 
 NARASI               [nama pengisi suara]
@@ -130,6 +130,6 @@ Tautan:
 
 - [ ] Nama kelompok
 - [ ] Program studi / universitas
-- [ ] Nama peran 6, 7, 8
+- [ ] Nama peran 6, 8
 - [ ] Nama pengisi suara narasi
 - [ ] Daftar aset pihak ketiga (§3) — diisi saat aset mulai diambil
