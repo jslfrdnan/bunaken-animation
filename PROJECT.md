@@ -139,9 +139,9 @@ potong kecil: dermaga ±100 m, dive shop, beberapa rumah, satu titik selam 5–1
 dan satu garis pantai untuk aerial. Angka luas tidak perlu masuk narasi.
 
 **Elemen visual yang wajib muncul:** dermaga berpagar merah-putih, Gunung Manado
-Tua di horizon, air tosca dangkal, perahu motor kecil dan satu speedboat putih,
-vegetasi rapat sampai pantai, terumbu karang dan penyu hijau, mooring buoy oranye
-di Scene 4.
+Tua di horizon, air tosca dangkal, **perahu bercadik** (lambung putih, cadik kayu
+di kiri-kanan, kanopi kain) dan satu speedboat putih, vegetasi rapat sampai
+pantai, terumbu karang dan penyu hijau, mooring buoy oranye di Scene 4.
 
 **Praktik yang digambarkan:** bom ikan (bahan peledak di terumbu; karang hancur
 total) dan jaring dasar (menyapu karang, menangkap semua ukuran). Keduanya nyata
@@ -209,9 +209,16 @@ di semua shot · lens flare setiap ada matahari · kamera goyang di bawah laut
 
 ### Detail yang membuat terasa Bunaken
 
-Dermaga berpagar merah-putih (bukan kayu polos) · perahu motor fiberglass kecil
-putih/biru sesuai foto acuan · vegetasi rapat sampai garis pantai · Gunung Manado
-Tua berbentuk kerucut di horizon · mooring buoy oranye di Scene 4.
+Dermaga berpagar merah-putih (bukan kayu polos) · **perahu bercadik** sesuai foto
+acuan: lambung putih panjang dengan bibir kayu gelap, bagian dalam dicat biru,
+dek papan kayu, dua pelampung cadik dengan ujung merah, balok cadik bambu
+melengkung, kanopi kain di atas empat tiang berhias, tiang bendera di haluan
+dengan bendera merah · vegetasi rapat sampai garis pantai · Gunung Manado Tua
+berbentuk kerucut di horizon · mooring buoy oranye di Scene 4.
+
+Perahu bercadik **bukan** pilihan sembarangan: itu yang membuat frame langsung
+terbaca "nelayan Bunaken", bukan "kapal pesiar". Speedboat putih tetap ada, tapi
+hanya untuk dive shop — dipakai sekali di shot 010 dan tidak dipakai Nara.
 
 ### Konsistensi antar-artist
 
@@ -333,7 +340,7 @@ halus, atau animasi.
 | Dive shop (bangunan 2 lantai atap merah) | `assets/env/surface.blend` | Jasiel Wowiling | 1 | 🟨 |
 | Rumah kampung + vegetasi | `assets/env/surface.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
 | Gunung Manado Tua | `assets/env/surface.blend` | Jasiel Wowiling | 1 | 🟨 |
-| Perahu motor kecil + speedboat | `assets/props/boats.blend` | Jasiel Wowiling | 1, 2 | 🟨 |
+| Perahu bercadik | `assets/props/boats.blend` | Jasiel Wowiling | 1, 2 | ✅ |
 | Karang rusak (akibat bom & jaring) | `assets/env/reef.blend` | Jasiel Wowiling | 2, 4 | ⬜ |
 | Kerangka transplantasi karang | `assets/props/` | Jasiel Wowiling | 4 | ⬜ |
 | Mooring buoy | `assets/props/` | Jasiel Wowiling | 4 | ⬜ |
@@ -350,13 +357,57 @@ halus, atau animasi.
 `ENV_surface_water-placeholder` adalah **bidang air datar sementara** — shader air
 sebenarnya milik peran 7 di `assets/look/scene-1-look.blend`. Jangan dianggap final.
 
+**Isi `boats.blend` (v004, 3 Nov 2026):** satu scene `boats`, satu koleksi
+`PRP_boats`, **85 objek, satu perahu saja** (perahu bercadik). Titik nol objek
+ada di **garis air (z 0)**, jadi tinggal ditaruh di permukaan air scene tanpa
+digeser.
+
+Perahu bercadik (di y = 0, haluan menghadap +X, panjang total 7,42 m, lebar
+lambung 0,99 m, tinggi haluan 1,11 m, sarat 0,27 m, jarak cadik 2,68 m):
+
+| Bagian | Objek | Catatan |
+|---|---|---|
+| Lambung luar | `PRP_boat_cadik_hull` | loft 80 × 20 penampang, penampang V dengan lunas datar 44 mm; linggi haluan miring ke depan (rake 0,24 m) dan linggi buritan miring ke belakang. Putih, normal menghadap keluar |
+| Lambung dalam | `..._hull-inner` | permukaan kedua 34 mm di dalam, biru, normal menghadap ke ruang dalam. **Tanpa Solidify** — dua cangkang dibangun eksplisit supaya warna tidak tertukar di ujung lancip |
+| Garis papan | `..._plank-0.34-port/starboard`, `..._plank-0.63-*` | 4 pita tipis krem mengikuti permukaan lambung, memecah bidang putih |
+| Bibir | `..._gunwale-port`, `..._-starboard` | pita kayu gelap di atas sheer, dua sisi terpisah, lebarnya dijepit supaya tidak menyilang di haluan |
+| Linggi | `..._stem`, `..._sternpost` | kayu gelap, menutup pertemuan sisi di haluan/buritan |
+| Dek | `..._deck`, `..._seam--4`…`_seam-4` | dek kayu setinggi z 0,30 m, mengikuti lebar lambung dalam, 8 garis sambung papan |
+| Geladak ujung | `..._foredeck`, `..._afterdeck`, `..._deckbulk-fore/aft` | geladak kecil di haluan & buritan pada 5 cm di bawah bibir, menutup rongga ujung |
+| Bangku | `..._thwart-stern`, `..._thwart-mid` + 4 kaki | papan melintang di atas dek |
+| Kabin | `..._cabin`, `..._cabin-roof`, `..._cabin-bench`, `..._cabin-rail--1/1` | kotak kayu 1,00 × 0,54 × 0,31 m + papan duduk di atasnya |
+| Cadik | `..._float-port`, `..._-starboard` | bambu 5,05 m, ujung melengkung ke atas dan dicat merah |
+| Balok cadik | `..._boom-aft/fore-port/starboard`, `..._boom-pad-*`, `..._lashing-*` | 4 lengan teal melengkung 0,36 m di atas bibir, bantalan kayu di titik tumpu, ikatan krem di pelampung |
+| Kanopi | `..._canopy`, `..._canopy-trim`, `..._beam-a/f`, 4 × `..._post-*`, 4 × `..._canopy-stay-*` | kain 2,24 × 1,20 m, trim krem, balok bambu melintang, tiang belang krem/merah/kuning |
+| Tiang bendera | `..._mast`, `..._flag`, `..._mast2`, `..._pennant` | tiang haluan 2,30 m + bendera merah; tiang buritan 2,05 m + panji merah |
+| Rumbai | `..._tassel-head`, `..._tassel-ring`, `..._tassel-00`…`-12` | kepala biru tua + rumbai oranye 0,57 m di linggi haluan |
+| Tali | `..._rope-fore/aft/guy--1/1` | 6 tali tipis kayu gelap: tiang ke kanopi, tiang buritan ke dek |
+
+Catatan teknis:
+
+- Semua material diawali `MAT_boat_*`, warna hex sRGB dikonversi ke linear.
+  **Tidak ada tekstur** — semuanya warna solid, jadi tidak ada path gambar yang
+  bisa putus. 15 material: lambung putih, dalam biru, kayu gelap, kayu dek,
+  kayu tiang, teal, krem, merah, kuning, pelampung putih, ujung merah, kain
+  kanopi, trim kanopi, rumbai oranye, rumbai biru.
+- **Speedboat tidak ada lagi di file ini.** Model speedboat dive shop
+  (sebelumnya `PRP_speed_*` + `MAT_speed_*`) sudah dihapus atas permintaan lead;
+  cerita di §1.3/§2 masih menyebut speedboat putih di dermaga, jadi kalau shot
+  itu tetap dipakai, speedboat harus dimodelkan terpisah.
+- Kamera `CAM_preview`, lampu `LGT_sun`, `LGT_fill`, `LGT_boat-deck`, world
+  `WLD_boats`. Setelan render: EEVEE, 1920×1080, 24 fps, view transform
+  **Standard**.
+- Perahu bercadik dibangun dari acuan bentuk & warna
+  `storyboard/refs/ref-perahu-bercadik_v001.jpg`; tidak ada bagian foto yang
+  dipakai sebagai tekstur.
+
 ### Karakter
 
-| Aset | File | Pemilik | Scene |
-|---|---|---|---|
-| Nara (model) | `assets/char/nara.blend` | Character Artist | 1, 2, 3, 4 |
-| Nara (rig) | `assets/char/nara_rig.blend` | Rigger & Animator | 1, 2, 3, 4 |
-| Pak Daniel | `assets/char/daniel.blend` | Character Artist | 1, 2, 3, 4 |
+| Aset | File | Pemilik | Scene | Status |
+|---|---|---|---|---|
+| Nara (model) | `assets/char/nara.blend` | Yehezkiel Montolalu | 1, 2, 3, 4 | 🟨 |
+| Nara (rig) | `assets/char/nara_rig.blend` | Ciputra Lumi | 1, 2, 3, 4 | ⬜ |
+| Pak Daniel | `assets/char/daniel.blend` | Yehezkiel Montolalu | 1, 2, 3, 4 | 🟨 |
 | Pak Haris | `assets/char/haris.blend` | Character Artist | 2, 3, 4 |
 | Warga & anak-anak (low detail) | `assets/char/crowd.blend` | Character Artist | 2, 3, 4 |
 | Peralatan selam | `assets/props/divegear.blend` | Character Artist | 1, 3 |
@@ -366,11 +417,15 @@ sebenarnya milik peran 7 di `assets/look/scene-1-look.blend`. Jangan dianggap fi
 
 ### Look & audio
 
-| Aset | File | Pemilik |
-|---|---|---|
-| World + warna air (gradient, tanpa HDRI) | `assets/look/scene-1-look.blend` | Vaughn Toy |
-| Shader karang, pasir, air | `assets/look/` | Vaughn Toy |
-| Narasi & SFX & musik Scene 1 | `assets/audio/scene-1/` | Post-Production (Audio + Edit) |
+| Aset | File | Pemilik | Status |
+|---|---|---|---|
+| World bawah laut + world permukaan (`WLD_*`) | `assets/look/scene-1-look.blend` | Vaughn Toy | 🟨 |
+| Shader air, pasir, karang, batu (`SHD_*`) | `assets/look/scene-1-look.blend` | Vaughn Toy | 🟨 |
+| Narasi & SFX & musik Scene 1 | `assets/audio/scene-1/` | peran 8 (**belum ada orangnya**) | ⬜ |
+
+`scene-1-look.blend` adalah **sumber setting render**. Salin dari situ: EEVEE Next,
+1920×1080, 24 fps, view transform **Standard** (bukan AgX). Catatan teknis ada di
+`assets/look/README.md`. Kalau setting beda, warna antar-artist ikut beda.
 
 ### Aset pihak ketiga
 
@@ -567,8 +622,8 @@ Dimulai 31 Oktober 2026. Check-in setiap Jumat.
 | Tanggal | Target |
 |---|---|
 | 31 Okt | Kickoff, struktur repo, peran dibagi |
-| **2 Nov** | **Animatic kasar Scene 1** (blockout, narasi sementara) |
-| **6 Nov** | **Animatic penuh Scene 1** (audio lengkap) |
+| ~~2 Nov~~ | ~~Animatic kasar Scene 1~~ **terlewat** — digabung ke 6 Nov |
+| **6 Nov** | **Animatic Scene 1** (audio lengkap) — **tenggat baru belum ditetapkan** |
 | 13 Nov | Buffer Scene 1 kalau 6 Nov meleset |
 | 20 Nov | Animatic Scene 2 |
 | 4 Des | Animatic Scene 3 |
@@ -576,9 +631,11 @@ Dimulai 31 Oktober 2026. Check-in setiap Jumat.
 | 22 Des | Render final + gabung (2:25) |
 | 23 Des | Credit, subtitle, QC |
 
-Versi kasar 2 November tidak boleh meleset — itu bukti progres. Kalau di check-in
-4 November progres audio atau animasi belum 70%, target 6 November otomatis
-bergeser ke 13 November.
+**Status 2 Nov 2026:** milestone animatic belum tercapai dan tanggal barunya
+belum diputuskan. Dua penghalang pasti: peran 8 belum ada orangnya
+(`assets/audio/scene-1/` kosong) dan rig Nara belum mulai. Yang tidak boleh
+meleset sekarang: **ada sesuatu yang bisa diputar** sebelum check-in Jumat
+6 November — sekasar apa pun — sebagai bukti progres.
 
 ---
 
