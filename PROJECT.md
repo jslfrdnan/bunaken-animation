@@ -339,6 +339,7 @@ halus, atau animasi.
 | Dermaga 104 m berpagar merah-putih | `assets/env/surface.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
 | Dive shop (bangunan 2 lantai atap merah) | `assets/env/surface.blend` | Jasiel Wowiling | 1 | 🟨 |
 | Rumah kampung + vegetasi | `assets/env/surface.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
+| Pohon kelapa + mangrove | `assets/env/vegetation.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
 | Gunung Manado Tua | `assets/env/surface.blend` | Jasiel Wowiling | 1 | 🟨 |
 | Perahu bercadik | `assets/props/boats.blend` | Jasiel Wowiling | 1, 2 | ✅ |
 | Karang rusak (akibat bom & jaring) | `assets/env/reef.blend` | Jasiel Wowiling | 2, 4 | ⬜ |
@@ -353,6 +354,14 @@ halus, atau animasi.
 **Isi `surface.blend` saat ini:** `ENV_surface_island`, `_pier-deck`, `_pier-posts`,
 `_pier-railing`, `_dive-shop`, `_white-roof-annex`, `_village-houses`,
 `_manado-tua`, `_water-placeholder`, 26 objek vegetasi.
+
+**Isi `vegetation.blend` (8 Nov 2026):** `ENV_veg_palm-trunk`, `_fronds`,
+`_coconuts` (pohon kelapa, origin di pangkal batang z 0, tinggi ±10 m) dan
+`ENV_veg_mangrove-wood`, `_canopy` (mangrove, origin di garis air z 0, tinggi
+±4,9 m, akar tunjang sampai ±3 m dari batang). Dibangun prosedural oleh
+`scripts/build-vegetation.py`; tanpa tekstur. Acuan bentuk & warna:
+`storyboard/refs/ref-pohon-kelapa_v001.jpg` dan
+`ref-pohon-mangrove_v001.jpg`.
 
 `ENV_surface_water-placeholder` adalah **bidang air datar sementara** — shader air
 sebenarnya milik peran 7 di `assets/look/scene-1-look.blend`. Jangan dianggap final.
