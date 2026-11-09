@@ -32,7 +32,8 @@ Model Blender diekspor ke `public/models/` untuk komposisi `Scene1ThreeD`:
 | File | Isi | Status |
 |---|---|---|
 | `env-surface.glb` | pulau, dermaga, dive shop, 360 kelapa + 40 mangrove | dipakai |
-| `env-reef.glb` | karang, 6 jenis ikan, penyu | dipakai |
+| `env-reef.glb` | karang, 6 jenis ikan, penyu placeholder | dipakai |
+| `sea-turtle.glb` | penyu hijau dari `sea_turtle.blend` | dipakai |
 | `boat.glb` | perahu bercadik | dipakai |
 | `char-nara.glb`, `char-daniel.glb` | blockout karakter | dipakai |
 | `env-palm.glb` | pohon kelapa, origin di pangkal batang | **baru, siap dipakai** |

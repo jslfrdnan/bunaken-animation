@@ -12,7 +12,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
  * dengan yang dipakai di file Blender.
  */
 
-export type AssetKey = "surface" | "reef" | "boat" | "nara" | "daniel";
+export type AssetKey = "surface" | "reef" | "boat" | "nara" | "daniel" | "turtle";
 
 export const ASSET_FILES: Record<AssetKey, string> = {
   surface: "models/env-surface.glb",
@@ -20,6 +20,7 @@ export const ASSET_FILES: Record<AssetKey, string> = {
   boat: "models/boat.glb",
   nara: "models/char-nara.glb",
   daniel: "models/char-daniel.glb",
+  turtle: "models/sea-turtle.glb",
 };
 
 const KEYS = Object.keys(ASSET_FILES) as AssetKey[];
@@ -78,7 +79,7 @@ const startLoading = (): Promise<void> => {
 };
 
 /**
- * Menahan render Remotion sampai kelima GLB siap, supaya tidak ada frame
+ * Menahan render Remotion sampai keenam GLB siap, supaya tidak ada frame
  * kosong di awal render.
  */
 export const useAssets = (): boolean => {

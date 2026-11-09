@@ -419,93 +419,35 @@ const School: React.FC<SchoolProps> = ({
 };
 
 /**
- * Penyu hijau. Aset di `reef.blend` masih berupa bola yang dipipihkan
- * (belum ada model penyu), jadi previz ini memakai penyu prosedural
- * sederhana supaya shot 040 terbaca. Ganti kalau model asli sudah ada.
+ * Penyu hijau dari `assets/env/sea_turtle.blend`.
+ * Model menghadap +X; offset Y memusatkan badan di titik orbit.
  */
-const Turtle: React.FC<{ frame: number; center: [number, number, number] }> = ({ frame, center }) => {
+const Turtle: React.FC<{ ready: boolean; frame: number; center: [number, number, number] }> = ({
+  ready,
+  frame,
+  center,
+}) => {
+  const turtle = useMemo(() => (ready ? cloneAsset("turtle") : null), [ready]);
+  if (!turtle) {
+    return null;
+  }
+
   const time = frame / 24;
-  const angle = time * 0.16 + 0.8;
-  const radius = 1.9;
-  const flipper = Math.sin(time * 1.4) * 0.22;
+  const angle = time * 0.16 - 0.56;
+  const radius = 1.6;
+  const scale = 0.38;
 
   return (
-    <group
+    <primitive
+      object={turtle}
       position={[
         center[0] + Math.cos(angle) * radius,
-        center[1] + Math.sin(time * 0.5) * 0.35,
+        center[1] - 0.85 * scale + Math.sin(time * 0.5) * 0.25,
         center[2] + Math.sin(angle) * radius,
       ]}
-      rotation={[0.05, -angle + Math.PI / 2, Math.sin(time * 0.8) * 0.06]}
-      scale={1.1}
-    >
-      {/* cangkang */}
-      <mesh scale={[0.52, 0.17, 0.64]}>
-        <sphereGeometry args={[1, 20, 14]} />
-        <meshStandardMaterial color="#6B7C4C" roughness={0.82} />
-      </mesh>
-      {/* rim cangkang */}
-      <mesh rotation={[Math.PI / 2, 0, 0]} scale={[1.0, 1.22, 1.0]}>
-        <torusGeometry args={[0.50, 0.045, 8, 28]} />
-        <meshStandardMaterial color="#4E5C38" roughness={0.9} />
-      </mesh>
-      {/* perut */}
-      <mesh position={[0, -0.05, 0]} scale={[0.44, 0.07, 0.56]}>
-        <sphereGeometry args={[1, 16, 10]} />
-        <meshStandardMaterial color="#C9BE8E" roughness={0.9} />
-      </mesh>
-      {/* leher */}
-      <mesh position={[0, 0.01, 0.57]} scale={[0.12, 0.10, 0.18]}>
-        <sphereGeometry args={[1, 12, 10]} />
-        <meshStandardMaterial color="#74814E" roughness={0.9} />
-      </mesh>
-      {/* kepala */}
-      <mesh position={[0, 0.02, 0.72]} scale={[0.13, 0.11, 0.17]}>
-        <sphereGeometry args={[1, 14, 10]} />
-        <meshStandardMaterial color="#7A8752" roughness={0.9} />
-      </mesh>
-      {/* mata */}
-      {[-1, 1].map((side) => (
-        <mesh key={side} position={[side * 0.075, 0.07, 0.83]} scale={0.018}>
-          <sphereGeometry args={[1, 8, 6]} />
-          <meshStandardMaterial color="#161A12" roughness={0.4} />
-        </mesh>
-      ))}
-      {/* sirip depan */}
-      <mesh
-        position={[-0.54, 0.01, 0.28]}
-        rotation={[0, 0.38, 0.32 + flipper]}
-        scale={[0.50, 0.045, 0.18]}
-      >
-        <sphereGeometry args={[1, 12, 8]} />
-        <meshStandardMaterial color="#5E6C42" roughness={0.9} />
-      </mesh>
-      <mesh
-        position={[0.54, 0.01, 0.28]}
-        rotation={[0, -0.38, -0.32 - flipper]}
-        scale={[0.50, 0.045, 0.18]}
-      >
-        <sphereGeometry args={[1, 12, 8]} />
-        <meshStandardMaterial color="#5E6C42" roughness={0.9} />
-      </mesh>
-      {/* sirip belakang */}
-      <mesh
-        position={[-0.42, 0.0, -0.42]}
-        rotation={[0, -0.45, -0.25]}
-        scale={[0.30, 0.04, 0.14]}
-      >
-        <sphereGeometry args={[1, 12, 8]} />
-        <meshStandardMaterial color="#5E6C42" roughness={0.9} />
-      </mesh>
-      <mesh
-        position={[0.42, 0.0, -0.42]}
-        rotation={[0, 0.45, 0.25]}
-        scale={[0.30, 0.04, 0.14]}
-      >
-        <sphereGeometry args={[1, 12, 8]} />
-        <meshStandardMaterial color="#5E6C42" roughness={0.9} />
-      </mesh>
-    </group>
+      rotation={[0.05, -angle - Math.PI / 2, Math.sin(time * 0.8) * 0.06]}
+      scale={scale}
+    />
   );
 };
 
@@ -612,7 +554,7 @@ const SeaLife: React.FC<{ ready: boolean; frame: number }> = ({ ready, frame }) 
         phase={1.2}
         frame={frame}
       />
-      <Turtle frame={frame} center={[REEF[0] + 0.5, -4.3, REEF[2]]} />
+      <Turtle ready={ready} frame={frame} center={[REEF[0] + 0.5, -4.3, REEF[2] - 1]} />
     </group>
   );
 };

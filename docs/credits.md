@@ -90,6 +90,8 @@ Semua model di `assets/env/reef.blend`, `assets/env/surface.blend`,
 `assets/env/vegetation.blend`, dan `assets/props/boats.blend` adalah **geometri
 prosedural yang dibuat di Blender untuk proyek ini**, atas arahan Jasiel
 Wowiling. Tidak ada model pihak ketiga di dalamnya. Tidak perlu kredit eksternal.
+`assets/env/sea_turtle.blend` adalah model penyu yang dibuat Gian Keintjem
+untuk proyek ini (PR #13), bukan aset pihak ketiga.
 
 ### Aturan lisensi
 
