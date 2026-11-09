@@ -23,6 +23,7 @@ Simpan file di tempat berikut, lalu catat tautannya di tabel ini.
 | 2 Nov 2026 | Render cek look dev shot 030 (stills) | v002 | tidak di-commit | hasil Vaughn Toy, plate di `assets/look/scene-1-look.blend` |
 | 2 Nov 2026 | Render cek aset environment (terumbu, pulau, perahu) | v001 | tidak di-commit | QA internal lead — bukan untuk ditayangkan |
 | 8 Nov 2026 | Render cek aset vegetasi (kelapa & mangrove) | v001 | tidak di-commit | preview di `renders/stills/vegetation-*.png` |
+| 10 Nov 2026 | Render cek vegetasi pulau + populasi terumbu | v002 | tidak di-commit | still di `renders/stills/3d-f*-lush.png` dan `3d-f*-reef*.png` |
 | — | Animatic Scene 1 (kasar) | v001 | _belum ada_ | tenggat 2 Nov terlewat; digabung ke v002 |
 | — | Animatic Scene 1 (audio penuh) | v002 | _belum ada_ | target Jumat, 6 Nov 2026; fallback 13 Nov |
 

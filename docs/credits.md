@@ -68,6 +68,7 @@ Setiap file dari luar (model, tekstur, HDRI, musik, SFX) masuk tabel ini
 | `storyboard/refs/ref-perahu-bercadik_v001.jpg` | internet, sumber tidak tercatat | **tidak diketahui** | acuan bentuk & warna perahu — **tidak masuk film** |
 | `storyboard/refs/ref-pohon-kelapa_v001.jpg` | diberikan pengguna (lead) | **tidak diketahui** | acuan bentuk & warna pohon kelapa — **tidak masuk film** |
 | `storyboard/refs/ref-pohon-mangrove_v001.jpg` | diberikan pengguna (lead) | **tidak diketahui** | acuan bentuk & warna mangrove — **tidak masuk film** |
+| `storyboard/refs/ref-bunaken-manado-tua_v001.png` | peta yang dikirim lead (tampak atas, label "Taman Nasional Bunaken" / "GPdI Victory Manado Tua") | **tidak diketahui** | acuan **bentuk garis pantai** Bunaken & Manado Tua saja — **tidak masuk film** |
 
 > ⚠️ Foto-foto acuan di atas **melanggar aturan lisensi di tabel bawah** (tidak
 > ada lisensi jelas). Lead memutuskan tetap menyimpannya karena dibutuhkan
@@ -132,9 +133,10 @@ Tautan:
 - Laporan karang Turak & DeVantier — <http://www.bunaken.org/download/Turak%20DeVantier%20IOI%20Bunaken%20Coral%20Report.pdf>
 
 > **Catatan produksi:** film hanya memodelkan **3 jenis karang** (meja,
-> bercabang, massif) dan **4 jenis ikan** (cakalang, hiu, goropa merah, kakatua),
-> bukan 390 dan 91. Itu penyederhanaan produksi, bukan klaim bahwa Bunaken hanya
-> punya 3 jenis karang. Jangan pernah menarasikan angka 3 atau 4.
+> bercabang, massif) dan **6 jenis ikan** (cakalang, hiu, goropa merah, kakatua,
+> damselfish, surgeonfish), bukan 390 dan 91. Itu penyederhanaan produksi, bukan
+> klaim bahwa Bunaken hanya punya 3 jenis karang. Jangan pernah menarasikan
+> angka 3 atau 6.
 
 ## 6. Yang masih kosong
 
