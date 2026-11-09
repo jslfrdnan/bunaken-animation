@@ -334,7 +334,8 @@ halus, atau animasi.
 | Aset | File | Pemilik | Scene | Status |
 |---|---|---|---|---|
 | Karang bercabang, massif, meja | `assets/env/reef.blend` | Jasiel Wowiling | 1, 2, 4 | 🟨 |
-| Ikan 6 jenis + penyu hijau | `assets/env/reef.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
+| Ikan 6 jenis | `assets/env/reef.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
+| Penyu hijau | `assets/env/sea_turtle.blend` | Gian Keintjem | 1, 4 | 🟨 |
 | Pulau + garis pantai berpasir | `assets/env/surface.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
 | Dermaga 104 m berpagar merah-putih | `assets/env/surface.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
 | Dive shop (bangunan 2 lantai atap merah) | `assets/env/surface.blend` | Jasiel Wowiling | 1 | 🟨 |
@@ -350,7 +351,8 @@ halus, atau animasi.
 **Isi `reef.blend` saat ini:** `ENV_reef_branching-coral` (+`_b`), `ENV_reef_boulder-coral`,
 `ENV_reef_table-coral`, `ENV_reef_fish_cakalang`, `_hiu`, `_goropa-merah`,
 `_kakatua`, `_damselfish`, `_surgeon`, `ENV_reef_turtle`, masing-masing dengan
-sirip sebagai objek anak.
+sirip sebagai objek anak. `ENV_reef_turtle` masih placeholder; pratinjau dan
+render memakai model terpisah `assets/env/sea_turtle.blend`.
 
 **Isi `surface.blend` saat ini:** `ENV_surface_island`, `_pier-deck`, `_pier-posts`,
 `_pier-railing`, `_dive-shop`, `_white-roof-annex`, `_village-houses`,
