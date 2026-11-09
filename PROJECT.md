@@ -334,7 +334,7 @@ halus, atau animasi.
 | Aset | File | Pemilik | Scene | Status |
 |---|---|---|---|---|
 | Karang bercabang, massif, meja | `assets/env/reef.blend` | Jasiel Wowiling | 1, 2, 4 | 🟨 |
-| Ikan 4 jenis + penyu hijau | `assets/env/reef.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
+| Ikan 6 jenis + penyu hijau | `assets/env/reef.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
 | Pulau + garis pantai berpasir | `assets/env/surface.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
 | Dermaga 104 m berpagar merah-putih | `assets/env/surface.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
 | Dive shop (bangunan 2 lantai atap merah) | `assets/env/surface.blend` | Jasiel Wowiling | 1 | 🟨 |
@@ -349,11 +349,12 @@ halus, atau animasi.
 
 **Isi `reef.blend` saat ini:** `ENV_reef_branching-coral` (+`_b`), `ENV_reef_boulder-coral`,
 `ENV_reef_table-coral`, `ENV_reef_fish_cakalang`, `_hiu`, `_goropa-merah`,
-`_kakatua`, `ENV_reef_turtle`, masing-masing dengan sirip sebagai objek anak.
+`_kakatua`, `_damselfish`, `_surgeon`, `ENV_reef_turtle`, masing-masing dengan
+sirip sebagai objek anak.
 
 **Isi `surface.blend` saat ini:** `ENV_surface_island`, `_pier-deck`, `_pier-posts`,
 `_pier-railing`, `_dive-shop`, `_white-roof-annex`, `_village-houses`,
-`_manado-tua`, `_water-placeholder`, 26 objek vegetasi.
+`_manado-tua`, `_water-placeholder`, 50 objek vegetasi (47 kelapa + 3 mangrove).
 
 **Isi `vegetation.blend` (8 Nov 2026):** `ENV_veg_palm-trunk`, `_fronds`,
 `_coconuts` (pohon kelapa, origin di pangkal batang z 0, tinggi ±10 m) dan
@@ -365,6 +366,25 @@ halus, atau animasi.
 
 `ENV_surface_water-placeholder` adalah **bidang air datar sementara** — shader air
 sebenarnya milik peran 7 di `assets/look/scene-1-look.blend`. Jangan dianggap final.
+
+**Bentuk Bunaken & Manado Tua (8 Nov 2026):** garis pantai kedua pulau dibentuk
+dari peta acuan `storyboard/refs/ref-bunaken-manado-tua_v001.png` (skala 14 m/px;
+titik nol di pantai kampung Bunaken). Bunaken kini pulau penuh ±4,8 × 3,9 km
+(puncak ±90 m); Manado Tua ±3,6 km, puncak 745 m, di `(-5362, 1404)`.
+`_water-placeholder` diperbesar ke 200 km agar Manado Tua tidak keluar dari
+bidang air. Kamera aerial shot 010 perlu dibingkai ulang karena skala berubah.
+
+**Isi `surface-vegetation.blend` (10 Nov 2026):** salinan `surface.blend` +
+sebaran vegetasi: **360 pohon kelapa, 40 mangrove pesisir, 1.450 mangrove latar**
+(1.200 Bunaken + 250 Manado Tua; LOD decimated dari mesh mangrove yang ada),
+di luar 47 palm + 3 mangrove yang sudah ada di surface. Semua memakai mesh dan
+material vegetasi yang sudah ada — tidak ada material/aset vegetasi baru.
+Template di `ENV_veg_assets` (disembunyikan), kamera pratinjau
+`CAM_env-preview`. Tanpa world — look dev tetap di `scene-1-look.blend`.
+Ini file komposisi/snapshot, bukan pengganti `surface.blend`. Dibangun oleh
+`scripts/build-surface-vegetation.py`. GLB pratinjau `env-surface.glb` memakai
+360 kelapa + 40 mangrove; 1.450 mangrove latar tidak diekspor karena terlalu
+berat untuk three.js.
 
 **Isi `boats.blend` (v004, 3 Nov 2026):** satu scene `boats`, satu koleksi
 `PRP_boats`, **85 objek, satu perahu saja** (perahu bercadik). Titik nol objek
