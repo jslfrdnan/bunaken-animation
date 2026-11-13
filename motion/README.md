@@ -1,14 +1,56 @@
-# motion/ — Animatic Scene 1 (Remotion)
+# motion/ — Animatic Warisan Bunaken (Remotion)
 
-Animatic **Scene 1** dibuat di Remotion dari aset yang **sudah ada di repo**, bukan
-render Blender. Tujuannya mengunci timing 35 detik dan komposisi tiap shot
-sebelum pekerjaan 3D/rig jalan.
+Repo ini punya **dua** komposisi animatic:
+
+| Komposisi | Cakupan | Durasi |
+|---|---|---|
+| `FilmAnimatic` | **4 scene penuh** (2:25) — plate papan cerita + subtitle bakar | 3480 frame = **2 menit 25 detik** |
+| `Scene1Animatic` | Scene 1 saja, timing 35 detik | 840 frame = **35 detik** |
+
+Animatic dibuat dari aset yang **sudah ada di repo**, bukan render Blender.
+Tujuannya mengunci timing dan komposisi tiap shot sebelum pekerjaan 3D/rig
+jalan.
+
+| | `FilmAnimatic` |
+|---|---|
+| Resolusi | 1920 × 1080 |
+| Frame rate | 24 fps |
+| Jumlah shot | 38 (10 + 9 + 10 + 9) |
+| Sumber data | `src/film.ts` (scene 2–4) + `src/shots.ts` (scene 1) |
+| Subtitle | `src/subtitles.ts`, dari `docs/narasi.md` |
+
+Script pemotong panel: `scripts/slice-storyboard.py` (deteksi garis panel dari
+profil piksel, bukan tebak koordinat).
+
+## Aset yang dipakai `FilmAnimatic`
+
+| Panel | Dipakai di | Catatan |
+|---|---|---|
+| `panel-1a.jpg` | S1 010/020, S2 090 | aerial, perahu |
+| `panel-1b.jpg` | S1 040–060, S2 020/030, S3 020 | terumbu & penyu |
+| `panel-1c.jpg` | S1 080/090, S3 070, S4 060 | dive shop & anak-anak |
+| `panel-2a.jpg` | S2 010/090 | perahu subuh |
+| `panel-2b.jpg` | S2 060, S3 030/040/080 | dermaga & konfrontasi |
+| `panel-3a.jpg` | S2 040/050, S3 010/100, S4 030 | kamera bawah air & karang rusak |
+| `panel-3b.jpg` | S2 080, S3 050/060 | buku utang & Haris |
+| `panel-4a.jpg` | S2 070, S3 090, S4 010/020/040/050 | mooring buoy & kerja bersama |
+| `panel-4b.jpg` | S4 070/080, S1 100 | penyu & Nara di dermaga |
+
+Papan cerita asli: `storyboard/frames/storyboard-2shot-per-scene_v002.jpg`
+(2752 × 1536), grid 3 × 3. Panel dipotong 3 px di dalam garis tepi.
+
+## Subtitle
+
+`src/subtitles.ts` memuat 14 cue dari `docs/narasi.md`; cue tagline (2:20)
+**tidak** didaftarkan karena sudah tampil sebagai kartu teks di shot 090 Scene 4.
+Gaya: putih, outline hitam, maksimal 2 baris, di bawah area aman.
+
+## Animatic Scene 1 (lama)
 
 | | |
 |---|---|
 | Komposisi | `Scene1Animatic` |
 | Durasi | 840 frame = **35 detik** @ 24 fps |
-| Resolusi | 1920 × 1080 |
 | Jumlah shot | 10 (010–100), sesuai `PROJECT.md` §4 |
 
 ## Aset yang dipakai
@@ -75,6 +117,12 @@ lewat lapisan `mix-blend-mode: color`:
 cd motion
 npm i
 npm run dev            # Remotion Studio → http://localhost:3000
+
+# animatic film penuh (2:25, subtitle bakar)
+npx remotion render FilmAnimatic ../renders/animatic/warisan-bunaken_animatic_v001.mp4 \
+  --codec=h264 --crf=20
+
+# animatic Scene 1 saja
 npx remotion render Scene1Animatic ../renders/animatic/scene-1_animatic_v001.mp4
 ```
 
@@ -89,8 +137,10 @@ render bersih.
 
 ## Belum ada (menunggu aset lain)
 
-- Audio: narasi, musik kolintang, ambient — `assets/audio/scene-1/` masih kosong.
-- Render 3D: belum ada plate dari `scenes/scene-1.blend`.
-- Rig Nara: shot 050/060/070/100 masih papan cerita.
-- Panel Scene 1 untuk shot 100 (sekarang meminjam panel 4B).
-- Shot 020 dan 040 belum punya panel khusus (masih memakai crop panel 1A/1B).
+- Audio: narasi, musik kolintang, ambient — `assets/audio/` masih kosong.
+- Render 3D: baru Scene 1 shot 010–100 dan Scene 2 shot 010–050 yang punya
+  file animasi; scene 3–4 belum. Plate animatic masih papan cerita.
+- Rig Nara halus: shot 050/060/070/100 masih papan cerita di `FilmAnimatic`.
+- Model Haris & crowd: shot Scene 2 060–090, Scene 3 030–090, dan Scene 4
+  010/040/050/060 masih memakai panel pinjaman.
+- Panel khusus shot 020 dan 040 Scene 1 (masih crop panel 1A/1B).

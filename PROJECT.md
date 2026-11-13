@@ -282,6 +282,11 @@ tertahan dan menggelegar, bukan "BOOM" sinematik.
 Bahasa Indonesia, satu `.srt`, maksimal 2 baris (~42 karakter per baris), putih
 dengan outline hitam tipis, tidak menimpa wajah, timing mengikuti narasi.
 
+File final: **`assets/subtitles/warisan-bunaken_v001.srt`** (16 cue, 0:01–2:25,
+diturunkan dari `docs/narasi.md`). Versi bakar di animatic ada di
+`motion/src/subtitles.ts`; cue tagline tidak didaftarkan di sana karena sudah
+tampil sebagai kartu teks di shot 090 Scene 4.
+
 ### Batasan
 
 Tanpa Git LFS: jangan pack tekstur, jaga `.blend` <50 MB. Tanpa render farm:
@@ -571,6 +576,7 @@ Contoh: `ENV_reef_table-coral`, `CHR_nara_body`, `PRP_boat_small`.
 | `assets/props/` | perahu, jaring, peralatan selam, buoy |
 | `assets/textures/` | tekstur gambar, tidak dipack ke `.blend` |
 | `assets/audio/` | narasi, musik, SFX per scene |
+| `assets/subtitles/` | subtitle final `.srt` |
 | `assets/look/` | look dev & shader |
 | `scenes/` | master `.blend` per scene |
 | `renders/` | hasil render (tidak di-commit) |
