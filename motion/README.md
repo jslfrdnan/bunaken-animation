@@ -9,7 +9,7 @@ sebelum pekerjaan 3D/rig jalan.
 | Komposisi | `Scene1Animatic` |
 | Durasi | 840 frame = **35 detik** @ 24 fps |
 | Resolusi | 1920 × 1080 |
-| Jumlah shot | 11 (010–100), sesuai `PROJECT.md` §4 |
+| Jumlah shot | 10 (010–100), sesuai `PROJECT.md` §4 |
 
 ## Aset yang dipakai
 

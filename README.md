@@ -33,6 +33,7 @@ assets/                   aset sumber per departemen
 scenes/                   file .blend master per scene
 renders/                  hasil render (TIDAK di-commit, lihat docs/renders.md)
 storyboard/               gambar frame storyboard
+motion/                   animatic Scene 1 (Remotion) + GLB pratinjau
 ```
 
 ## Mulai dalam 3 langkah
@@ -52,6 +53,11 @@ storyboard/               gambar frame storyboard
 ## Status
 
 Scene 1 — blockout aset selesai (terumbu, pulau, dermaga, dive shop, perahu) dan
-look dev v002 sudah ada. Yang belum: master `scenes/scene-1.blend`, rig Nara,
-animasi, dan audio. Animatic 2 November terlewat; tanggal baru belum ditetapkan.
-Rincian tugas dan tenggat ada di `PROJECT.md` §9–§10.
+look dev v002 sudah ada. Vegetasi pulau + mangrove (8–10 Nov), penyu final, dan
+pratinjau 3D Remotion sudah masuk `main`.
+
+**Per 13 Nov 2026** — master `scenes/scene-1.blend` ada di komputer lead tetapi
+belum di-commit. Yang belum: rig Nara (`nara_rig.blend`), animasi, audio, dan
+10 frame storyboard per shot. Animatic Remotion di `motion/` (840 frame = 35
+detik) sudah bisa diputar tetapi belum dirender. Tanggal animatic baru belum
+ditetapkan. Rincian tugas dan tenggat ada di `PROJECT.md` §9–§10.

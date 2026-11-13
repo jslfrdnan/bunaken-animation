@@ -21,10 +21,14 @@ menyusun alur storyboard) + **15 prompt satuan** untuk frame dan aset.
 
 ## Cara pakai (penting)
 
-1. **Selalu unggah 1–3 referensi**:
-   - `ref-environment-bunaken.jpg` — foto aerial Bunaken (dermaga merah-putih, Gunung Manado Tua)
-   - `ref-char-nara-sheet.png` — character sheet Nara (dari prompt 02)
-   - `ref-char-haris-sheet.png` — character sheet Pak Haris (dari prompt 05)
+1. **Selalu unggah 1–3 referensi**. Yang ada di repo per 13 Nov 2026:
+   - `storyboard/refs/ref-bunaken-aerial_v001.jpg` — foto aerial Bunaken (dermaga merah-putih, Gunung Manado Tua)
+   - `storyboard/refs/ref-perahu-bercadik_v001.jpg` — perahu bercadik
+   - `storyboard/refs/ref-reef-underwater_v001.jpg` — terumbu
+
+   `ref-char-nara-sheet.png` dan `ref-char-haris-sheet.png` **belum ada** — dibuat
+   oleh prompt 02 dan 05. Prompt yang membutuhkannya (03, 11, 12, 14, 15) baru
+   bisa dijalankan setelah sheet itu jadi.
 2. **Pakai seed tetap** untuk semua frame dalam satu scene: `seed: 20261102`
    Ganti seed hanya kalau ingin variasi baru.
 3. Simpan hasil ke `storyboard/frames/scene-1/` dengan nama

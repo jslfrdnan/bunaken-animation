@@ -1,5 +1,5 @@
 /**
- * Daftar 11 shot Scene 1 (PROJECT.md §4), 35 detik @ 24 fps = 840 frame.
+ * Daftar 10 shot Scene 1 (PROJECT.md §4), 35 detik @ 24 fps = 840 frame.
  *
  * Setiap shot memakai aset yang SUDAH ada di repo:
  * - `board/panel-*`  potongan papan cerita v002 (pencil, belum berwarna)
