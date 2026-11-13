@@ -268,6 +268,9 @@ per scene. SFX: ambient laut, gelembung, ledakan bawah laut (diredam), perahu,
 jaring. **Narasi selalu dominan**; musik turun −6 dB saat narasi. Hening 1 detik
 sebelum tagline.
 
+**Naskah narasi + subtitle + cue audio:** `docs/narasi.md` (draft 13 Nov 2026,
+menunggu review lead sebelum direkam).
+
 **Musik tema:** hybrid **kolintang** (identitas Sulawesi Utara) + strings hangat.
 Kolintang hanya di Scene 1 dan 4; Scene 2–3 strings dan ambient tanpa melodi.
 
