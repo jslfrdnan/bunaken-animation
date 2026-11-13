@@ -452,7 +452,7 @@ Status 🟨: menunggu review visual lead (preview di
 | Aset | File | Pemilik | Scene | Status |
 |---|---|---|---|---|
 | Nara (model) | `assets/char/nara.blend` | Yehezkiel Montolalu | 1, 2, 3, 4 | 🟨 |
-| Nara (rig) | `assets/char/nara_rig.blend` | Ciputra Lumi | 1, 2, 3, 4 | ⬜ |
+| Nara (rig) | `assets/char/nara_rig.blend` | Ciputra Lumi | 1, 2, 3, 4 | 🟨 |
 | Pak Daniel | `assets/char/daniel.blend` | Yehezkiel Montolalu | 1, 2, 3, 4 | 🟨 |
 | Pak Haris | `assets/char/haris.blend` | Character Artist | 2, 3, 4 |
 | Warga & anak-anak (low detail) | `assets/char/crowd.blend` | Character Artist | 2, 3, 4 |
@@ -460,6 +460,16 @@ Status 🟨: menunggu review visual lead (preview di
 
 **Scene 1 hanya butuh** `nara.blend`, `nara_rig.blend`, `daniel.blend`, dan
 `divegear.blend`. Pak Daniel wajib muncul di shot 080.
+
+**Isi `nara_rig.blend` (13 Nov 2026):** rig **dasar** untuk membuka jalan
+animasi — armature `CHR_nara_rig` **18 bone** (hips, spine, neck, head;
+shoulder/upper_arm/fore_arm/hand kiri-kanan; thigh/shin/foot kiri-kanan),
+25 part mesh ter-*parent* dengan automatic weights (25 auto, 0 gagal), tinggi
+**1,71 m**, arah hadap **−Y**. Pose uji menyelam tersimpan sebagai action
+`CHR_act_nara_pose-swim` di frame 1; preview di
+`renders/stills/nara-rig-pose-0{1,2,3}.png`. Dibangun AI lewat
+`scripts/build-nara-rig.py` atas persetujuan lead. **Rigging halus** (wajah,
+jari, control curves, IK) **tetap tugas Ciputra Lumi** — file tetap miliknya.
 
 ### Look & audio
 

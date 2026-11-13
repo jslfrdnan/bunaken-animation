@@ -27,6 +27,7 @@ Simpan file di tempat berikut, lalu catat tautannya di tabel ini.
 | — | Animatic Scene 1 (kasar) | v001 | _belum ada_ | tenggat 2 Nov terlewat; digabung ke v002 |
 | — | Animatic Scene 1 (audio penuh) | v002 | _belum ada_ | target Jumat, 6 Nov 2026; fallback 13 Nov |
 | 13 Nov 2026 | Animatic Scene 1 — scaffold Remotion | v001 | ada di `motion/`, tidak di-commit | 840 frame = 35 s, 10 shot; **MP4 belum dirender** |
+| 13 Nov 2026 | Render cek rig dasar Nara (3 still) | v001 | tidak di-commit | preview `renders/stills/nara-rig-pose-0{1,2,3}.png` |
 
 ## Aturan penamaan file render
 
