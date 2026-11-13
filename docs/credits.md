@@ -90,7 +90,7 @@ Semua model di `assets/env/reef.blend`, `assets/env/surface.blend`,
 `assets/env/vegetation.blend`, `assets/props/boats.blend`, dan
 `assets/props/fishing-gear.blend` adalah **geometri prosedural yang dibuat di
 Blender untuk proyek ini**, atas arahan Jasiel Wowiling. `fishing-gear.blend`
-dibangun subagent Modelling (13 Nov 2026) dari acuan gabungan storyboard panel
+dibangun Jasiel Wowiling (13 Nov 2026) dari acuan gabungan storyboard panel
 1C + `ref-perahu-bercadik_v001.jpg` + palette — acuan internal saja. Tidak ada
 model pihak ketiga di dalamnya. Tidak perlu kredit eksternal.
 `assets/env/sea_turtle.blend` adalah model penyu yang dibuat Gian Keintjem
