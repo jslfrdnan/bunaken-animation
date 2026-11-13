@@ -104,6 +104,13 @@ storyboard 2A/3A/4A + `ref-reef-underwater_v001.jpg` + palette `PROJECT.md` §2 
 seluruhnya acuan internal, tidak ada foto yang dipakai sebagai tekstur, dan
 tidak ada model pihak ketiga di dalamnya.
 
+Empat aset Scene 3–4 — `assets/props/coral-frame.blend`,
+`assets/env/seaweed-farm.blend`, `assets/props/underwater-camera.blend`, dan
+`assets/props/debt-book.blend` — juga dibangun Jasiel Wowiling secara prosedural
+di Blender pada 14 Nov 2026 dari acuan gabungan panel storyboard 3A/3B/4A +
+palette `PROJECT.md` §2. Seluruhnya acuan internal, tidak ada foto yang dipakai
+sebagai tekstur, dan tidak ada model pihak ketiga di dalamnya.
+
 ### Aturan lisensi
 
 | Lisensi | Boleh dipakai? | Kewajiban |

@@ -357,8 +357,11 @@ halus, atau animasi.
 | Gunung Manado Tua | `assets/env/surface.blend` | Jasiel Wowiling | 1 | 🟨 |
 | Perahu bercadik | `assets/props/boats.blend` | Jasiel Wowiling | 1, 2 | ✅ |
 | Karang rusak (akibat bom & jaring) | `assets/env/reef-damaged.blend` | Jasiel Wowiling | 2, 4 | 🟨 |
-| Kerangka transplantasi karang | `assets/props/` | Jasiel Wowiling | 4 | ⬜ |
+| Kerangka transplantasi karang | `assets/props/coral-frame.blend` | Jasiel Wowiling | 4 | 🟨 |
 | Mooring buoy | `assets/props/mooring-buoy.blend` | Jasiel Wowiling | 4 | 🟨 |
+| Keramba rumput laut | `assets/env/seaweed-farm.blend` | Jasiel Wowiling | 4 | 🟨 |
+| Kamera bawah air (housing) | `assets/props/underwater-camera.blend` | Jasiel Wowiling | 3 | 🟨 |
+| Buku utang Pak Haris | `assets/props/debt-book.blend` | Jasiel Wowiling | 3 | 🟨 |
 | Jaring & alat tangkap | `assets/props/fishing-gear.blend` | Jasiel Wowiling | 1, 2 | 🟨 |
 | Jaring terbentang di dasar | `assets/props/fishing-net-spread.blend` | Jasiel Wowiling | 2 | 🟨 |
 
@@ -464,6 +467,19 @@ tali 2,4 m, oranye #E4713C). Semua memakai material palette §2 tanpa tekstur
 image. Dibangun oleh Jasiel Wowiling lewat
 `scripts/build-reef-damaged.py`, `build-fishing-net-spread.py`, dan
 `build-mooring-buoy.py`. Status 🟨: menunggu review visual lead.
+
+**Isi `coral-frame.blend`, `seaweed-farm.blend`, `underwater-camera.blend`,
+`debt-book.blend` (14 Nov 2026):** empat aset prosedural Scene 3–4.
+`PRP_coral-frame_rack` (1,51 × 1,01 × 0,37 m, pipa + kisi kawat) dengan tiga
+fragmen karang (bercabang, massif, meja); `ENV_seaweed-farm_rack` (petak
+4,16 × 3,19 m, tiang bambu menonjol 1,20 m di atas air) + tali bentang +
+5 pelampung + tiga rumpun rumput menggantung; `PRP_camera_housing/lens/handle/
+strap` (housing 0,24 × 0,19 × 0,15 m, lensa menghadap −Y); `PRP_book_cover/
+pages/strap` (0,157 × 0,210 × 0,031 m, karet pengikat + gesper oranye). Semua
+memakai material palette §2 tanpa tekstur image. Dibangun oleh Jasiel Wowiling
+lewat `scripts/build-coral-frame.py`, `build-seaweed-farm.py`,
+`build-underwater-camera.py`, dan `build-debt-book.py`. Status 🟨: menunggu
+review visual lead (preview di `renders/stills/*-preview-0*.png`).
 
 ### Karakter
 
