@@ -1,0 +1,233 @@
+{
+  "main": {
+    "id": "6abf2213fb74e10a",
+    "type": "split",
+    "children": [
+      {
+        "id": "0b20f3c0dae00109",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5d8b2677eb5acadc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Obsidian-Project-Animasi/40-Panduan/01-alur-git.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "01-alur-git"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3f94200b8672b260",
+    "type": "split",
+    "children": [
+      {
+        "id": "063461f0a114d8c4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "891b4b6208d4bc14",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "dbaafea397b89f48",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "fea90053804c77eb",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "7e398a0f982ce976",
+    "type": "split",
+    "children": [
+      {
+        "id": "9b3ceb01181434e6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ad91f823fd1ac001",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "PROJECT.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "a78c7ca4255abef2",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "PROJECT.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "fd35efe3ba8cb225",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "f68cc678d455ae8e",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "b75ef5c43011d4d6",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "PROJECT.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "5d8b2677eb5acadc",
+  "lastOpenFiles": [
+    "README.md",
+    "Obsidian-Project-Animasi/40-Panduan/01-alur-git.md",
+    "Obsidian-Project-Animasi/Welcome.md",
+    "assets/look/scene-1-look.blend",
+    "assets/look/README.md",
+    "Obsidian-Project-Animasi/90-Arsip",
+    "Obsidian-Project-Animasi/50-Rapat/2026-10-31-kickoff.md",
+    "Obsidian-Project-Animasi/50-Rapat/2026-10-31-pengumuman-wa.md",
+    "Obsidian-Project-Animasi/50-Rapat",
+    "Obsidian-Project-Animasi/40-Panduan/06-urutan-kerja.md",
+    "Obsidian-Project-Animasi/40-Panduan/05-panduan-ai.md",
+    "Obsidian-Project-Animasi/40-Panduan/04-tugas-scene-1.md",
+    "Obsidian-Project-Animasi/40-Panduan/03-pipeline-blender.md",
+    "Obsidian-Project-Animasi/40-Panduan/02-konvensi-penamaan.md",
+    "Obsidian-Project-Animasi/40-Panduan",
+    "Obsidian-Project-Animasi/30-Aset/03-prompt-imagegen.md",
+    "Obsidian-Project-Animasi/30-Aset/02-kredit.md",
+    "Obsidian-Project-Animasi/30-Aset/01-daftar-aset.md",
+    "Obsidian-Project-Animasi/30-Aset",
+    "Obsidian-Project-Animasi/20-Produksi/04-spesifikasi-teknis.md",
+    "Obsidian-Project-Animasi/20-Produksi/03-gaya-visual.md",
+    "Obsidian-Project-Animasi/20-Produksi/02-shotlist-scene-1.md",
+    "Obsidian-Project-Animasi/20-Produksi/01-storyboard.md",
+    "Obsidian-Project-Animasi/20-Produksi",
+    "Obsidian-Project-Animasi/10-Cerita/05-pesan-moral.md",
+    "Obsidian-Project-Animasi/10-Cerita/04-dunia-bunaken.md",
+    "Obsidian-Project-Animasi/10-Cerita/03-tokoh.md",
+    "Obsidian-Project-Animasi/10-Cerita/02-sinopsis.md",
+    "Obsidian-Project-Animasi/10-Cerita/01-premis.md",
+    "Obsidian-Project-Animasi/10-Cerita",
+    "Obsidian-Project-Animasi/00-Proyek/04-jadwal.md",
+    "Obsidian-Project-Animasi/00-Proyek/03-tim.md",
+    "Obsidian-Project-Animasi/00-Proyek/02-tagline.md",
+    "Obsidian-Project-Animasi/00-Proyek",
+    "Obsidian-Project-Animasi",
+    "storyboard/refs/ref-reef-underwater_v001.jpg",
+    "storyboard/refs/ref-bunaken-aerial_v001.jpg",
+    "storyboard/refs",
+    "storyboard/frames/storyboard-2shot-per-scene_v001.jpg"
+  ]
+}

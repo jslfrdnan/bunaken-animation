@@ -6,7 +6,7 @@ Pemilik: **Vaughn Toy** (Anggota 7 — Lighting & Shading)
 
 | File | Isi |
 |---|---|
-| `scene-1-look.blend` | World, shader air/pasir/karang/batu, panggung uji, dan plate shot 030 di atas terumbu asli (v002, 2 Nov 2026) |
+| `scene-1-look.blend` | World, shader air/pasir/karang/batu, panggung uji, plate shot 030 di atas terumbu asli (v002), dan dunia permukaan: pulau + kampung + dermaga + perahu dengan terumbu di ujung dermaga (v003, 3 Nov 2026) |
 
 ## Kenapa file ini penting untuk semua orang
 
@@ -128,6 +128,58 @@ Model ikannya sendiri **lengkap** — badan, ekor, dan sirip punggung sebagai
 objek terpisah yang di-parent ke badan. Sempat terlihat "tanpa ekor" di plate
 karena kesalahan saya, bukan karena modelnya (lihat poin 9 di atas).
 
+## Dunia permukaan (v003)
+
+Pulau, kampung, dermaga, dan terumbu ada di **satu sistem koordinat**: pulau
+berpusat di origin, jadi terumbu bawah laut duduk di bawah air tepat di ujung
+dermaga, bukan di panggung terpisah. Semua transform sudah di-*apply*; data
+verteks = koordinat dunia.
+
+```
+Collection            Isi
+LIB_surface_island    ENV_surface_island — 420 x 280 m, siluet 36 titik
+LIB_surface_sea       ENV_surface_sea — satu bidang bergradasi +-7000 m;
+                      warna air di-bake per-verteks ke atribut sea_col
+ENV_surface_veg       639 pohon (palem & berdaun lebar), linked duplicate
+ENV_surface_village   ENV_surface_pier, _pier_apron, _diveshop,
+                      _house_00 … _house_11
+ENV_surface_boats     3 perahu bercadik (lihat tabel di bawah)
+ENV_reef              224 objek: karang, ikan, penyu, pasir dasar
+TMP_build             prototipe, hide_render = True
+```
+
+Air laut bukan satu bidang datar per shot, melainkan satu mesh besar dengan
+warna kedalaman yang di-bake, supaya tidak ada sambungan antar-shot.
+
+### Perahu
+
+Sumber: `assets/props/boats.blend` **v004** (3 Nov 2026, 85 objek, satu perahu
+bercadik). Ke-85 bagian digabung jadi satu mesh `LIB_boat_cadik`
+(24.731 verts / 23.392 face / 15 material) lalu dipakai bersama oleh tiga
+*linked duplicate* — jadi tiga perahu tidak menambah ukuran file.
+
+| Objek | Posisi (x, y, z) | Rotasi Z | Keterangan |
+|---|---|---|---|
+| `PRP_boat_cadik_00` | 50 ; -104 ; 0 | 38° | berlabuh di teluk |
+| `PRP_boat_cadik_01` | 65,9 ; -88 ; 0 | 90° | sisi barat dermaga |
+| `PRP_boat_cadik_02` | 74,15 ; -120 ; 0 | -90° | sisi timur dermaga |
+
+- `z = 0` adalah garis air: lambung bawah ada di -0,265 m, jadi perahu
+  mengapung tanpa perlu digeser. Jangan menaikkannya — garis cat di lambung
+  sudah dibuat untuk z = 0.
+- Tepi dermaga di x 68,3 dan 71,7; perahu diberi celah ±1,0 m dari tepi supaya
+  balok cadik tidak menyentuh tiang.
+- Perahu **tidak** boleh digeser mendekati tepi lagi: dek dermaga setinggi
+  1,60 m, lambung perahu hanya 0,30 m, jadi kalau terlalu rapat keduanya
+  saling menutup di kamera setinggi dek.
+
+### Penyu
+
+Penyu (`ENV_reef_turtle` + `x00`…`x05`) di-*append* ulang dari
+`assets/env/reef.blend` supaya material dobelnya hilang: dulu file ini punya
+`MAT_turtle_shell` **dan** `MAT_turtle_shell.001`. Skala aslinya non-seragam
+(0,48 / 0,40 / 0,15) — lihat poin 8 di atas.
+
 ## Pratinjau
 
 - `renders/stills/scene-1-shot-030_lookdev.png` — plate shot 030 di atas terumbu
@@ -144,5 +196,11 @@ karena kesalahan saya, bukan karena modelnya (lihat poin 9 di atas).
       koordinasi dengan pemilik `surface.blend` (Jasiel) sebelum diganti.
 - [ ] Shader permukaan air dilihat dari bawah (shot 020 turun ke air) belum final.
 - [ ] Partikel/debris kecil di air (diminta shot 030–060) belum dibuat.
-- [ ] Look dev permukaan (shot 010, 080, 090) di atas `surface.blend` +
-      `boats.blend` dengan `WLD_scene-1_surface` belum dikerjakan.
+- [x] Look dev permukaan (shot 010, 080, 090): pulau, kampung, dermaga, perahu,
+      dan lautan dengan `WLD_scene-1_surface` (v003, 3 Nov 2026).
+- [ ] Perahu di sisi dermaga masih terbaca "di bawah kolong" kalau kamera
+      setinggi dek (shot 090), karena dek 1,60 m sementara lambung perahu
+      0,30 m. Kalau mengganggu, turunkan dek dermaga ke ±1,1 m — bukan
+      menggeser perahu.
+- [ ] Laut dalam keadaan ombak tenang; belum ada gerak permukaan untuk shot
+      020/070.
