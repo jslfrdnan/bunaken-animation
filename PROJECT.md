@@ -782,6 +782,16 @@ narasi & musik (peran 8), model Haris/crowd/divegear (butuh gambar acuan), shot
 Scene 2 060–090, Scene 3 010/030–100, Scene 4 010/040–060/080, serta render 3D
 final per scene.
 
+**Status 14 Nov 2026 (malam) — Scene 1 sudah jadi film Blender.** Shot Blender
+mencapai **23/38**: Scene 1 10, Scene 2 5, Scene 3 4 (010/020/050/100), Scene 4
+4 (020/030/070/080). Master `scenes/scene-1_master_v001.blend` berisi 10 scene
+(satu per shot) dan **render MP4 3D pertama** ada di
+`renders/scene-1/scene-1_v001.mp4` — 840 frame, 35,0 s, 1920×1080, 24 fps,
+EEVEE, 9,4 MB, tanpa audio (audio final belum). Render Scene 2–4 sedang
+berjalan dari shot yang ada. Blocker karakter tetap: `haris.blend`,
+`crowd.blend`, `divegear.blend` menunggu gambar acuan manusia; tanpa itu 15 shot
+sisanya tidak bisa dikerjakan tanpa mengarang desain.
+
 ---
 
 ## 11. Kredit, lisensi, dan sumber
