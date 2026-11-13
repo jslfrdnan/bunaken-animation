@@ -261,6 +261,16 @@ menghabiskan waktu di lighting, bukan di cerita.
 | Render animasi | MP4 H.264, CRF 18 | upload ke Releases |
 | Audio | WAV 48 kHz 24-bit | final mix, di-commit jika <50 MB |
 
+### Animasi
+
+**Keputusan lead 14 Nov 2026: animasi hanya dibuat di Blender.** Remotion
+(`motion/`) tidak dipakai untuk animasi; folder itu hanya menyimpan acuan
+timing 35 detik Scene 1 dan pembanding komposisi. Setiap shot yang diputar
+harus punya file `scenes/scene-X_shot-*.blend` dan dirender dari Blender.
+
+Animatic papan cerita yang sudah ada (`renders/animatic/*`) berstatus
+**referensi timing**, bukan hasil akhir dan bukan pengganti shot Blender.
+
 ### Audio
 
 Narasi Bahasa Indonesia, satu suara, direkam tim sendiri. Musik tema + variasi
@@ -860,6 +870,28 @@ Aturan lengkap ada di `AGENTS.md`. Ringkas untuk tim:
 
 Kalau AI dan permintaanmu bertentangan dengan dokumen ini, permintaanmu menang —
 tapi minta AI memperbarui catatannya.
+
+### Pembagian kerja sesi ini (14 Nov 2026)
+
+**Pembagian tugas manusia tidak berlaku di sesi ini.** Seluruh pekerjaan
+dikerjakan oleh AI lewat empat subagent, semuanya dikunci ke model
+`opencode-go/deepseek-v4.1-flash`:
+
+| Agent | Wilayah kerja | File kunci |
+|---|---|---|
+| `@modelling` | mesh, props, environment, penyusunan aset | `assets/env/`, `assets/props/`, `assets/char/` (mesh) |
+| `@rigging` | armature, skinning, control rig | `assets/char/*_rig.blend` |
+| `@lighting-shading` | world, shader, cahaya per scene | `assets/look/` |
+| `@animasi` | animasi shot, master scene, render previz | `scenes/` |
+
+Catatan:
+
+- Tabel peran di §9 tetap dipakai **untuk kredit film**, bukan pembatas kerja.
+- Agent boleh mengerjakan file yang dulu "milik" orang lain, tetapi perubahan
+  besar disimpan sebagai versi baru (`*_v002.blend`) dan dilaporkan.
+- `@animation` sudah diganti `@animasi` (nama agent dan cakupan 4 scene).
+- Aturan keras yang tidak berubah: **animasi hanya di Blender**, satu instance
+  Blender MCP pada satu waktu, tanpa `open_mainfile` di sesi hidup.
 
 ---
 

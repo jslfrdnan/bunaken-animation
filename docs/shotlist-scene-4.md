@@ -25,7 +25,7 @@ terakhir.
 - **040–050** — Haris tidak dihukum; ia diberi pilihan.
 - **060** — Pak Daniel mengajar = penutup busurnya.
 - **070** — penyu dari `assets/env/sea_turtle.blend`; perbaiki bentuknya dari
-  sudut rendah (temuan @animation).
+  sudut rendah (temuan sesi animasi).
 - **080** — jangan ada tagline di sini.
 - **090** — teks tagline 3–4 detik.
 
