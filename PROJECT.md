@@ -746,6 +746,17 @@ check-in 13 Nov.
 
 **Status 14 Nov 2026:** Scene 1 punya **10 file shot animasi** (`scenes/scene-1_shot-*_v001.blend`; shot 090 masih tanpa crowd) dan rig dasar Nara (18 bone). Scene 2 shot **010–050** sudah dianimasikan memakai `reef-damaged.blend`, `fishing-net-spread.blend`, dan `boats.blend`. Shot 060–090 Scene 2 tertahan model Haris & crowd. Blocker yang tersisa: character sheet Haris, foto peralatan selam, crowd, rekaman narasi, dan perbaikan rig halus oleh Ciputra. Blender MCP perlu dinyalakan ulang untuk melanjutkan animasi.
 
+**Status 14 Nov 2026 (sore) — ada yang bisa diputar.** Aset Scene 3–4 selesai
+sebagai blockout: `coral-frame.blend`, `seaweed-farm.blend`,
+`underwater-camera.blend`, `debt-book.blend` (🟨), dan Scene 4 shot 020 sudah
+dianimasikan. **Animatic film penuh 2:25 sudah dirender**: 3480 frame,
+1920×1080, 24 fps, subtitle bakar 16 cue — `renders/animatic/warisan-bunaken_animatic_v001.mp4`
+(bisu) dan `..._v002_audio.mp4` (bed ambience sintetis 145 s, bukan audio final).
+Subtitle final: `assets/subtitles/warisan-bunaken_v001.srt`. Yang **belum**:
+narasi & musik (peran 8), model Haris/crowd/divegear (butuh gambar acuan), shot
+Scene 2 060–090, Scene 3 010/030–100, Scene 4 010/040–060/080, serta render 3D
+final per scene.
+
 ---
 
 ## 11. Kredit, lisensi, dan sumber

@@ -30,6 +30,8 @@ Simpan file di tempat berikut, lalu catat tautannya di tabel ini.
 | 13 Nov 2026 | Render cek aset baru Scene 2 & 4: terumbu rusak, jaring terbentang, mooring buoy | v001 | tidak di-commit | preview 50% di `renders/stills/reef-damaged_preview-0{1,2}.png`, `fishing-net-spread_preview-0{1,2}.png`, `mooring-buoy_preview-0{1,2,3}.png`; menunggu review lead |
 | 13 Nov 2026 | Render cek animasi Scene 2 shot 010–050 (5 still) | v001 | tidak di-commit | preview `renders/stills/anim-s2-0{10,20,30,40,50}_v001.png`; laporan audit hilang saat server restart |
 | 14 Nov 2026 | Render cek aset Scene 3 & 4: kerangka karang, keramba rumput laut, kamera bawah air, buku utang | v001 | tidak di-commit | preview 50% 2 sudut per aset di `renders/stills/{coral-frame,seaweed-farm,underwater-camera,debt-book}_preview-0{1,2}.png`; menunggu review lead |
+| 14 Nov 2026 | **Animatic film penuh 4 scene (2:25) + subtitle bakar** | v001 | tidak di-commit — `renders/animatic/warisan-bunaken_animatic_v001.mp4` | 3480 frame = 145,0 s, 1920×1080, 24 fps, H.264, 72,3 MB; plate papan cerita v002 (belum render 3D); 16 cue subtitle dari `docs/narasi.md`; tanpa audio |
+| 14 Nov 2026 | Animatic film penuh + **audio sementara** | v002 | tidak di-commit — `renders/animatic/warisan-bunaken_animatic_v002_audio.mp4` | video v001 + bed ambience sintetis 145 s (`renders/audio/warisan-bunaken_ambience_v001.wav`, 48 kHz stereo); **bukan audio final** — narasi & musik masih menunggu peran 8 |
 
 ## Aturan penamaan file render
 

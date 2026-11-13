@@ -184,3 +184,13 @@ bukan tambang.
 - Tagline hanya sekali di akhir Scene 4; jangan diulang di credit.
 - Suara narator: satu orang, hangat, tidak teatrikal. Belum ditentukan siapa —
   keputusan lead.
+
+## Audio sementara (14 Nov 2026)
+
+`scripts/make-ambience.py` membuat bed ambience sintetis 145 detik
+(`renders/audio/warisan-bunaken_ambience_v001.wav`, 48 kHz stereo) dan
+menggabungkannya ke animatic v002. Isinya hanya noise laut, sinus bawah air, dan
+gelembung — **tanpa narasi dan tanpa musik kolintang**.
+
+Ini supaya animatic tidak bisu saat direview, bukan pengganti peran 8. Semua cue
+di tabel atas tetap harus direkam/dilisensikan manusia sebelum picture lock.
