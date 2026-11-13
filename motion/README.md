@@ -1,4 +1,10 @@
-# motion/ — Animatic Warisan Bunaken (Remotion)
+# motion/ — Acuan timing (BUKAN animasi)
+
+> **Keputusan lead 14 Nov 2026:** animasi dibuat **hanya di Blender**. Folder
+> ini bukan sumber animasi dan tidak boleh dipakai untuk menghasilkan
+> animasi/gambar bergerak. Gunakan `motion/` hanya sebagai acuan timing dan
+> pembanding komposisi. Deliverable animasi = `scenes/scene-X_shot-*.blend` +
+> render Blender.
 
 Repo ini punya **dua** komposisi animatic:
 

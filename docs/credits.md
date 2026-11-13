@@ -170,3 +170,16 @@ Tautan:
 - [ ] Nama peran 8
 - [ ] Nama pengisi suara narasi
 - [ ] Daftar aset pihak ketiga (§3) — diisi saat aset mulai diambil
+
+## 7. Skill AI pihak ketiga (bukan aset film)
+
+Skill agent tidak masuk film dan tidak muncul di kredit layar, tetapi tetap
+dicatat supaya jelas asalnya:
+
+| Sumber | Lisensi | Dipakai untuk | Catatan |
+|---|---|---|---|
+| [arjun988/blender-skills](https://github.com/arjun988/blender-skills) — commit `904f095` | MIT | panduan kerja agent Blender (modeling, rigging, lighting, animasi, render) | 95 folder skill disalin apa adanya ke `.opencode/skills/` (gitignored). Tidak ada skrip yang dijalankan; `.mcp.json` dan `site/` repo itu **tidak** dipakai. |
+
+Teks lisensi lengkap: `.opencode/skills/BLENDER-SKILLS-LICENSE.txt`.
+Ringkasan audit dan aturan pakai:
+`.opencode/skills/THIRD-PARTY-blender-skills.md`.

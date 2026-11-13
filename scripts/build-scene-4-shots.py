@@ -91,6 +91,12 @@ def wipe():
                 db.remove(block)
             except Exception:
                 pass
+    # Kalau file yang terbuka adalah file aset yang mau di-append, lepaskan dulu:
+    # libraries.load menolak "Cannot load from the current blend file".
+    if bpy.data.filepath:
+        tmp_dir = os.path.join(ROOT, "renders", "tmp")
+        os.makedirs(tmp_dir, exist_ok=True)
+        bpy.ops.wm.save_as_mainfile(filepath=os.path.join(tmp_dir, "_wipe.blend"))
 
 
 def setup_scene(name, frame_end=FRAMES):
@@ -136,6 +142,17 @@ def purge_lights_cameras(objs):
             removed.append(obj.name)
             bpy.data.objects.remove(obj, do_unlink=True)
     return removed
+
+
+def live_objects(objs):
+    """Buang referensi ke objek yang sudah dihapus (StructRNA removed)."""
+    names = []
+    for obj in objs:
+        try:
+            names.append(obj.name)
+        except ReferenceError:
+            pass
+    return [bpy.data.objects[n] for n in names if n in bpy.data.objects]
 
 
 def make_plane(name, size, z, mat, center=(0.0, 0.0)):
@@ -280,6 +297,8 @@ def build_020():
     purged = purge_lights_cameras(buoy_objs)
     if purged:
         print("dibuang dari buoy:", purged)
+    boat_objs = live_objects(boat_objs)
+    buoy_objs = live_objects(buoy_objs)
 
     # Perahu di belakang-kiri buoy, haluan menghadap kamera.
     boat_root = next((o for o in boat_objs if o.name.endswith("_hull")), boat_objs[0])
@@ -329,6 +348,7 @@ def build_030():
     purged = purge_lights_cameras(frame_objs)
     if purged:
         print("dibuang dari coral-frame:", purged)
+    frame_objs = live_objects(frame_objs)
     for obj in frame_objs:
         obj.location = (0.0, 0.0, 0.06)
         obj.rotation_euler.z = math.radians(-12)
@@ -357,20 +377,27 @@ def build_030():
     for name in list(bpy.data.objects.keys()):
         if name.startswith("ENV_reef_turtle"):
             bpy.data.objects.remove(bpy.data.objects[name], do_unlink=True)
+    reef_objs = live_objects(reef_objs)
     for obj in reef_objs:
         if not obj.name.startswith("ENV_reef_fish") and not obj.name.startswith("ENV_reef_turtle"):
-            obj.location = (obj.location.x * 1.2 - 6.0, obj.location.y * 1.2 + 7.5, obj.location.z)
-            obj.scale = (2.2, 2.2, 2.2)
+            obj.location = (obj.location.x * 1.2 - 8.5, obj.location.y * 1.2 + 9.0, obj.location.z)
+            obj.scale = (1.45, 1.45, 1.45)
+
+    # Ikan dipindah jauh ke belakang supaya tidak menutupi rangka.
+    for obj in reef_objs:
+        if obj.name.startswith("ENV_reef_fish"):
+            obj.location = (obj.location.x * 2.0 - 2.0, obj.location.y + 11.0, obj.location.z + 2.2)
+            obj.scale = (0.9, 0.9, 0.9)
 
     add_world("WLD_s4-030", "#0F5C63", strength=1.5)
     add_sun(energy=4.2, angle_deg=10.0, rot=(24, 0, 8))
     add_fill(energy=140.0, size=8.0, loc=(-4, -6, 5), target=(0, 0, 0.4))
 
-    cam = make_camera("CAM_shot-030", (5.6, -5.2, 1.35), (0.0, 0.0, 0.35), lens=34.0)
+    cam = make_camera("CAM_shot-030", (3.1, -3.0, 1.15), (0.0, 0.0, 0.42), lens=40.0)
     key_camera(
         cam, 1, FRAMES,
-        (6.2, -5.6, 1.45), (5.0, -4.4, 1.15),
-        (0.0, 0.0, 0.32), (0.1, 0.0, 0.42),
+        (3.5, -3.3, 1.22), (2.7, -2.5, 1.02),
+        (0.0, 0.0, 0.40), (0.1, 0.0, 0.46),
     )
 
     report("030", [o for o in bpy.data.objects if o.type == "MESH"], scn)
@@ -390,36 +417,16 @@ def build_070():
     add_sun(energy=4.5, angle_deg=12.0, rot=(20, 0, -10))
     add_fill(energy=120.0, size=6.0, loc=(-3, -4, 4), target=(0, 0, 1.6))
 
-    # Penyu dari aset final Gian Keintjem; koleksi dipecah per bagian tubuh.
-    turtle_colls = [
-        "Turtle_Body", "Turtle_Shell", "Turtle_Head", "Turtle_Flippers",
-        "Turtle_Skin_Details",
-    ]
-    turtle_objs = append_collections(ASSETS + "/env/sea_turtle.blend", turtle_colls)
-    for obj in turtle_objs:
-        if obj.type != "MESH":
-            bpy.data.objects.remove(obj, do_unlink=True)
-    turtle_objs = [o for o in turtle_objs if o.name in bpy.data.objects]
-
-    # Bungkus penyu dengan empty supaya bisa digerakkan sebagai satu kesatuan.
-    pivot = bpy.data.objects.new("CTL_turtle", None)
-    scn.collection.objects.link(pivot)
-    pivot.location = (0.0, 0.0, 1.5)
-    for obj in turtle_objs:
-        world = obj.matrix_world.copy()
-        obj.parent = pivot
-        obj.matrix_parent_inverse = pivot.matrix_world.inverted()
-        obj.matrix_world = world
-
-    dims = [o.dimensions for o in turtle_objs]
-    if dims:
-        max_dim = max(max(d.x, d.y, d.z) for d in dims)
-        print("penyu: n=", len(turtle_objs), "max_dim=", round(max_dim, 3))
-        if max_dim < 0.3 or max_dim > 4.0:
-            s = 1.1 / max_dim
-            for obj in turtle_objs:
-                obj.scale = (obj.scale.x * s, obj.scale.y * s, obj.scale.z * s)
-            print("penyu diskalakan faktor", round(s, 4))
+    # Penyu sudah disusun utuh oleh @modelling di file terpisah:
+    # assets/env/sea_turtle-assembled.blend → koleksi ENV_turtle, 34 mesh
+    # di-parent ke empty CTL_turtle, menghadap -Y, z 0 = titik terendah.
+    turtle_objs = append_collection(ASSETS + "/env/sea_turtle-assembled.blend", "ENV_turtle")
+    turtle_objs = live_objects(turtle_objs)
+    pivot = bpy.data.objects.get("CTL_turtle")
+    if pivot is None:
+        raise RuntimeError("CTL_turtle tidak ditemukan di sea_turtle-assembled.blend")
+    print("penyu: n=", len(turtle_objs), "pivot", pivot.name)
+    base_rot = math.radians(90.0)  # hadap -Y diputar ke arah lintasan +X
 
     # Karang hidup sebagai latar, tanpa penyu placeholder.
     reef_objs = append_collection(ASSETS + "/env/reef.blend", "ENV_reef")
@@ -427,21 +434,22 @@ def build_070():
     for name in list(bpy.data.objects.keys()):
         if name.startswith("ENV_reef_turtle"):
             bpy.data.objects.remove(bpy.data.objects[name], do_unlink=True)
+    reef_objs = live_objects(reef_objs)
     for obj in bpy.data.objects:
         if obj.name.startswith(("ENV_reef_fish", "ENV_reef_branching", "ENV_reef_boulder",
                                 "ENV_reef_table")):
             obj.location = (obj.location.x, obj.location.y + 3.2, obj.location.z - 1.4)
 
     # Gerak penyu: melintas dari kiri ke kanan, sedikit naik.
-    key_object_motion(pivot, 1, 72, (-3.4, 0.2, 1.35), (3.6, -0.4, 1.62),
-                      rot0=(math.radians(0), math.radians(0), math.radians(90)),
-                      rot1=(math.radians(0), math.radians(-4), math.radians(90)))
+    key_object_motion(pivot, 1, 72, (-3.0, 0.2, 1.35), (3.2, -0.4, 1.62),
+                      rot0=(0.0, 0.0, base_rot),
+                      rot1=(math.radians(-3), 0.0, base_rot - math.radians(6)))
 
-    cam = make_camera("CAM_shot-070", (0.0, -6.4, 1.9), (0.0, 0.0, 1.55), lens=38.0)
+    cam = make_camera("CAM_shot-070", (0.0, -4.4, 1.75), (0.0, 0.0, 1.45), lens=42.0)
     key_camera(
         cam, 1, 72,
-        (-0.9, -6.2, 1.95), (0.9, -6.4, 1.8),
-        (-0.5, 0.0, 1.5), (0.7, 0.0, 1.6),
+        (-0.8, -4.3, 1.80), (0.8, -4.4, 1.70),
+        (-0.4, 0.0, 1.42), (0.6, 0.0, 1.50),
     )
 
     report("070", [o for o in bpy.data.objects if o.type == "MESH"], scn)
