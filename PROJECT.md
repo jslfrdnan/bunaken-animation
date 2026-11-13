@@ -352,7 +352,7 @@ halus, atau animasi.
 | Karang rusak (akibat bom & jaring) | `assets/env/reef.blend` | Jasiel Wowiling | 2, 4 | ⬜ |
 | Kerangka transplantasi karang | `assets/props/` | Jasiel Wowiling | 4 | ⬜ |
 | Mooring buoy | `assets/props/` | Jasiel Wowiling | 4 | ⬜ |
-| Jaring & alat tangkap | `assets/props/` | Jasiel Wowiling | 1, 2 | ⬜ |
+| Jaring & alat tangkap | `assets/props/fishing-gear.blend` | Jasiel Wowiling | 1, 2 | 🟨 |
 
 **Isi `reef.blend` saat ini:** `ENV_reef_branching-coral` (+`_b`), `ENV_reef_boulder-coral`,
 `ENV_reef_table-coral`, `ENV_reef_fish_cakalang`, `_hiu`, `_goropa-merah`,
@@ -437,6 +437,15 @@ Catatan teknis:
 - Perahu bercadik dibangun dari acuan bentuk & warna
   `storyboard/refs/ref-perahu-bercadik_v001.jpg`; tidak ada bagian foto yang
   dipakai sebagai tekstur.
+
+**Isi `fishing-gear.blend` (13 Nov 2026):** koleksi `PRP_gear` dengan
+`PRP_gear_fishnet` (jaring terlipat 1,62 × 1,11 × 0,42 m, mata 6 cm),
+`PRP_gear_float` (pelampung oranye) dan `PRP_gear_basket` (keranjang anyaman);
+6 material `MAT_gear_*` dari palette §2. Dibangun oleh subagent Modelling lewat
+`scripts/build-fishing-gear.py` (idempoten), dari acuan gabungan storyboard
+panel 1C + `ref-perahu-bercadik_v001.jpg` + palette — acuan internal saja.
+Status 🟨: menunggu review visual lead (preview di
+`renders/fishing-gear_preview-01.png` / `-02.png`).
 
 ### Karakter
 
