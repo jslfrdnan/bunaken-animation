@@ -34,6 +34,7 @@ Simpan file di tempat berikut, lalu catat tautannya di tabel ini.
 | 14 Nov 2026 | Animatic film penuh + **audio sementara** | v002 | tidak di-commit — `renders/animatic/warisan-bunaken_animatic_v002_audio.mp4` | video v001 + bed ambience sintetis 145 s (`renders/audio/warisan-bunaken_ambience_v001.wav`, 48 kHz stereo); **bukan audio final** — narasi & musik masih menunggu peran 8 |
 | 14 Nov 2026 | **Animatic Scene 1 (render ulang bersih)** | v001 | tidak di-commit — `renders/animatic/scene-1_animatic_v001.mp4` | 840 frame = 35,0 s, 1920×1080, 24 fps, 20,5 MB; slate dimatikan; tanpa audio |
 | 14 Nov 2026 | Render cek aset @modelling: papan nama dive shop, karang pulih, perahu Haris | v001 | tidak di-commit | preview 50% `renders/stills/{dive-shop-sign,reef-recovering,haris-boat}_preview-0{1,2}.png`; menunggu review lead |
+| 14 Nov 2026 | **Render 3D Scene 1 dari master** (`scenes/scene-1_master_v001.blend`, 10 scene = 10 shot) | v001 | tidak di-commit — `renders/scene-1/scene-1_v001.mp4` | 840 frame = 35,0 s, 1920×1080, 24 fps, EEVEE Next taa 16, H.264 CRF 18, 9,4 MB; PNG arsip di `renders/scene-1/frames/S1_0{10..100}/`; master 8,8 MB, tanpa library eksternal |
 
 ## Aturan penamaan file render
 
