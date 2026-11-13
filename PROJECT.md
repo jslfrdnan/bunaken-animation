@@ -874,22 +874,47 @@ tapi minta AI memperbarui catatannya.
 ### Pembagian kerja sesi ini (14 Nov 2026)
 
 **Pembagian tugas manusia tidak berlaku di sesi ini.** Seluruh pekerjaan
-dikerjakan oleh AI lewat empat subagent, semuanya dikunci ke model
-`opencode-go/deepseek-v4.1-flash`:
+dikerjakan AI. Saya (primary) berperan sebagai **Director** — memakai skill
+`blender-director` untuk ANALYZE → PLAN → BRIEF → DELEGATE → VALIDATE — dan
+mendelegasikan ke **10 subagent kategori** sesuai README `arjun988/blender-skills`.
+Kategori **Orchestration tidak dijadikan agent** karena peran itu dipegang Director.
 
-| Agent | Wilayah kerja | File kunci |
+Semua agent dikunci ke `opencode-go/deepseek-v4.1-flash` dan memakai skill
+sesuai kategorinya.
+
+| Agent | Kategori | Skill inti |
 |---|---|---|
-| `@modelling` | mesh, props, environment, penyusunan aset | `assets/env/`, `assets/props/`, `assets/char/` (mesh) |
-| `@rigging` | armature, skinning, control rig | `assets/char/*_rig.blend` |
-| `@lighting-shading` | world, shader, cahaya per scene | `assets/look/` |
-| `@animasi` | animasi shot, master scene, render previz | `scenes/` |
+| `@modeling` | Modeling | blender-modeler, hard-surface, prop-artist, vehicle-artist, environment-artist, vegetation-artist, character-artist, creature-artist, character-archetypes |
+| `@production` | Production | sculpting, retopology, uv-workflow, materials, texture-workflow, hair-groom, cloth-sim, lookdev |
+| `@technical` | Technical | geometry-nodes, lighting, camera-cinematography, rendering, compositing, animation, rigging, vfx-fx, physics-sim |
+| `@pipeline` | Pipeline | procedural-modeling, scene-assembly, set-dressing, asset-optimization, lod-pipeline, collision-proxy, export-pipeline, unity/unreal/godot-export, qa-review, archviz |
+| `@core-styles` | Core styles | horror, psx-horror, lowpoly, anime, voxel, isometric, stylized, realistic |
+| `@extended-styles` | Extended styles | cartoon, comic-book, manga, pixel-art, hand-painted, painterly, stop-motion-craft, chibi, noir, minimalist, vector, retro-8/16-bit, hd-2d, frutiger-aero |
+| `@horror-packs` | Horror packs | cosmic-eldritch, body-horror, analog-found-footage, liminal-space, folk-horror, mascot-puppet, dream-weirdcore, indie-horror |
+| `@worlds-moods` | Worlds / moods | fantasy, sci-fi-punk, historical, apocalypse, biome, cozy-wholesome, dark-gritty, dream-surreal, neon-retrofuturism, brutalist |
+| `@genre-direction` | Genre direction | action-combat, shooter, rpg, survival, stealth, puzzle-platformer, metroidvania-roguelike, soulslike, strategy-sim, racing-sports, narrative-vn, card-party-idle, open-world-sandbox |
+| `@eras` | Eras | visual-console-eras |
+
+Wilayah file yang dipakai film ini:
+
+| Agent | File kunci |
+|---|---|
+| `@modeling` | `assets/env/`, `assets/props/`, `assets/char/` (mesh) |
+| `@production` | material/shader di `assets/look/` dan file aset |
+| `@technical` | `scenes/` (shot), rig, look, render |
+| `@pipeline` | master `scenes/scene-<n>.blend`, QA |
+| `@core-styles`, `@worlds-moods` | arahan gaya pada world/material, bukan mesh baru |
 
 Catatan:
 
 - Tabel peran di §9 tetap dipakai **untuk kredit film**, bukan pembatas kerja.
 - Agent boleh mengerjakan file yang dulu "milik" orang lain, tetapi perubahan
   besar disimpan sebagai versi baru (`*_v002.blend`) dan dilaporkan.
-- `@animation` sudah diganti `@animasi` (nama agent dan cakupan 4 scene).
+- Agent lama (`modelling`, `rigging`, `lighting-shading`, `animasi`) dipensiunkan
+  dan dipindah ke `.opencode/agents-retired/`; cakupannya kini ada di
+  `@modeling` dan `@technical`.
+- Kategori yang tidak relevan (horror, genre, export game) tetap punya agent
+  tetapi **tidak dipakai** kecuali Director menugaskan eksperimen.
 - Aturan keras yang tidak berubah: **animasi hanya di Blender**, satu instance
   Blender MCP pada satu waktu, tanpa `open_mainfile` di sesi hidup.
 
