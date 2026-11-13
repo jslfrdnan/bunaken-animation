@@ -96,6 +96,14 @@ model pihak ketiga di dalamnya. Tidak perlu kredit eksternal.
 `assets/env/sea_turtle.blend` adalah model penyu yang dibuat Gian Keintjem
 untuk proyek ini (PR #13), bukan aset pihak ketiga.
 
+`assets/env/reef-damaged.blend` (karang rusak: bom, jaring, 3 varian puing),
+`assets/props/fishing-net-spread.blend` (jaring dasar terbentang 4 × 3 m), dan
+`assets/props/mooring-buoy.blend` (mooring buoy oranye) dibangun oleh Jasiel
+Wowiling secara prosedural di Blender pada 13 Nov 2026 dari acuan gabungan panel
+storyboard 2A/3A/4A + `ref-reef-underwater_v001.jpg` + palette `PROJECT.md` §2 —
+seluruhnya acuan internal, tidak ada foto yang dipakai sebagai tekstur, dan
+tidak ada model pihak ketiga di dalamnya.
+
 ### Aturan lisensi
 
 | Lisensi | Boleh dipakai? | Kewajiban |

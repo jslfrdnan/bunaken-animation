@@ -356,10 +356,11 @@ halus, atau animasi.
 | Komposisi vegetasi pulau (snapshot) | `assets/env/surface-vegetation.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
 | Gunung Manado Tua | `assets/env/surface.blend` | Jasiel Wowiling | 1 | 🟨 |
 | Perahu bercadik | `assets/props/boats.blend` | Jasiel Wowiling | 1, 2 | ✅ |
-| Karang rusak (akibat bom & jaring) | `assets/env/reef.blend` | Jasiel Wowiling | 2, 4 | ⬜ |
+| Karang rusak (akibat bom & jaring) | `assets/env/reef-damaged.blend` | Jasiel Wowiling | 2, 4 | 🟨 |
 | Kerangka transplantasi karang | `assets/props/` | Jasiel Wowiling | 4 | ⬜ |
-| Mooring buoy | `assets/props/` | Jasiel Wowiling | 4 | ⬜ |
+| Mooring buoy | `assets/props/mooring-buoy.blend` | Jasiel Wowiling | 4 | 🟨 |
 | Jaring & alat tangkap | `assets/props/fishing-gear.blend` | Jasiel Wowiling | 1, 2 | 🟨 |
+| Jaring terbentang di dasar | `assets/props/fishing-net-spread.blend` | Jasiel Wowiling | 2 | 🟨 |
 
 **Isi `reef.blend` saat ini:** `ENV_reef_branching-coral` (+`_b`), `ENV_reef_boulder-coral`,
 `ENV_reef_table-coral`, `ENV_reef_fish_cakalang`, `_hiu`, `_goropa-merah`,
@@ -453,6 +454,16 @@ Catatan teknis:
 panel 1C + `ref-perahu-bercadik_v001.jpg` + palette — acuan internal saja.
 Status 🟨: menunggu review visual lead (preview di
 `renders/fishing-gear_preview-01.png` / `-02.png`).
+
+**Isi `reef-damaged.blend`, `fishing-net-spread.blend`, `mooring-buoy.blend`
+(13 Nov 2026):** tiga aset prosedural untuk Scene 2 dan 4.
+`ENV_reef_damaged-bomb` / `-net` / `-rubble_a/b/c` (karang pecah bom, puncak
+patah tersapu jaring, puing berserakan); `PRP_gear_net-spread` (±3,9 × 3,0 m,
+mata 9,5 cm) + pelampung + tali; `PRP_buoy_body/band/ring/rope` (bola Ø0,6 m,
+tali 2,4 m, oranye #E4713C). Semua memakai material palette §2 tanpa tekstur
+image. Dibangun oleh Jasiel Wowiling lewat
+`scripts/build-reef-damaged.py`, `build-fishing-net-spread.py`, dan
+`build-mooring-buoy.py`. Status 🟨: menunggu review visual lead.
 
 ### Karakter
 
