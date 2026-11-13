@@ -111,6 +111,11 @@ di Blender pada 14 Nov 2026 dari acuan gabungan panel storyboard 3A/3B/4A +
 palette `PROJECT.md` §2. Seluruhnya acuan internal, tidak ada foto yang dipakai
 sebagai tekstur, dan tidak ada model pihak ketiga di dalamnya.
 
+`assets/props/dive-shop-sign.blend`, `assets/env/reef-recovering.blend`, dan
+`assets/props/haris-boat.blend` juga dibuat untuk proyek ini (14 Nov 2026) dari
+panel storyboard 1C/2A/4A + palette. Perahu Haris diturunkan dari
+`boats.blend` buatan sendiri, bukan model pihak ketiga.
+
 ### Aturan lisensi
 
 | Lisensi | Boleh dipakai? | Kewajiban |

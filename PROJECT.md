@@ -369,6 +369,9 @@ halus, atau animasi.
 | Buku utang Pak Haris | `assets/props/debt-book.blend` | Jasiel Wowiling | 3 | 🟨 |
 | Jaring & alat tangkap | `assets/props/fishing-gear.blend` | Jasiel Wowiling | 1, 2 | 🟨 |
 | Jaring terbentang di dasar | `assets/props/fishing-net-spread.blend` | Jasiel Wowiling | 2 | 🟨 |
+| Papan nama dive shop | `assets/props/dive-shop-sign.blend` | Jasiel Wowiling | 1 | 🟨 |
+| Varian karang pulih (transplantasi muda) | `assets/env/reef-recovering.blend` | Jasiel Wowiling | 4 | 🟨 |
+| Perahu Haris (tanpa kanopi, cat pudar) | `assets/props/haris-boat.blend` | Jasiel Wowiling | 2, 3 | 🟨 |
 
 **Isi `reef.blend` saat ini:** `ENV_reef_branching-coral` (+`_b`), `ENV_reef_boulder-coral`,
 `ENV_reef_table-coral`, `ENV_reef_fish_cakalang`, `_hiu`, `_goropa-merah`,
@@ -485,6 +488,18 @@ memakai material palette §2 tanpa tekstur image. Dibangun oleh Jasiel Wowiling
 lewat `scripts/build-coral-frame.py`, `build-seaweed-farm.py`,
 `build-underwater-camera.py`, dan `build-debt-book.py`. Status 🟨: menunggu
 review visual lead (preview di `renders/stills/*-preview-0*.png`).
+
+**Isi `dive-shop-sign.blend`, `reef-recovering.blend`, `haris-boat.blend`
+(14 Nov 2026, dikerjakan @modelling):** `PRP_sign_board/frame/post_l/post_r/
+text` (1,90 × 0,17 × 2,20 m; huruf "BUNAKEN DIVE" berupa mesh, bukan tekstur);
+`ENV_reef_recovering-branching` (0,53 × 0,45 × 0,35 m), `-massive`
+(0,48 × 0,54 × 0,30 m), `-table` (0,60 × 0,60 × 0,25 m), total 3.937 verts;
+`PRP_haris-boat_*` 69 objek — perahu bercadik tanpa kanopi (18 objek kanopi,
+balok, dan tali mast dibuang), lambung putih pudar #D2D2C6, plus
+`PRP_haris-boat_basket` dan `_netpile` di dek. Catatan: kayu gelap `#3E2C20`
+dan abu `#D2D2C6` di luar 6 warna palette, tetapi mengikuti "kayu gelap" yang
+sudah dipakai `boats.blend` dan permintaan "putih pudar" untuk perahu Haris —
+perlu keputusan lead kalau palette harus ketat. Status 🟨.
 
 ### Karakter
 
