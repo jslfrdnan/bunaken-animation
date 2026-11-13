@@ -441,7 +441,7 @@ Catatan teknis:
 **Isi `fishing-gear.blend` (13 Nov 2026):** koleksi `PRP_gear` dengan
 `PRP_gear_fishnet` (jaring terlipat 1,62 × 1,11 × 0,42 m, mata 6 cm),
 `PRP_gear_float` (pelampung oranye) dan `PRP_gear_basket` (keranjang anyaman);
-6 material `MAT_gear_*` dari palette §2. Dibangun oleh subagent Modelling lewat
+6 material `MAT_gear_*` dari palette §2. Dibangun oleh Jasiel Wowiling lewat
 `scripts/build-fishing-gear.py` (idempoten), dari acuan gabungan storyboard
 panel 1C + `ref-perahu-bercadik_v001.jpg` + palette — acuan internal saja.
 Status 🟨: menunggu review visual lead (preview di
@@ -467,7 +467,7 @@ shoulder/upper_arm/fore_arm/hand kiri-kanan; thigh/shin/foot kiri-kanan),
 25 part mesh ter-*parent* dengan automatic weights (25 auto, 0 gagal), tinggi
 **1,71 m**, arah hadap **−Y**. Pose uji menyelam tersimpan sebagai action
 `CHR_act_nara_pose-swim` di frame 1; preview di
-`renders/stills/nara-rig-pose-0{1,2,3}.png`. Dibangun AI lewat
+`renders/stills/nara-rig-pose-0{1,2,3}.png`. Dibangun oleh Jasiel Wowiling lewat
 `scripts/build-nara-rig.py` atas persetujuan lead. **Rigging halus** (wajah,
 jari, control curves, IK) **tetap tugas Ciputra Lumi** — file tetap miliknya.
 
