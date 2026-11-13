@@ -699,9 +699,10 @@ meleset sekarang: **ada sesuatu yang bisa diputar** sebelum check-in Jumat
 di-commit**. Vegetasi (8 Nov), `surface-vegetation.blend`, penyu final, dan
 pratinjau 3D Remotion (10 Nov) sudah masuk `main`. Yang masih kosong:
 `assets/char/nara_rig.blend`, seluruh `assets/audio/scene-1/`, dan 10 frame
-`storyboard/frames/scene-1/`. Animatic Remotion sudah bisa diputar di `motion/`
-(840 frame = 35 detik) tetapi belum dirender. Tanggal animatic baru **belum
-ditetapkan** — diputuskan lead di check-in 13 Nov.
+`storyboard/frames/scene-1/`. Animatic Remotion **sudah dirender v001**:
+`renders/animatic/scene-1_animatic_v001.mp4` (35 detik, 2D, tanpa audio — tidak
+di-commit). Tanggal animatic baru **belum ditetapkan** — diputuskan lead di
+check-in 13 Nov.
 
 ---
 
