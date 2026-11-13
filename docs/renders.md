@@ -24,9 +24,8 @@ Simpan file di tempat berikut, lalu catat tautannya di tabel ini.
 | 2 Nov 2026 | Render cek aset environment (terumbu, pulau, perahu) | v001 | tidak di-commit | QA internal lead — bukan untuk ditayangkan |
 | 8 Nov 2026 | Render cek aset vegetasi (kelapa & mangrove) | v001 | tidak di-commit | preview di `renders/stills/vegetation-*.png` |
 | 10 Nov 2026 | Render cek vegetasi pulau + populasi terumbu | v002 | tidak di-commit | still di `renders/stills/3d-f*-lush.png` dan `3d-f*-reef*.png` |
-| — | Animatic Scene 1 (kasar) | v001 | _belum ada_ | tenggat 2 Nov terlewat; digabung ke v002 |
-| — | Animatic Scene 1 (audio penuh) | v002 | _belum ada_ | target Jumat, 6 Nov 2026; fallback 13 Nov |
-| 13 Nov 2026 | Animatic Scene 1 — scaffold Remotion | v001 | ada di `motion/`, tidak di-commit | 840 frame = 35 s, 10 shot; **MP4 belum dirender** |
+| 13 Nov 2026 | Animatic Scene 1 (2D, tanpa audio) | v001 | tidak di-commit — `renders/animatic/scene-1_animatic_v001.mp4` | 840 frame = 35 s, 10 shot; slate masih aktif; MP4 ±30 MB |
+| — | Animatic Scene 1 (audio penuh) | v002 | _belum ada_ | menunggu audio peran 8 |
 | 13 Nov 2026 | Render cek rig dasar Nara (3 still) | v001 | tidak di-commit | preview `renders/stills/nara-rig-pose-0{1,2,3}.png` |
 
 ## Aturan penamaan file render

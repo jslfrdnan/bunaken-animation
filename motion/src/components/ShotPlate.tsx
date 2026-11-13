@@ -59,9 +59,12 @@ export const ShotPlate: React.FC<{ shot: Shot; lead: number; tail: number }> = (
   const shakeR = shot.shake ? Math.sin(frame * 0.33) * 0.16 : 0;
 
   // Shot pertama tidak boleh mulai dari hitam: langsung penuh sejak frame 0.
+  // fadeOut minimal 1 frame supaya inputRange tetap naik ketat saat tail = 0
+  // (shot terakhir tidak punya cross-dissolve keluar).
+  const fadeOut = Math.max(tail, 1);
   const opacity = interpolate(
     frame,
-    [0, Math.max(lead, 1), lead + shot.duration, lead + shot.duration + tail],
+    [0, Math.max(lead, 1), lead + shot.duration, lead + shot.duration + fadeOut],
     [lead > 0 ? 0 : 1, 1, 1, 0],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
   );
