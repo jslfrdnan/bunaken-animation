@@ -273,7 +273,8 @@ def save_and_preview(shot, filename, preview_frame=None):
         scn.frame_set(preview_frame)
         scn.render.resolution_percentage = 50
         scn.render.image_settings.file_format = "PNG"
-        out = os.path.join(STILLS, f"anim-s4-{shot}_v001.png")
+        tag = shot if str(shot).startswith("s") else f"s4-{shot}"
+        out = os.path.join(STILLS, f"anim-{tag}_v001.png")
         scn.render.filepath = out[:-4]
         bpy.ops.render.render(write_still=True)
         print("RENDER:", out, os.path.getsize(out) if os.path.exists(out) else "MISSING")

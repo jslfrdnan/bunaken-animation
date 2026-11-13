@@ -59,6 +59,7 @@ def build_020():
     # Jaring terbentang menutupi puing di depan kamera.
     net = lib.append_collection(ASSETS + "/props/fishing-net-spread.blend", "PRP_gear")
     lib.purge_lights_cameras(net)
+    net = lib.live_objects(net)
     for obj in net:
         obj.location = (0.2, -1.1, 0.28)
         obj.rotation_euler = (math.radians(7), math.radians(-4), math.radians(14))
@@ -70,6 +71,7 @@ def build_020():
     for name in list(bpy.data.objects.keys()):
         if name.startswith("ENV_reef_turtle"):
             bpy.data.objects.remove(bpy.data.objects[name], do_unlink=True)
+    reef = lib.live_objects(reef)
     for obj in reef:
         if obj.name.startswith(("ENV_reef_branching", "ENV_reef_boulder", "ENV_reef_table")):
             obj.location = (obj.location.x + 5.5, obj.location.y + 6.0, obj.location.z)
