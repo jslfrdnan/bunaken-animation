@@ -722,6 +722,8 @@ pratinjau 3D Remotion (10 Nov) sudah masuk `main`. Yang masih kosong:
 di-commit). Tanggal animatic baru **belum ditetapkan** — diputuskan lead di
 check-in 13 Nov.
 
+**Status 14 Nov 2026:** Scene 1 punya **10 file shot animasi** (`scenes/scene-1_shot-*_v001.blend`; shot 090 masih tanpa crowd) dan rig dasar Nara (18 bone). Scene 2 shot **010–050** sudah dianimasikan memakai `reef-damaged.blend`, `fishing-net-spread.blend`, dan `boats.blend`. Shot 060–090 Scene 2 tertahan model Haris & crowd. Blocker yang tersisa: character sheet Haris, foto peralatan selam, crowd, rekaman narasi, dan perbaikan rig halus oleh Ciputra. Blender MCP perlu dinyalakan ulang untuk melanjutkan animasi.
+
 ---
 
 ## 11. Kredit, lisensi, dan sumber

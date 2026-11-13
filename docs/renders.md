@@ -28,6 +28,7 @@ Simpan file di tempat berikut, lalu catat tautannya di tabel ini.
 | — | Animatic Scene 1 (audio penuh) | v002 | _belum ada_ | menunggu audio peran 8 |
 | 13 Nov 2026 | Render cek rig dasar Nara (3 still) | v001 | tidak di-commit | preview `renders/stills/nara-rig-pose-0{1,2,3}.png` |
 | 13 Nov 2026 | Render cek aset baru Scene 2 & 4: terumbu rusak, jaring terbentang, mooring buoy | v001 | tidak di-commit | preview 50% di `renders/stills/reef-damaged_preview-0{1,2}.png`, `fishing-net-spread_preview-0{1,2}.png`, `mooring-buoy_preview-0{1,2,3}.png`; menunggu review lead |
+| 13 Nov 2026 | Render cek animasi Scene 2 shot 010–050 (5 still) | v001 | tidak di-commit | preview `renders/stills/anim-s2-0{10,20,30,40,50}_v001.png`; laporan audit hilang saat server restart |
 
 ## Aturan penamaan file render
 

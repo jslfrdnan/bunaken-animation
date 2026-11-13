@@ -25,7 +25,18 @@ perahu. Narasi tetap dominan.
 - **040–050** — butuh karang rusak dan ikan mati (belum ada).
 - **090** — momen terberat; tanpa dialog. Nara tidak menari.
 
+## Status produksi (14 Nov 2026)
+
+| Shot | Status |
+|---|---|
+| 010–050 | ✅ file animasi v001 ada di `scenes/scene-2_shot-*`; preview di `renders/stills/anim-s2-*` |
+| 060–090 | ⬜ tertahan — butuh `haris.blend` dan `crowd.blend` |
+
+Catatan: laporan akhir subagent hilang saat server OpenCode restart; file dan
+preview sudah ter-commit, tetapi audit isi file perlu diulang saat Blender hidup.
+
 ## Aset baru
 
 Karang rusak, jaring terbentang, ikan mati, Pak Haris, crowd warga, varian
 perahu Haris. Lihat `PROJECT.md` §5 untuk status & pemilik.
+
