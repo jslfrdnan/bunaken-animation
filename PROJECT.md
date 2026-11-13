@@ -318,6 +318,10 @@ file harus bisa dibuka sendiri tanpa dependensi aneh.
 Narasi mulai di **shot 010** setelah 1 detik musik · judul sebagai overlay ·
 musik kolintang + strings · **Nara perempuan**.
 
+**Scene 2–4:** shot list draft ada di `docs/shotlist-scene-2.md`,
+`docs/shotlist-scene-3.md`, dan `docs/shotlist-scene-4.md` (13 Nov 2026,
+menunggu review lead). Scene 1 tetap acuan produksi saat ini.
+
 ### Aturan storyboard
 
 Satu shot = satu ide · durasi minimum 2 detik · Scene 1 tidak boleh punya shot
