@@ -121,9 +121,10 @@ No. 2002, dan laporan Turak & DeVantier.
 | Status UNESCO | daftar tentatif sejak 2005, **belum** terdaftar |
 
 **Penyederhanaan produksi — penting.** Film hanya membuat **3 model karang**
-(meja, bercabang, massif) dan **4 model ikan** (cakalang, hiu, goropa merah,
-kakatua), plus penyu hijau. Itu keputusan produksi, bukan klaim biologis. Jangan
-pernah menarasikan bahwa Bunaken hanya punya segitu jenisnya.
+(meja, bercabang, massif) dan **6 model ikan** (cakalang, hiu, goropa merah,
+kakatua, damselfish, surgeonfish), plus penyu hijau. Itu keputusan produksi,
+bukan klaim biologis. Jangan pernah menarasikan bahwa Bunaken hanya punya
+segitu jenisnya.
 
 **Acuan bentuk & warna** diambil dari dua foto di `storyboard/refs/`: aerial
 Bunaken (dermaga berpagar merah-putih, bangunan dua lantai beratap merah, Gunung
@@ -140,8 +141,10 @@ dan satu garis pantai untuk aerial. Angka luas tidak perlu masuk narasi.
 
 **Elemen visual yang wajib muncul:** dermaga berpagar merah-putih, Gunung Manado
 Tua di horizon, air tosca dangkal, **perahu bercadik** (lambung putih, cadik kayu
-di kiri-kanan, kanopi kain) dan satu speedboat putih, vegetasi rapat sampai
-pantai, terumbu karang dan penyu hijau, mooring buoy oranye di Scene 4.
+di kiri-kanan, kanopi kain), vegetasi rapat sampai pantai, terumbu karang dan
+penyu hijau, mooring buoy oranye di Scene 4. Speedboat putih **tidak lagi
+wajib** — modelnya sudah dihapus dari `boats.blend`; kalau shot 010 tetap
+memakainya, speedboat harus dimodelkan terpisah.
 
 **Praktik yang digambarkan:** bom ikan (bahan peledak di terumbu; karang hancur
 total) dan jaring dasar (menyapu karang, menangkap semua ukuran). Keduanya nyata
@@ -217,8 +220,10 @@ dengan bendera merah · vegetasi rapat sampai garis pantai · Gunung Manado Tua
 berbentuk kerucut di horizon · mooring buoy oranye di Scene 4.
 
 Perahu bercadik **bukan** pilihan sembarangan: itu yang membuat frame langsung
-terbaca "nelayan Bunaken", bukan "kapal pesiar". Speedboat putih tetap ada, tapi
-hanya untuk dive shop — dipakai sekali di shot 010 dan tidak dipakai Nara.
+terbaca "nelayan Bunaken", bukan "kapal pesiar". Speedboat putih **belum ada
+modelnya** — model speedboat lama sudah dihapus dari `boats.blend` atas
+permintaan lead. Kalau shot 010 tetap memakai speedboat, model itu harus dibuat
+ulang terpisah; Nara tetap tidak memakainya.
 
 ### Konsistensi antar-artist
 
@@ -335,12 +340,13 @@ halus, atau animasi.
 |---|---|---|---|---|
 | Karang bercabang, massif, meja | `assets/env/reef.blend` | Jasiel Wowiling | 1, 2, 4 | 🟨 |
 | Ikan 6 jenis | `assets/env/reef.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
-| Penyu hijau | `assets/env/sea_turtle.blend` | Gian Keintjem | 1, 4 | 🟨 |
+| Penyu hijau | `assets/env/sea_turtle.blend` | Gian Keintjem | 1, 4 | ✅ |
 | Pulau + garis pantai berpasir | `assets/env/surface.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
 | Dermaga 104 m berpagar merah-putih | `assets/env/surface.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
 | Dive shop (bangunan 2 lantai atap merah) | `assets/env/surface.blend` | Jasiel Wowiling | 1 | 🟨 |
 | Rumah kampung + vegetasi | `assets/env/surface.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
 | Pohon kelapa + mangrove | `assets/env/vegetation.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
+| Komposisi vegetasi pulau (snapshot) | `assets/env/surface-vegetation.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
 | Gunung Manado Tua | `assets/env/surface.blend` | Jasiel Wowiling | 1 | 🟨 |
 | Perahu bercadik | `assets/props/boats.blend` | Jasiel Wowiling | 1, 2 | ✅ |
 | Karang rusak (akibat bom & jaring) | `assets/env/reef.blend` | Jasiel Wowiling | 2, 4 | ⬜ |
@@ -484,6 +490,7 @@ renders/                  hasil render (TIDAK di-commit)
 storyboard/               gambar frame storyboard
   frames/                 frame per scene
   refs/                   foto acuan (aerial Bunaken, terumbu) — referensi internal
+motion/                   animatic Scene 1 (Remotion) + GLB pratinjau
 scripts/                  skrip bantu
 ```
 
@@ -615,12 +622,12 @@ animasi 24 fps → lighting & shading → render MP4 ke Releases.
 |---|---|---|---|---|
 | 1 | **Lead / Director** | Jasiel Wowiling | Style guide, review shot, merge master, dokumentasi & kredit | `scenes/scene-1.blend` |
 | 2 | **Storyboard & Concept** | Excel Katuuk | Shot list + prompt image-gen + sketsa frame | shot list §4, `storyboard/frames/` |
-| 3 | **Env Artist — Underwater** | Gian Keintjem | Terumbu, karang, penyu, ikan, god rays | `assets/env/reef.blend` |
+| 3 | **Env Artist — Underwater** | Jasiel Wowiling | Terumbu, karang, penyu, ikan, god rays | `assets/env/reef.blend` |
 | 4 | **Env Artist — Surface** | Jasiel Wowiling | Pulau, kampung, dive shop, perahu, jaring | `assets/env/surface.blend` |
 | 5 | **Character Artist** | Yehezkiel Montolalu | Nara + Pak Daniel (Scene 1), lalu Haris & crowd | `assets/char/*.blend` kecuali `nara_rig.blend` |
 | 6 | **Rigger & Animator** | Ciputra Lumi | Rig Nara, 10 shot animasi Scene 1 | `assets/char/nara_rig.blend` |
 | 7 | **Lighting & Shading** | Vaughn Toy | Look dev, world, warna air | `assets/look/scene-1-look.blend` |
-| 8 | **Post-Production (Audio + Edit)** | Gian Keintjem | Narasi, musik, SFX, potong animatic | `assets/audio/scene-1/` + `renders/animatic/` |
+| 8 | **Post-Production (Audio + Edit)** | [belum ada] | Narasi, musik, SFX, potong animatic | `assets/audio/scene-1/` + `renders/animatic/` |
 
 ### Siapa menunggu siapa
 
@@ -667,6 +674,15 @@ belum diputuskan. Dua penghalang pasti: peran 8 belum ada orangnya
 (`assets/audio/scene-1/` kosong) dan rig Nara belum mulai. Yang tidak boleh
 meleset sekarang: **ada sesuatu yang bisa diputar** sebelum check-in Jumat
 6 November — sekasar apa pun — sebagai bukti progres.
+
+**Status 13 Nov 2026** (dari isi repo + `git log`): master
+`scenes/scene-1.blend` sudah ada di komputer lead (5 Nov, ±1 MB) tetapi **belum
+di-commit**. Vegetasi (8 Nov), `surface-vegetation.blend`, penyu final, dan
+pratinjau 3D Remotion (10 Nov) sudah masuk `main`. Yang masih kosong:
+`assets/char/nara_rig.blend`, seluruh `assets/audio/scene-1/`, dan 10 frame
+`storyboard/frames/scene-1/`. Animatic Remotion sudah bisa diputar di `motion/`
+(840 frame = 35 detik) tetapi belum dirender. Tanggal animatic baru **belum
+ditetapkan** — diputuskan lead di check-in 13 Nov.
 
 ---
 

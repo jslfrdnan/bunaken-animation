@@ -26,6 +26,7 @@ Simpan file di tempat berikut, lalu catat tautannya di tabel ini.
 | 10 Nov 2026 | Render cek vegetasi pulau + populasi terumbu | v002 | tidak di-commit | still di `renders/stills/3d-f*-lush.png` dan `3d-f*-reef*.png` |
 | — | Animatic Scene 1 (kasar) | v001 | _belum ada_ | tenggat 2 Nov terlewat; digabung ke v002 |
 | — | Animatic Scene 1 (audio penuh) | v002 | _belum ada_ | target Jumat, 6 Nov 2026; fallback 13 Nov |
+| 13 Nov 2026 | Animatic Scene 1 — scaffold Remotion | v001 | ada di `motion/`, tidak di-commit | 840 frame = 35 s, 10 shot; **MP4 belum dirender** |
 
 ## Aturan penamaan file render
 
