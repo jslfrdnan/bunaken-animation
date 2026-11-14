@@ -72,8 +72,14 @@ def log(line):
 
 
 def main():
+    argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
+    only = argv[0] if argv else None
+    if only:
+        print("filter scene:", only, flush=True)
     total = 0
     for scene_id, shot, override in SHOTS:
+        if only and scene_id != only:
+            continue
         path = os.path.join(SCENES, shot + ".blend")
         if not os.path.exists(path):
             log(f"SKIP - {shot}")

@@ -8,7 +8,7 @@ Dijalankan setelah `scripts/render-film.py` selesai.
 Input : renders/film/frames/S<scene>_<shot>/*.png
         assets/subtitles/warisan-bunaken_v001.srt
         renders/audio/warisan-bunaken_ambience_v001.wav
-Output: renders/film/warisan-bunaken_film_v002.mp4 (2:25, subtitle bakar, audio sementara)
+Output: renders/film/warisan-bunaken_film_v003.mp4 (2:25, subtitle bakar, audio sementara)
 
 Catatan: ffmpeg di repo ini tidak punya filter `subtitles` (libass), jadi teks
 digambar per frame memakai PIL. Cue tagline (2:20) dilewati karena sudah tampil
@@ -27,7 +27,7 @@ FRAMES = os.path.join(ROOT, "renders", "film", "frames")
 SUBTITLED = os.path.join(ROOT, "renders", "film", "subtitled")
 SRT = os.path.join(ROOT, "assets", "subtitles", "warisan-bunaken_v001.srt")
 AUDIO = os.path.join(ROOT, "renders", "audio", "warisan-bunaken_ambience_v001.wav")
-OUT = os.path.join(ROOT, "renders", "film", "warisan-bunaken_film_v002.mp4")
+OUT = os.path.join(ROOT, "renders", "film", "warisan-bunaken_film_v003.mp4")
 FFMPEG = os.path.join(
     ROOT, "motion", "node_modules", "@remotion", "compositor-win32-x64-msvc", "ffmpeg.exe"
 )
@@ -117,4 +117,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
