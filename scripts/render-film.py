@@ -93,8 +93,11 @@ def main():
         except Exception:
             pass
         try:
-            look.apply_look(scn, scene_id)
-            log(f"LOOK - {shot} memakai look scene-{scene_id}")
+            if "tagline" in shot:
+                log(f"LOOK-SKIP - {shot} kartu teks hitam")
+            else:
+                look.apply_look(scn, scene_id)
+                log(f"LOOK - {shot} memakai look scene-{scene_id}")
         except Exception as exc:
             log(f"LOOK-WARN - {shot}: {exc}")
         scn.render.image_settings.file_format = "PNG"

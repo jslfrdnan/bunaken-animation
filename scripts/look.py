@@ -84,14 +84,14 @@ def look_path(scene_id: int) -> str:
 
 
 def load_look(scene_id: int) -> dict:
-    """Append (link=False) world + material air dari file look, lalu cache.
+    """Append (link=False) world + material air dari file look.
 
     Idempoten: kalau world/material dengan nama itu sudah ada di file aktif,
     data yang ada dipakai ulang supaya tidak lahir `WLD_scene-1.001`.
+    TIDAK memakai cache lintas file: setiap shot dibuka sebagai file baru,
+    sehingga referensi World lama akan mati (StructRNA removed).
     """
     scene_id = int(scene_id)
-    if scene_id in _LOOK_CACHE:
-        return _LOOK_CACHE[scene_id]
 
     path = look_path(scene_id)
     names = WORLDS[scene_id]
@@ -115,12 +115,11 @@ def load_look(scene_id: int) -> dict:
             w.use_fake_user = True
     material.use_fake_user = True
 
-    _LOOK_CACHE[scene_id] = {
+    return {
         "world": world,
         "world_surface": bpy.data.worlds.get(names["surface"]) or world,
         "material": material,
     }
-    return _LOOK_CACHE[scene_id]
 
 
 def water_objects(scn) -> list:

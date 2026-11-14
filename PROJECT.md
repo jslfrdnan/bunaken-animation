@@ -795,17 +795,18 @@ narasi & musik (peran 8), model Haris/crowd/divegear (butuh gambar acuan), shot
 Scene 2 060–090, Scene 3 010/030–100, Scene 4 010/040–060/080, serta render 3D
 final per scene.
 
-**Status 14 Nov 2026 (malam) — 38/38 shot Blender lengkap dan film 2:25 sudah
-dirender.** Seluruh shot punya file `scenes/scene-<n>_shot-*.blend`; master
-`scenes/scene-<n>_master_v002.blend` berisi 10/9/10/9 scene = **3480 frame**.
-Film `renders/film/warisan-bunaken_film_v001.mp4` terverifikasi: **145,0 s,
-3480 frame, 1920×1080, 24 fps, H.264 + AAC stereo, 39,0 MB**, subtitle bakar
-15 cue, audio = bed ambience sementara.
+**Status 14 Nov 2026 (malam) — 38/38 shot, look per scene, film 2:25 v002.**
+Seluruh shot punya file Blender; master `scene-<n>_master_v002.blend` berisi
+10/9/10/9 scene = 3480 frame. Look per scene diterapkan lewat
+`scripts/look.py → apply_look`: world bawah laut (S1), subuh biru (S2), sore
+hangat (S3), pagi cerah (S4), plus shader air beriak. Film
+`renders/film/warisan-bunaken_film_v002.mp4` terverifikasi **3480 frame,
+145,0 s, 1920×1080, 24 fps, H.264 + AAC stereo, 41,2 MB**, subtitle bakar,
+audio bed ambience sementara. Render per scene `scene-<n>_v003.mp4` juga ada.
 
-Yang masih **belum final** dan butuh manusia: narasi + musik (rekaman), rig
-Daniel, facial rig, dan look air final. Catatan teknis: S3-010 dan S4-080 memakai
-mesh tanpa armature sehingga tokoh diam; dua shot itu perlu rebuild setelah rig
-tersedia.
+Yang masih **belum final** dan butuh manusia: narasi + musik (rekaman). Batas AI
+yang tercatat: facial rig tidak ada, crowd bergerak terbatas, dan geometri
+karakter masih blockout.
 
 ---
 
