@@ -1,5 +1,5 @@
 /**
- * Kamera 11 shot Scene 1 untuk versi 3D (Remotion + three.js).
+ * Kamera 10 shot Scene 1 untuk versi 3D (Remotion + three.js).
  *
  * Semua angka ditulis dalam koordinat BLENDER supaya bisa dibandingkan
  * langsung dengan `scenes/scene-1.blend`:
