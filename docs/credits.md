@@ -195,6 +195,4 @@ tekstur, latar, atau bagian film (`AGENTS.md` §2).
 | `storyboard/refs/ref-haris_v001.png` | foto pribadi diserahkan tim | acuan internal | hitam-putih; warna pakaian diambil dari palette |
 | `storyboard/refs/ref-cakalang_v001.jpg` | ilustrasi ikan cakalang, sumber belum jelas | acuan internal | **perlu klarifikasi lisensi** sebelum dipublikasi |
 | `storyboard/refs/ref-crowd-dermaga_v001.jpg` | iStockphoto, kredit `stellealevi`, *editorial use only* | **tidak boleh** masuk film | hanya acuan komposisi kerumunan; ganti dengan foto tim sendiri atau pakai panel storyboard 1C |
-
-**Belum diterima:** foto peralatan snorkeling (masker, snorkel, fin) —
-`assets/props/divegear.blend` belum bisa dibuat tanpa itu.
+| `storyboard/refs/ref-divegear_v001.png` | foto produk peralatan snorkel, sumber belum jelas (berkas `.avif` dari lead) | acuan internal | **perlu klarifikasi lisensi** sebelum publikasi |

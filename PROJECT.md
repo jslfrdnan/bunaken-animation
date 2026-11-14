@@ -530,8 +530,9 @@ perlu keputusan lead kalau palette harus ketat. Status 🟨.
 | Pak Daniel | `assets/char/daniel.blend` | Yehezkiel Montolalu | 1, 2, 3, 4 | 🟨 |
 | Pak Haris | `assets/char/haris_v001.blend` | Jasiel Wowiling | 2, 3, 4 | 🟨 |
 | Mannequin blockout (previz, bukan tokoh) | `assets/char/mannequin.blend` | Jasiel Wowiling | shot karakter | 🟨 |
-| Warga & anak-anak (low detail) | `assets/char/crowd.blend` | Character Artist | 2, 3, 4 | ⬜ |
-| Peralatan selam | `assets/props/divegear.blend` | Character Artist | 1, 3 | ⬜ (foto acuan belum diterima) |
+| Warga & anak-anak (low detail) | `assets/char/crowd.blend` | Jasiel Wowiling | 2, 3, 4 | 🟨 |
+| Peralatan selam | `assets/props/divegear.blend` | Jasiel Wowiling | 1, 3 | 🟨 |
+| Ikan cakalang (model baru) | `assets/env/fish-cakalang.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
 
 **Scene 1 hanya butuh** `nara.blend`, `nara_rig.blend`, `daniel.blend`, dan
 `divegear.blend`. Pak Daniel wajib muncul di shot 080.
