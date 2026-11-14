@@ -183,3 +183,18 @@ dicatat supaya jelas asalnya:
 Teks lisensi lengkap: `.opencode/skills/BLENDER-SKILLS-LICENSE.txt`.
 Ringkasan audit dan aturan pakai:
 `.opencode/skills/THIRD-PARTY-blender-skills.md`.
+
+## 8. Foto acuan karakter & properti (14 Nov 2026)
+
+Semua foto di bawah **hanya acuan bentuk/warna**, tidak pernah dipakai sebagai
+tekstur, latar, atau bagian film (`AGENTS.md` §2).
+
+| File | Sumber | Boleh dipakai? | Catatan |
+|---|---|---|---|
+| `storyboard/refs/ref-nara_v001.jpg` | foto pribadi diserahkan tim (Gretchen S. D. Makarewa) | acuan internal | kemiripan wajah tidak diklaim; kredit film tidak menyebut nama |
+| `storyboard/refs/ref-haris_v001.png` | foto pribadi diserahkan tim | acuan internal | hitam-putih; warna pakaian diambil dari palette |
+| `storyboard/refs/ref-cakalang_v001.jpg` | ilustrasi ikan cakalang, sumber belum jelas | acuan internal | **perlu klarifikasi lisensi** sebelum dipublikasi |
+| `storyboard/refs/ref-crowd-dermaga_v001.jpg` | iStockphoto, kredit `stellealevi`, *editorial use only* | **tidak boleh** masuk film | hanya acuan komposisi kerumunan; ganti dengan foto tim sendiri atau pakai panel storyboard 1C |
+
+**Belum diterima:** foto peralatan snorkeling (masker, snorkel, fin) —
+`assets/props/divegear.blend` belum bisa dibuat tanpa itu.
