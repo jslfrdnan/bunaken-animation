@@ -4,7 +4,9 @@ import { MONO, PALETTE, SAFE, SERIF } from "../theme";
 import { SHOTS } from "../shots";
 
 /** Judul film: overlay 3 detik pertama shot 010 (PROJECT.md §1.6). */
-export const TitleCard: React.FC = () => {
+export const TitleCard: React.FC<{ subtitle?: string }> = ({
+  subtitle = "Scene 1 · Permata",
+}) => {
   const frame = useCurrentFrame();
 
   const enter = interpolate(frame, [4, 22], [0, 1], {
@@ -88,13 +90,12 @@ export const TitleCard: React.FC = () => {
             paddingLeft: "0.34em",
           }}
         >
-          Scene 1 · Permata
+          {subtitle}
         </div>
       </div>
     </AbsoluteFill>
   );
 };
-
 export const Slate: React.FC<{ showDetails: boolean; label?: string }> = ({
   showDetails,
   label = "ANIMATIC v001",
