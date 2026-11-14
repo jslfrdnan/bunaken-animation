@@ -551,8 +551,9 @@ jari, control curves, IK) **tetap tugas Ciputra Lumi** — file tetap miliknya.
 
 | Aset | File | Pemilik | Status |
 |---|---|---|---|
-| World bawah laut + world permukaan (`WLD_*`) | `assets/look/scene-1-look.blend` | Vaughn Toy | 🟨 |
-| Shader air, pasir, karang, batu (`SHD_*`) | `assets/look/scene-1-look.blend` | Vaughn Toy | 🟨 |
+| World bawah laut + world permukaan (`WLD_scene-1*`) | `assets/look/scene-1-look_v002.blend` | Vaughn Toy | 🟨 |
+| World per scene (`WLD_scene-2/3/4`) | `assets/look/scene-2-look.blend`, `scene-3-look.blend`, `scene-4-look.blend` | Jasiel Wowiling | 🟨 |
+| Shader air, pasir, karang, batu (`SHD_*`) | `assets/look/scene-1-look_v002.blend` | Vaughn Toy | 🟨 |
 | Narasi & SFX & musik Scene 1 | `assets/audio/scene-1/` | peran 8 (**belum ada orangnya**) | ⬜ |
 
 `scene-1-look.blend` adalah **sumber setting render**. Salin dari situ: EEVEE Next,

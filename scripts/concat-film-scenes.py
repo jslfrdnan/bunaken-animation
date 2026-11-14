@@ -1,4 +1,4 @@
-"""
+﻿"""
 Gabungkan frame film final menjadi MP4 per scene (versi v002).
 
 Input : renders/film/frames/S<scene>_<shot>/*.png
@@ -41,12 +41,12 @@ def main():
         files = scene_frames(scene, shots)
         outdir = os.path.join(ROOT, "renders", f"scene-{scene}")
         os.makedirs(outdir, exist_ok=True)
-        listing = os.path.join(outdir, "concat-v002.txt")
+        listing = os.path.join(outdir, "concat-v003.txt")
         with open(listing, "w", encoding="utf-8") as fh:
             for path in files:
                 fh.write("file '" + path.replace("\\", "/") + "'\n")
 
-        out = os.path.join(outdir, f"scene-{scene}_v002.mp4")
+        out = os.path.join(outdir, f"scene-{scene}_v003.mp4")
         subprocess.run(
             [FFMPEG, "-y", "-f", "concat", "-safe", "0", "-r", "24", "-i", listing,
              "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p",
@@ -70,3 +70,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
