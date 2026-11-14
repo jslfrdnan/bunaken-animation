@@ -193,6 +193,14 @@ dokumenter fotorealistik.
 | Pasir hangat | `#E8D5B0` | Pantai, dermaga, kulit terkena cahaya |
 | Krem tulang | `#F2E9DC` | Highlight, langit berkabut |
 
+**Netral tambahan (disetujui 14 Nov 2026, hanya untuk karakter):**
+
+| Nama | Hex | Dipakai untuk |
+|---|---|---|
+| Netral gelap | `#2E383A` | rambut, mata, topi, alas kaki |
+| Abu kain | `#8A8F8C` | kaos Haris, mannequin blockout |
+| Bibir | `#C7A985` | bibir (kulit digelapkan) |
+
 **Aturan:** oranye karang hanya aksen. Kalau satu frame terasa oranye, itu
 terlalu banyak.
 
