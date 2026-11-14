@@ -794,24 +794,17 @@ narasi & musik (peran 8), model Haris/crowd/divegear (butuh gambar acuan), shot
 Scene 2 060–090, Scene 3 010/030–100, Scene 4 010/040–060/080, serta render 3D
 final per scene.
 
-**Status 14 Nov 2026 (malam) — Scene 1 sudah jadi film Blender.** Shot Blender
-mencapai **24/38**: Scene 1 10, Scene 2 5, Scene 3 4 (010/020/050/100), Scene 4
-5 (020/030/070/080/090 tagline). Master `scenes/scene-<n>_master_v001.blend`
-ada untuk **scene 1–4** (satu scene per shot, dirakit dari file shot). Render
-MP4 per scene sudah ada dan terverifikasi ffprobe:
+**Status 14 Nov 2026 (malam) — 38/38 shot Blender lengkap.** Seluruh shot punya
+file `scenes/scene-<n>_shot-*.blend`. Master scene 1–4 dirakit dari file shot.
+Render film penuh sedang berjalan: 3480 frame (35 + 35 + 40 + 35 detik), PNG
+1920×1080 EEVEE, lalu digabung menjadi
+`renders/film/warisan-bunaken_film_v001.mp4` dengan subtitle bakar
+(`assets/subtitles/warisan-bunaken_v001.srt`) dan bed ambience sementara.
 
-| Scene | MP4 | Frame | Durasi | Status |
-|---|---|---|---|---|
-| 1 | `renders/scene-1/scene-1_v001.mp4` | 840 | 35,0 s | **lengkap** |
-| 2 | `renders/scene-2/scene-2_v001.mp4` | 480 | 20,0 s | 15 s kurang (060–090) |
-| 3 | `renders/scene-3/scene-3_v001.mp4` | 384 | 16,0 s | 24 s kurang (030–090) |
-| 4 | `renders/scene-4/scene-4_v001.mp4` | 456 | 19,0 s | 16 s kurang (010/040–060) |
-
-Belum ada film 2:25 dari render Blender karena **14 shot** masih tertahan:
-`haris.blend`, `crowd.blend`, `divegear.blend` menunggu gambar acuan manusia.
-Tanpa itu, shot karakter tidak boleh dikarang (`AGENTS.md` §2). Audio final juga
-belum: narasi dan musik perlu rekaman manusia; bed ambience sintetis sudah ada
-dan ditandai bukan final.
+Yang masih **belum final**: narasi & musik (rekaman manusia), rig Daniel belum
+ada (shot Daniel memakai mesh tanpa armature), rig tanpa facial, dan look air
+final. Dua shot lama (S3-010, S4-080) memakai mesh tanpa armature sehingga tokoh
+diam di rest pose — dicatat untuk rebuild.
 
 ---
 
