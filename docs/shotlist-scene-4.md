@@ -25,7 +25,7 @@ terakhir.
 - **040–050** — Haris tidak dihukum; ia diberi pilihan.
 - **060** — Pak Daniel mengajar = penutup busurnya.
 - **070** — penyu dari `assets/env/sea_turtle.blend`; perbaiki bentuknya dari
-  sudut rendah (temuan @animation).
+  sudut rendah (temuan sesi animasi).
 - **080** — jangan ada tagline di sini.
 - **090** — teks tagline 3–4 detik.
 
@@ -33,3 +33,13 @@ terakhir.
 
 Mooring buoy oranye, kerangka transplantasi karang, keramba rumput laut, Pak
 Haris, crowd anak-anak, varian karang pulih.
+
+## Status produksi (15 Nov 2026)
+
+**Pembaruan 15 Nov 2026 (@technical):** 010 latar → `island-detail_v003` +
+`crowd_v003` (10 warga); buoy oranye terbaca (`MAT_buoy_body`, #E4713C).
+060 latar → `island-detail_v003`, Daniel (`daniel_rig_v001`, 22 bone) + **tiga
+anak asli `CRW_C01`–`CRW_C03`** menganyam jaring. 070 reef → `reef-dense_v003`
+(140 karang + 600 lamun) + **tiga sekolah ber-rig** (14 cakalang, 10 kakatua,
+16 damselfish); penyu tetap dari `sea_turtle-assembled.blend`. Backup lama:
+`*_v000.blend`.

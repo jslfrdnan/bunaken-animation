@@ -25,7 +25,29 @@ perahu. Narasi tetap dominan.
 - **040–050** — butuh karang rusak dan ikan mati (belum ada).
 - **090** — momen terberat; tanpa dialog. Nara tidak menari.
 
+## Status produksi (15 Nov 2026)
+
+| Shot | Status |
+|---|---|
+| 010–050 | ✅ file animasi v001 ada di `scenes/scene-2_shot-*`; preview di `renders/stills/anim-s2-*` |
+| 060–090 | ✅ v001 ada; 090 (`daniel-naik`) diperbarui: island-detail_v003 + crowd_v003 |
+
+**Pembaruan 15 Nov 2026 (@technical):** 010 pulau → `island-detail_v003` + perahu
+Haris (`haris-boat.blend`, tanpa kanopi) di 58 m, kamera wide 30 mm horizon
+rendah. 020 dibangun ulang sebagai FX bom **bawah permukaan** (kamera z −3 m):
+gelembung f1–12, kilatan f12–18, **cincin tekanan torus 0,2 → 6,0 m** (f12–34),
+kolom 48 gelembung f18–60, 12 puing karang, 12 cakalang ber-rig kabur; tanpa
+camera shake dan tanpa volumetrik. 030: jaring menyapu x −3,2 → +3,6 m,
+**6 ikan ber-rig tersangkut** (3 cakalang + 3 kakatua, menempel di jaring) dan
+**20 ikan lain kabur**; kamera tracking rendah 26 mm. 090: island v003 +
+crowd_v003 (10 warga) + Daniel rig (22 bone) naik perahu Haris. Backup lama:
+`*_v000.blend`.
+
+Catatan: laporan akhir subagent hilang saat server OpenCode restart; file dan
+preview sudah ter-commit, tetapi audit isi file perlu diulang saat Blender hidup.
+
 ## Aset baru
 
 Karang rusak, jaring terbentang, ikan mati, Pak Haris, crowd warga, varian
 perahu Haris. Lihat `PROJECT.md` §5 untuk status & pemilik.
+

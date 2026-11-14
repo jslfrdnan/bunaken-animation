@@ -79,10 +79,11 @@ Teks di atas hitam: **"Laut yang dijaga adalah warisan, bukan tambang."**
 **Nara — protagonis, perempuan, 19 tahun.** Dive guide magang, anak nelayan.
 Ingin sekolah kelautan di Manado, tapi kampungnya butuh dia sekarang. Ketakutannya:
 menjadi orang yang meninggalkan laut saat laut butuh dia. Ciri visual: rash guard
-teal pudar, jam selam di tangan kiri, rambut pendek hitam atau diikat. Busurnya:
-dari remaja yang menikmati laut menjadi orang yang bertanggung jawab atasnya.
-Kalimat kuncinya — *"Kalau bukan kita yang jaga, siapa lagi?"* — dipakai **sekali**
-saja, di Scene 3.
+teal pudar, jam selam di tangan kiri, **rambut hitam panjang** yang diikat saat
+menyelam (acuan `storyboard/refs/ref-nara_v001.jpg`; kacamata tidak dipakai di
+air). Busurnya: dari remaja yang menikmati laut menjadi orang yang bertanggung
+jawab atasnya. Kalimat kuncinya — *"Kalau bukan kita yang jaga, siapa lagi?"* —
+dipakai **sekali** saja, di Scene 3.
 
 **Pak Daniel — ayah Nara, 52 tahun.** Nelayan tradisional. Ingin anaknya sekolah
 dan keluarganya makan; butuh mengakui bahwa ia mengambil jalan pintas karena
@@ -192,6 +193,14 @@ dokumenter fotorealistik.
 | Pasir hangat | `#E8D5B0` | Pantai, dermaga, kulit terkena cahaya |
 | Krem tulang | `#F2E9DC` | Highlight, langit berkabut |
 
+**Netral tambahan (disetujui 14 Nov 2026, hanya untuk karakter):**
+
+| Nama | Hex | Dipakai untuk |
+|---|---|---|
+| Netral gelap | `#2E383A` | rambut, mata, topi, alas kaki |
+| Abu kain | `#8A8F8C` | kaos Haris, mannequin blockout |
+| Bibir | `#C7A985` | bibir (kulit digelapkan) |
+
 **Aturan:** oranye karang hanya aksen. Kalau satu frame terasa oranye, itu
 terlalu banyak.
 
@@ -229,7 +238,7 @@ ulang terpisah; Nara tetap tidak memakainya.
 
 1. Semua tekstur memakai palette di atas; warna di luar daftar butuh persetujuan
    lead.
-2. Semua look dev memakai **satu file** `assets/look/scene-1-look.blend`.
+2. Semua look dev memakai **satu file per scene**: `assets/look/scene-1-look_v002.blend`, `scene-2-look.blend`, `scene-3-look.blend`, `scene-4-look.blend`. Renderer memanggil `scripts/look.py → apply_look(scn, scene_id)` untuk memasang world dan material air tanpa mengubah file shot.
 3. Sebelum mulai, lihat 3 frame referensi yang sudah disetujui di
    `storyboard/frames/scene-1/`.
 
@@ -261,6 +270,16 @@ menghabiskan waktu di lighting, bukan di cerita.
 | Render animasi | MP4 H.264, CRF 18 | upload ke Releases |
 | Audio | WAV 48 kHz 24-bit | final mix, di-commit jika <50 MB |
 
+### Animasi
+
+**Keputusan lead 14 Nov 2026: animasi hanya dibuat di Blender.** Remotion
+(`motion/`) tidak dipakai untuk animasi; folder itu hanya menyimpan acuan
+timing 35 detik Scene 1 dan pembanding komposisi. Setiap shot yang diputar
+harus punya file `scenes/scene-X_shot-*.blend` dan dirender dari Blender.
+
+Animatic papan cerita yang sudah ada (`renders/animatic/*`) berstatus
+**referensi timing**, bukan hasil akhir dan bukan pengganti shot Blender.
+
 ### Audio
 
 Narasi Bahasa Indonesia, satu suara, direkam tim sendiri. Musik tema + variasi
@@ -281,6 +300,11 @@ tertahan dan menggelegar, bukan "BOOM" sinematik.
 
 Bahasa Indonesia, satu `.srt`, maksimal 2 baris (~42 karakter per baris), putih
 dengan outline hitam tipis, tidak menimpa wajah, timing mengikuti narasi.
+
+File final: **`assets/subtitles/warisan-bunaken_v001.srt`** (16 cue, 0:01–2:25,
+diturunkan dari `docs/narasi.md`). Versi bakar di animatic ada di
+`motion/src/subtitles.ts`; cue tagline tidak didaftarkan di sana karena sudah
+tampil sebagai kartu teks di shot 090 Scene 4.
 
 ### Batasan
 
@@ -357,10 +381,18 @@ halus, atau animasi.
 | Gunung Manado Tua | `assets/env/surface.blend` | Jasiel Wowiling | 1 | 🟨 |
 | Perahu bercadik | `assets/props/boats.blend` | Jasiel Wowiling | 1, 2 | ✅ |
 | Karang rusak (akibat bom & jaring) | `assets/env/reef-damaged.blend` | Jasiel Wowiling | 2, 4 | 🟨 |
-| Kerangka transplantasi karang | `assets/props/` | Jasiel Wowiling | 4 | ⬜ |
+| Kerangka transplantasi karang | `assets/props/coral-frame.blend` | Jasiel Wowiling | 4 | 🟨 |
 | Mooring buoy | `assets/props/mooring-buoy.blend` | Jasiel Wowiling | 4 | 🟨 |
+| Keramba rumput laut | `assets/env/seaweed-farm.blend` | Jasiel Wowiling | 4 | 🟨 |
+| Kamera bawah air (housing) | `assets/props/underwater-camera.blend` | Jasiel Wowiling | 3 | 🟨 |
+| Buku utang Pak Haris | `assets/props/debt-book.blend` | Jasiel Wowiling | 3 | 🟨 |
 | Jaring & alat tangkap | `assets/props/fishing-gear.blend` | Jasiel Wowiling | 1, 2 | 🟨 |
 | Jaring terbentang di dasar | `assets/props/fishing-net-spread.blend` | Jasiel Wowiling | 2 | 🟨 |
+| Papan nama dive shop | `assets/props/dive-shop-sign.blend` | Jasiel Wowiling | 1 | 🟨 |
+| Varian karang pulih (transplantasi muda) | `assets/env/reef-recovering.blend` | Jasiel Wowiling | 4 | 🟨 |
+| Perahu Haris (tanpa kanopi, cat pudar) | `assets/props/haris-boat.blend` | Jasiel Wowiling | 2, 3 | 🟨 |
+| Jaring kubah (setengah bola) | `assets/props/fishing-net-dome.blend` | Jasiel Wowiling | 2 | 🟨 |
+| Hamparan terumbu hancur | `assets/env/reef-wrecked.blend` | Jasiel Wowiling | 2 | 🟨 |
 
 **Isi `reef.blend` saat ini:** `ENV_reef_branching-coral` (+`_b`), `ENV_reef_boulder-coral`,
 `ENV_reef_table-coral`, `ENV_reef_fish_cakalang`, `_hiu`, `_goropa-merah`,
@@ -465,16 +497,44 @@ image. Dibangun oleh Jasiel Wowiling lewat
 `scripts/build-reef-damaged.py`, `build-fishing-net-spread.py`, dan
 `build-mooring-buoy.py`. Status 🟨: menunggu review visual lead.
 
+**Isi `coral-frame.blend`, `seaweed-farm.blend`, `underwater-camera.blend`,
+`debt-book.blend` (14 Nov 2026):** empat aset prosedural Scene 3–4.
+`PRP_coral-frame_rack` (1,51 × 1,01 × 0,37 m, pipa + kisi kawat) dengan tiga
+fragmen karang (bercabang, massif, meja); `ENV_seaweed-farm_rack` (petak
+4,16 × 3,19 m, tiang bambu menonjol 1,20 m di atas air) + tali bentang +
+5 pelampung + tiga rumpun rumput menggantung; `PRP_camera_housing/lens/handle/
+strap` (housing 0,24 × 0,19 × 0,15 m, lensa menghadap −Y); `PRP_book_cover/
+pages/strap` (0,157 × 0,210 × 0,031 m, karet pengikat + gesper oranye). Semua
+memakai material palette §2 tanpa tekstur image. Dibangun oleh Jasiel Wowiling
+lewat `scripts/build-coral-frame.py`, `build-seaweed-farm.py`,
+`build-underwater-camera.py`, dan `build-debt-book.py`. Status 🟨: menunggu
+review visual lead (preview di `renders/stills/*-preview-0*.png`).
+
+**Isi `dive-shop-sign.blend`, `reef-recovering.blend`, `haris-boat.blend`
+(14 Nov 2026, dikerjakan @modelling):** `PRP_sign_board/frame/post_l/post_r/
+text` (1,90 × 0,17 × 2,20 m; huruf "BUNAKEN DIVE" berupa mesh, bukan tekstur);
+`ENV_reef_recovering-branching` (0,53 × 0,45 × 0,35 m), `-massive`
+(0,48 × 0,54 × 0,30 m), `-table` (0,60 × 0,60 × 0,25 m), total 3.937 verts;
+`PRP_haris-boat_*` 69 objek — perahu bercadik tanpa kanopi (18 objek kanopi,
+balok, dan tali mast dibuang), lambung putih pudar #D2D2C6, plus
+`PRP_haris-boat_basket` dan `_netpile` di dek. Catatan: kayu gelap `#3E2C20`
+dan abu `#D2D2C6` di luar 6 warna palette, tetapi mengikuti "kayu gelap" yang
+sudah dipakai `boats.blend` dan permintaan "putih pudar" untuk perahu Haris —
+perlu keputusan lead kalau palette harus ketat. Status 🟨.
+
 ### Karakter
 
 | Aset | File | Pemilik | Scene | Status |
 |---|---|---|---|---|
 | Nara (model) | `assets/char/nara.blend` | Yehezkiel Montolalu | 1, 2, 3, 4 | 🟨 |
+| Nara v002 (dari foto acuan) | `assets/char/nara_v002.blend` | Jasiel Wowiling | 1–4 | 🟨 |
 | Nara (rig) | `assets/char/nara_rig.blend` | Ciputra Lumi | 1, 2, 3, 4 | 🟨 |
 | Pak Daniel | `assets/char/daniel.blend` | Yehezkiel Montolalu | 1, 2, 3, 4 | 🟨 |
-| Pak Haris | `assets/char/haris.blend` | Character Artist | 2, 3, 4 |
-| Warga & anak-anak (low detail) | `assets/char/crowd.blend` | Character Artist | 2, 3, 4 |
-| Peralatan selam | `assets/props/divegear.blend` | Character Artist | 1, 3 |
+| Pak Haris | `assets/char/haris_v001.blend` | Jasiel Wowiling | 2, 3, 4 | 🟨 |
+| Mannequin blockout (previz, bukan tokoh) | `assets/char/mannequin.blend` | Jasiel Wowiling | shot karakter | 🟨 |
+| Warga & anak-anak (low detail) | `assets/char/crowd.blend` | Jasiel Wowiling | 2, 3, 4 | 🟨 |
+| Peralatan selam | `assets/props/divegear.blend` | Jasiel Wowiling | 1, 3 | 🟨 |
+| Ikan cakalang (model baru) | `assets/env/fish-cakalang.blend` | Jasiel Wowiling | 1, 4 | 🟨 |
 
 **Scene 1 hanya butuh** `nara.blend`, `nara_rig.blend`, `daniel.blend`, dan
 `divegear.blend`. Pak Daniel wajib muncul di shot 080.
@@ -493,8 +553,9 @@ jari, control curves, IK) **tetap tugas Ciputra Lumi** — file tetap miliknya.
 
 | Aset | File | Pemilik | Status |
 |---|---|---|---|
-| World bawah laut + world permukaan (`WLD_*`) | `assets/look/scene-1-look.blend` | Vaughn Toy | 🟨 |
-| Shader air, pasir, karang, batu (`SHD_*`) | `assets/look/scene-1-look.blend` | Vaughn Toy | 🟨 |
+| World bawah laut + world permukaan (`WLD_scene-1*`) | `assets/look/scene-1-look_v002.blend` | Vaughn Toy | 🟨 |
+| World per scene (`WLD_scene-2/3/4`) | `assets/look/scene-2-look.blend`, `scene-3-look.blend`, `scene-4-look.blend` | Jasiel Wowiling | 🟨 |
+| Shader air, pasir, karang, batu (`SHD_*`) | `assets/look/scene-1-look_v002.blend` | Vaughn Toy | 🟨 |
 | Narasi & SFX & musik Scene 1 | `assets/audio/scene-1/` | peran 8 (**belum ada orangnya**) | ⬜ |
 
 `scene-1-look.blend` adalah **sumber setting render**. Salin dari situ: EEVEE Next,
@@ -555,6 +616,7 @@ Contoh: `ENV_reef_table-coral`, `CHR_nara_body`, `PRP_boat_small`.
 | `assets/props/` | perahu, jaring, peralatan selam, buoy |
 | `assets/textures/` | tekstur gambar, tidak dipack ke `.blend` |
 | `assets/audio/` | narasi, musik, SFX per scene |
+| `assets/subtitles/` | subtitle final `.srt` |
 | `assets/look/` | look dev & shader |
 | `scenes/` | master `.blend` per scene |
 | `renders/` | hasil render (tidak di-commit) |
@@ -722,6 +784,32 @@ pratinjau 3D Remotion (10 Nov) sudah masuk `main`. Yang masih kosong:
 di-commit). Tanggal animatic baru **belum ditetapkan** — diputuskan lead di
 check-in 13 Nov.
 
+**Status 14 Nov 2026:** Scene 1 punya **10 file shot animasi** (`scenes/scene-1_shot-*_v001.blend`; shot 090 masih tanpa crowd) dan rig dasar Nara (18 bone). Scene 2 shot **010–050** sudah dianimasikan memakai `reef-damaged.blend`, `fishing-net-spread.blend`, dan `boats.blend`. Shot 060–090 Scene 2 tertahan model Haris & crowd. Blocker yang tersisa: character sheet Haris, foto peralatan selam, crowd, rekaman narasi, dan perbaikan rig halus oleh Ciputra. Blender MCP perlu dinyalakan ulang untuk melanjutkan animasi.
+
+**Status 14 Nov 2026 (sore) — ada yang bisa diputar.** Aset Scene 3–4 selesai
+sebagai blockout: `coral-frame.blend`, `seaweed-farm.blend`,
+`underwater-camera.blend`, `debt-book.blend` (🟨), dan Scene 4 shot 020 sudah
+dianimasikan. **Animatic film penuh 2:25 sudah dirender**: 3480 frame,
+1920×1080, 24 fps, subtitle bakar 16 cue — `renders/animatic/warisan-bunaken_animatic_v001.mp4`
+(bisu) dan `..._v002_audio.mp4` (bed ambience sintetis 145 s, bukan audio final).
+Subtitle final: `assets/subtitles/warisan-bunaken_v001.srt`. Yang **belum**:
+narasi & musik (peran 8), model Haris/crowd/divegear (butuh gambar acuan), shot
+Scene 2 060–090, Scene 3 010/030–100, Scene 4 010/040–060/080, serta render 3D
+final per scene.
+
+**Status 14 Nov 2026 (malam) — 38/38 shot, look per scene, film 2:25 v002.**
+Seluruh shot punya file Blender; master `scene-<n>_master_v002.blend` berisi
+10/9/10/9 scene = 3480 frame. Look per scene diterapkan lewat
+`scripts/look.py → apply_look`: world bawah laut (S1), subuh biru (S2), sore
+hangat (S3), pagi cerah (S4), plus shader air beriak. Film
+`renders/film/warisan-bunaken_film_v002.mp4` terverifikasi **3480 frame,
+145,0 s, 1920×1080, 24 fps, H.264 + AAC stereo, 41,2 MB**, subtitle bakar,
+audio bed ambience sementara. Render per scene `scene-<n>_v003.mp4` juga ada.
+
+Yang masih **belum final** dan butuh manusia: narasi + musik (rekaman). Batas AI
+yang tercatat: facial rig tidak ada, crowd bergerak terbatas, dan geometri
+karakter masih blockout.
+
 ---
 
 ## 11. Kredit, lisensi, dan sumber
@@ -810,6 +898,53 @@ Aturan lengkap ada di `AGENTS.md`. Ringkas untuk tim:
 
 Kalau AI dan permintaanmu bertentangan dengan dokumen ini, permintaanmu menang —
 tapi minta AI memperbarui catatannya.
+
+### Pembagian kerja sesi ini (14 Nov 2026)
+
+**Pembagian tugas manusia tidak berlaku di sesi ini.** Seluruh pekerjaan
+dikerjakan AI. Saya (primary) berperan sebagai **Director** — memakai skill
+`blender-director` untuk ANALYZE → PLAN → BRIEF → DELEGATE → VALIDATE — dan
+mendelegasikan ke **10 subagent kategori** sesuai README `arjun988/blender-skills`.
+Kategori **Orchestration tidak dijadikan agent** karena peran itu dipegang Director.
+
+Semua agent dikunci ke `opencode-go/deepseek-v4.1-flash` dan memakai skill
+sesuai kategorinya.
+
+| Agent | Kategori | Skill inti |
+|---|---|---|
+| `@modeling` | Modeling | blender-modeler, hard-surface, prop-artist, vehicle-artist, environment-artist, vegetation-artist, character-artist, creature-artist, character-archetypes |
+| `@production` | Production | sculpting, retopology, uv-workflow, materials, texture-workflow, hair-groom, cloth-sim, lookdev |
+| `@technical` | Technical | geometry-nodes, lighting, camera-cinematography, rendering, compositing, animation, rigging, vfx-fx, physics-sim |
+| `@pipeline` | Pipeline | procedural-modeling, scene-assembly, set-dressing, asset-optimization, lod-pipeline, collision-proxy, export-pipeline, unity/unreal/godot-export, qa-review, archviz |
+| `@core-styles` | Core styles | horror, psx-horror, lowpoly, anime, voxel, isometric, stylized, realistic |
+| `@extended-styles` | Extended styles | cartoon, comic-book, manga, pixel-art, hand-painted, painterly, stop-motion-craft, chibi, noir, minimalist, vector, retro-8/16-bit, hd-2d, frutiger-aero |
+| `@horror-packs` | Horror packs | cosmic-eldritch, body-horror, analog-found-footage, liminal-space, folk-horror, mascot-puppet, dream-weirdcore, indie-horror |
+| `@worlds-moods` | Worlds / moods | fantasy, sci-fi-punk, historical, apocalypse, biome, cozy-wholesome, dark-gritty, dream-surreal, neon-retrofuturism, brutalist |
+| `@genre-direction` | Genre direction | action-combat, shooter, rpg, survival, stealth, puzzle-platformer, metroidvania-roguelike, soulslike, strategy-sim, racing-sports, narrative-vn, card-party-idle, open-world-sandbox |
+| `@eras` | Eras | visual-console-eras |
+
+Wilayah file yang dipakai film ini:
+
+| Agent | File kunci |
+|---|---|
+| `@modeling` | `assets/env/`, `assets/props/`, `assets/char/` (mesh) |
+| `@production` | material/shader di `assets/look/` dan file aset |
+| `@technical` | `scenes/` (shot), rig, look, render |
+| `@pipeline` | master `scenes/scene-<n>.blend`, QA |
+| `@core-styles`, `@worlds-moods` | arahan gaya pada world/material, bukan mesh baru |
+
+Catatan:
+
+- Tabel peran di §9 tetap dipakai **untuk kredit film**, bukan pembatas kerja.
+- Agent boleh mengerjakan file yang dulu "milik" orang lain, tetapi perubahan
+  besar disimpan sebagai versi baru (`*_v002.blend`) dan dilaporkan.
+- Agent lama (`modelling`, `rigging`, `lighting-shading`, `animasi`) dipensiunkan
+  dan dipindah ke `.opencode/agents-retired/`; cakupannya kini ada di
+  `@modeling` dan `@technical`.
+- Kategori yang tidak relevan (horror, genre, export game) tetap punya agent
+  tetapi **tidak dipakai** kecuali Director menugaskan eksperimen.
+- Aturan keras yang tidak berubah: **animasi hanya di Blender**, satu instance
+  Blender MCP pada satu waktu, tanpa `open_mainfile` di sesi hidup.
 
 ---
 

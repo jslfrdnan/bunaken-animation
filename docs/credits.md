@@ -104,6 +104,18 @@ storyboard 2A/3A/4A + `ref-reef-underwater_v001.jpg` + palette `PROJECT.md` §2 
 seluruhnya acuan internal, tidak ada foto yang dipakai sebagai tekstur, dan
 tidak ada model pihak ketiga di dalamnya.
 
+Empat aset Scene 3–4 — `assets/props/coral-frame.blend`,
+`assets/env/seaweed-farm.blend`, `assets/props/underwater-camera.blend`, dan
+`assets/props/debt-book.blend` — juga dibangun Jasiel Wowiling secara prosedural
+di Blender pada 14 Nov 2026 dari acuan gabungan panel storyboard 3A/3B/4A +
+palette `PROJECT.md` §2. Seluruhnya acuan internal, tidak ada foto yang dipakai
+sebagai tekstur, dan tidak ada model pihak ketiga di dalamnya.
+
+`assets/props/dive-shop-sign.blend`, `assets/env/reef-recovering.blend`, dan
+`assets/props/haris-boat.blend` juga dibuat untuk proyek ini (14 Nov 2026) dari
+panel storyboard 1C/2A/4A + palette. Perahu Haris diturunkan dari
+`boats.blend` buatan sendiri, bukan model pihak ketiga.
+
 ### Aturan lisensi
 
 | Lisensi | Boleh dipakai? | Kewajiban |
@@ -158,3 +170,31 @@ Tautan:
 - [ ] Nama peran 8
 - [ ] Nama pengisi suara narasi
 - [ ] Daftar aset pihak ketiga (§3) — diisi saat aset mulai diambil
+
+## 7. Skill AI pihak ketiga (bukan aset film)
+
+Skill agent tidak masuk film dan tidak muncul di kredit layar, tetapi tetap
+dicatat supaya jelas asalnya:
+
+| Sumber | Lisensi | Dipakai untuk | Catatan |
+|---|---|---|---|
+| [arjun988/blender-skills](https://github.com/arjun988/blender-skills) — commit `904f095` | MIT | panduan kerja agent Blender (modeling, rigging, lighting, animasi, render) | 95 folder skill disalin apa adanya ke `.opencode/skills/` (gitignored). Tidak ada skrip yang dijalankan; `.mcp.json` dan `site/` repo itu **tidak** dipakai. |
+
+Teks lisensi lengkap: `.opencode/skills/BLENDER-SKILLS-LICENSE.txt`.
+Ringkasan audit dan aturan pakai:
+`.opencode/skills/THIRD-PARTY-blender-skills.md`.
+
+## 8. Foto acuan karakter & properti (14 Nov 2026)
+
+Semua foto di bawah **hanya acuan bentuk/warna**, tidak pernah dipakai sebagai
+tekstur, latar, atau bagian film (`AGENTS.md` §2).
+
+| File | Sumber | Boleh dipakai? | Catatan |
+|---|---|---|---|
+| `storyboard/refs/ref-nara_v001.jpg` | foto pribadi diserahkan tim (Gretchen S. D. Makarewa) | acuan internal | kemiripan wajah tidak diklaim; kredit film tidak menyebut nama |
+| `storyboard/refs/ref-haris_v001.png` | foto pribadi diserahkan tim | acuan internal | hitam-putih; warna pakaian diambil dari palette |
+| `storyboard/refs/ref-cakalang_v001.jpg` | ilustrasi ikan cakalang, sumber belum jelas | acuan internal | **perlu klarifikasi lisensi** sebelum dipublikasi |
+| `storyboard/refs/ref-kakatua_v001.jpg` | foto ikan kakatua (parrotfish), sumber belum jelas | acuan internal | dipakai 14 Nov 2026 untuk bentuk & warna `assets/env/fish-kakatua.blend`; **perlu klarifikasi lisensi** sebelum publikasi |
+| `storyboard/refs/ref-damselfish_v001.png` (+ `.webp`) | foto ikan damselfish, sumber belum jelas | acuan internal | dipakai 14 Nov 2026 untuk bentuk & warna `assets/env/fish-damselfish.blend`; **perlu klarifikasi lisensi** sebelum publikasi |
+| `storyboard/refs/ref-crowd-dermaga_v001.jpg` | iStockphoto, kredit `stellealevi`, *editorial use only* | **tidak boleh** masuk film | hanya acuan komposisi kerumunan; ganti dengan foto tim sendiri atau pakai panel storyboard 1C |
+| `storyboard/refs/ref-divegear_v001.png` | foto produk peralatan snorkel, sumber belum jelas (berkas `.avif` dari lead) | acuan internal | **perlu klarifikasi lisensi** sebelum publikasi |
