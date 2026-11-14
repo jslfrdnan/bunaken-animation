@@ -8,6 +8,7 @@ Output: renders/film/frames/S<scene>_<shot>/####.png
 """
 
 import os
+import sys
 import time
 
 import bpy
@@ -16,6 +17,9 @@ ROOT = r"D:/Tugas Semester 5/Grafika Komputer/Project-Animasi"
 SCENES = ROOT + "/scenes"
 OUT = ROOT + "/renders/film/frames"
 LOG = ROOT + "/renders/logs/pipeline.log"
+
+sys.path.insert(0, ROOT + "/scripts")
+import look  # noqa: E402
 
 # (scene, shot filename, frame_end override atau None)
 SHOTS = [
@@ -88,6 +92,11 @@ def main():
             scn.eevee.taa_render_samples = 16
         except Exception:
             pass
+        try:
+            look.apply_look(scn, scene_id)
+            log(f"LOOK - {shot} memakai look scene-{scene_id}")
+        except Exception as exc:
+            log(f"LOOK-WARN - {shot}: {exc}")
         scn.render.image_settings.file_format = "PNG"
         scn.render.image_settings.color_mode = "RGBA"
         out = os.path.join(OUT, f"S{scene_id}_{shot.split('_shot-')[1].split('_')[0]}")

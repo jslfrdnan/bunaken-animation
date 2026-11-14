@@ -238,7 +238,7 @@ ulang terpisah; Nara tetap tidak memakainya.
 
 1. Semua tekstur memakai palette di atas; warna di luar daftar butuh persetujuan
    lead.
-2. Semua look dev memakai **satu file** `assets/look/scene-1-look.blend`.
+2. Semua look dev memakai **satu file per scene**: `assets/look/scene-1-look_v002.blend`, `scene-2-look.blend`, `scene-3-look.blend`, `scene-4-look.blend`. Renderer memanggil `scripts/look.py → apply_look(scn, scene_id)` untuk memasang world dan material air tanpa mengubah file shot.
 3. Sebelum mulai, lihat 3 frame referensi yang sudah disetujui di
    `storyboard/frames/scene-1/`.
 
