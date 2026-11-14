@@ -29,3 +29,20 @@ kunci Nara diucapkan **sekali** di sini.
 
 Kamera bawah air (housing), buku utang, Pak Haris, crowd warga, pengelola taman
 nasional (figur jauh).
+
+## Status produksi (15 Nov 2026)
+
+| Shot | Status |
+|---|---|
+| 020 | 🔄 file dibangun dari `scripts/build-scene-3-shots.py` (POV jaring + karang patah) |
+| 010, 050, 100 | ⬜ butuh rig Nara halus + `underwater-camera.blend` (aset sudah ada, animasi belum) |
+| 030, 040, 070, 080, 090 | ⬜ butuh model Haris, Daniel, dan crowd |
+| 060 | ⬜ butuh model Haris (close-up) |
+
+**Pembaruan 15 Nov 2026 (@technical):** latar 030 dan 090 diganti
+`island-detail_v003` (14 objek fasad dive shop) dan crowd lama diganti
+`crowd_v003` (12 dewasa). 090: mannequin pengelola taman nasional tetap sebagai
+figur jauh (`MAN_adult-male`). Backup lama: `*_v000.blend`.
+
+Aset pendukung sudah siap sebagai blockout: `assets/props/underwater-camera.blend`
+dan `assets/props/debt-book.blend` (🟨, menunggu review visual lead).
