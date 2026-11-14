@@ -79,10 +79,11 @@ Teks di atas hitam: **"Laut yang dijaga adalah warisan, bukan tambang."**
 **Nara — protagonis, perempuan, 19 tahun.** Dive guide magang, anak nelayan.
 Ingin sekolah kelautan di Manado, tapi kampungnya butuh dia sekarang. Ketakutannya:
 menjadi orang yang meninggalkan laut saat laut butuh dia. Ciri visual: rash guard
-teal pudar, jam selam di tangan kiri, rambut pendek hitam atau diikat. Busurnya:
-dari remaja yang menikmati laut menjadi orang yang bertanggung jawab atasnya.
-Kalimat kuncinya — *"Kalau bukan kita yang jaga, siapa lagi?"* — dipakai **sekali**
-saja, di Scene 3.
+teal pudar, jam selam di tangan kiri, **rambut hitam panjang** yang diikat saat
+menyelam (acuan `storyboard/refs/ref-nara_v001.jpg`; kacamata tidak dipakai di
+air). Busurnya: dari remaja yang menikmati laut menjadi orang yang bertanggung
+jawab atasnya. Kalimat kuncinya — *"Kalau bukan kita yang jaga, siapa lagi?"* —
+dipakai **sekali** saja, di Scene 3.
 
 **Pak Daniel — ayah Nara, 52 tahun.** Nelayan tradisional. Ingin anaknya sekolah
 dan keluarganya makan; butuh mengakui bahwa ia mengambil jalan pintas karena
@@ -516,11 +517,13 @@ perlu keputusan lead kalau palette harus ketat. Status 🟨.
 | Aset | File | Pemilik | Scene | Status |
 |---|---|---|---|---|
 | Nara (model) | `assets/char/nara.blend` | Yehezkiel Montolalu | 1, 2, 3, 4 | 🟨 |
+| Nara v002 (dari foto acuan) | `assets/char/nara_v002.blend` | Jasiel Wowiling | 1–4 | 🟨 |
 | Nara (rig) | `assets/char/nara_rig.blend` | Ciputra Lumi | 1, 2, 3, 4 | 🟨 |
 | Pak Daniel | `assets/char/daniel.blend` | Yehezkiel Montolalu | 1, 2, 3, 4 | 🟨 |
-| Pak Haris | `assets/char/haris.blend` | Character Artist | 2, 3, 4 |
-| Warga & anak-anak (low detail) | `assets/char/crowd.blend` | Character Artist | 2, 3, 4 |
-| Peralatan selam | `assets/props/divegear.blend` | Character Artist | 1, 3 |
+| Pak Haris | `assets/char/haris_v001.blend` | Jasiel Wowiling | 2, 3, 4 | 🟨 |
+| Mannequin blockout (previz, bukan tokoh) | `assets/char/mannequin.blend` | Jasiel Wowiling | shot karakter | 🟨 |
+| Warga & anak-anak (low detail) | `assets/char/crowd.blend` | Character Artist | 2, 3, 4 | ⬜ |
+| Peralatan selam | `assets/props/divegear.blend` | Character Artist | 1, 3 | ⬜ (foto acuan belum diterima) |
 
 **Scene 1 hanya butuh** `nara.blend`, `nara_rig.blend`, `daniel.blend`, dan
 `divegear.blend`. Pak Daniel wajib muncul di shot 080.
