@@ -7,6 +7,116 @@ Pemilik: **Vaughn Toy** (Anggota 7 — Lighting & Shading)
 | File | Isi |
 |---|---|
 | `scene-1-look.blend` | World, shader air/pasir/karang/batu, panggung uji, dan plate shot 030 di atas terumbu asli (v002, 2 Nov 2026) |
+| `scene-1-look_v002.blend` | **Look produksi Scene 1 (sebelumnya)** — `WLD_scene-1` (bawah laut, golden hour) + `WLD_scene-1_surface` (permukaan) + `SHD_water-surface` (14 Nov 2026) |
+| `scene-1-look_v003.blend` | **Look produksi Scene 1 (aktif)** — world sama dengan v002 + `SHD_water-surface_v002` (air bergelombang, dua skala noise 4D, 14 Nov 2026 malam) dan panggung uji air 200 × 200 m |
+| `scene-2-look.blend` | **Look Scene 2** — `WLD_scene-2` subuh biru (14 Nov 2026) |
+| `scene-3-look.blend` | **Look Scene 3** — `WLD_scene-3` sore hangat + sun rig `LGT_look_scene-3_sun` (14 Nov 2026) |
+| `scene-4-look.blend` | **Look Scene 4** — `WLD_scene-4` pagi cerah (14 Nov 2026) |
+
+## Look dev per scene (14 Nov 2026)
+
+Empat file look di atas adalah **sumber world + shader air per scene**. Renderer
+memakainya lewat `scripts/look.py`:
+
+```python
+import sys; sys.path.append("<repo>/scripts")
+from look import apply_look
+apply_look(scn, 1)      # scn = scene dari file shot
+```
+
+`apply_look` hanya menyentuh empat hal: `scn.world`, material objek air
+(`SHD_water-surface_v002`), modifier `Displace` gelombang (objek air < 10.000
+vert; lihat bagian Displace di bawah), dan
+`scn.view_settings.view_transform = "Standard"`. File shot tidak disimpan dan
+tidak ada lampu yang ditambahkan.
+
+| Scene | World | Strength | Catatan |
+|---|---|---|---|
+| 1 | `WLD_scene-1` | 0,55 | bawah laut, teal dalam → teal laut + jendela hangat di atas |
+| 1 | `WLD_scene-1_surface` | 1,00 | di atas air (kamera z > 0,5 m): langit golden hour krem–pasir |
+| 2 | `WLD_scene-2` | 0,70 | subuh biru `#0F5C63`, glow tipis di horizon = kabut |
+| 3 | `WLD_scene-3` | 0,35 | sore hangat, oranye hanya pita horizon; sun 4,0 / 78° tersimpan di `LGT_look_scene-3_sun` |
+| 4 | `WLD_scene-4` | 1,30 | pagi cerah, ambient tinggi |
+
+### World: kenapa gradient, bukan volume
+
+Tambahan `Volume` di world **tidak dipakai**: di EEVEE 5.2 world volume membuat
+frame hitam total (diuji pada shot 030). God rays tetap datang dari kartu
+`FX_godray_*` milik shot. Gradient dibuat dengan:
+
+```
+Geometry → Incoming → Separate XYZ (Z) → Map Range (-1..1 → 0..1) → Color Ramp → Background
+```
+
+Posisi **0,5 di ramp = horizon**, jadi warna langit/permukaan diatur di sekitar
+angka itu. Ini juga perbaikan bug lama: `WLD_scene-1_underwater` di
+`scene-1-look.blend` memakai `Texture Coordinate → Generated` yang konstan di
+world space → air terlihat datar.
+
+### `SHD_water-surface` (v002, lama)
+
+Principled: base `#1FA3A3` (linear 0,0137/0,3663/0,3663), metallic 0,
+**roughness 0,18**, IOR 1,333. Normal dari dua Bump berantai: Wave (bands,
+scale 22, distortion 6) → Bump 0,18, lalu Noise (scale 16, detail 5) → Bump
+**0,25**. Koordinat `Object`, tanpa tekstur gambar. Nama lama
+`SHD_water_surface` (garis bawah) tetap ada supaya file shot lama tidak putus.
+
+### `SHD_water-surface_v002` (v003, aktif)
+
+`scene-1-look_v003.blend`. `SHD_water-surface` dibangun ulang dengan isi sama
+(kembaran/alias) supaya file shot lama tidak kehilangan shader.
+
+| Node | Nilai |
+|---|---|
+| Principled Base Color | `#1FA3A3` (linear 0,0137 / 0,3663 / 0,3663) |
+| Metallic / Roughness / IOR | 0 / **0,12** / 1,333 |
+| Specular IOR Level | 0,65 ("sedikit tinggi") |
+| Texture Coordinate | `Object` → **Mapping 1/160** (0,00625) |
+| `Noise_swell` | 4D, scale **6**, detail **6**, roughness 0,55, distortion 0,3 |
+| `Bump_swell` | strength **0,35**, distance **70** → normal |
+| `Noise_ripple` | 4D, scale **40**, detail **4**, roughness 0,5, distortion 0 |
+| `Bump_ripple` | strength **0,15**, distance **6**, Normal ← `Bump_swell` (dijumlahkan) |
+| `Map_trough` + `Mix_trough` | swell 0,62…0,40 → 0…0,5, mix base → teal dalam `#0F5C63` |
+| Animasi | `W` kedua Noise 4D: keyframe **frame 1 = 0,0**, **frame 840 = 1,0**, interpolasi linear |
+
+**Kenapa ada Mapping 1/160.** Koordinat `Object` satuannya meter. Bidang air
+Scene 1 berukuran sampai 200 km, jadi noise scale 6/40 pada koordinat mentah
+jatuh di frekuensi sub-milimeter → normal saling meniadakan dan air terbaca
+sebagai bidang warna rata (masalah v002). Dengan Mapping 1/160, noise scale 6 =
+**swell ±27 m** dan scale 40 = **ripple ±4 m**, dua-duanya terbaca: dari kamera
+120 m pola gelombang tampak, dari kamera 2 m profil riak tampak. `Distance`
+Bump adalah skala turunan tinggi (meter) — itulah tombol untuk mengatur
+ketebalan relief tanpa mengubah strength yang disepakati.
+
+**Panggung uji.** `ENV_wtest_water-200m` (grid 64×64, 4225 vert, 200 × 200 m),
+`CAM_wtest_aerial-120m`, `CAM_wtest_close-2m`, `LGT_wtest_sun`. Ini panggung uji,
+bukan aset: **jangan di-link ke `scenes/`**. Hasil uji:
+`renders/stills/water-v003-aerial.png`, `water-v003-close.png`, dan
+`water-v003-aerial-f420.png` (bukti animasi: pola di frame 420 berbeda).
+
+### Displace gelombang di `scripts/look.py`
+
+`apply_look` menambahkan modifier `Displace` (nama `FX_water_wave-displace`,
+tekstur Clouds `FX_water_wave-clouds`, size **25**, strength **0,12 m**) ke objek
+air dengan **< 10.000 vert**. Objek lebih besar dilewati dan dicatat ke
+`renders/logs/production.log`. Catatan penting: bidang laut di file shot saat ini
+(`ENV_detail_sea-surface`, `ENV_surface_water-placeholder`) hanya **4 vert**, jadi
+modifier itu belum menghasilkan profil apa pun — gelombang di shot datang dari
+normal shader. Profil geometri baru terlihat kalau mesh airnya dibagi (subdivide)
+oleh pemilik shot.
+
+### Jebakan yang sudah menimpa sesi ini
+
+1. **`FX_water_volume` bukan permukaan air.** Nama memuat "water", tetapi itu
+   kubus kabut `SHD_water_volume`. Kalau diganti `SHD_water-surface`, kamera
+   berada di dalam kubus opak → seluruh frame hitam. `look.py` melewati objek
+   dengan token `volume`/`fog`.
+2. **`PRP_boat_cadik_seam-4` memuat huruf "sea".** Pencocokan harus per token
+   (`seam` ≠ `sea`), bukan substring; kalau tidak, garis papan perahu ikut
+   berubah jadi air.
+3. **Jangan `save_as_mainfile` menimpa file look yang sedang di-append.**
+   Blender menolak ("Cannot overwrite used library"). Simpan ke
+   `renders/tmp/`, lalu pindahkan.
 
 ## Kenapa file ini penting untuk semua orang
 
