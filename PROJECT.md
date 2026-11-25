@@ -810,6 +810,16 @@ Yang masih **belum final** dan butuh manusia: narasi + musik (rekaman). Batas AI
 yang tercatat: facial rig tidak ada, crowd bergerak terbatas, dan geometri
 karakter masih blockout.
 
+**Status 25 Nov 2026 — Scene 1 dibangun ulang (v004).** Seluruh `renders/`
+dibersihkan (22,2 GB → 0,3 GB) kecuali film v007 dan render per scene terbaru.
+Scene 1 dirakit ulang dengan aset v004: 420 kelapa (220 pesisir skala 1,4–2,0),
+Manado Tua ridge +40%, fasad dive shop 4 tiang simetris, 7 tipe karang, ikan v003
+dengan sirip lentur, dan 4 anak proporsi baru. Film
+`renders/film/warisan-bunaken_film_v008.mp4` terverifikasi **3480 frame,
+145,0 s, 1920×1080, 24 fps, 98,6 MiB**, dengan subtitle dan audio sementara.
+Semua build/render dilakukan **headless** karena instance Blender MCP sedang
+dipakai proyek lain.
+
 ---
 
 ## 11. Kredit, lisensi, dan sumber
