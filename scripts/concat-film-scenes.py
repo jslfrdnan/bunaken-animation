@@ -41,12 +41,12 @@ def main():
         files = scene_frames(scene, shots)
         outdir = os.path.join(ROOT, "renders", f"scene-{scene}")
         os.makedirs(outdir, exist_ok=True)
-        listing = os.path.join(outdir, "concat-v008.txt")
+        listing = os.path.join(outdir, "concat-v009.txt")
         with open(listing, "w", encoding="utf-8") as fh:
             for path in files:
                 fh.write("file '" + path.replace("\\", "/") + "'\n")
 
-        out = os.path.join(outdir, f"scene-{scene}_v008.mp4")
+        out = os.path.join(outdir, f"scene-{scene}_v009.mp4")
         subprocess.run(
             [FFMPEG, "-y", "-f", "concat", "-safe", "0", "-r", "24", "-i", listing,
              "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p",
@@ -70,6 +70,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
