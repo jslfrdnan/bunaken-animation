@@ -818,11 +818,17 @@ divegear v002, reef v005 (karang meja 1,16 m, oranye gradien 4,01%, lamun
 pita), island v005 (426 kelapa 3 sektor, 30 rumah, jalan 265 m), dan judul
 3 detik di shot 010.
 
-Dua audit berturut-turut bersih: audit stills iterasi 2 (jari, komposisi 090,
-judul) dan audit render iterasi 2. Master
-`scenes/scene-1_master_v003.blend` berisi 10 scene (840 frame) dirakit lewat
-MCP. Output `renders/scene-1/scene-1_v010.mp4` terverifikasi **840 frame,
-35,000 s, 1920×1080, 24 fps**. Scene 2–4 tidak disentuh.
+Audit kelengkapan 28 Nov menemukan **shot 060 masih memakai salinan reef v004
+dengan karang meja 3,068 m**; shot 030/040/050 sudah 1,164–1,200 m. Mesh meja
+shot 060 diskalakan ke 1,2 m lewat MCP, lalu master dirakit ulang menjadi
+`scenes/scene-1_master_v004.blend` (10 scene, 840 frame, 27,5 MB, semua meja
+≤1,2 m). Output final `renders/scene-1/scene-1_v010.mp4` dirender ulang dari 10
+shot terbaru dan terverifikasi **840 frame, 35,000 s, 1920×1080, 24 fps**.
+
+Setelah perbaikan, dua audit terakhir bersih: audit still kunci (010 judul, 020,
+030, 040, 050, 060, 070, 090) dan audit frame dari MP4 final (010, 030, 050,
+060, 070, 090). Tes ikan tidak berubah: dot min 0,9979, up z min 0,9453, rasio
+ekor/spine 2,28, 0 mundur. Scene 2–4 tidak disentuh.
 
 Sisa blocker: rekaman narasi dan musik (manusia).
 
@@ -831,7 +837,9 @@ ini, kelima builder yang memakai `open_mainfile` (island, reef, nara, look,
 divegear) direfaktor menjadi wipe manual + `libraries.load`, lalu dijalankan
 ulang **lewat `execute_blender_code`**: island 4,02 MB (485 objek), reef 2,12 MB
 (aksen 4,05%, meja 1,2 m), nara 319 KB, look 311 KB, divegear 164 KB, dan tiga
-ikan 160–173 KB. Hasil visual identik dengan render v010.
+ikan 160–173 KB. Salinan reef di dalam shot tidak ikut berubah saat aset
+diperbaiki; karena itu ukuran meja diverifikasi ulang per shot dan shot 060
+diperbaiki langsung.
 
 ---
 
