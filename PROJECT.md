@@ -825,10 +825,14 @@ shot 060 diskalakan ke 1,2 m lewat MCP, lalu master dirakit ulang menjadi
 ≤1,2 m). Output final `renders/scene-1/scene-1_v010.mp4` dirender ulang dari 10
 shot terbaru dan terverifikasi **840 frame, 35,000 s, 1920×1080, 24 fps**.
 
-Setelah perbaikan, dua audit terakhir bersih: audit still kunci (010 judul, 020,
-030, 040, 050, 060, 070, 090) dan audit frame dari MP4 final (010, 030, 050,
-060, 070, 090). Tes ikan tidak berubah: dot min 0,9979, up z min 0,9453, rasio
-ekor/spine 2,28, 0 mundur. Scene 2–4 tidak disentuh.
+Audit kedua menemukan **rebuild look v004 lewat MCP kehilangan World** (10 scene
+nyasar ikut tersimpan), sehingga render kehilangan kabut, god ray, partikel, dan
+caustics. Loader look diperbaiki (memuat World + membuang scene asing), look
+v004 diverifikasi 2 World/1 scene, lalu Scene 1 dirender ulang (840 frame, 0
+LOOK-WARN). Dua audit terakhir bersih: audit still kunci dan audit kedua atas
+MP4 final (010 judul 3 s, 020 tanpa moiré, 030–050 atmosfer lengkap, 050/060/070
+Nara, 090 crowd). Tes ikan final: 20 sampel/sekolah, dot min 0,9979, up z min
+0,945, rasio 2,28, 5 action, 0 mundur. Scene 2–4 tidak disentuh.
 
 Sisa blocker: rekaman narasi dan musik (manusia).
 
@@ -836,10 +840,11 @@ Sisa blocker: rekaman narasi dan musik (manusia).
 ini, kelima builder yang memakai `open_mainfile` (island, reef, nara, look,
 divegear) direfaktor menjadi wipe manual + `libraries.load`, lalu dijalankan
 ulang **lewat `execute_blender_code`**: island 4,02 MB (485 objek), reef 2,12 MB
-(aksen 4,05%, meja 1,2 m), nara 319 KB, look 311 KB, divegear 164 KB, dan tiga
-ikan 160–173 KB. Salinan reef di dalam shot tidak ikut berubah saat aset
-diperbaiki; karena itu ukuran meja diverifikasi ulang per shot dan shot 060
-diperbaiki langsung.
+(aksen 4,05%, meja 1,2 m), nara 319 KB, look 283 KB (2 World), divegear 164 KB,
+dan tiga ikan 160–173 KB. Salinan reef di dalam shot tidak ikut berubah saat
+aset diperbaiki; karena itu ukuran meja diverifikasi ulang per shot dan shot 060
+diperbaiki langsung. Rebuild look pertama tidak memuat World sehingga look
+dipulihkan lewat MCP sebelum render final.
 
 ---
 

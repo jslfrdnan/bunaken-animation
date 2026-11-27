@@ -498,8 +498,14 @@ def build_fx_collection():
 # -------------------------------------------------------------------- main ---
 
 def _load_into_empty(path):
-    """Muat file sumber tanpa open_mainfile (aman untuk sesi MCP)."""
-    scn = bpy.context.scene
+    """Muat file sumber tanpa open_mainfile (aman untuk sesi MCP).
+
+    Scene sesi dikosongkan lebih dulu supaya scene asing (mis. S1_010) tidak
+    ikut tersimpan. World ikut dimuat karena look.py mengambil
+    WLD_scene-1/WLD_scene-1_surface dari file ini.
+    """
+    scn = bpy.data.scenes.new("TMP_look")
+    bpy.context.window.scene = scn
     for db in (bpy.data.objects, bpy.data.collections, bpy.data.meshes,
                bpy.data.materials, bpy.data.cameras, bpy.data.lights,
                bpy.data.worlds, bpy.data.actions, bpy.data.curves,
@@ -509,9 +515,13 @@ def _load_into_empty(path):
                 db.remove(block)
             except Exception:
                 pass
+    for other in list(bpy.data.scenes):
+        if other != scn:
+            bpy.data.scenes.remove(other)
     with bpy.data.libraries.load(path, link=False) as (src, dst):
         all_names = list(src.objects)
         dst.collections = list(src.collections)
+        dst.worlds = list(src.worlds)
     missing = [n for n in all_names if n not in bpy.data.objects]
     if missing:
         with bpy.data.libraries.load(path, link=False) as (src, dst):
@@ -523,6 +533,10 @@ def _load_into_empty(path):
     for ob in bpy.data.objects:
         if not ob.users_collection:
             scn.collection.objects.link(ob)
+    for world in bpy.data.worlds:
+        world.use_fake_user = True
+    scn.world = bpy.data.worlds.get("WLD_scene-1")
+    scn.name = "Scene"
     return scn
 
 
