@@ -191,7 +191,6 @@ tekstur, latar, atau bagian film (`AGENTS.md` §2).
 
 | File | Sumber | Boleh dipakai? | Catatan |
 |---|---|---|---|
-| `storyboard/refs/ref-nara_v001.jpg` | foto pribadi diserahkan tim (Gretchen S. D. Makarewa) | acuan internal | kemiripan wajah tidak diklaim; kredit film tidak menyebut nama |
 | `storyboard/refs/ref-haris_v001.png` | foto pribadi diserahkan tim | acuan internal | hitam-putih; warna pakaian diambil dari palette |
 | `storyboard/refs/ref-cakalang_v001.jpg` | ilustrasi ikan cakalang, sumber belum jelas | acuan internal | **perlu klarifikasi lisensi** sebelum dipublikasi |
 | `storyboard/refs/ref-kakatua_v001.jpg` | foto ikan kakatua (parrotfish), sumber belum jelas | acuan internal | dipakai 14 Nov 2026 untuk bentuk & warna `assets/env/fish-kakatua.blend`; **perlu klarifikasi lisensi** sebelum publikasi |

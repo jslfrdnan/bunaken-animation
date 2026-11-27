@@ -80,7 +80,7 @@ Teks di atas hitam: **"Laut yang dijaga adalah warisan, bukan tambang."**
 Ingin sekolah kelautan di Manado, tapi kampungnya butuh dia sekarang. Ketakutannya:
 menjadi orang yang meninggalkan laut saat laut butuh dia. Ciri visual: rash guard
 teal pudar, jam selam di tangan kiri, **rambut hitam panjang** yang diikat saat
-menyelam (acuan `storyboard/refs/ref-nara_v001.jpg`; kacamata tidak dipakai di
+menyelam (acuan foto internal tim, tidak disimpan di repo; kacamata tidak dipakai di
 air). Busurnya: dari remaja yang menikmati laut menjadi orang yang bertanggung
 jawab atasnya. Kalimat kuncinya — *"Kalau bukan kita yang jaga, siapa lagi?"* —
 dipakai **sekali** saja, di Scene 3.

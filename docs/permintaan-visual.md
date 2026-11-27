@@ -5,7 +5,7 @@ kerja. Semua dikerjakan lewat agent kategori; Director memilih skill per tugas.
 
 | # | Permintaan | Acuan | Aset/File | Status |
 |---|---|---|---|---|
-| 1 | Desain ulang Nara | `storyboard/refs/ref-nara_v001.jpg` | `assets/char/nara_v002.blend` | ✅ 14 Nov (1,68 m, 27 mesh) |
+| 1 | Desain ulang Nara | foto internal tim (tidak disimpan di repo) | `assets/char/nara_v002.blend` | ✅ 14 Nov (1,68 m, 27 mesh) |
 | 2 | Model Pak Haris | `storyboard/refs/ref-haris_v001.png` | `assets/char/haris_v001.blend` | ✅ 14 Nov (1,70 m, 28 mesh) |
 | 3 | Rig Nara lebih manusiawi (bukan tabung) | — | `assets/char/nara_rig_v002.blend` + `haris_rig_v001.blend` | 🔄 @technical (join mesh lalu automatic weights) |
 | 4 | Crowd dermaga low-detail | `ref-crowd-dermaga_v001.jpg` + `mannequin.blend` | `assets/char/crowd.blend` | ⬜ |
