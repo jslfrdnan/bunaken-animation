@@ -1,7 +1,7 @@
 """look.py — terapkan look dev per scene ke file shot.
 
 Dipakai oleh renderer: `from look import apply_look` lalu `apply_look(scn, 1)`.
-Fungsi ini HANYA menyentuh empat hal:
+Fungsi ini menyentuh tujuh hal:
 
 1. `scn.world`  — world look scene terkait (append `link=False` dari `assets/look/`).
 2. material objek air (nama mengandung `water` / `sea`) — `SHD_water-surface_v002`.
@@ -10,8 +10,16 @@ Fungsi ini HANYA menyentuh empat hal:
    lebih besar (mis. bidang laut 200 km) dilewati dan dicatat di
    `renders/logs/production.log`.
 4. `scn.view_settings.view_transform` — dipaksa `"Standard"` (bukan AgX).
-
-Tidak ada lampu yang ditambahkan dan tidak ada objek baru selain modifier itu.
+5. objek dasar laut (`seabed` / `sand`) — material `SHD_seabed_caustics`
+   (pasir + pola caustic Voronoi + Wave, additive 0,18).
+6. koleksi `FX_atmosphere` di-append sekali per scene: 3 kartu god ray, satu mesh
+   200 partikel, 2 kartu kabut. Posisinya dihitung dari kamera (di belakang
+   subjek), jadi file FX bisa dipakai semua shot bawah laut. Idempoten: kalau
+   koleksinya sudah ada di file shot, tidak di-append ulang.
+7. kabut kedalaman: `scn.world.mist_settings` + render pass Mist + compositor
+   `Mist -> Mix` ke teal dalam `#0F5C63` (faktor 0,42 bawah laut / 0,25 di atas
+   air untuk Scene 1). Tanpa World Volume — di EEVEE 5.2 world volume membuat
+   frame hitam (lihat `assets/look/README.md`).
 
 File shot TIDAK disimpan dan data lain (geometri, animasi, kamera, lampu,
 material non-air) tidak diubah. Tidak ada tekstur gambar, jadi tidak ada path
@@ -36,11 +44,13 @@ aturan proyek melarang `open_mainfile` di sesi hidup.
 
 from __future__ import annotations
 
+import math
 import os
 import re
 import sys
 
 import bpy
+from mathutils import Vector
 
 # ---------------------------------------------------------------- konstanta ---
 
@@ -49,7 +59,7 @@ LOOK_DIR = os.path.join(REPO_ROOT, "assets", "look")
 STILLS_DIR = os.path.join(REPO_ROOT, "renders", "stills")
 
 LOOK_FILES = {
-    1: "scene-1-look_v003.blend",
+    1: "scene-1-look_v004.blend",
     2: "scene-2-look.blend",
     3: "scene-3-look.blend",
     4: "scene-4-look.blend",
@@ -70,6 +80,26 @@ WATER_MATERIAL = "SHD_water-surface_v002"
 WATER_MATERIAL_LEGACY = "SHD_water-surface"
 # nama paling lama (garis bawah) hanya masih ada di scene-1-look.blend (v001)
 WATER_MATERIAL_LEGACY_2 = "SHD_water_surface"
+
+# --------------------------------------------------------------- atmosfer ---
+
+# Koleksi FX + material yang ikut di-append (link=False) dari file look.
+FX_COLLECTION = "FX_atmosphere"
+FX_ROOT = "FX_atmosphere_root"
+SEABED_MATERIAL = "SHD_seabed_caustics"
+SEABED_HINTS = ("seabed", "sand")
+# jarak kartu atmosfer dari kamera (meter) dan tinggi alas god ray relatif
+FX_DISTANCE_UNDERWATER = 17.0
+FX_ROOT_DROP = 2.2        # root = z kamera - 2,2 m (kira-kira setinggi dasar)
+FX_ROOT_ABOVE_WATER = -12.5   # seluruh cone 12 m tetap di bawah permukaan
+
+# Kabut compositor: Mix ke teal dalam #0F5C63 (PROJECT.md §2)
+FOG_COLOR = (0.0048, 0.1070, 0.1248)
+FOG_FACTOR = {1: 0.42, 2: 0.30, 3: 0.28, 4: 0.25}
+FOG_FACTOR_ABOVE_WATER = 0.25
+WORLD_MIST_START = 2.0
+WORLD_MIST_DEPTH = 45.0
+WORLD_MIST_INTENSITY = 1.0
 
 # --------------------------------------------------------- gelombang profil ---
 
@@ -116,7 +146,7 @@ def load_look(scene_id: int) -> dict:
     names = WORLDS[scene_id]
     names_list = list(dict.fromkeys([names["underwater"], names["surface"]]))
     wanted_worlds = [n for n in names_list if n not in bpy.data.worlds]
-    wanted_mats = [WATER_MATERIAL] if WATER_MATERIAL not in bpy.data.materials else []
+    wanted_mats = [n for n in (WATER_MATERIAL, SEABED_MATERIAL) if n not in bpy.data.materials]
 
     if wanted_worlds or wanted_mats:
         with bpy.data.libraries.load(path, link=False) as (src, dst):
@@ -131,8 +161,17 @@ def load_look(scene_id: int) -> dict:
     )
     if material is None and scene_id != 1:
         with bpy.data.libraries.load(look_path(1), link=False) as (src, dst):
-            dst.materials = [n for n in src.materials if n == WATER_MATERIAL]
+            dst.materials = [n for n in src.materials if n in (WATER_MATERIAL, SEABED_MATERIAL)]
         material = bpy.data.materials.get(WATER_MATERIAL)
+
+    caustics = bpy.data.materials.get(SEABED_MATERIAL)
+    if caustics is None:  # scene 2–4 belum punya material caustic
+        try:
+            with bpy.data.libraries.load(look_path(1), link=False) as (src, dst):
+                dst.materials = [n for n in src.materials if n == SEABED_MATERIAL]
+            caustics = bpy.data.materials.get(SEABED_MATERIAL)
+        except Exception:
+            caustics = None
 
     world = bpy.data.worlds.get(names["underwater"])
     if world is None:  # fallback: world pertama di file look
@@ -144,11 +183,14 @@ def load_look(scene_id: int) -> dict:
         if w is not None:
             w.use_fake_user = True
     material.use_fake_user = True
+    if caustics is not None:
+        caustics.use_fake_user = True
 
     return {
         "world": world,
         "world_surface": bpy.data.worlds.get(names["surface"]) or world,
         "material": material,
+        "caustics": caustics,
     }
 
 
@@ -235,7 +277,283 @@ def add_wave_displace(ob) -> str:
     return "displace %.2f m pada %d vert" % (DISPLACE_STRENGTH, verts)
 
 
-def apply_look(scn, scene_id: int, above_water=None, assign_water=True, displace=True) -> dict:
+# ------------------------------------------------------ dasar laut + caustic ---
+
+def seabed_objects(scn) -> list:
+    """Objek dasar laut: token nama `seabed`, atau `sand` selama di bawah air.
+
+    `sand` di atas permukaan (pantai, gundukan pasir shot 020) TIDAK diganti:
+    pola caustic hanya masuk akal di bawah air.
+    """
+    found = []
+    for ob in scn.objects:
+        if ob.type != "MESH":
+            continue
+        tokens = [t for t in re.split(r"[^a-z0-9]+", ob.name.lower()) if t]
+        if any(h in t for t in tokens for h in WATER_EXCLUDE_HINTS):
+            continue
+        is_seabed = any(t.startswith("seabed") for t in tokens)
+        is_sand = any(t == "sand" or t.startswith("sand") for t in tokens)
+        if not (is_seabed or is_sand):
+            continue
+        if not is_seabed and ob.matrix_world.translation.z > 0.5:
+            continue  # pasir di atas air: biarkan material aslinya
+        found.append(ob)
+    return found
+
+
+def assign_seabed_material(scn, mat) -> list:
+    """Ganti material objek dasar laut ke `SHD_seabed_caustics`. Idempoten."""
+    if mat is None:
+        return []
+    touched = []
+    for ob in seabed_objects(scn):
+        data = getattr(ob, "data", None)
+        if data is None or not hasattr(data, "materials"):
+            continue
+        if len(data.materials) == 0:
+            data.materials.append(mat)
+        else:
+            for i in range(len(data.materials)):
+                data.materials[i] = mat
+        touched.append(ob.name)
+    return touched
+
+
+# --------------------------------------------------------------- FX atmosfer ---
+
+def _collection_linked(scn, coll) -> bool:
+    """True kalau `coll` sudah ter-link ke scn (langsung atau lewat anak)."""
+    stack = [scn.collection]
+    seen = set()
+    while stack:
+        c = stack.pop()
+        if c.name in seen:
+            continue
+        seen.add(c.name)
+        if c == coll:
+            return True
+        stack.extend(c.children)
+    return False
+
+
+def _append_fx_collection(scene_id: int):
+    """Append koleksi FX_atmosphere dari file look (link=False). Idempoten."""
+    coll = bpy.data.collections.get(FX_COLLECTION)
+    if coll is not None:
+        return coll
+    path = look_path(scene_id)
+    try:
+        with bpy.data.libraries.load(path, link=False) as (src, dst):
+            if FX_COLLECTION in src.collections:
+                dst.collections = [FX_COLLECTION]
+    except Exception as exc:  # file look scene 2–4 tidak punya FX
+        _log("FX_atmosphere tidak bisa di-append dari %s: %s" % (os.path.basename(path), exc))
+        return None
+    return bpy.data.collections.get(FX_COLLECTION)
+
+
+def place_atmosphere(scn, coll, above_water: bool) -> dict:
+    """Tempatkan FX_atmosphere di depan kamera, di belakang subjek.
+
+    Root diputar mengikuti yaw kamera, jadi kartu kabut selalu menghadap kamera
+    dan god ray tetap vertikal. Jarak 17 m (bawah laut) supaya berkas cahaya
+    berada di kedalaman frame, bukan menempel di lensa. Untuk kamera di atas air
+    seluruh grup diturunkan ke z -12,5 m agar tertutup bidang air.
+    """
+    cam = scn.camera
+    root = coll.objects.get(FX_ROOT) if coll else None
+    if cam is None or root is None:
+        return {}
+    direction = cam.matrix_world.to_quaternion() @ Vector((0.0, 0.0, -1.0))
+    pos = cam.matrix_world.translation
+
+    if above_water:
+        dist = FX_DISTANCE_UNDERWATER * 1.5
+        if direction.z < -0.02:  # kamera menunduk: taruh FX di bawah permukaan
+            dist = max(8.0, min(90.0, (FX_ROOT_ABOVE_WATER - pos.z) / direction.z))
+        root_z = FX_ROOT_ABOVE_WATER
+    else:
+        dist = FX_DISTANCE_UNDERWATER
+        root_z = pos.z - FX_ROOT_DROP
+
+    root.location = (pos.x + direction.x * dist, pos.y + direction.y * dist, root_z)
+    root.rotation_euler = (0.0, 0.0, math.atan2(direction.x, -direction.y))
+    return {
+        "root": root.name,
+        "location": tuple(round(v, 2) for v in root.location),
+        "distance": round(dist, 2),
+    }
+
+
+def ensure_atmosphere(scn, scene_id: int, above_water: bool, enabled: bool = True):
+    """Append + tempatkan FX_atmosphere sekali per scene. Idempoten."""
+    if not enabled:
+        return None
+    coll = _append_fx_collection(scene_id)
+    if coll is None:
+        return None
+    if not _collection_linked(scn, coll):
+        scn.collection.children.link(coll)
+    place_atmosphere(scn, coll, above_water)
+    return coll
+
+
+# ------------------------------------------------------------ kabut compositor ---
+
+def _compositor_tree(scn):
+    """Compositor tree 5.x (`scn.compositing_node_group`), dibuat bila kosong."""
+    tree = getattr(scn, "compositing_node_group", None)
+    if tree is None:
+        try:
+            scn.use_nodes = True
+        except Exception:
+            pass
+        tree = getattr(scn, "compositing_node_group", None)
+    if tree is None:
+        try:
+            tree = bpy.data.node_groups.new("COMP_scene-look", "CompositorNodeTree")
+        except Exception as exc:
+            _log("compositor tidak tersedia: %s" % exc)
+            return None
+        scn.compositing_node_group = tree
+    outputs = [s for s in tree.interface.items_tree if getattr(s, "in_out", "") == "OUTPUT"]
+    if not outputs:
+        try:
+            tree.interface.new_socket(name="Image", in_out="OUTPUT", socket_type="NodeSocketColor")
+        except Exception:
+            pass
+    return tree
+
+
+def apply_fog(scn, scene_id: int, above_water: bool, enabled: bool = True) -> dict:
+    """Kabut kedalaman: mist_settings + pass Mist + compositor Mix ke #0F5C63.
+
+    Idempoten: node dikenali dari namanya (`FOG_*`), nilainya diperbarui tanpa
+    menambah node baru. Tidak memakai World Volume (EEVEE 5.2 -> frame hitam).
+    """
+    if not enabled:
+        return {}
+    factor = FOG_FACTOR_ABOVE_WATER if above_water else FOG_FACTOR.get(int(scene_id), 0.30)
+
+    mist = getattr(getattr(scn, "world", None), "mist_settings", None)
+    if mist is not None:
+        mist.start = WORLD_MIST_START
+        mist.depth = WORLD_MIST_DEPTH
+        mist.falloff = "QUADRATIC"
+        mist.intensity = WORLD_MIST_INTENSITY
+    if hasattr(scn.render, "use_mist"):
+        scn.render.use_mist = True
+
+    for vl in scn.view_layers:
+        if hasattr(vl, "use_pass_mist"):
+            vl.use_pass_mist = True
+        if hasattr(vl, "use_pass_z"):
+            vl.use_pass_z = True
+
+    tree = _compositor_tree(scn)
+    if tree is None:
+        return {"fog": "compositor tidak tersedia"}
+
+    # Render Layers: socket Mist hanya ada kalau pass-nya sudah aktif saat node
+    # dibuat. Kalau node lama belum punya Mist, buat ulang.
+    rl = next((n for n in tree.nodes if n.bl_idname == "CompositorNodeRLayers"), None)
+    if rl is not None and "Mist" not in [s.name for s in rl.outputs]:
+        tree.nodes.remove(rl)
+        rl = None
+    if rl is None:
+        rl = tree.nodes.new("CompositorNodeRLayers")
+        rl.name = "FOG_render-layers"
+        rl.location = (-620, 0)
+
+    out = next((n for n in tree.nodes if n.bl_idname == "NodeGroupOutput"), None)
+    if out is None:
+        out = tree.nodes.new("NodeGroupOutput")
+        out.location = (420, 0)
+
+    mix = tree.nodes.get("FOG_mix")
+    if mix is None:
+        mix = tree.nodes.new("ShaderNodeMix")
+        mix.name = "FOG_mix"
+        mix.label = "Kabut kedalaman #0F5C63"
+        mix.data_type = "RGBA"
+        mix.blend_type = "MIX"
+        mix.location = (160, 0)
+        try:
+            mix.clamp_factor = True
+        except Exception:
+            pass
+
+    def socket(node, identifier):
+        return next((s for s in node.inputs if s.identifier == identifier), None)
+
+    def out_socket(node, identifier):
+        return next((s for s in node.outputs if s.identifier == identifier), None)
+
+    b_color = socket(mix, "B_Color")
+    if b_color is not None:
+        b_color.default_value = (*FOG_COLOR, 1.0)
+    a_color = socket(mix, "A_Color")
+    factor_in = socket(mix, "Factor_Float") or socket(mix, "Factor")
+    result_out = out_socket(mix, "Result_Color") or out_socket(mix, "Result")
+
+    scale = tree.nodes.get("FOG_factor")
+    if scale is None:
+        scale = tree.nodes.new("ShaderNodeMath")
+        scale.name = "FOG_factor"
+        scale.operation = "MULTIPLY"
+        scale.location = (-220, -160)
+        scale.inputs[1].default_value = factor
+    else:
+        scale.inputs[1].default_value = factor
+
+    links = tree.links
+
+    def _prune(predicate):
+        # Jangan menyimpan referensi NodeLink lalu menghapus link lain:
+        # StructRNA-nya jadi tidak valid. Ambil ulang per indeks.
+        i = 0
+        while i < len(links):
+            if predicate(links[i]):
+                links.remove(links[i])
+            else:
+                i += 1
+
+    _prune(lambda l: l.to_node == out)
+    _prune(lambda l: l.to_node == mix and (l.from_node == rl or l.from_node == scale or l.from_node == out))
+    _prune(lambda l: l.to_node == scale and l.from_node == rl)
+
+    if "Mist" in [s.name for s in rl.outputs]:
+        links.new(rl.outputs["Mist"], scale.inputs[0])
+    else:  # jaring pengaman: pakai Depth kalau Mist tidak tersedia
+        depth = tree.nodes.get("FOG_depth-map")
+        if depth is None:
+            depth = tree.nodes.new("ShaderNodeMapRange")
+            depth.name = "FOG_depth-map"
+            depth.location = (-420, -160)
+            try:
+                depth.clamp = True
+            except Exception:
+                pass
+            depth.inputs["From Min"].default_value = WORLD_MIST_START
+            depth.inputs["From Max"].default_value = WORLD_MIST_DEPTH
+        links.new(rl.outputs["Depth"], depth.inputs["Value"])
+        links.new(depth.outputs["Result"], scale.inputs[0])
+
+    links.new(scale.outputs[0], factor_in)
+    links.new(rl.outputs["Image"], a_color)
+    links.new(result_out, out.inputs["Image"])
+    scn.render.use_compositing = True
+
+    return {
+        "fog": "Mist -> Mix #0F5C63",
+        "factor": round(factor, 2),
+        "mist": (WORLD_MIST_START, WORLD_MIST_DEPTH, "QUADRATIC"),
+    }
+
+
+def apply_look(scn, scene_id: int, above_water=None, assign_water=True, displace=True,
+               fx=True, fog=True, caustics=True) -> dict:
     """Terapkan look scene_id ke scene `scn`. Tidak menyimpan file.
 
     scn          : bpy.types.Scene sasaran (scene dari file shot).
@@ -245,8 +563,12 @@ def apply_look(scn, scene_id: int, above_water=None, assign_water=True, displace
                    permukaan). Scene 2–4 memakai satu world untuk dua-duanya.
     assign_water : False kalau renderer hanya ingin world + view transform.
     displace     : False kalau renderer tidak ingin modifier Displace gelombang.
+    fx           : False kalau renderer tidak ingin koleksi FX_atmosphere.
+    fog          : False kalau renderer tidak ingin kabut compositor.
+    caustics     : False kalau material dasar laut tidak boleh diganti.
 
-    Mengembalikan dict laporan: world, material, objek, modifier, view transform.
+    Mengembalikan dict laporan: world, material, objek, modifier, FX, kabut,
+    view transform.
     """
     scene_id = int(scene_id)
     look = load_look(scene_id)
@@ -277,6 +599,10 @@ def apply_look(scn, scene_id: int, above_water=None, assign_water=True, displace
             if displace:
                 displaced[ob.name] = add_wave_displace(ob)
 
+    seabed = assign_seabed_material(scn, look["caustics"]) if caustics else []
+    coll = ensure_atmosphere(scn, scene_id, above_water, enabled=fx)
+    fog_report = apply_fog(scn, scene_id, above_water, enabled=fog)
+
     scn.view_settings.view_transform = "Standard"
 
     return {
@@ -286,6 +612,9 @@ def apply_look(scn, scene_id: int, above_water=None, assign_water=True, displace
         "water_material": look["material"].name if assign_water else None,
         "water_objects": touched,
         "water_displace": displaced,
+        "seabed_objects": seabed,
+        "fx_collection": coll.name if coll is not None else None,
+        "fog": fog_report,
         "view_transform": scn.view_settings.view_transform,
     }
 
