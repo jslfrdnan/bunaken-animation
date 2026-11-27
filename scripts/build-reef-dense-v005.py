@@ -521,13 +521,42 @@ def rebuild_branch_mesh(v3, scene, src_name, new_name, decimate, base_mat):
     return me
 
 
+def _load_into_empty(path):
+    """Muat file sumber tanpa open_mainfile (aman untuk sesi MCP)."""
+    scn = bpy.context.scene
+    for db in (bpy.data.objects, bpy.data.collections, bpy.data.meshes,
+               bpy.data.materials, bpy.data.cameras, bpy.data.lights,
+               bpy.data.worlds, bpy.data.actions, bpy.data.curves,
+               bpy.data.armatures):
+        for block in list(db):
+            try:
+                db.remove(block)
+            except Exception:
+                pass
+    with bpy.data.libraries.load(path, link=False) as (src, dst):
+        all_names = list(src.objects)
+        dst.collections = list(src.collections)
+    # objek lepas (mis. kamera preview) tidak ikut saat hanya memuat koleksi
+    missing = [n for n in all_names if n not in bpy.data.objects]
+    if missing:
+        with bpy.data.libraries.load(path, link=False) as (src, dst):
+            dst.objects = [n for n in src.objects if n in missing]
+    children = {c.name for coll in dst.collections if coll for c in coll.children}
+    for coll in dst.collections:
+        if coll is not None and coll.name not in children:
+            scn.collection.children.link(coll)
+    for ob in bpy.data.objects:
+        if not ob.users_collection:
+            scn.collection.objects.link(ob)
+    return scn
+
+
 def main():
     v3 = load_v003()
     rng = random.Random(SEED)
 
-    print("buka", V004)
-    bpy.ops.wm.open_mainfile(filepath=V004)
-    scn = bpy.context.scene
+    print("muat", V004)
+    scn = _load_into_empty(V004)
     root = bpy.data.collections.get("ENV_reef-dense")
     ctl = bpy.data.objects.get("CTL_reef-dense")
     if root is None or ctl is None:

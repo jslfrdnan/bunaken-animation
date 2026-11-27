@@ -209,9 +209,33 @@ class Part:
 
 # --------------------------------------------------------------------- setup
 os.makedirs(STILLS, exist_ok=True)
-print("buka", SRC)
-bpy.ops.wm.open_mainfile(filepath=SRC)
-scn = bpy.context.scene
+
+
+def load_into_empty(path):
+    """Muat file sumber tanpa open_mainfile (aman untuk sesi MCP).
+
+    Semua objek/koleksi dihapus, lalu seluruh koleksi dari file sumber
+    di-append dan di-link ke scene aktif.
+    """
+    scn = bpy.context.scene
+    for ob in list(bpy.data.objects):
+        bpy.data.objects.remove(ob, do_unlink=True)
+    for coll in list(bpy.data.collections):
+        bpy.data.collections.remove(coll)
+    with bpy.data.libraries.load(path, link=False) as (src, dst):
+        dst.collections = list(src.collections)
+    children = {c.name for coll in dst.collections if coll for c in coll.children}
+    for coll in dst.collections:
+        if coll is not None and coll.name not in children:
+            scn.collection.children.link(coll)
+    for ob in bpy.data.objects:
+        if not ob.users_collection:
+            scn.collection.objects.link(ob)
+    return scn
+
+
+print("muat", SRC)
+scn = load_into_empty(SRC)
 root = bpy.data.collections.get("ENV_island-detail")
 ctx = bpy.data.collections.get("ENV_island-detail_context")
 ctl = bpy.data.objects.get("CTL_island-detail")

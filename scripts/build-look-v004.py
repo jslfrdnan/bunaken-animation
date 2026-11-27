@@ -497,9 +497,37 @@ def build_fx_collection():
 
 # -------------------------------------------------------------------- main ---
 
-def main():
-    bpy.ops.wm.open_mainfile(filepath=SRC)
+def _load_into_empty(path):
+    """Muat file sumber tanpa open_mainfile (aman untuk sesi MCP)."""
     scn = bpy.context.scene
+    for db in (bpy.data.objects, bpy.data.collections, bpy.data.meshes,
+               bpy.data.materials, bpy.data.cameras, bpy.data.lights,
+               bpy.data.worlds, bpy.data.actions, bpy.data.curves,
+               bpy.data.armatures):
+        for block in list(db):
+            try:
+                db.remove(block)
+            except Exception:
+                pass
+    with bpy.data.libraries.load(path, link=False) as (src, dst):
+        all_names = list(src.objects)
+        dst.collections = list(src.collections)
+    missing = [n for n in all_names if n not in bpy.data.objects]
+    if missing:
+        with bpy.data.libraries.load(path, link=False) as (src, dst):
+            dst.objects = [n for n in src.objects if n in missing]
+    children = {c.name for coll in dst.collections if coll for c in coll.children}
+    for coll in dst.collections:
+        if coll is not None and coll.name not in children:
+            scn.collection.children.link(coll)
+    for ob in bpy.data.objects:
+        if not ob.users_collection:
+            scn.collection.objects.link(ob)
+    return scn
+
+
+def main():
+    scn = _load_into_empty(SRC)
 
     for name in WATER_MATS:
         patch_water(name)

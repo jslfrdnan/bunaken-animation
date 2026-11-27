@@ -826,6 +826,13 @@ MCP. Output `renders/scene-1/scene-1_v010.mp4` terverifikasi **840 frame,
 
 Sisa blocker: rekaman narasi dan musik (manusia).
 
+**Rebuild aset lewat MCP (28 Nov 2026).** Setelah instance MCP kembali ke repo
+ini, kelima builder yang memakai `open_mainfile` (island, reef, nara, look,
+divegear) direfaktor menjadi wipe manual + `libraries.load`, lalu dijalankan
+ulang **lewat `execute_blender_code`**: island 4,02 MB (485 objek), reef 2,12 MB
+(aksen 4,05%, meja 1,2 m), nara 319 KB, look 311 KB, divegear 164 KB, dan tiga
+ikan 160–173 KB. Hasil visual identik dengan render v010.
+
 ---
 
 ## 11. Kredit, lisensi, dan sumber
