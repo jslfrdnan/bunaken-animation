@@ -122,7 +122,11 @@ def build(scene_id, shots):
 
 
 def main():
+    import sys
+    only = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
     for scene_id, shots in SHOTS.items():
+        if only and scene_id not in only:
+            continue
         build(scene_id, shots)
 
 

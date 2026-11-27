@@ -8,7 +8,8 @@ Pemilik: **Vaughn Toy** (Anggota 7 â€” Lighting & Shading)
 |---|---|
 | `scene-1-look.blend` | World, shader air/pasir/karang/batu, panggung uji, plate shot 030 di atas terumbu asli (v002), dan dunia permukaan: pulau + kampung + dermaga + perahu dengan terumbu di ujung dermaga (v003, 3 Nov 2026) |
 | `scene-1-look_v002.blend` | **Look produksi Scene 1 (sebelumnya)** â€” `WLD_scene-1` (bawah laut, golden hour) + `WLD_scene-1_surface` (permukaan) + `SHD_water-surface` (14 Nov 2026) |
-| `scene-1-look_v003.blend` | **Look produksi Scene 1 (aktif)** â€” world sama dengan v002 + `SHD_water-surface_v002` (air bergelombang, dua skala noise 4D, 14 Nov 2026 malam) dan panggung uji air 200 Ã— 200 m |
+| `scene-1-look_v003.blend` | **Look produksi Scene 1 (sebelumnya)** â€” world sama dengan v002 + `SHD_water-surface_v002` (air bergelombang, dua skala noise 4D, 14 Nov 2026 malam) dan panggung uji air 200 Ã— 200 m |
+| `scene-1-look_v004.blend` | **Look produksi Scene 1 (aktif, 27 Nov 2026)** â€” air anti-moirÃ© (`SHD_water-surface_v002`: bump ripple 0,07, mapping 1/220, roughness 0,16), material dasar laut `SHD_seabed_caustics`, koleksi `FX_atmosphere` (3 god ray card, 200 partikel, 2 fog card), dan kabut kedalaman compositor |
 | `scene-2-look.blend` | **Look Scene 2** â€” `WLD_scene-2` subuh biru (14 Nov 2026) |
 | `scene-3-look.blend` | **Look Scene 3** â€” `WLD_scene-3` sore hangat + sun rig `LGT_look_scene-3_sun` (14 Nov 2026) |
 | `scene-4-look.blend` | **Look Scene 4** â€” `WLD_scene-4` pagi cerah (14 Nov 2026) |
@@ -24,11 +25,14 @@ from look import apply_look
 apply_look(scn, 1)      # scn = scene dari file shot
 ```
 
-`apply_look` hanya menyentuh empat hal: `scn.world`, material objek air
+`apply_look` menyentuh tujuh hal: `scn.world`, material objek air
 (`SHD_water-surface_v002`), modifier `Displace` gelombang (objek air < 10.000
-vert; lihat bagian Displace di bawah), dan
-`scn.view_settings.view_transform = "Standard"`. File shot tidak disimpan dan
-tidak ada lampu yang ditambahkan.
+vert; lihat bagian Displace di bawah), `view_transform = "Standard"`, material
+dasar laut (`SHD_seabed_caustics` pada objek `seabed`/`sand` di bawah air),
+koleksi `FX_atmosphere` (di-append sekali, idempoten), dan kabut compositor
+(mist pass â†’ Mix `#0F5C63`). File shot tidak disimpan dan tidak ada lampu yang
+ditambahkan. Scene 2â€“4 belum punya koleksi FX, jadi `fx_collection` bernilai
+`None` di sana (hanya kabut yang aktif).
 
 | Scene | World | Strength | Catatan |
 |---|---|---|---|
@@ -93,6 +97,41 @@ ketebalan relief tanpa mengubah strength yang disepakati.
 bukan aset: **jangan di-link ke `scenes/`**. Hasil uji:
 `renders/stills/water-v003-aerial.png`, `water-v003-close.png`, dan
 `water-v003-aerial-f420.png` (bukti animasi: pola di frame 420 berbeda).
+
+### `scene-1-look_v004.blend` (27 Nov 2026) — anti-moirÃ© + atmosfer
+
+Perbaikan **air dekat kamera bergaris/moirÃ©** (shot 020 & 070) dan penambahan
+atmosfer bawah laut untuk shot 030â€“060. Semua nilai ada di file v004; v003
+tidak diubah.
+
+| Bagian | Nilai |
+|---|---|
+| `SHD_water-surface_v002` + `SHD_water-surface` | Mapping **1/220** (0,004545), `Bump_ripple` strength **0,07** (Distance 6, Filter Width **0,5** px), Roughness **0,16**, `Bump_swell` tetap 0,35 / Filter Width 0,6 |
+| Base color air | tetap `#1FA3A3` (0,0137 / 0,3663 / 0,3663) lewat `Mix_trough` |
+| `SHD_seabed_caustics` | pasir `#E8D5B0` + pola caustic: Voronoi (Distance to Edge, scale 6) + Wave (bands diagonal, scale 7, distortion 12), mix **ADD 0,55**, additive cream `#F2E9DC` **0,18**; lembah pola dikali 0,45 supaya tetap terbaca di bawah sinar kuat. Bump pasir sama dengan `SHD_sand` |
+| `FX_godray_card_01..03` | cone emissive 12 m, lebar 3,2 / 2,2 / 2,0 m, warna `#F2E9DC`, emission **0,6**, alpha 0,55 dengan tepi siluet dihaluskan (`Layer Weight > Facing`) dan ujung memudar (`Ramp_fade`) |
+| `FX_particles` | satu mesh, **200 bola** r 1â€“2 cm di volume 20 Ã— 20 Ã— 8 m, emission 0,35 |
+| `FX_fog_card_01/02` | bidang 34 Ã— 16 m dan 44 Ã— 22 m, alpha **0,08**, warna `#0F5C63`, memakai emission (tint murni) supaya tidak ikut menjadi terang oleh sun |
+| Induk | `FX_atmosphere_root` (Empty); `apply_look` memindahkannya ke depan kamera: 17 m (bawah laut) atau di bawah permukaan (kamera di atas air) |
+
+Di dalam file look, `FX_atmosphere_root` duduk di origin (0, 0, 0) â€” itu posisi
+default, bukan posisi final. Posisi per shot dihitung `apply_look`, jadi jangan
+menilai atmosfer dengan merender file look apa adanya. Shot di atas air (020,
+070) menaruh seluruh grup di bawah permukaan (root z = -12,5 m) sehingga
+tertutup bidang air dan tidak mengganggu bingkai.
+
+**Kenapa tidak ada node Blur normal.** Blender 5.2 tidak punya node `Blur` di
+node tree shader (hanya di compositor), jadi filter normal 0,35â€“0,5 px diterapkan
+lewat input **Filter Width** milik node `Bump` â€” input itu memang lebar filter
+(dalam piksel) untuk turunan height. Hasilnya: tidak ada lagi garis periodik di
+air dekat kamera (uji crop 100% shot 020).
+
+**Kabut** tidak memakai World Volume (masih menghasilkan frame hitam di EEVEE
+5.2). `apply_look` menyalakan `mist_settings` (start 2, depth 45, QUADRATIC) +
+pass **Mist** (EEVEE 5.2 ternyata mengisi pass ini) lalu compositor
+`Mist â†’ Multiply 0,42 â†’ Mix ke #0F5C63`. Faktor 0,42 bawah laut, 0,25 di atas air.
+Compositor 5.2 memakai `scene.compositing_node_group` (tipe `CompositorNodeTree`,
+output `NodeGroupOutput`) â€” bukan lagi `CompositorNodeComposite`.
 
 ### Displace gelombang di `scripts/look.py`
 
@@ -305,7 +344,9 @@ Penyu (`ENV_reef_turtle` + `x00`â€¦`x05`) di-*append* ulang dari
       air datar. Shader air aslinya `SHD_water_surface` dari file ini; perlu
       koordinasi dengan pemilik `surface.blend` (Jasiel) sebelum diganti.
 - [ ] Shader permukaan air dilihat dari bawah (shot 020 turun ke air) belum final.
-- [ ] Partikel/debris kecil di air (diminta shot 030â€“060) belum dibuat.
+- [x] Partikel/debris kecil di air (diminta shot 030â€“060) belum dibuat.
+      **Sudah:** `FX_particles` (200 bola r 1â€“2 cm) + 3 god ray card + 2 fog
+      card di koleksi `FX_atmosphere` (v004, 27 Nov 2026).
 - [x] Look dev permukaan (shot 010, 080, 090): pulau, kampung, dermaga, perahu,
       dan lautan dengan `WLD_scene-1_surface` (v003, 3 Nov 2026).
 - [ ] Perahu di sisi dermaga masih terbaca "di bawah kolong" kalau kamera
