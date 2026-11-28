@@ -834,6 +834,17 @@ MP4 final (010 judul 3 s, 020 tanpa moiré, 030–050 atmosfer lengkap, 050/060/
 Nara, 090 crowd). Tes ikan final: 20 sampel/sekolah, dot min 0,9979, up z min
 0,945, rasio 2,28, 5 action, 0 mundur. Scene 2–4 tidak disentuh.
 
+**Tindak lanjut 28 Nov 2026 — gerak dan model.** Ikan di-retune: NLA strip per
+ikan (fase dan kecepatan kepakan berbeda), roll/banking, weave lateral, dan bob;
+tes arah shot 030/040/050 tetap lolos (dot min 0,9992, up z min 0,945, 0
+mundur). Penyu diberi rig 2 bone per flipper + action renang 72 frame. Kapal 020
+diberi bob/roll; kapal 070 diberi drift 0,45 m menjauhi Nara, bob/roll, dan wake.
+Aset Nara baru disiapkan dari Quaternius “Animated Woman” (Casual, CC0) via Poly
+Pizza: 4 mesh, 62 bone, tinggi 1,68 m, warna rash guard teal dan celana gelap
+(`assets/char/nara_public_v005.blend`). **Integrasi Nara ke shot 050/060/070/090/
+100 dan render final belum dilakukan**; `scene-1_v010.mp4` yang ada belum memuat
+perubahan ini.
+
 Sisa blocker: rekaman narasi dan musik (manusia).
 
 **Rebuild aset lewat MCP (28 Nov 2026).** Setelah instance MCP kembali ke repo

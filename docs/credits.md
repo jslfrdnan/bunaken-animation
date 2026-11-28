@@ -57,7 +57,7 @@ Setiap file dari luar (model, tekstur, HDRI, musik, SFX) masuk tabel ini
 
 | Aset | Pembuat | Lisensi | Tautan | Dipakai di |
 |---|---|---|---|---|
-| _contoh: HDRI tropis_ | _Poly Haven_ | _CC0_ | _url_ | _Scene 1_ |
+| `assets/char/nara_public_v005.blend` — Quaternius “Animated Woman” (Casual) via Poly Pizza | Quaternius | CC0 | https://poly.pizza/bundle/Ultimate-Modular-Women-Pack-aCBDXDdTNN | Scene 1, aset Nara v005 (disiapkan; integrasi ke shot menyusul) |
 
 ### Foto acuan (referensi internal, bukan aset film)
 
