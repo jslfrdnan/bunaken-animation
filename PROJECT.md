@@ -834,12 +834,13 @@ MP4 final (010 judul 3 s, 020 tanpa moiré, 030–050 atmosfer lengkap, 050/060/
 Nara, 090 crowd). Tes ikan final: 20 sampel/sekolah, dot min 0,9979, up z min
 0,945, rasio 2,28, 5 action, 0 mundur. Scene 2–4 tidak disentuh.
 
-**Tindak lanjut 28 Nov 2026 — gerak dan model.** Ikan v006: pivot sekolah
-bergerak dengan kecepatan konstan (rasio speed 1,0), formasi direnggangkan 3D
-sampai jarak minimum 1,0 m, dan action renang baru memakai gelombang menjalar
-spine→tail dengan ayunan ujung ekor 0,333 m; NLA per ikan tetap memberi fase dan
-kecepatan berbeda. Tes shot 030/040/050: dot min 0,9999, up z min 0,96, 0
-mundur. Penyu diberi rig 2 bone per flipper + action renang 72 frame. Kapal 020
+**Tindak lanjut 28 Nov 2026 — gerak dan model.** Ikan v007 memakai **Boids**
+per ikan (separation, alignment, cohesion, waypoint) dengan target posisi v006
+yang dinaikkan ke ketinggian aman di atas karang; obstacle berupa silinder mesh
+karang. Hasil shot 030/040/050: clearance mesh min 0,209 m, jarak antarikan min
+1,02 m, forward vs gerak 1,0. Kakatua di shot 030 disembunyikan karena
+visibilitasnya hanya 3% (sudah di luar frame sejak v006). Action ekor v006
+(gelombang spine→tail, 0,333 m) tetap dipakai. Penyu diberi rig 2 bone per flipper + action renang 72 frame. Kapal 020
 diberi bob/roll; kapal 070 diberi drift 0,45 m menjauhi Nara, bob/roll, dan wake.
 Aset Nara baru disiapkan dari Quaternius “Animated Woman” (Casual, CC0) via Poly
 Pizza: 4 mesh, 62 bone, tinggi 1,68 m, warna rash guard teal dan celana gelap
