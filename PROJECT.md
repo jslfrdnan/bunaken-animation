@@ -848,6 +848,14 @@ Pizza: 4 mesh, 62 bone, tinggi 1,68 m, warna rash guard teal dan celana gelap
 100 dan render final belum dilakukan**; `scene-1_v010.mp4` yang ada belum memuat
 perubahan ini.
 
+**Build 28 Nov 2026 — Scene 1 v011.** Master
+`scenes/scene-1_master_v006.blend` berisi 10 scene (840 frame, 29,1 MB). Output
+`renders/scene-1/scene-1_v011.mp4` terverifikasi **840 frame, 35,000 s,
+1920×1080, 24 fps, 25,5 MB**. Build ini memuat Boids ikan v007, rig penyu v005,
+dan gerak kapal v005. Shot 030 menyembunyikan kakatua (visibilitas 3%); shot 050
+menyembunyikan cakalang yang melintas di depan Nara. **Nara v005 belum
+diintegrasikan** — model Nara di film masih v004.
+
 Sisa blocker: rekaman narasi dan musik (manusia).
 
 **Rebuild aset lewat MCP (28 Nov 2026).** Setelah instance MCP kembali ke repo
